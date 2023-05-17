@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmdjfv6gyn7q3"]
+
+[ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://art/enemy-walking-1.png" id="1_s0c3d"]
+[ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://art/enemy-walking-2.png" id="2_wasux"]
+
+[sub_resource type="GDScript" id="GDScript_526an"]
+script/source = "extends RigidBody2D
+
+var target = null
+var screen_size = Vector2.ZERO
+var dmg = 0
+
+@export var min_speed = 100.0
+@export var max_speed = 200.0
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	randomize()
+	dmg = randi_range(5, 20)
+	screen_size = get_viewport_rect().size
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+func _physics_process(delta):
+	var direction = Vector2.ZERO
+	var speed = randf_range(min_speed, max_speed)
+	
+	if target:
+		direction = position.direction_to(target.position)
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
+	
+	
+	position += direction * speed * delta
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
+
+
+func _on_detection_area_area_entered(area):
+	if area.is_in_group(\"player\"):
+		target = area
+
+
+func _on_detection_area_area_exited(area):
+	if area.is_in_group(\"player\"):
+		target = null
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8aoai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s0c3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wasux")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipj00"]
+radius = 24.0
+height = 66.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bq5xo"]
+radius = 1303.53
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = SubResource("GDScript_526an")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_8aoai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ipj00")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_bq5xo")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]

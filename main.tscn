@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd1avtyymv48c"]
+
+[ext_resource type="PackedScene" uid="uid://cmdjfv6gyn7q3" path="res://mob.tscn" id="1_0euvk"]
+[ext_resource type="PackedScene" uid="uid://dpq483ohefp2q" path="res://player.tscn" id="1_63u67"]
+
+[sub_resource type="GDScript" id="GDScript_mt4rm"]
+script/source = "extends Node
+
+@export var mob_scene : PackedScene
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	new_game()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func new_game():
+	get_tree().call_group(\"mobs\", \"queue_free\")
+	$Player.start($StartMarker.position)
+	$StartTimer.start()
+	
+	await($StartTimer.timeout)
+	$MobTimer.start()
+
+
+func game_over():
+	$MobTimer.stop()
+
+
+
+func _on_mob_timer_timeout():
+	var mob_spawn_location = $MobPath/MobSpawnLocation
+	mob_spawn_location.progress_ratio = randf()
+	
+	var mob = mob_scene.instantiate()
+	add_child(mob)
+	mob.position = mob_spawn_location.position
+"
+
+[sub_resource type="Curve2D" id="Curve2D_u2oqr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1080, -1, 0, 0, 0, 0, 1081, 719, 0, 0, 0, 0, 0, 717, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = SubResource("GDScript_mt4rm")
+mob_scene = ExtResource("1_0euvk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.219608, 0.372549, 0.380392, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_63u67")]
+position = Vector2(-133, 280)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_u2oqr")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+rotation = -0.000925926
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="StartMarker" type="Marker2D" parent="."]
+position = Vector2(509, 370)
+
+[connection signal="dead" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
