@@ -1,76 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpq483ohefp2q"]
+[gd_scene load_steps=7 format=3 uid="uid://d2vq6l8m0v44q"]
 
 [ext_resource type="Texture2D" uid="uid://cw8xsl33p3b7g" path="res://art/player-up-1.png" id="1_3lkkn"]
+[ext_resource type="Script" path="res://player.gd" id="1_y4wvu"]
 [ext_resource type="Texture2D" uid="uid://bblmoaouu0d0h" path="res://art/player-walk-2.png" id="2_altm8"]
 [ext_resource type="Texture2D" uid="uid://b3ssi1g5bno71" path="res://art/player-up-2.png" id="3_5mqrn"]
-
-[sub_resource type="GDScript" id="GDScript_rqvow"]
-script/source = "extends Area2D
-
-signal dead
-
-@export var speed = 400.0
-var screen_size = Vector2.ZERO
-var health = 100.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	screen_size = get_viewport_rect().size
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	# Movement
-	var direction = Vector2.ZERO
-	if Input.is_action_pressed(\"move_right\"):
-		direction.x += 1
-	if Input.is_action_pressed(\"move_left\"):
-		direction.x -= 1
-	if Input.is_action_pressed(\"move_down\"):
-		direction.y += 1
-	if Input.is_action_pressed(\"move_up\"):
-		direction.y -= 1
-	if direction.length() > 0:
-		direction = direction.normalized()
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
-	position += direction * speed * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
-	
-	# Animation
-	if direction.x != 0:
-		$AnimatedSprite2D.animation = \"right\"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = direction.x < 0
-	elif direction.y != 0:
-		$AnimatedSprite2D.animation = \"up\"
-		$AnimatedSprite2D.flip_v = direction.y > 0
-
-
-func start(new_position):
-	position = new_position
-	show()
-	$CollisionShape2D.disabled = false
-
-func damage_player(dmg):
-	health -= dmg
-	update_health()
-	if health <= 0:
-		hide()
-		$CollisionShape2D.set_deferred(\"disabled\", true)
-		emit_signal(\"dead\")
-
-func update_health():
-	$HealthLabel.text = str(health)
-
-
-func _on_body_entered(body):
-	if body.is_in_group(\"mobs\"):
-		damage_player(body.dmg)
-"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgod0"]
 animations = [{
@@ -101,8 +34,8 @@ animations = [{
 radius = 27.0
 height = 68.0
 
-[node name="Player" type="Area2D" groups=["player"]]
-script = SubResource("GDScript_rqvow")
+[node name="Player" type="Area2D"]
+script = ExtResource("1_y4wvu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
