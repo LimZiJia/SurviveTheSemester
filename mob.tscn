@@ -1,24 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ar6twpp55xh"]
+[gd_scene load_steps=10 format=3 uid="uid://24c77tnfu1qt"]
 
-[ext_resource type="Script" path="res://mob.gd" id="1_6u7di"]
-[ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://art/enemy-walking-1.png" id="1_s0c3d"]
-[ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://art/enemy-walking-2.png" id="2_wasux"]
+[ext_resource type="Script" path="res://mob.gd" id="1_anuhh"]
+[ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://art/enemy-walking-1.png" id="2_n7vsd"]
+[ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://art/enemy-walking-2.png" id="3_kn75w"]
+[ext_resource type="PackedScene" uid="uid://dsofeml2530h0" path="res://components/health_label.tscn" id="4_0837x"]
+[ext_resource type="PackedScene" uid="uid://bw3wmcukkngxf" path="res://components/hitbox_area.tscn" id="5_jedqt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8aoai"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_s0c3d")
+"texture": ExtResource("2_n7vsd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_wasux")
+"texture": ExtResource("3_kn75w")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ipj00"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lro3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fxbd"]
 radius = 12.0
 height = 32.0
 
@@ -28,7 +32,7 @@ radius = 1303.53
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
 gravity_scale = 0.0
-script = ExtResource("1_6u7di")
+script = ExtResource("1_anuhh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.5708
@@ -36,9 +40,23 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_8aoai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_ipj00")
+shape = SubResource("CircleShape2D_8lro3")
+
+[node name="HealthLabel" parent="." instance=ExtResource("4_0837x")]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -17.0
+max_health = 10.0
+
+[node name="HitboxArea" parent="." instance=ExtResource("5_jedqt")]
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CapsuleShape2D_7fxbd")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_bq5xo")

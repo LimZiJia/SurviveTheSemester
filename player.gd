@@ -3,17 +3,11 @@ extends Area2D
 
 signal dead
 
-@export var speed = 400.0
-var screen_size = Vector2.ZERO
-var health = 100.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	screen_size = get_viewport_rect().size
+@export var speed := 400.0
+@onready var screen_size := get_viewport_rect().size
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta) -> void:
 	# Movement
 	var direction = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
@@ -42,23 +36,14 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = direction.y > 0
 
-func start(new_position):
+
+func start(new_position: Vector2) -> void:
 	position = new_position
 	show()
 	$CollisionShape2D.disabled = false
 
-func damage_player(dmg):
-	health -= dmg
-	update_health()
-	if health <= 0:
-		hide()
-		$CollisionShape2D.set_deferred("disabled", true)
-		emit_signal("dead")
 
-func update_health():
-	$HealthLabel.text = str(health)
-
-
-func _on_body_entered(body):
-	if body.is_in_group("mobs"):
-		damage_player(body.dmg)
+func _on_health_label_dead():
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
+	emit_signal("dead")

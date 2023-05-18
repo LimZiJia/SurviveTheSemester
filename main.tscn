@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv1o84m5te0bm"]
+[gd_scene load_steps=5 format=3 uid="uid://dhdc2gdsepjlg"]
 
-[ext_resource type="PackedScene" uid="uid://b3ar6twpp55xh" path="res://mob.tscn" id="1_0euvk"]
-[ext_resource type="PackedScene" uid="uid://d2vq6l8m0v44q" path="res://player.tscn" id="1_63u67"]
+[ext_resource type="PackedScene" uid="uid://24c77tnfu1qt" path="res://mob.tscn" id="1_0euvk"]
+[ext_resource type="PackedScene" uid="uid://bo7u78xqoo0oj" path="res://player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://main.gd" id="1_icddk"]
 
 [sub_resource type="Curve2D" id="Curve2D_u2oqr"]
@@ -23,7 +23,7 @@ grow_vertical = 2
 color = Color(0.219608, 0.372549, 0.380392, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_63u67")]
-position = Vector2(-133, 280)
+position = Vector2(-81, 183)
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_u2oqr")
