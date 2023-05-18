@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo7u78xqoo0oj"]
+[gd_scene load_steps=11 format=3 uid="uid://bo7u78xqoo0oj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_7xkn6"]
 [ext_resource type="Texture2D" uid="uid://cw8xsl33p3b7g" path="res://art/player-up-1.png" id="2_qshyo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ssi1g5bno71" path="res://art/player-up-2.png" id="4_bbs05"]
 [ext_resource type="Script" path="res://components/health_label.gd" id="5_4n1ai"]
 [ext_resource type="Script" path="res://components/hurtbox_area.gd" id="6_55pa7"]
+[ext_resource type="PackedScene" uid="uid://b0g7u5o2k62f4" path="res://weapons/melee.tscn" id="7_bnptl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgod0"]
 animations = [{
@@ -39,6 +40,7 @@ radius = 27.0
 height = 68.0
 
 [node name="Player" type="Area2D"]
+collision_mask = 0
 script = ExtResource("1_7xkn6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -60,10 +62,15 @@ script = ExtResource("5_4n1ai")
 max_health = 100.0
 
 [node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
+collision_layer = 2
 script = ExtResource("6_55pa7")
 health_label = NodePath("../HealthLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
 shape = SubResource("CapsuleShape2D_dwjla")
+
+[node name="Melee" parent="." instance=ExtResource("7_bnptl")]
+position = Vector2(-1, -11)
+rotation = -0.785398
 
 [connection signal="dead" from="HealthLabel" to="." method="_on_health_label_dead"]

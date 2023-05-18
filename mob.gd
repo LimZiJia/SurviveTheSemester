@@ -26,3 +26,7 @@ func _on_detection_area_area_entered(area: Player):
 
 func _on_detection_area_area_exited(_area: Player):
 	target = null
+
+
+func _on_health_label_dead():
+	queue_free()

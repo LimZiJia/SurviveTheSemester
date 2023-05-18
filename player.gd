@@ -35,6 +35,10 @@ func _physics_process(delta) -> void:
 	elif direction.y != 0:
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = direction.y > 0
+	
+	# Attack
+	if Input.is_action_just_pressed("attack"):
+		$Melee.attack()
 
 
 func start(new_position: Vector2) -> void:

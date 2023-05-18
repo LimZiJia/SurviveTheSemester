@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://24c77tnfu1qt"]
+[gd_scene load_steps=12 format=3 uid="uid://24c77tnfu1qt"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_anuhh"]
 [ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://art/enemy-walking-1.png" id="2_n7vsd"]
 [ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://art/enemy-walking-2.png" id="3_kn75w"]
 [ext_resource type="PackedScene" uid="uid://dsofeml2530h0" path="res://components/health_label.tscn" id="4_0837x"]
+[ext_resource type="PackedScene" uid="uid://dye4pnmmt2g1g" path="res://components/hurtbox_area.tscn" id="5_eix41"]
 [ext_resource type="PackedScene" uid="uid://bw3wmcukkngxf" path="res://components/hitbox_area.tscn" id="5_jedqt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8aoai"]
@@ -22,9 +23,13 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8lro3"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jusqm"]
+radius = 12.0
+height = 34.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fxbd"]
 radius = 12.0
-height = 32.0
+height = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bq5xo"]
 radius = 1303.53
@@ -40,6 +45,7 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_8aoai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_8lro3")
 
 [node name="HealthLabel" parent="." instance=ExtResource("4_0837x")]
@@ -49,7 +55,16 @@ offset_right = 20.0
 offset_bottom = -17.0
 max_health = 10.0
 
+[node name="HurtboxArea" parent="." node_paths=PackedStringArray("health_label") instance=ExtResource("5_eix41")]
+collision_layer = 1
+health_label = NodePath("../HealthLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
+shape = SubResource("CapsuleShape2D_jusqm")
+
 [node name="HitboxArea" parent="." instance=ExtResource("5_jedqt")]
+collision_layer = 1
+collision_mask = 2
 damage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
@@ -61,5 +76,6 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_bq5xo")
 
+[connection signal="dead" from="HealthLabel" to="." method="_on_health_label_dead"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
