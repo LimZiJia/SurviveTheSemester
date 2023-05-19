@@ -28,5 +28,13 @@ func stop() -> void:
 	target = null
 
 
+func set_max_health(health: float) -> void:
+	$HealthLabel.max_health = health
+
+
+func set_damage(damage: float) -> void:
+	$HitboxArea.damage = damage
+
+
 func _on_health_label_dead():
 	queue_free()

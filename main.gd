@@ -1,7 +1,6 @@
 extends Node
 
 
-@export var mob_scene : PackedScene
 var score := 0
 
 
@@ -13,27 +12,19 @@ func new_game() -> void:
 	$Player.start($StartMarker.position)
 	
 	$StartTimer.start()
-	$HUD.show_message_with_time("Get ready...", 2.0)
+	$HUD.show_message_with_time("Get ready...", 1.0)
 	await($StartTimer.timeout)
 	$ScoreTimer.start()
 	$MobTimer.start()
+	$WaveController.start()
 
 
 func game_over() -> void:
 	get_tree().call_group("mobs", "stop")
+	$WaveController.stop()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
-
-
-
-func _on_mob_timer_timeout() -> void:
-	for i in range(10):
-		var mob_spawn_location = $MobPath/MobSpawnLocation
-		mob_spawn_location.progress_ratio = randf()
-		var mob = mob_scene.instantiate()
-		add_child(mob)
-		mob.position = mob_spawn_location.position
 
 
 func _on_score_timer_timeout() -> void:
