@@ -13,13 +13,14 @@ func new_game() -> void:
 	$Player.start($StartMarker.position)
 	
 	$StartTimer.start()
-	$HUD.show_message("Get ready...")
+	$HUD.show_message_with_time("Get ready...", 2.0)
 	await($StartTimer.timeout)
 	$ScoreTimer.start()
 	$MobTimer.start()
 
 
 func game_over() -> void:
+	get_tree().call_group("mobs", "stop")
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
@@ -27,12 +28,12 @@ func game_over() -> void:
 
 
 func _on_mob_timer_timeout() -> void:
-	var mob_spawn_location = $MobPath/MobSpawnLocation
-	mob_spawn_location.progress_ratio = randf()
-	
-	var mob = mob_scene.instantiate()
-	add_child(mob)
-	mob.position = mob_spawn_location.position
+	for i in range(10):
+		var mob_spawn_location = $MobPath/MobSpawnLocation
+		mob_spawn_location.progress_ratio = randf()
+		var mob = mob_scene.instantiate()
+		add_child(mob)
+		mob.position = mob_spawn_location.position
 
 
 func _on_score_timer_timeout() -> void:

@@ -49,10 +49,10 @@ func start(new_position: Vector2) -> void:
 	position = new_position
 	$HealthLabel.initialize_health()
 	show()
-	$CollisionShape2D.disabled = false
+	$HurtboxArea/CollisionShape2D.disabled = false
 
 
 func _on_health_label_dead():
 	hide()
-	$CollisionShape2D.set_deferred("disabled", true)
+	$HurtboxArea/CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("dead")

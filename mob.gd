@@ -24,5 +24,9 @@ func _physics_process(delta: float) -> void:
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
+func stop() -> void:
+	target = null
+
+
 func _on_health_label_dead():
 	queue_free()

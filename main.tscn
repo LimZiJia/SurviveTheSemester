@@ -26,7 +26,7 @@ grow_vertical = 2
 color = Color(0.219608, 0.372549, 0.380392, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_63u67")]
-position = Vector2(-81, 183)
+position = Vector2(540, 420)
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_u2oqr")
@@ -39,9 +39,10 @@ rotation = -0.000925926
 [node name="ScoreTimer" type="Timer" parent="."]
 
 [node name="MobTimer" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="StartMarker" type="Marker2D" parent="."]
-position = Vector2(509, 370)
+position = Vector2(540, 420)
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="dead" from="Player" to="." method="game_over"]
