@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://24c77tnfu1qt"]
+[gd_scene load_steps=11 format=3 uid="uid://24c77tnfu1qt"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_anuhh"]
 [ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://art/enemy-walking-1.png" id="2_n7vsd"]
@@ -30,9 +30,6 @@ height = 34.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fxbd"]
 radius = 12.0
 height = 34.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bq5xo"]
-radius = 1303.53
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
@@ -70,12 +67,4 @@ damage = 5.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("CapsuleShape2D_7fxbd")
 
-[node name="DetectionArea" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_bq5xo")
-
 [connection signal="dead" from="HealthLabel" to="." method="_on_health_label_dead"]
-[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
-[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
