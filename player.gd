@@ -7,6 +7,10 @@ signal dead
 @onready var screen_size := get_viewport_rect().size
 
 
+func _ready() -> void:
+	hide()
+
+
 func _physics_process(delta) -> void:
 	# Movement
 	var direction = Vector2.ZERO

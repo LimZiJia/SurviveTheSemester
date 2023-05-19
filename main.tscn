@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhdc2gdsepjlg"]
+[gd_scene load_steps=6 format=3 uid="uid://dhdc2gdsepjlg"]
 
 [ext_resource type="PackedScene" uid="uid://24c77tnfu1qt" path="res://mob.tscn" id="1_0euvk"]
 [ext_resource type="PackedScene" uid="uid://bo7u78xqoo0oj" path="res://player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://main.gd" id="1_icddk"]
+[ext_resource type="PackedScene" uid="uid://btoirnyhcke3x" path="res://hud.tscn" id="3_cdudp"]
 
 [sub_resource type="Curve2D" id="Curve2D_u2oqr"]
 _data = {
@@ -13,6 +14,8 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_icddk")
 mob_scene = ExtResource("1_0euvk")
+
+[node name="HUD" parent="." instance=ExtResource("3_cdudp")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -31,12 +34,16 @@ curve = SubResource("Curve2D_u2oqr")
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 rotation = -0.000925926
 
-[node name="MobTimer" type="Timer" parent="."]
-
 [node name="StartTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="MobTimer" type="Timer" parent="."]
 
 [node name="StartMarker" type="Marker2D" parent="."]
 position = Vector2(509, 370)
 
+[connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="dead" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
