@@ -16,10 +16,6 @@ func show_message_with_time(text: String, time: float) -> void:
 	$MessageTimer.start(time)
 
 
-func _process(delta):
-	print($MessageTimer.time_left)
-
-
 func show_game_over() -> void:
 	show_message_with_time("Game Over", 2.0)
 	await($MessageTimer.timeout)
