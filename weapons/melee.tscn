@@ -70,6 +70,7 @@ damage = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitboxArea"]
 position = Vector2(14.988, -352.273)
 shape = SubResource("RectangleShape2D_5uff8")
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
