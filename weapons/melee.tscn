@@ -37,7 +37,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -53,10 +53,10 @@ _data = {
 }
 
 [node name="Melee" type="Node2D"]
+visible = false
 script = ExtResource("1_qj504")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.033, 0.088)
 texture = ExtResource("2_xy5nt")
 centered = false
