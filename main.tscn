@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhdc2gdsepjlg"]
+[gd_scene load_steps=7 format=3 uid="uid://dhdc2gdsepjlg"]
 
 [ext_resource type="PackedScene" uid="uid://24c77tnfu1qt" path="res://mob.tscn" id="1_0euvk"]
 [ext_resource type="PackedScene" uid="uid://bo7u78xqoo0oj" path="res://player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://main.gd" id="1_icddk"]
 [ext_resource type="PackedScene" uid="uid://btoirnyhcke3x" path="res://hud.tscn" id="3_cdudp"]
 [ext_resource type="PackedScene" uid="uid://br24lgoadrfx8" path="res://wave_controller.tscn" id="3_mnirc"]
-[ext_resource type="PackedScene" uid="uid://dwhg23qa5e7xs" path="res://pause_menu.tscn" id="6_ln0do"]
 
 [sub_resource type="Curve2D" id="Curve2D_u2oqr"]
 _data = {
@@ -48,8 +47,6 @@ wait_time = 5.0
 
 [node name="StartMarker" type="Marker2D" parent="."]
 position = Vector2(540, 420)
-
-[node name="PauseMenu" parent="." instance=ExtResource("6_ln0do")]
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="dead" from="Player" to="." method="game_over"]

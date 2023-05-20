@@ -6,6 +6,9 @@ signal dead
 @export var speed := 400.0
 @onready var screen_size := get_viewport_rect().size
 
+# NORTH = 0; NORTHEAST = 1; EAST = 2; SOUTHEAST = 3
+# SOUTH = 4; SOUTHWEST = 5; WEST = 6; NORTHWEST = 7
+var facing = 0 
 
 func _ready() -> void:
 	hide()
@@ -41,8 +44,28 @@ func _physics_process(delta) -> void:
 		$AnimatedSprite2D.flip_v = direction.y > 0
 	
 	# Attack
+	if direction.x == 0 and direction.y == 0:
+		pass
+	else:
+		if direction.x == 0 and direction.y < 0:
+			facing = 0
+		elif direction.x > 0 and direction.y < 0:
+			facing = 1
+		elif direction.x > 0 and direction.y == 0:
+			facing = 2
+		elif direction.x > 0 and direction.y > 0:
+			facing = 3
+		elif direction.x == 0 and direction.y > 0:
+			facing = 4
+		elif direction.x < 0 and direction.y > 0:
+			facing = 5
+		elif direction.x < 0 and direction.y == 0:
+			facing = 6
+		elif direction.x < 0 and direction.y < 0:
+			facing = 7
+			
 	if Input.is_action_just_pressed("attack"):
-		$Melee.attack()
+		$Melee.attack(facing)
 
 
 func start(new_position: Vector2) -> void:

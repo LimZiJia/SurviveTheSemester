@@ -70,7 +70,7 @@ health_label = NodePath("../HealthLabel")
 shape = SubResource("CapsuleShape2D_dwjla")
 
 [node name="Melee" parent="." instance=ExtResource("7_bnptl")]
-position = Vector2(-1, -11)
+position = Vector2(-4.76837e-07, 0)
 rotation = -0.785398
 
 [connection signal="dead" from="HealthLabel" to="." method="_on_health_label_dead"]
