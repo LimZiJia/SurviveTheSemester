@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://cce5lrs43a86o"]
 
 [ext_resource type="PackedScene" path="res://characters/enemies/mob/mob.tscn" id="1_0euvk"]
 [ext_resource type="PackedScene" path="res://characters/player/player.tscn" id="1_63u67"]
@@ -29,17 +29,15 @@ color = Color(0.219608, 0.372549, 0.380392, 1)
 [node name="Player" parent="." instance=ExtResource("1_63u67")]
 position = Vector2(540, 420)
 
-[node name="WaveController" parent="." node_paths=PackedStringArray("mob_spawn_location") instance=ExtResource("3_mnirc")]
-mob_scene = ExtResource("1_0euvk")
-mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
-
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_u2oqr")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 rotation = -0.000925926
 
-[node name="StartTimer" type="Timer" parent="."]
+[node name="WaveController" parent="." node_paths=PackedStringArray("mob_spawn_location") instance=ExtResource("3_mnirc")]
+mob_scene = ExtResource("1_0euvk")
+mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
 
 [node name="ScoreTimer" type="Timer" parent="."]
 

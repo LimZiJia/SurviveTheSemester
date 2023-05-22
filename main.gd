@@ -13,9 +13,8 @@ func new_game() -> void:
 	get_tree().call_group("mobs", "queue_free")
 	$Player.start($StartMarker.position)
 	
-	$StartTimer.start()
 	$HUD.show_message_with_time("Get ready...", 1.0)
-	await($StartTimer.timeout)
+	await(get_tree().create_timer(1.0).timeout)
 	$ScoreTimer.start()
 	$WaveController.start()
 
