@@ -72,7 +72,7 @@ func _physics_process(delta) -> void:
 
 func start(new_position: Vector2) -> void:
 	position = new_position
-	$AnimatedSprite2D.animation = "right"
+	$AnimatedSprite2D.flip_v = false
 	$HealthLabel.initialize_health()
 	show()
 	$HurtboxArea/CollisionShape2D.disabled = false
