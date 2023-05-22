@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cce5lrs43a86o"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" path="res://characters/enemies/mob/mob.tscn" id="1_0euvk"]
 [ext_resource type="PackedScene" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://main.gd" id="1_icddk"]
-[ext_resource type="PackedScene" uid="uid://btoirnyhcke3x" path="res://hud.tscn" id="3_cdudp"]
-[ext_resource type="PackedScene" uid="uid://br24lgoadrfx8" path="res://wave_controller.tscn" id="3_mnirc"]
-[ext_resource type="PackedScene" uid="uid://dwhg23qa5e7xs" path="res://pause_menu.tscn" id="6_sc4rw"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="3_cdudp"]
+[ext_resource type="PackedScene" path="res://wave_controller.tscn" id="3_mnirc"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="6_7j38u"]
 
 [sub_resource type="Curve2D" id="Curve2D_u2oqr"]
 _data = {
@@ -44,7 +44,8 @@ mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
 [node name="StartMarker" type="Marker2D" parent="."]
 position = Vector2(540, 420)
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_sc4rw")]
+[node name="PauseMenu" parent="." instance=ExtResource("6_7j38u")]
+visible = false
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="dead" from="Player" to="." method="game_over"]

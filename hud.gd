@@ -11,6 +11,10 @@ func show_message(text: String) -> void:
 	$MessageLabel.show()
 
 
+func hide_message() -> void:
+	$MessageLabel.hide()
+
+
 func show_message_with_time(text: String, time: float) -> void:
 	show_message(text)
 	$MessageTimer.start(time)

@@ -36,6 +36,7 @@ func restart_game() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") && is_playing:
+		$HUD.hide_message()
 		$PauseMenu.pause()
 
 

@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 @onready var resume_button: Button = \
 	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton
@@ -19,6 +19,7 @@ func pause() -> void:
 
 
 func resume() -> void:
+	print("hi")
 	self.visible = false
 	get_tree().paused = false
 
