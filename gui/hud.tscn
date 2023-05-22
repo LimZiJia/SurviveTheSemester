@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://dm1nq70ovhvxu"]
 
 [ext_resource type="Script" path="res://gui/hud.gd" id="1_wsv0d"]
 
@@ -41,24 +41,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="StartButton" type="Button" parent="."]
+[node name="Buttons" type="HSplitContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 120.0
-offset_right = 100.0
-offset_bottom = 240.0
+offset_left = -327.0
+offset_top = 70.0
+offset_right = 328.0
+offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="PlayButton" type="Button" parent="Buttons"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 60
 shortcut = SubResource("Shortcut_vdjpj")
-text = "Start"
+text = "Play Again"
+
+[node name="MainMenuButton" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
 
 [node name="MessageTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

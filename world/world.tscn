@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://dkjp5y0h8nykh"]
 
 [ext_resource type="PackedScene" path="res://characters/enemies/mob/mob.tscn" id="1_0euvk"]
-[ext_resource type="PackedScene" path="res://characters/player/player.tscn" id="1_63u67"]
+[ext_resource type="PackedScene" uid="uid://dgnfyta6pefgk" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
-[ext_resource type="PackedScene" path="res://gui/hud.tscn" id="3_cdudp"]
+[ext_resource type="PackedScene" uid="uid://dm1nq70ovhvxu" path="res://gui/hud.tscn" id="3_cdudp"]
 [ext_resource type="PackedScene" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
-[ext_resource type="PackedScene" path="res://gui/pause_menu.tscn" id="6_7j38u"]
+[ext_resource type="PackedScene" uid="uid://cma2atas5feag" path="res://gui/pause_menu.tscn" id="6_7j38u"]
 
 [sub_resource type="Curve2D" id="Curve2D_u2oqr"]
 _data = {
@@ -13,7 +13,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Main" type="Node"]
+[node name="World" type="Node"]
 script = ExtResource("1_icddk")
 
 [node name="HUD" parent="." instance=ExtResource("3_cdudp")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://cma2atas5feag"]
 
 [ext_resource type="Script" path="res://gui/pause_menu.gd" id="1_t2tc5"]
 
@@ -61,9 +61,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Restart"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ReturnButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Quit	"
+text = "Main Menu"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="resume"]
