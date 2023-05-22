@@ -1,12 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo7u78xqoo0oj"]
+[gd_scene load_steps=11 format=3]
 
-[ext_resource type="Script" path="res://player.gd" id="1_7xkn6"]
-[ext_resource type="Texture2D" uid="uid://cw8xsl33p3b7g" path="res://art/player-up-1.png" id="2_qshyo"]
-[ext_resource type="Texture2D" uid="uid://bblmoaouu0d0h" path="res://art/player-walk-2.png" id="3_6dlcg"]
-[ext_resource type="Texture2D" uid="uid://b3ssi1g5bno71" path="res://art/player-up-2.png" id="4_bbs05"]
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_7xkn6"]
+[ext_resource type="Texture2D" uid="uid://cw8xsl33p3b7g" path="res://characters/player/player-up-1.png" id="2_qshyo"]
+[ext_resource type="Texture2D" uid="uid://bblmoaouu0d0h" path="res://characters/player/player-walk-2.png" id="3_6dlcg"]
+[ext_resource type="Texture2D" uid="uid://b3ssi1g5bno71" path="res://characters/player/player-up-2.png" id="4_bbs05"]
 [ext_resource type="Script" path="res://components/health_label.gd" id="5_4n1ai"]
 [ext_resource type="Script" path="res://components/hurtbox_area.gd" id="6_55pa7"]
-[ext_resource type="PackedScene" uid="uid://b0g7u5o2k62f4" path="res://weapons/melee.tscn" id="7_bnptl"]
+[ext_resource type="PackedScene" path="res://weapons/melee/melee.tscn" id="7_bnptl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgod0"]
 animations = [{

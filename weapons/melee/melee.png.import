@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtgybaxplg2bj"
-path="res://.godot/imported/enemy-walking-1.png-b22cfc2e8af08181b8b6a11a558e8389.ctex"
+uid="uid://cemfsi5xqh8jf"
+path="res://.godot/imported/melee.png-64007d397595e1035ca81ff636549a0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemy-walking-1.png"
-dest_files=["res://.godot/imported/enemy-walking-1.png-b22cfc2e8af08181b8b6a11a558e8389.ctex"]
+source_file="res://weapons/melee/melee.png"
+dest_files=["res://.godot/imported/melee.png-64007d397595e1035ca81ff636549a0d.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0g7u5o2k62f4"]
+[gd_scene load_steps=14 format=3]
 
-[ext_resource type="Script" path="res://weapons/melee.gd" id="1_qj504"]
-[ext_resource type="Texture2D" uid="uid://cemfsi5xqh8jf" path="res://art/melee.png" id="2_xy5nt"]
+[ext_resource type="Script" path="res://weapons/melee/melee.gd" id="1_qj504"]
+[ext_resource type="Texture2D" uid="uid://cemfsi5xqh8jf" path="res://weapons/melee/melee.png" id="2_xy5nt"]
 [ext_resource type="Script" path="res://components/hitbox_area.gd" id="3_5t8ik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uff8"]

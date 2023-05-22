@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://24c77tnfu1qt"]
+[gd_scene load_steps=11 format=3]
 
-[ext_resource type="Script" path="res://mob.gd" id="1_anuhh"]
-[ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://art/enemy-walking-1.png" id="2_n7vsd"]
-[ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://art/enemy-walking-2.png" id="3_kn75w"]
+[ext_resource type="Script" path="res://characters/enemies/mob/mob.gd" id="1_anuhh"]
+[ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://characters/enemies/mob/enemy-walking-1.png" id="2_n7vsd"]
+[ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://characters/enemies/mob/enemy-walking-2.png" id="3_kn75w"]
 [ext_resource type="PackedScene" uid="uid://dsofeml2530h0" path="res://components/health_label.tscn" id="4_0837x"]
 [ext_resource type="PackedScene" uid="uid://dye4pnmmt2g1g" path="res://components/hurtbox_area.tscn" id="5_eix41"]
 [ext_resource type="PackedScene" uid="uid://bw3wmcukkngxf" path="res://components/hitbox_area.tscn" id="5_jedqt"]

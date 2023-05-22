@@ -1,4 +1,3 @@
-class_name Melee
 extends Node2D
 
 @export var cooldown := 0.0
