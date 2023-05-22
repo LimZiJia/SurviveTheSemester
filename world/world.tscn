@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" path="res://characters/enemies/mob/mob.tscn" id="1_0euvk"]
 [ext_resource type="PackedScene" path="res://characters/player/player.tscn" id="1_63u67"]
-[ext_resource type="Script" path="res://main.gd" id="1_icddk"]
-[ext_resource type="PackedScene" path="res://hud.tscn" id="3_cdudp"]
-[ext_resource type="PackedScene" path="res://wave_controller.tscn" id="3_mnirc"]
-[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="6_7j38u"]
+[ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
+[ext_resource type="PackedScene" path="res://gui/hud.tscn" id="3_cdudp"]
+[ext_resource type="PackedScene" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
+[ext_resource type="PackedScene" path="res://gui/pause_menu.tscn" id="6_7j38u"]
 
 [sub_resource type="Curve2D" id="Curve2D_u2oqr"]
 _data = {

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_wsv0d"]
+[ext_resource type="Script" path="res://gui/hud.gd" id="1_wsv0d"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_c37jk"]
 action = &"start_game"
