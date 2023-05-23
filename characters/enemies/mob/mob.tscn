@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://dhu0lcunamfx4"]
 
 [ext_resource type="Script" path="res://characters/enemies/mob/mob.gd" id="1_anuhh"]
 [ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://characters/enemies/mob/enemy-walking-1.png" id="2_n7vsd"]
 [ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://characters/enemies/mob/enemy-walking-2.png" id="3_kn75w"]
 [ext_resource type="PackedScene" uid="uid://dsofeml2530h0" path="res://components/health_label.tscn" id="4_0837x"]
-[ext_resource type="PackedScene" uid="uid://dye4pnmmt2g1g" path="res://components/hurtbox_area.tscn" id="5_eix41"]
-[ext_resource type="PackedScene" uid="uid://bw3wmcukkngxf" path="res://components/hitbox_area.tscn" id="5_jedqt"]
+[ext_resource type="Script" path="res://components/hurtbox_area.gd" id="6_hxnuf"]
+[ext_resource type="Script" path="res://components/hitbox_area.gd" id="7_2vqkc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8aoai"]
 animations = [{
@@ -32,7 +32,6 @@ radius = 12.0
 height = 34.0
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
-collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_anuhh")
 
@@ -42,7 +41,6 @@ scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_8aoai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_8lro3")
 
 [node name="HealthLabel" parent="." instance=ExtResource("4_0837x")]
@@ -52,16 +50,18 @@ offset_right = 20.0
 offset_bottom = -17.0
 max_health = 10.0
 
-[node name="HurtboxArea" parent="." node_paths=PackedStringArray("health_label") instance=ExtResource("5_eix41")]
-collision_layer = 1
+[node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_hxnuf")
 health_label = NodePath("../HealthLabel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
 shape = SubResource("CapsuleShape2D_jusqm")
 
-[node name="HitboxArea" parent="." instance=ExtResource("5_jedqt")]
-collision_layer = 1
-collision_mask = 2
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("7_2vqkc")
 damage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]

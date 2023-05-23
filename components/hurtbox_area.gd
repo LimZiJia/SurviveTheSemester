@@ -4,11 +4,14 @@ extends Area2D
 
 @export var health_label: HealthLabel
 
+func _ready() -> void:
+	area_entered.connect(_on_area_entered)
 
-# ensure type safety entity: hitbox
+
 func handle_hurt(damage: float) -> void:
 	health_label.take_damage(damage)
 
 
-func _on_area_entered(area: HitboxArea) -> void:
-	handle_hurt(area.damage)
+func _on_area_entered(area: Area2D) -> void:
+	if area is HitboxArea:
+		handle_hurt(area.damage)
