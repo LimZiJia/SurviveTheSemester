@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dhu0lcunamfx4" path="res://characters/enemies/mob/mob.tscn" id="1_0euvk"]
 [ext_resource type="PackedScene" uid="uid://dt68ku1phupn3" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
-[ext_resource type="PackedScene" path="res://gui/hud.tscn" id="3_cdudp"]
+[ext_resource type="PackedScene" uid="uid://dm1nq70ovhvxu" path="res://gui/hud.tscn" id="3_cdudp"]
 [ext_resource type="PackedScene" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
 [ext_resource type="PackedScene" uid="uid://dhp515vfrcvt6" path="res://gui/pause_menu.tscn" id="6_7j38u"]
 
@@ -13,7 +13,7 @@ _data = {
 }
 point_count = 5
 
-[node name="Main" type="Node"]
+[node name="World" type="Node"]
 script = ExtResource("1_icddk")
 
 [node name="HUD" parent="." instance=ExtResource("3_cdudp")]

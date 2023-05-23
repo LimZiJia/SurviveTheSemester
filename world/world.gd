@@ -4,6 +4,9 @@ extends Node
 var score := 0
 var is_playing := false
 
+func _ready() -> void:
+	new_game()
+
 
 func new_game() -> void:
 	is_playing = true

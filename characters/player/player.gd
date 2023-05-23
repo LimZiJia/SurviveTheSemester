@@ -6,8 +6,10 @@ signal dead
 @export var speed := 400.0
 @onready var screen_size := get_viewport_rect().size
 
-# NORTH = 0; NORTHEAST = 1; EAST = 2; SOUTHEAST = 3
-# SOUTH = 4; SOUTHWEST = 5; WEST = 6; NORTHWEST = 7
+enum {
+	NORTH, NORTHEAST, EAST, SOUTHEAST,
+	SOUTH, SOUTHWEST, WEST, NORTHWEST
+}
 var facing = 0 
 
 func _ready() -> void:
@@ -48,21 +50,21 @@ func _physics_process(delta) -> void:
 		pass
 	else:
 		if direction.x == 0 and direction.y < 0:
-			facing = 0
+			facing = NORTH
 		elif direction.x > 0 and direction.y < 0:
-			facing = 1
+			facing = NORTHEAST
 		elif direction.x > 0 and direction.y == 0:
-			facing = 2
+			facing = EAST
 		elif direction.x > 0 and direction.y > 0:
-			facing = 3
+			facing = SOUTHEAST
 		elif direction.x == 0 and direction.y > 0:
-			facing = 4
+			facing = SOUTH
 		elif direction.x < 0 and direction.y > 0:
-			facing = 5
+			facing = SOUTHWEST
 		elif direction.x < 0 and direction.y == 0:
-			facing = 6
+			facing = WEST
 		elif direction.x < 0 and direction.y < 0:
-			facing = 7
+			facing = NORTHWEST
 			
 	if Input.is_action_just_pressed("attack"):
 		$Melee.attack(facing)
@@ -70,6 +72,7 @@ func _physics_process(delta) -> void:
 
 func start(new_position: Vector2) -> void:
 	position = new_position
+	$AnimatedSprite2D.flip_v = false
 	$HealthLabel.initialize_health()
 	show()
 	$HurtboxArea/CollisionShape2D.disabled = false

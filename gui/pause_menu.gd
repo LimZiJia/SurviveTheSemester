@@ -4,13 +4,13 @@ extends Control
 	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton
 @onready var restart_button: Button = \
 	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton
-@onready var quit_button: Button = \
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton
+@onready var return_button: Button = \
+	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ReturnButton
 
 func _ready() -> void:
 	resume_button.pressed.connect(resume)
 	restart_button.pressed.connect(restart)
-	quit_button.pressed.connect(get_tree().quit)
+	return_button.pressed.connect(return_to_main)
 
 
 func pause() -> void:
@@ -19,7 +19,6 @@ func pause() -> void:
 
 
 func resume() -> void:
-	print("hi")
 	self.visible = false
 	get_tree().paused = false
 
@@ -28,3 +27,8 @@ func restart() -> void:
 	self.visible = false
 	get_tree().paused = false
 	owner.restart_game()
+
+
+func return_to_main() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://gui/start_screen.tscn")
