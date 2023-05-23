@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgnfyta6pefgk"]
+[gd_scene load_steps=11 format=3 uid="uid://dt68ku1phupn3"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_7xkn6"]
 [ext_resource type="Texture2D" uid="uid://cw8xsl33p3b7g" path="res://characters/player/player-up-1.png" id="2_qshyo"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ssi1g5bno71" path="res://characters/player/player-up-2.png" id="4_bbs05"]
 [ext_resource type="Script" path="res://components/health_label.gd" id="5_4n1ai"]
 [ext_resource type="Script" path="res://components/hurtbox_area.gd" id="6_55pa7"]
-[ext_resource type="PackedScene" path="res://weapons/melee/melee.tscn" id="7_bnptl"]
+[ext_resource type="PackedScene" uid="uid://c6150nl7avrsl" path="res://weapons/melee/melee.tscn" id="7_bnptl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgod0"]
 animations = [{
@@ -40,7 +40,6 @@ radius = 27.0
 height = 68.0
 
 [node name="Player" type="Area2D" groups=["player"]]
-collision_mask = 0
 script = ExtResource("1_7xkn6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -62,7 +61,7 @@ script = ExtResource("5_4n1ai")
 max_health = 100.0
 
 [node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
-collision_layer = 2
+collision_layer = 0
 script = ExtResource("6_55pa7")
 health_label = NodePath("../HealthLabel")
 

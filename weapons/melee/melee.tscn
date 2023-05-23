@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b14ugiop6dl8p"]
+[gd_scene load_steps=14 format=3 uid="uid://c6150nl7avrsl"]
 
 [ext_resource type="Script" path="res://weapons/melee/melee.gd" id="1_qj504"]
 [ext_resource type="Texture2D" uid="uid://cemfsi5xqh8jf" path="res://weapons/melee/melee.png" id="2_xy5nt"]
@@ -352,6 +352,7 @@ offset = Vector2(-940, -1300)
 
 [node name="HitboxArea" type="Area2D" parent="Sprite2D"]
 collision_layer = 2
+collision_mask = 0
 script = ExtResource("3_5t8ik")
 damage = 10.0
 

@@ -6,6 +6,11 @@ signal dead
 @export var max_health: float
 var health: float
 
+
+func _init() -> void:
+	horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
 func take_damage(dmg: float) -> void:
 	health -= dmg
 	health = clampf(health, 0, max_health)
