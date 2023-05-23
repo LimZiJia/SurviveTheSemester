@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://characters/enemies/mob/mob.gd" id="1_anuhh"]
 [ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://characters/enemies/mob/enemy-walking-1.png" id="2_n7vsd"]
 [ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://characters/enemies/mob/enemy-walking-2.png" id="3_kn75w"]
-[ext_resource type="PackedScene" uid="uid://dsofeml2530h0" path="res://components/health_label.tscn" id="4_0837x"]
+[ext_resource type="Script" path="res://components/health_label.gd" id="4_8v5ka"]
 [ext_resource type="Script" path="res://components/hurtbox_area.gd" id="6_hxnuf"]
 [ext_resource type="Script" path="res://components/hitbox_area.gd" id="7_2vqkc"]
 
@@ -43,11 +43,12 @@ sprite_frames = SubResource("SpriteFrames_8aoai")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8lro3")
 
-[node name="HealthLabel" parent="." instance=ExtResource("4_0837x")]
+[node name="HealthLabel" type="Label" parent="."]
 offset_left = -20.0
 offset_top = -40.0
 offset_right = 20.0
 offset_bottom = -17.0
+script = ExtResource("4_8v5ka")
 max_health = 10.0
 
 [node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
@@ -66,5 +67,3 @@ damage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("CapsuleShape2D_7fxbd")
-
-[connection signal="dead" from="HealthLabel" to="." method="_on_health_label_dead"]

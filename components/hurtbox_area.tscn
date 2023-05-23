@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnkieduk4mnp4"]
-
-[ext_resource type="Script" path="res://components/hurtbox_area.gd" id="1_hqotl"]
-
-[node name="HurtboxArea" type="Area2D"]
-monitorable = false
-script = ExtResource("1_hqotl")

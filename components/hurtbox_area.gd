@@ -4,6 +4,9 @@ extends Area2D
 
 @export var health_label: HealthLabel
 
+func _init() -> void:
+	monitorable = false
+
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
