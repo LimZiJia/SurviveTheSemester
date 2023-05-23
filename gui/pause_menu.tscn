@@ -65,5 +65,3 @@ text = "Restart"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
-
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="resume"]

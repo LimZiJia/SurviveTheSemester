@@ -10,6 +10,6 @@ func _ready() -> void:
 	mouse_exited.connect(resize_button.bind(original_size))
 
 
-func resize_button(size: Vector2):
+func resize_button(resized_size: Vector2):
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "scale", size, dur)
+	tween.tween_property(self, "scale", resized_size, dur)
