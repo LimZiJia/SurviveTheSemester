@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4lb2or5egdoa"]
+
+[ext_resource type="Script" path="res://weapons/projectile/projectile.gd" id="1_mgvfb"]
+[ext_resource type="Script" path="res://components/hitbox_area.gd" id="2_5f53n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1124k"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prmuo"]
+radius = 4.0
+
+[node name="Arrow" type="Node2D"]
+script = ExtResource("1_mgvfb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 4.0
+pivot_offset = Vector2(-0.25, 0)
+
+[node name="HitboxArea" type="Area2D" parent="."]
+position = Vector2(19, 0)
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_5f53n")
+damage = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("CircleShape2D_1124k")
+
+[node name="ImpactDetector" type="Area2D" parent="."]
+position = Vector2(19, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
+shape = SubResource("CircleShape2D_prmuo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(11, -2.38419e-07)
+scale = Vector2(1.2, 0.4)
+
+[node name="DespawnTimer" type="Timer" parent="."]

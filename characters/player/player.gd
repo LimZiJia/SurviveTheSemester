@@ -5,6 +5,8 @@ signal dead
 
 const ACCELERATION := 20.0
 const FRICTION := 40.0
+const PROJECTILE_SCENE := preload("res://weapons/projectile/projectile.tscn")
+
 @export var max_speed := 400.0
 @onready var screen_size := get_viewport_rect().size
 @onready var animation_player = $AnimationPlayer
@@ -46,9 +48,28 @@ func _physics_process(delta) -> void:
 			facing = SOUTH
 		else:
 			facing = NORTH
+	else:
+		match facing:
+			NORTH:
+				dir = Vector2.UP
+			EAST:
+				dir = Vector2.RIGHT
+			SOUTH:
+				dir = Vector2.DOWN
+			WEST:
+				dir = Vector2.LEFT
 	
 	if Input.is_action_just_pressed("attack"):
 		$Melee.attack(facing)
+	if Input.is_action_pressed("attack"):
+		shoot(dir)
+
+
+func shoot(dir: Vector2) -> void:
+	var projectile := PROJECTILE_SCENE.instantiate()
+	projectile.position = global_position
+	projectile.direction = dir
+	add_child(projectile)
 
 
 func start(new_position: Vector2) -> void:

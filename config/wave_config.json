@@ -47,5 +47,61 @@
 		"damage": 5.0,
 		"count": 20,
 		"cooldown": 15.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
+	},
+	{
+		"health": 5.0,
+		"speed": 150.0,
+		"damage": 5.0,
+		"count": 20,
+		"cooldown": 5.0
 	} 
 ]
