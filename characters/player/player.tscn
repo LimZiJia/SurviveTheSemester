@@ -256,6 +256,7 @@ max_health = 100.0
 
 [node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
 collision_layer = 0
+monitorable = false
 script = ExtResource("6_55pa7")
 health_label = NodePath("../HealthLabel")
 
