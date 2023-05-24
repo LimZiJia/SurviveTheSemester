@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal dead
+signal damage
 
 const ACCELERATION := 20.0
 const FRICTION := 40.0
@@ -65,3 +66,17 @@ func _on_health_label_dead():
 	hide()
 	$HurtboxArea/CollisionShape2D.set_deferred("disabled", true)
 	emit_signal("dead")
+	
+func _on_health_label_damage():
+	var dir = Vector2.ZERO
+	if facing == NORTH:
+		dir = Vector2.UP
+	elif facing == SOUTH:
+		dir = Vector2.DOWN
+	elif facing == EAST:
+		dir = Vector2.RIGHT
+	else:
+		dir = Vector2.DOWN
+	animation_tree.set("parameters/Hurt/blend_position", dir)
+	animation_state.travel("Hurt")
+	print(animation_state.get_current_node())
