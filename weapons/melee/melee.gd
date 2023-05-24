@@ -3,8 +3,8 @@ extends Node2D
 @export var cooldown := 0.0
 var can_attack := true
 
-# Swinging in a given direction. Starting from north = 0, it goes from 0-7
-# for each of the posible 8 directions in increments of 45 degrees
+# Swinging in a given direction. Starting from north = 0, it goes from 0-3
+# for each of the posible 4 directions in increments of 90 degrees
 func attack(direction: int) -> void:
 	if can_attack:
 		can_attack = false

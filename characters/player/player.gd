@@ -11,10 +11,7 @@ const FRICTION := 40.0
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 
-enum {
-	NORTH, NORTHEAST, EAST, SOUTHEAST,
-	SOUTH, SOUTHWEST, WEST, NORTHWEST
-}
+enum { NORTH, EAST, SOUTH, WEST }
 var facing = EAST
 
 func _ready() -> void:
@@ -23,17 +20,17 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	# Movement
-	var direction = Vector2.ZERO
-	direction.x = int(Input.is_action_pressed("move_right")) - \
+	var dir = Vector2.ZERO
+	dir.x = int(Input.is_action_pressed("move_right")) - \
 		int(Input.is_action_pressed("move_left"))
-	direction.y = int(Input.is_action_pressed("move_down")) - \
+	dir.y = int(Input.is_action_pressed("move_down")) - \
 		int(Input.is_action_pressed("move_up"))
-	direction = direction.normalized()
-	if direction != Vector2.ZERO:
-		animation_tree.set("parameters/Idle/blend_position", direction)
-		animation_tree.set("parameters/Move/blend_position", direction)
+	dir = dir.normalized()
+	if dir != Vector2.ZERO:
+		animation_tree.set("parameters/Idle/blend_position", dir)
+		animation_tree.set("parameters/Move/blend_position", dir)
 		animation_state.travel("Move")
-		velocity = velocity.move_toward(direction * max_speed, ACCELERATION)
+		velocity = velocity.move_toward(dir * max_speed, ACCELERATION)
 	else:
 		animation_state.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
@@ -43,26 +40,17 @@ func _physics_process(delta) -> void:
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	# Attack
-	if direction.x == 0 and direction.y == 0:
-		pass
-	else:
-		if direction.x == 0 and direction.y < 0:
-			facing = NORTH
-		elif direction.x > 0 and direction.y < 0:
-			facing = NORTHEAST
-		elif direction.x > 0 and direction.y == 0:
+	if dir.x != 0:
+		if dir.x > 0:
 			facing = EAST
-		elif direction.x > 0 and direction.y > 0:
-			facing = SOUTHEAST
-		elif direction.x == 0 and direction.y > 0:
-			facing = SOUTH
-		elif direction.x < 0 and direction.y > 0:
-			facing = SOUTHWEST
-		elif direction.x < 0 and direction.y == 0:
+		else:
 			facing = WEST
-		elif direction.x < 0 and direction.y < 0:
-			facing = NORTHWEST
-			
+	elif dir.y != 0:
+		if dir.y > 0:
+			facing = SOUTH
+		else:
+			facing = NORTH
+	
 	if Input.is_action_just_pressed("attack"):
 		$Melee.attack(facing)
 
