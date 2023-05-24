@@ -1,49 +1,46 @@
 class_name Player
-extends Area2D
+extends CharacterBody2D
 
 signal dead
 
-@export var speed := 400.0
+const ACCELERATION := 20.0
+const FRICTION := 40.0
+@export var max_speed := 400.0
 @onready var screen_size := get_viewport_rect().size
+@onready var animation_player = $AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var animation_state = animation_tree.get("parameters/playback")
 
 enum {
 	NORTH, NORTHEAST, EAST, SOUTHEAST,
 	SOUTH, SOUTHWEST, WEST, NORTHWEST
 }
-var facing = 0 
+var facing = EAST
 
 func _ready() -> void:
 	hide()
-
+	
 
 func _physics_process(delta) -> void:
 	# Movement
 	var direction = Vector2.ZERO
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_down"):
-		direction.y += 1
-	if Input.is_action_pressed("move_up"):
-		direction.y -= 1
-	if direction.length() > 0:
-		direction = direction.normalized()
-		$AnimatedSprite2D.play()
+	direction.x = int(Input.is_action_pressed("move_right")) - \
+		int(Input.is_action_pressed("move_left"))
+	direction.y = int(Input.is_action_pressed("move_down")) - \
+		int(Input.is_action_pressed("move_up"))
+	direction = direction.normalized()
+	if direction != Vector2.ZERO:
+		animation_tree.set("parameters/Idle/blend_position", direction)
+		animation_tree.set("parameters/Move/blend_position", direction)
+		animation_state.travel("Move")
+		velocity = velocity.move_toward(direction * max_speed, ACCELERATION)
 	else:
-		$AnimatedSprite2D.stop()
-	position += direction * speed * delta
+		animation_state.travel("Idle")
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+	move_and_slide()
+
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-	
-	# Animation
-	if direction.x != 0:
-		$AnimatedSprite2D.animation = "right"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = direction.x < 0
-	elif direction.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = direction.y > 0
 	
 	# Attack
 	if direction.x == 0 and direction.y == 0:
@@ -72,7 +69,6 @@ func _physics_process(delta) -> void:
 
 func start(new_position: Vector2) -> void:
 	position = new_position
-	$AnimatedSprite2D.flip_v = false
 	$HealthLabel.initialize_health()
 	show()
 	$HurtboxArea/CollisionShape2D.disabled = false

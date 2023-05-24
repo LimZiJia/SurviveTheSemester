@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://bcwsdtfx72kd0"]
 
 [ext_resource type="Script" path="res://controllers/wave_controller.gd" id="1_r34js"]
 
