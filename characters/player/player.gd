@@ -12,11 +12,7 @@ const FRICTION := 40.0
 @onready var animation_state = animation_tree.get("parameters/playback")
 
 enum { NORTH, EAST, SOUTH, WEST }
-var facing = EAST
-
-func _ready() -> void:
-	hide()
-	
+var facing := SOUTH
 
 func _physics_process(delta) -> void:
 	# Movement
@@ -57,6 +53,9 @@ func _physics_process(delta) -> void:
 
 func start(new_position: Vector2) -> void:
 	position = new_position
+	animation_tree.set("parameters/Idle/blend_position", Vector2.DOWN)
+	animation_tree.set("parameters/Move/blend_position", Vector2.DOWN)
+	facing = SOUTH
 	$HealthLabel.initialize_health()
 	show()
 	$HurtboxArea/CollisionShape2D.disabled = false

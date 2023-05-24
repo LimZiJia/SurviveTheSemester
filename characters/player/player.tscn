@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dt68ku1phupn3"]
+[gd_scene load_steps=33 format=3 uid="uid://dt68ku1phupn3"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_7xkn6"]
 [ext_resource type="Script" path="res://components/health_label.gd" id="5_4n1ai"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://characters/player/player.png" id="8_voa7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2i22"]
-size = Vector2(45, 58)
+size = Vector2(45, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c14a4"]
 size = Vector2(30, 54)
@@ -219,12 +219,15 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ix5o"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1crnj"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kn8d2"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_ud5hw")
 states/Idle/position = Vector2(492, 115)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_fvvn0")
 states/Move/position = Vector2(678, 115)
-transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_8csbc"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_8ix5o")]
+transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_8csbc"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_8ix5o"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1crnj")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1bvhy"]
 
@@ -235,10 +238,10 @@ script = ExtResource("1_7xkn6")
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 112
+frame = 77
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 19)
+position = Vector2(-1.5, 15)
 shape = SubResource("RectangleShape2D_u2i22")
 
 [node name="HealthLabel" type="Label" parent="."]
@@ -274,7 +277,7 @@ tree_root = SubResource("AnimationNodeStateMachine_kn8d2")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1bvhy")
-parameters/Idle/blend_position = Vector2(1, 0)
+parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Move/blend_position = Vector2(1, 0)
 
 [connection signal="dead" from="HealthLabel" to="." method="_on_health_label_dead"]
