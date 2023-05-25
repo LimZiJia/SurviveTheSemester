@@ -69,6 +69,7 @@ func start(new_position: Vector2) -> void:
 	position = new_position
 	animation_tree.set("parameters/Idle/blend_position", Vector2.DOWN)
 	animation_tree.set("parameters/Move/blend_position", Vector2.DOWN)
+	animation_tree.set("parameters/Hurt/blend_position", Vector2.DOWN)
 	facing = SOUTH
 	$HealthLabel.initialize_health()
 	show()
