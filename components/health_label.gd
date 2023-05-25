@@ -2,7 +2,7 @@ class_name HealthLabel
 extends Label
 
 signal dead
-signal damage
+signal damaged
 
 @export var max_health: float
 var health: float
@@ -19,7 +19,7 @@ func take_damage(dmg: float) -> void:
 	if health == 0:
 		emit_signal("dead")
 	else:
-		emit_signal("damage")
+		emit_signal("damaged")
 
 
 func update_label() -> void:
