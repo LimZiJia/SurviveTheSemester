@@ -14,6 +14,7 @@ const FRICTION := 40.0
 
 enum { NORTH, EAST, SOUTH, WEST }
 var facing := SOUTH
+var is_damaged = false
 
 func _physics_process(delta) -> void:
 	# Movement
@@ -23,7 +24,11 @@ func _physics_process(delta) -> void:
 	dir.y = int(Input.is_action_pressed("move_down")) - \
 		int(Input.is_action_pressed("move_up"))
 	dir = dir.normalized()
-	if dir != Vector2.ZERO:
+	if is_damaged:
+		animation_tree.set("parameters/Hurt/blend_position", dir)
+		animation_state.travel("Hurt")
+		
+	elif dir != Vector2.ZERO:
 		animation_tree.set("parameters/Idle/blend_position", dir)
 		animation_tree.set("parameters/Move/blend_position", dir)
 		animation_state.travel("Move")
@@ -68,15 +73,6 @@ func _on_health_label_dead():
 	emit_signal("dead")
 	
 func _on_health_label_damage():
-	var dir = Vector2.ZERO
-	if facing == NORTH:
-		dir = Vector2.UP
-	elif facing == SOUTH:
-		dir = Vector2.DOWN
-	elif facing == EAST:
-		dir = Vector2.RIGHT
-	else:
-		dir = Vector2.DOWN
-	animation_tree.set("parameters/Hurt/blend_position", dir)
-	animation_state.travel("Hurt")
-	print(animation_state.get_current_node())
+	is_damaged = true
+	await(get_tree().create_timer(0.3).timeout)
+	is_damaged = false

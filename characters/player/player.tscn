@@ -12,6 +12,70 @@ size = Vector2(45, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c14a4"]
 size = Vector2(30, 54)
 
+[sub_resource type="Animation" id="Animation_5o50c"]
+resource_name = "hurt_back"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1067, 1068, 1069]
+}
+
+[sub_resource type="Animation" id="Animation_7aau7"]
+resource_name = "hurt_front"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1073, 1074, 1075]
+}
+
+[sub_resource type="Animation" id="Animation_gdrp2"]
+resource_name = "hurt_left"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1070, 1071, 1072]
+}
+
+[sub_resource type="Animation" id="Animation_butva"]
+resource_name = "hurt_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1064, 1065, 1066]
+}
+
 [sub_resource type="Animation" id="Animation_3uv5n"]
 resource_name = "idle_back"
 length = 0.6
@@ -148,70 +212,6 @@ tracks/0/keys = {
 "values": [112, 113, 114, 115, 116, 117]
 }
 
-[sub_resource type="Animation" id="Animation_7aau7"]
-resource_name = "hurt_front"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1073, 1074, 1075]
-}
-
-[sub_resource type="Animation" id="Animation_gdrp2"]
-resource_name = "hurt_left"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1070, 1071, 1072]
-}
-
-[sub_resource type="Animation" id="Animation_5o50c"]
-resource_name = "hurt_back"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1067, 1068, 1069]
-}
-
-[sub_resource type="Animation" id="Animation_butva"]
-resource_name = "hurt_right"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1064, 1065, 1066]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83j7a"]
 _data = {
 "hurt_back": SubResource("Animation_5o50c"),
@@ -229,7 +229,7 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pwgxj"]
-animation = &"hurt_back"
+animation = &"hurt_front"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dmicy"]
 animation = &"hurt_left"
@@ -238,7 +238,7 @@ animation = &"hurt_left"
 animation = &"hurt_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lxufh"]
-animation = &"hurt_front"
+animation = &"hurt_back"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ve5tn"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_pwgxj")
@@ -343,7 +343,7 @@ script = ExtResource("1_7xkn6")
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 130
+frame = 79
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 15)
@@ -383,7 +383,7 @@ tree_root = SubResource("AnimationNodeStateMachine_kn8d2")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1bvhy")
-parameters/Hurt/blend_position = Vector2(0, 1)
+parameters/Hurt/blend_position = Vector2(-0.00190115, -0.694323)
 parameters/Idle/blend_position = Vector2(0.00190115, 1.1)
 parameters/Move/blend_position = Vector2(-0.99962, 0.0144104)
 
