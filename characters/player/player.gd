@@ -67,6 +67,7 @@ func _physics_process(delta) -> void:
 
 func start(new_position: Vector2) -> void:
 	position = new_position
+	velocity = Vector2.ZERO
 	animation_tree.set("parameters/Idle/blend_position", Vector2.DOWN)
 	animation_tree.set("parameters/Move/blend_position", Vector2.DOWN)
 	animation_tree.set("parameters/Hurt/blend_position", Vector2.DOWN)
