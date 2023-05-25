@@ -25,8 +25,9 @@ func resume() -> void:
 
 func restart() -> void:
 	self.visible = false
+	Events.game_restarted.emit()
 	get_tree().paused = false
-	owner.restart_game()
+	
 
 
 func return_to_main() -> void:

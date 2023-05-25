@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcarcud3krk67"]
+[gd_scene load_steps=3 format=3 uid="uid://bcarcud3krk67"]
 
 [ext_resource type="Script" path="res://gui/start_screen.gd" id="1_icddk"]
 [ext_resource type="Script" path="res://gui/hoverable_button.gd" id="1_ml0j7"]
-[ext_resource type="PackedScene" uid="uid://hvnfw5qagefd" path="res://world/world.tscn" id="2_j88bu"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -14,7 +13,6 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_icddk")
-game_scene = ExtResource("2_j88bu")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

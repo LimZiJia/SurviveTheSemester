@@ -12,6 +12,7 @@ signal start_game
 func _ready() -> void:
 	play_button.pressed.connect(play_again)
 	main_menu_button.pressed.connect(go_to_main)
+	message_timer.timeout.connect(_on_message_timer_timeout)
 
 func update_score(score: int) -> void:
 	score_label.text = str(score)
@@ -25,6 +26,9 @@ func show_message(text: String) -> void:
 func hide_message() -> void:
 	message_label.hide()
 
+
+func hide_buttons() -> void:
+	buttons.hide()
 
 func show_message_with_time(text: String, time: float) -> void:
 	show_message(text)
@@ -40,12 +44,12 @@ func show_game_over() -> void:
 
 
 func play_again() -> void:
-	buttons.hide()
-	emit_signal("start_game")
+	Events.game_restarted.emit()
 
 
 func go_to_main() -> void:
-	get_tree().change_scene_to_file("res://gui/start_screen.tscn")
+	SceneChanger.change_scene("res://gui/start_screen.tscn")
+
 
 func _on_message_timer_timeout():
 	message_label.hide()

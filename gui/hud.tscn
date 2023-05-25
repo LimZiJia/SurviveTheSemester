@@ -42,7 +42,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Buttons" type="HSplitContainer" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -69,5 +68,3 @@ text = "Main Menu"
 
 [node name="MessageTimer" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

@@ -1,7 +1,5 @@
 extends Control
 
-@export var game_scene: PackedScene
-
 @onready var start_button := \
 	$CenterContainer/MarginContainer/VBoxContainer/StartButton
 @onready var quit_button := \
@@ -13,4 +11,4 @@ func _ready() -> void:
 
 
 func start() -> void:
-	get_tree().change_scene_to_packed(game_scene)
+	Events.game_started.emit()

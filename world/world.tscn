@@ -47,6 +47,4 @@ position = Vector2(540, 420)
 [node name="PauseMenu" parent="." instance=ExtResource("6_7j38u")]
 visible = false
 
-[connection signal="start_game" from="HUD" to="." method="new_game"]
-[connection signal="dead" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

@@ -2,39 +2,31 @@ extends Node
 
 
 var score := 0
-var is_playing := false
+var is_playing := true
+
+@onready var player := $Player
+@onready var hud := $HUD
+@onready var wave_controller := $WaveController
+@onready var score_timer := $ScoreTimer
 
 func _ready() -> void:
-	new_game()
-
-
-func new_game() -> void:
-	is_playing = true
-	score = 0
-	$HUD.update_score(score)
+	player.dead.connect(_on_player_dead)
+	hud.hide_buttons()
 	
-	get_tree().call_group("mobs", "queue_free")
-	$Player.start($StartMarker.position)
-	
-	$HUD.show_message_with_time("Get ready...", 1.0)
+	hud.show_message_with_time("Get ready...", 1.0)
 	await(get_tree().create_timer(1.0).timeout)
-	$ScoreTimer.start()
-	$WaveController.start()
-
-
-func game_over() -> void:
-	is_playing = false
-	get_tree().call_group("mobs", "stop")
-	$WaveController.stop()
-	$ScoreTimer.stop()
-	$HUD.show_game_over()
-
-
-func restart_game() -> void:
-	$WaveController.stop()
-	$ScoreTimer.stop()
 	
-	new_game()
+	wave_controller.start()
+	score_timer.start()
+
+
+func _on_player_dead() -> void:
+	is_playing = false
+	wave_controller.stop()
+	score_timer.stop()
+	get_tree().call_group("mobs", "stop")
+	
+	hud.show_game_over()
 
 
 func _input(event: InputEvent) -> void:
