@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dt68ku1phupn3"]
+[gd_scene load_steps=46 format=3 uid="uid://dt68ku1phupn3"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_7xkn6"]
 [ext_resource type="Script" path="res://components/health_label.gd" id="5_4n1ai"]
@@ -11,6 +11,70 @@ size = Vector2(45, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c14a4"]
 size = Vector2(30, 54)
+
+[sub_resource type="Animation" id="Animation_5o50c"]
+resource_name = "hurt_back"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1067, 1068, 1069]
+}
+
+[sub_resource type="Animation" id="Animation_7aau7"]
+resource_name = "hurt_front"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1073, 1074, 1075]
+}
+
+[sub_resource type="Animation" id="Animation_gdrp2"]
+resource_name = "hurt_left"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1070, 1071, 1072]
+}
+
+[sub_resource type="Animation" id="Animation_butva"]
+resource_name = "hurt_right"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1064, 1065, 1066]
+}
 
 [sub_resource type="Animation" id="Animation_3uv5n"]
 resource_name = "idle_back"
@@ -150,6 +214,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83j7a"]
 _data = {
+"hurt_back": SubResource("Animation_5o50c"),
+"hurt_front": SubResource("Animation_7aau7"),
+"hurt_left": SubResource("Animation_gdrp2"),
+"hurt_right": SubResource("Animation_butva"),
 "idle_back": SubResource("Animation_3uv5n"),
 "idle_front": SubResource("Animation_maxmk"),
 "idle_left": SubResource("Animation_5jiq2"),
@@ -159,6 +227,31 @@ _data = {
 "move_left": SubResource("Animation_wq2bv"),
 "move_right": SubResource("Animation_v6ckf")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pwgxj"]
+animation = &"hurt_front"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dmicy"]
+animation = &"hurt_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_inaj0"]
+animation = &"hurt_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lxufh"]
+animation = &"hurt_back"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ve5tn"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pwgxj")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_dmicy")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_inaj0")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_lxufh")
+blend_point_3/pos = Vector2(0, -1.1)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ymvwc"]
 animation = &"idle_left"
@@ -222,12 +315,29 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1crnj"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4fb7d"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5up1q"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ga8v"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cucbs"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"moving"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kn8d2"]
+states/Hurt/node = SubResource("AnimationNodeBlendSpace2D_ve5tn")
+states/Hurt/position = Vector2(587, 229)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_ud5hw")
 states/Idle/position = Vector2(492, 115)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_fvvn0")
 states/Move/position = Vector2(678, 115)
-transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_8csbc"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_8ix5o"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1crnj")]
+transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_8csbc"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_8ix5o"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1crnj"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_4fb7d"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_5up1q"), "Move", "Hurt", SubResource("AnimationNodeStateMachineTransition_2ga8v"), "Hurt", "Move", SubResource("AnimationNodeStateMachineTransition_cucbs")]
+graph_offset = Vector2(0, 36.3047)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1bvhy"]
 
@@ -278,7 +388,8 @@ tree_root = SubResource("AnimationNodeStateMachine_kn8d2")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1bvhy")
+parameters/conditions/idle = true
+parameters/conditions/moving = false
+parameters/Hurt/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(0, 1)
-parameters/Move/blend_position = Vector2(1, 0)
-
-[connection signal="dead" from="HealthLabel" to="." method="_on_health_label_dead"]
+parameters/Move/blend_position = Vector2(0, 1)
