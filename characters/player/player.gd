@@ -6,7 +6,6 @@ signal dead
 const ACCELERATION := 20.0
 const FRICTION := 40.0
 @export var max_speed := 400.0
-@onready var screen_size := get_viewport_rect().size
 @onready var health := $HealthLabel
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -45,9 +44,6 @@ func _physics_process(_delta: float) -> void:
 		animation_state.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
 	move_and_slide()
-
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
 	
 	# Attack
 	if dir.x != 0:
@@ -66,8 +62,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_dead():
-	hide()
-	$HurtboxArea/CollisionShape2D.set_deferred("disabled", true)
+	queue_free()
 	dead.emit()
 	
 func _on_damaged():

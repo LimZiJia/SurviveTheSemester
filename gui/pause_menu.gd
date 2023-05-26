@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var resume_button: Button = \
 	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton

@@ -6,6 +6,7 @@ var is_playing := true
 
 @onready var player := $Player
 @onready var hud := $HUD
+@onready var pause_menu = $PauseMenu
 @onready var wave_controller := $WaveController
 @onready var score_timer := $ScoreTimer
 
@@ -31,8 +32,8 @@ func _on_player_dead() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") && is_playing:
-		$HUD.hide_message()
-		$PauseMenu.pause()
+		hud.hide_message()
+		pause_menu.pause()
 
 
 func _on_score_timer_timeout() -> void:
