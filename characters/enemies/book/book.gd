@@ -16,7 +16,9 @@ func _physics_process(delta: float) -> void:
 	
 	if target:
 		direction = position.direction_to(target.position)
-
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
 	position += direction * speed * delta
 
 

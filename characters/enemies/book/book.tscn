@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://brioplm460di"]
+
+[ext_resource type="Script" path="res://characters/enemies/mob/mob.gd" id="1_l6w5k"]
+[ext_resource type="Script" path="res://characters/enemies/book/Sprite2D.gd" id="2_cu2iu"]
+[ext_resource type="Script" path="res://components/health_label.gd" id="4_4ax1l"]
+[ext_resource type="Script" path="res://components/hurtbox_area.gd" id="5_0k24j"]
+[ext_resource type="Script" path="res://components/hitbox_area.gd" id="6_gwrq3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hknk0"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rek7v"]
+size = Vector2(25.4558, 31.8198)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iocx5"]
+size = Vector2(23.3345, 28.9914)
+
+[node name="Book" type="RigidBody2D" groups=["mobs"]]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_l6w5k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+script = ExtResource("2_cu2iu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hknk0")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = -17.0
+script = ExtResource("4_4ax1l")
+max_health = 10.0
+
+[node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_0k24j")
+health_label = NodePath("../HealthLabel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
+position = Vector2(-0.75, 0.75)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_rek7v")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+script = ExtResource("6_gwrq3")
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+position = Vector2(-1, 0.5)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_iocx5")
