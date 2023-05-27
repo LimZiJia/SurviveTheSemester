@@ -40,7 +40,7 @@ func find_nearest_mob():
 	var nearest = null
 	var cur_dist = INF
 	for mob in mobs:
-		var dist = position.distance_to(mob.position)
+		var dist = global_position.distance_to(mob.global_position)
 		if dist < cur_dist:
 			nearest = mob
 			cur_dist = dist
