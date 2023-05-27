@@ -581,6 +581,7 @@ position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_c14a4")
 
 [node name="Word" parent="." instance=ExtResource("5_q2dig")]
+cooldown = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
