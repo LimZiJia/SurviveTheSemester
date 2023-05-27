@@ -40,6 +40,7 @@ theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -54,17 +55,14 @@ columns = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="ResetButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ResetButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Reset"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-
-[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Back"
