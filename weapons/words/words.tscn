@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq6tljh8wekm3"]
+[gd_scene load_steps=6 format=3 uid="uid://cq6tljh8wekm3"]
 
 [ext_resource type="Script" path="res://components/hitbox_area.gd" id="1_55uaf"]
 [ext_resource type="Script" path="res://weapons/words/words.gd" id="1_anhv8"]
 [ext_resource type="FontFile" uid="uid://nskudpk8rqcw" path="res://weapons/words/Mario-Kart-DS.ttf" id="2_o0h4m"]
-[ext_resource type="Script" path="res://weapons/words/Label.gd" id="3_lahxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p32fa"]
 size = Vector2(45, 12)
@@ -14,23 +13,21 @@ size = Vector2(45, 12)
 [node name="Words" type="Node2D"]
 script = ExtResource("1_anhv8")
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 6
-anchor_left = 1.0
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Node2D"]
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -46.0
 offset_top = -9.5
+offset_right = 46.0
 offset_bottom = 9.5
-grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("2_o0h4m")
 theme_override_font_sizes/font_size = 18
 text = "aiken"
-script = ExtResource("3_lahxw")
 
 [node name="HitboxArea" type="Area2D" parent="."]
 collision_layer = 4
@@ -40,12 +37,10 @@ script = ExtResource("1_55uaf")
 damage = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
-visible = false
 position = Vector2(22.5, -1)
 shape = SubResource("RectangleShape2D_p32fa")
 
 [node name="ImpactDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 5
 

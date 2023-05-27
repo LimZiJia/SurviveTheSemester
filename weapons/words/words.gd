@@ -7,7 +7,8 @@ const NAMES := [ "aiken", "dueet"]
 var direction := Vector2.ZERO
 var velocity := Vector2.ZERO
 
-@onready var label = $Label
+@onready var node = $Node2D
+@onready var label = $Node2D/Label
 @onready var hitbox = $HitboxArea
 @onready var impact_detector = $ImpactDetector
 
@@ -16,14 +17,17 @@ func _ready() -> void:
 	set_as_top_level(true)
 	look_at(position + direction)
 	
-	# Temporary fix to make the words readable, but now the 
-	# position of the flipped words is wrong
-	if (rotation_degrees > 90.0 or rotation_degrees < -90.0):
-		rotation_degrees += 180
+	var rot := fposmod(rotation_degrees, 360.0)
 	
-	impact_detector.body_entered.connect(_on_impact)
+	if (90.0 < rot and rot < 270.0):
+		node.rotation_degrees = 180.0
+		label.set("offset_left", -label.get("offset_right")) 
+		label.set("offset_right", 0.0)
 	
 	velocity = max_speed * direction
+	
+	await(get_tree().create_timer(0.1).timeout)
+	impact_detector.body_entered.connect(_on_impact)
 
 
 func choose_name() -> void:
@@ -37,5 +41,4 @@ func _physics_process(delta: float) -> void:
 
 # Removes the projectile when it collides with a mob or the world
 func _on_impact(body) -> void:
-	print(body)
 	queue_free()
