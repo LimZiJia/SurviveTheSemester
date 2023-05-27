@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1uyh5x4q8ic1"]
 
-[ext_resource type="Script" path="res://characters/enemies/mob/mob.gd" id="1_l6w5k"]
+[ext_resource type="Script" path="res://characters/enemies/book/book.gd" id="1_bu757"]
 [ext_resource type="Script" path="res://characters/enemies/book/book_sprite.gd" id="2_1psjr"]
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://characters/enemies/book/book_blue.png" id="2_yx5jl"]
 [ext_resource type="Script" path="res://components/health_label.gd" id="4_4ax1l"]
@@ -20,7 +20,7 @@ size = Vector2(23.3345, 28.9914)
 collision_layer = 4
 collision_mask = 5
 gravity_scale = 0.0
-script = ExtResource("1_l6w5k")
+script = ExtResource("1_bu757")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_yx5jl")
