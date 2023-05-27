@@ -186,7 +186,7 @@ centered = false
 offset = Vector2(-940, -1300)
 
 [node name="HitboxArea" type="Area2D" parent="Sprite2D"]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("3_5t8ik")
