@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://yyhamvwb2qrf"]
 
 [ext_resource type="Script" path="res://components/hitbox_area.gd" id="1_55uaf"]
 [ext_resource type="Script" path="res://weapons/word/word_projectile.gd" id="1_anhv8"]
@@ -34,7 +34,7 @@ collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_55uaf")
-damage = 20.0
+damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(22.5, -1)
