@@ -1,9 +1,9 @@
-[gd_scene load_steps=58 format=3 uid="uid://dsoce4nhupymb"]
+[gd_scene load_steps=58 format=3 uid="uid://chn5fa71gf33t"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_7xkn6"]
 [ext_resource type="Script" path="res://components/health_label.gd" id="5_4n1ai"]
+[ext_resource type="PackedScene" uid="uid://crh3oq311g68k" path="res://weapons/word/word.tscn" id="5_q2dig"]
 [ext_resource type="Script" path="res://components/hurtbox_area.gd" id="6_55pa7"]
-[ext_resource type="PackedScene" uid="uid://c6150nl7avrsl" path="res://weapons/melee/melee.tscn" id="7_bnptl"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://characters/player/player.png" id="8_voa7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2i22"]
@@ -580,9 +580,7 @@ health_label = NodePath("../HealthLabel")
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_c14a4")
 
-[node name="Melee" parent="." instance=ExtResource("7_bnptl")]
-position = Vector2(-4.76837e-07, 0)
-rotation = -0.785398
+[node name="Word" parent="." instance=ExtResource("5_q2dig")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -5,7 +5,6 @@ signal dead
 
 const ACCELERATION := 20.0
 const FRICTION := 40.0
-const WORDS_SCENE := preload("res://weapons/words/words.tscn")
 
 @export var max_speed := 400.0
 @onready var health := $HealthLabel
@@ -46,44 +45,8 @@ func _physics_process(_delta: float) -> void:
 		animation_tree.set("parameters/conditions/moving", false)
 		animation_state.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
+	
 	move_and_slide()
-	
-	# Attack
-	if dir.x != 0:
-		if dir.x > 0:
-			facing = EAST
-		else:
-			facing = WEST
-	elif dir.y != 0:
-		if dir.y > 0:
-			facing = SOUTH
-		else:
-			facing = NORTH
-	
-	if Input.is_action_just_pressed("attack"):
-		#$Melee.attack(facing)
-		shoot()
-
-
-func shoot() -> void:
-	var words := WORDS_SCENE.instantiate()
-	words.position = global_position
-	var mob = find_nearest_mob()
-	if mob:
-		words.direction = position.direction_to(mob.position)
-		add_child(words)
-
-
-func find_nearest_mob():
-	var mobs = get_tree().get_nodes_in_group("mobs")
-	var nearest = null
-	var cur_dist = INF
-	for mob in mobs:
-		var dist = position.distance_to(mob.position)
-		if dist < cur_dist:
-			nearest = mob
-			cur_dist = dist
-	return nearest
 
 
 func _on_dead():

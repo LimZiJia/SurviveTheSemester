@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://nskudpk8rqcw"
-path="res://.godot/imported/Mario-Kart-DS.ttf-25534d3828375796569abb08e008a76c.fontdata"
+path="res://.godot/imported/Mario-Kart-DS.ttf-6cf1e990322dfb7e66f8538e7582c5e6.fontdata"
 
 [deps]
 
-source_file="res://weapons/words/Mario-Kart-DS.ttf"
-dest_files=["res://.godot/imported/Mario-Kart-DS.ttf-25534d3828375796569abb08e008a76c.fontdata"]
+source_file="res://weapons/word/Mario-Kart-DS.ttf"
+dest_files=["res://.godot/imported/Mario-Kart-DS.ttf-6cf1e990322dfb7e66f8538e7582c5e6.fontdata"]
 
 [params]
 

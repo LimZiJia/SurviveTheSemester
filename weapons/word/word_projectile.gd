@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	velocity = max_speed * direction
 	
-	await(get_tree().create_timer(0.1).timeout)
+	await(get_tree().create_timer(0.05).timeout)
 	impact_detector.body_entered.connect(_on_impact)
 
 
@@ -40,5 +40,5 @@ func _physics_process(delta: float) -> void:
 
 
 # Removes the projectile when it collides with a mob or the world
-func _on_impact(body) -> void:
+func _on_impact(_body) -> void:
 	queue_free()

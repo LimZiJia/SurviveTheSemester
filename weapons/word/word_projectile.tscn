@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cq6tljh8wekm3"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://components/hitbox_area.gd" id="1_55uaf"]
-[ext_resource type="Script" path="res://weapons/words/words.gd" id="1_anhv8"]
-[ext_resource type="FontFile" uid="uid://nskudpk8rqcw" path="res://weapons/words/Mario-Kart-DS.ttf" id="2_o0h4m"]
+[ext_resource type="Script" path="res://weapons/word/word_projectile.gd" id="1_anhv8"]
+[ext_resource type="FontFile" uid="uid://nskudpk8rqcw" path="res://weapons/word/Mario-Kart-DS.ttf" id="2_o0h4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p32fa"]
 size = Vector2(45, 12)
