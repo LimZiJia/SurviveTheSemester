@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var max_speed := 1000.0
+@export var max_speed := 600.0
 
 const NAMES := [ "aiken", "dueet"]
 

@@ -61,7 +61,7 @@ func _physics_process(_delta: float) -> void:
 			facing = NORTH
 	
 	if Input.is_action_just_pressed("attack"):
-		$Melee.attack(facing)
+		#$Melee.attack(facing)
 		shoot()
 
 
