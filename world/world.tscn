@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://si4gd7mdq6xp" path="res://assets/floors.png" id="3_diow0"]
 [ext_resource type="PackedScene" uid="uid://bcwsdtfx72kd0" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
 [ext_resource type="PackedScene" uid="uid://dhp515vfrcvt6" path="res://gui/pause_menu.tscn" id="6_7j38u"]
-[ext_resource type="PackedScene" uid="uid://brioplm460di" path="res://characters/enemies/book/book.tscn" id="7_kkkee"]
+[ext_resource type="PackedScene" uid="uid://d1uyh5x4q8ic1" path="res://characters/enemies/book/book.tscn" id="7_kkkee"]
 [ext_resource type="Texture2D" uid="uid://cnriifkwxrxma" path="res://assets/3d_walls.png" id="8_j0ykl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_3u73y"]

@@ -5,11 +5,14 @@ signal dead
 
 const ACCELERATION := 20.0
 const FRICTION := 40.0
+const WORDS_SCENE := preload("res://weapons/words/words.tscn")
+
 @export var max_speed := 400.0
 @onready var health := $HealthLabel
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
+
 
 enum { NORTH, EAST, SOUTH, WEST }
 var facing := SOUTH
@@ -59,6 +62,28 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack"):
 		$Melee.attack(facing)
+		shoot()
+
+
+func shoot() -> void:
+	var words := WORDS_SCENE.instantiate()
+	words.position = global_position
+	var mob = find_nearest_mob()
+	if mob:
+		words.direction = position.direction_to(mob.position)
+		add_child(words)
+
+
+func find_nearest_mob():
+	var mobs = get_tree().get_nodes_in_group("mobs")
+	var nearest = null
+	var cur_dist = INF
+	for mob in mobs:
+		var dist = position.distance_to(mob.position)
+		if dist < cur_dist:
+			nearest = mob
+			cur_dist = dist
+	return nearest
 
 
 func _on_dead():
