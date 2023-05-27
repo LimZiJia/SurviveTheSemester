@@ -16,8 +16,8 @@ size = Vector2(25.4558, 31.8198)
 size = Vector2(23.3345, 28.9914)
 
 [node name="Book" type="RigidBody2D" groups=["mobs"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource("1_l6w5k")
 
@@ -37,7 +37,7 @@ max_health = 10.0
 
 [node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
 monitorable = false
 script = ExtResource("5_0k24j")
 health_label = NodePath("../HealthLabel")
@@ -48,6 +48,7 @@ rotation = 0.785397
 shape = SubResource("RectangleShape2D_rek7v")
 
 [node name="HitboxArea" type="Area2D" parent="."]
+collision_layer = 2
 collision_mask = 0
 monitoring = false
 script = ExtResource("6_gwrq3")
