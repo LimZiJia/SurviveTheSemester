@@ -1,7 +1,6 @@
-[gd_scene load_steps=58 format=3 uid="uid://chn5fa71gf33t"]
+[gd_scene load_steps=57 format=3 uid="uid://chn5fa71gf33t"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_7xkn6"]
-[ext_resource type="Script" path="res://components/health_label.gd" id="5_4n1ai"]
 [ext_resource type="PackedScene" uid="uid://crh3oq311g68k" path="res://weapons/word/word.tscn" id="5_q2dig"]
 [ext_resource type="Script" path="res://components/hurtbox_area.gd" id="6_55pa7"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://characters/player/player.png" id="8_voa7p"]
@@ -553,7 +552,7 @@ script = ExtResource("1_7xkn6")
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 77
+frame = 76
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 33.5)
@@ -561,20 +560,18 @@ shape = SubResource("RectangleShape2D_u2i22")
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -20.0
-offset_top = -60.0
+offset_top = -50.0
 offset_right = 20.0
-offset_bottom = -37.0
+offset_bottom = -27.0
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("5_4n1ai")
-max_health = 100.0
 
-[node name="HurtboxArea" type="Area2D" parent="." node_paths=PackedStringArray("health_label")]
+[node name="HurtboxArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 script = ExtResource("6_55pa7")
-health_label = NodePath("../HealthLabel")
+max_health = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
 position = Vector2(0, 16)

@@ -1,14 +1,18 @@
 extends RigidBody2D
 
 @export var speed := 100.0
-@onready var health_label : HealthLabel = $HealthLabel
+@onready var health_label := $HealthLabel
+@onready var hurtbox: HurtboxArea = $HurtboxArea
+@onready var hitbox: HitboxArea = $HitboxArea
 var target: Player = null
 
 
 func _ready() -> void:
 	if get_tree().has_group("player"):
 		target = get_tree().get_first_node_in_group("player")
-	health_label.dead.connect(queue_free)
+	hurtbox.dead.connect(queue_free)
+	hurtbox.health_changed.connect(_on_health_changed)
+	health_label.text = str(int(hurtbox.health))
 
 
 func _physics_process(delta: float) -> void:
@@ -20,13 +24,13 @@ func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 
 
-func stop() -> void:
-	target = null
-
-
 func set_max_health(health: float) -> void:
-	$HealthLabel.max_health = health
+	$HurtboxArea.max_health = health
 
 
 func set_damage(damage: float) -> void:
 	$HitboxArea.damage = damage
+
+
+func _on_health_changed(_old_health: float, new_health: float) -> void:
+	health_label.text = str(int(new_health))

@@ -7,7 +7,8 @@ const ACCELERATION := 20.0
 const FRICTION := 40.0
 
 @export var max_speed := 400.0
-@onready var health := $HealthLabel
+@onready var health_label := $HealthLabel
+@onready var hurtbox := $HurtboxArea
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
@@ -18,8 +19,9 @@ var facing := SOUTH
 var is_damaged = false
 
 func _ready() -> void:
-	health.dead.connect(_on_dead)
-	health.damaged.connect(_on_damaged)
+	hurtbox.dead.connect(_on_dead)
+	hurtbox.health_changed.connect(_on_health_changed)
+	health_label.text = str(int(hurtbox.health))
 
 func _physics_process(_delta: float) -> void:
 	# Movement
@@ -53,7 +55,8 @@ func _on_dead():
 	queue_free()
 	dead.emit()
 	
-func _on_damaged():
+func _on_health_changed(_old_health: float, new_health: float):
 	is_damaged = true
+	health_label.text = str(int(new_health))
 	await(get_tree().create_timer(0.15).timeout)
 	is_damaged = false
