@@ -1,14 +1,13 @@
 extends Node
 
-
 var score := 0
 var is_playing := true
 
-@onready var player := $Player
-@onready var hud := $HUD
-@onready var pause_menu = $PauseMenu
-@onready var wave_controller := $WaveController
-@onready var score_timer := $ScoreTimer
+@onready var player := $Player as Player
+@onready var hud := $HUD as CanvasLayer
+@onready var pause_menu = $PauseMenu as CanvasLayer
+@onready var wave_controller := $WaveController as Node2D
+@onready var score_timer := $ScoreTimer as Timer
 
 func _ready() -> void:
 	player.dead.connect(_on_player_dead)
@@ -21,6 +20,12 @@ func _ready() -> void:
 	score_timer.start()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") && is_playing:
+		hud.hide_message()
+		pause_menu.pause()
+
+
 func _on_player_dead() -> void:
 	is_playing = false
 	wave_controller.stop()
@@ -30,12 +35,6 @@ func _on_player_dead() -> void:
 	hud.show_game_over()
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") && is_playing:
-		hud.hide_message()
-		pause_menu.pause()
-
-
 func _on_score_timer_timeout() -> void:
 	score += 1
-	$HUD.update_score(score)
+	$HUD.score = score

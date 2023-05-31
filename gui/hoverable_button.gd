@@ -11,5 +11,5 @@ func _ready() -> void:
 
 
 func resize_button(resized_size: Vector2):
-	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "scale", resized_size, dur)

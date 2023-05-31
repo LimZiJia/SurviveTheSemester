@@ -3,20 +3,20 @@ extends CharacterBody2D
 
 signal dead
 
+enum { NORTH, EAST, SOUTH, WEST }
 const ACCELERATION := 20.0
 const FRICTION := 40.0
 
 @export var max_speed := 400.0
-@onready var health_label := $HealthLabel
-@onready var hurtbox := $HurtboxArea
-@onready var animation_player = $AnimationPlayer
-@onready var animation_tree = $AnimationTree
-@onready var animation_state = animation_tree.get("parameters/playback")
 
-
-enum { NORTH, EAST, SOUTH, WEST }
 var facing := SOUTH
 var is_damaged = false
+
+@onready var health_label := $HealthLabel as Label
+@onready var hurtbox := $HurtboxArea as HurtboxArea
+@onready var animation_player = $AnimationPlayer as AnimationPlayer
+@onready var animation_tree = $AnimationTree as AnimationTree
+@onready var animation_state = animation_tree.get("parameters/playback")
 
 func _ready() -> void:
 	hurtbox.dead.connect(_on_dead)

@@ -4,8 +4,10 @@ extends Node2D
 @export var mob_scene: PackedScene
 @export var mob_spawn_location: PathFollow2D
 
-var cur_wave := 0
+var cur_wave:int = 0
 var wave_config: Array
+
+@onready var wave_timer := $WaveTimer as Timer
 
 func _ready() -> void:
 	randomize()
@@ -20,7 +22,7 @@ func start() -> void:
 
 
 func stop() -> void:
-	$WaveTimer.stop()
+	wave_timer.stop()
 
 func start_wave() -> void:
 	# Ensuring no errors
@@ -40,5 +42,5 @@ func start_wave() -> void:
 		mob.set_damage(cur_wave_config["damage"])
 		add_child(mob)
 	
-	$WaveTimer.start(cur_wave_config["cooldown"])
+	wave_timer.start(cur_wave_config["cooldown"])
 	cur_wave += 1

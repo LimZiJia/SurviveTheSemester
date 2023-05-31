@@ -16,6 +16,11 @@ func _ready() -> void:
 	health = max_health
 
 
+func _on_area_entered(area: Area2D) -> void:
+	if area is HitboxArea:
+		handle_hurt(area.damage)
+
+
 func handle_hurt(damage: float) -> void:
 	health -= damage
 	health = clampf(health, 0, max_health)
@@ -24,7 +29,3 @@ func handle_hurt(damage: float) -> void:
 		dead.emit()
 	else:
 		health_changed.emit(health + damage, health)
-
-func _on_area_entered(area: Area2D) -> void:
-	if area is HitboxArea:
-		handle_hurt(area.damage)

@@ -27,7 +27,6 @@ func restart() -> void:
 	self.visible = false
 	Events.game_restarted.emit()
 	get_tree().paused = false
-	
 
 
 func return_to_main() -> void:

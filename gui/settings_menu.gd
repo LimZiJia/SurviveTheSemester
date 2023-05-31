@@ -1,18 +1,21 @@
 extends Control
 
-@onready var grid = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer
-@onready var reset_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ResetButton
-@onready var back_button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/BackButton
-
 var button_pressed: Button = null
 var actions := [
 	"move_up", "move_left", "move_down", "move_right", "attack"
 ]
 var button_action_dict: Dictionary
 
+@onready var grid: GridContainer = \
+	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer
+@onready var reset_button: Button = \
+	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ResetButton
+@onready var back_button: Button = \
+	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/BackButton
+
 func _ready() -> void:
-	back_button.pressed.connect(go_to_main)
-	reset_button.pressed.connect(reset)
+	back_button.pressed.connect(_on_back_button_pressed)
+	reset_button.pressed.connect(_on_reset_button_pressed)
 	
 	# Add all actions into the scene grid
 	for action in actions: 
@@ -31,18 +34,6 @@ func _ready() -> void:
 		button.pressed.connect(_on_button_pressed.bind(button))
 		button_action_dict[button.to_string()] = action
 
-
-func go_to_main() -> void:
-	SceneChanger.change_scene("res://gui/start_screen.tscn")
-
-# Resets all actions to their original input keys
-func reset() -> void:
-	InputMap.load_from_project_settings()
-	SceneChanger.reload_scene()
-
-func _on_button_pressed(button: Button) -> void:
-	button.text = "Press key ..."
-	button_pressed = button
 
 # Remaps the input key of an action if an action is selected. If the
 # selected input key is already assigned to another action, it does not
@@ -63,6 +54,22 @@ func _input(event: InputEvent) -> void:
 	button_pressed.text = get_key(action)
 	button_pressed = null
 
+
+func _on_button_pressed(button: Button) -> void:
+	button.text = "Press key ..."
+	button_pressed = button
+
+
+func _on_back_button_pressed() -> void:
+	SceneChanger.change_scene("res://gui/start_screen.tscn")
+
+
+# Resets all actions to their original input keys
+func _on_reset_button_pressed() -> void:
+	InputMap.load_from_project_settings()
+	SceneChanger.reload_scene()
+
+
 # Returns true if the current InputEventKey is already assigned to another action
 func key_is_active(event: InputEventKey) -> bool:
 	for action in actions:
@@ -70,6 +77,7 @@ func key_is_active(event: InputEventKey) -> bool:
 		if event.key_label == action_event.physical_keycode:
 			return true
 	return false
+
 
 # Returns the string representation of the input key mapped to the action
 func get_key(action: StringName) -> StringName:
