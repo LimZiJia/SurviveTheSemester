@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cts7dbpwweqgm"]
+[gd_scene load_steps=13 format=3 uid="uid://cts7dbpwweqgm"]
 
 [ext_resource type="PackedScene" uid="uid://chn5fa71gf33t" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://si4gd7mdq6xp" path="res://assets/floors.png" id="3_diow0"]
 [ext_resource type="PackedScene" uid="uid://bcwsdtfx72kd0" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
 [ext_resource type="PackedScene" uid="uid://dhp515vfrcvt6" path="res://gui/pause_menu.tscn" id="6_7j38u"]
-[ext_resource type="PackedScene" uid="uid://dhu0lcunamfx4" path="res://characters/enemies/mob/mob.tscn" id="7_fscup"]
 [ext_resource type="Texture2D" uid="uid://cnriifkwxrxma" path="res://assets/3d_walls.png" id="8_j0ykl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_3u73y"]
@@ -158,7 +157,6 @@ curve = SubResource("Curve2D_u2oqr")
 position = Vector2(-1160, -680)
 
 [node name="WaveController" parent="." node_paths=PackedStringArray("mob_spawn_location") instance=ExtResource("3_mnirc")]
-mob_scene = ExtResource("7_fscup")
 mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
 
 [node name="ScoreTimer" type="Timer" parent="."]
