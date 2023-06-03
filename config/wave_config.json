@@ -1,19 +1,55 @@
-[
-	{
-		"_comment": "book",
-		"health": 10.0,
-		"speed": 75.0,
-		"damage": 5.0,
-		"count": 3,
-		"cooldown": 5.0
-	},
-	{
-		"_comment": "mob",
-		"health": 20.0,
-		"speed": 75.0,
-		"damage": 5.0,
-		"count": 5,
-		"cooldown": 5.0
+{
+	"mob" : [
+		{
+			"_comment": "book",
+			"health": 10.0,
+			"speed": 75.0,
+			"damage": 5.0,
+			"count": 3,
+			"cooldown": 5.0
+		},
+		{
+			"_comment": "mob",
+			"health": 10.0,
+			"speed": 75.0,
+			"damage": 5.0,
+			"count": 5,
+			"cooldown": 5.0
+		},
+		{
+			"_comment": "intermediate_book",
+			"health": 30.0,
+			"speed": 75.0,
+			"damage": 5.0,
+			"count": 2,
+			"cooldown": 10.0
+		},
+		{
+			"_comment": "intermediate_mob",
+			"health": 30.0,
+			"speed": 75.0,
+			"damage": 5.0,
+			"count": 2,
+			"cooldown": 10.0
+		},
+		{
+			"_comment": "boss_book",
+			"health": 1000.0,
+			"speed": 75.0,
+			"damage": 5.0,
+			"count": 1,
+			"cooldown": 30.0
+		}
+	],
+	
+	"introduction_rounds" : {
+		"intermediate" : {
+			"score": 20,
+			"cooldown": 20.0
+		},
+		"boss" : {
+			"score": 60,
+			"cooldown": 40.0
+		}
 	}
-]
-
+}
