@@ -12,9 +12,11 @@ func _ready():
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
 
 
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		attack()
+		
 
 # Given the player can attack and there are mobs surrounding the 
 # player, it initiates the cooldown, and adds the word projectile
@@ -36,10 +38,14 @@ func attack() -> void:
 	add_child(word_projectile)
 
 
+
 # Sets the can_attack variable to true so that
 # the player can attack again
 func _on_cooldown_timer_timeout() -> void:
 	can_attack = true
+
+# Despawns the word after some time
+
 
 # Returns the nearest mob in the SceneTree, or null if 
 # there are no mobs currently

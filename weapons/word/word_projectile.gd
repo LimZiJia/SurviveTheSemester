@@ -11,6 +11,7 @@ var velocity := Vector2.ZERO
 @onready var label = $Node2D/Label
 @onready var hitbox = $HitboxArea
 @onready var impact_detector = $ImpactDetector
+@onready var despawn_timer = $DespawnTimer
 
 func _ready() -> void:
 	choose_name()
@@ -26,8 +27,9 @@ func _ready() -> void:
 	
 	velocity = max_speed * direction
 	
-	await(get_tree().create_timer(0.05).timeout)
 	impact_detector.body_entered.connect(_on_impact)
+	despawn_timer.timeout.connect(_on_timeout)
+	despawn_timer.start(1.0)
 
 
 func choose_name() -> void:
@@ -41,4 +43,7 @@ func _physics_process(delta: float) -> void:
 
 # Removes the projectile when it collides with a mob or the world
 func _on_impact(_body) -> void:
+	queue_free()
+
+func _on_timeout() -> void:
 	queue_free()
