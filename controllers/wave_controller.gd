@@ -11,6 +11,8 @@ extends Node2D
 
 @export var mob_spawn_location: PathFollow2D
 
+enum {BOOK, MOB, INTERMEDIATE_BOOK, INTERMEDIATE_MOB, BOSS_BOOK}
+
 var wave_mobs: Array
 var introduction_rounds: Dictionary
 var score:int = 0
@@ -144,21 +146,21 @@ func choose_type() -> int:
 		print(p_intermediate)
 		print(p_boss)
 		print(temp)
-		return randi_range(0, 1)
+		return randi_range(BOOK, MOB)
 	elif (temp <= p_easy + p_intermediate):
 		print("intermediate spawned")
 		print(p_easy)
 		print(p_intermediate)
 		print(p_boss)
 		print(temp)
-		return randi_range(2, 3)
+		return randi_range(INTERMEDIATE_BOOK, INTERMEDIATE_MOB)
 	else:
 		print("boss spawned")
 		print(p_easy)
 		print(p_intermediate)
 		print(p_boss)
 		print(temp)
-		return 4
+		return BOSS_BOOK
 
 func spawn_mob(\
 count:int, type:int, health:float, speed:float, damage:float, cooldown:float) -> void:
@@ -189,55 +191,95 @@ count:int, type:int, health:float, speed:float, damage:float) -> void:
 # SCORE MULTIPLIERS
 func count_scaling(count:int, type:int) -> int:
 	match(type):
-		# book
-		0:
+		BOOK:
 			count = count
-		# mob
-		1:
+		
+		MOB:
+			count = count
+		
+		INTERMEDIATE_BOOK:
+			count = count
+		
+		INTERMEDIATE_MOB:
+			count = count
+		
+		BOSS_BOOK:
 			count = count
 			
 	return count
 
 func health_scaling(health:float, type:int) -> float:
 	match(type):
-	# book
-		0:
+		BOOK:
 			health = health
-		# mob
-		1:
+		
+		MOB:
+			health = health
+		
+		INTERMEDIATE_BOOK:
+			health = health
+		
+		INTERMEDIATE_MOB:
+			health = health
+		
+		BOSS_BOOK:
 			health = health
 	
 	return health
 
 func speed_scaling(speed:float, type:int) -> float:
 	match(type):
-	# book
-		0:
+		BOOK:
 			speed = speed
-		# mob
-		1:
+		
+		MOB:
+			speed = speed
+		
+		INTERMEDIATE_BOOK:
+			speed = speed
+		
+		INTERMEDIATE_MOB:
+			speed = speed
+		
+		BOSS_BOOK:
 			speed = speed
 	
 	return speed
 
 func damage_scaling(damage:float, type:int) -> float:
 	match(type):
-	# book
-		0:
+		BOOK:
 			damage = damage
-		# mob
-		1:
+		
+		MOB:
+			damage = damage
+		
+		INTERMEDIATE_BOOK:
+			damage = damage
+		
+		INTERMEDIATE_MOB:
+			damage = damage
+		
+		BOSS_BOOK:
 			damage = damage
 	
 	return damage
 	
 func cooldown_scaling(cooldown:float, type:int) -> float:
 	match(type):
-	# book
-		0:
+		BOOK:
 			cooldown = cooldown
-		# mob
-		1:
+		
+		MOB:
+			cooldown = cooldown
+		
+		INTERMEDIATE_BOOK:
+			cooldown = cooldown
+		
+		INTERMEDIATE_MOB:
+			cooldown = cooldown
+		
+		BOSS_BOOK:
 			cooldown = cooldown
 	
 	return cooldown
