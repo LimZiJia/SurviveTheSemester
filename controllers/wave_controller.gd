@@ -44,7 +44,9 @@ func _process(delta) -> void:
 		prev_increase = score
 	
 	# First catch is for if the boss wave has occured
-	if (boss_wave and score - prev_increase >= 20):
+	if (boss_wave and score - prev_increase >= 20 and \
+			score >= introduction_rounds["boss"]["score"] + \
+						introduction_rounds["boss"]["cooldown"]):
 		print("Boss chance increase")
 		prev_increase = score
 		if (p_easy == 0.0):
@@ -58,7 +60,9 @@ func _process(delta) -> void:
 		print(p_boss)
 	
 	# Second catch is for if the intermediate wave has occurred, but not the boss wave
-	elif (intermediate_wave and score - prev_increase >= 20):
+	elif (intermediate_wave and score - prev_increase >= 20 and not boss_wave \
+			and score >= introduction_rounds["intermediate"]["score"] + \
+							introduction_rounds["intermediate"]["cooldown"]):
 		print("Intermediate chance increase")
 		prev_increase = score
 		p_intermediate = clampf(p_intermediate + 0.05, 0.0, 1.0)
@@ -86,15 +90,14 @@ func start_wave() -> void:
 	score >= introduction_rounds["intermediate"]["score"]):
 		print("Intermediate special wave")
 		intermediate_wave = true
-		var wave_cooldown:float = 0.0
+
 		for i in range(2, 4):
 			var count:int = wave_mobs[i]["count"]
 			var health:float = wave_mobs[i]["health"]
 			var speed:float = wave_mobs[i]["speed"]
 			var damage:float = wave_mobs[i]["damage"]
-			wave_cooldown += wave_mobs[i]["cooldown"]
 			spawn_mob1(count, i, health, speed, damage)
-		wave_timer.start(wave_cooldown)
+		wave_timer.start(introduction_rounds["intermediate"]["cooldown"])
 		
 		# Set probabilities for normal waves
 		p_intermediate = 0.25
@@ -108,7 +111,7 @@ func start_wave() -> void:
 		var health:float = wave_mobs[4]["health"]
 		var speed:float = wave_mobs[4]["speed"]
 		var damage:float = wave_mobs[4]["damage"]
-		var cooldown:float = wave_mobs[4]["cooldown"]
+		var cooldown:float = introduction_rounds["boss"]["cooldown"]
 		spawn_mob(count, 4, health, speed, damage, cooldown)
 		
 		# Set probabilites for normal waves
@@ -183,7 +186,7 @@ count:int, type:int, health:float, speed:float, damage:float) -> void:
 
 
 
-# WAVE MULTIPLIERS
+# SCORE MULTIPLIERS
 func count_scaling(count:int, type:int) -> int:
 	match(type):
 		# book
