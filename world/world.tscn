@@ -146,18 +146,18 @@ limit_right = 1248
 limit_bottom = 733
 limit_smoothed = true
 
-[node name="Statuses" parent="Camera2D" instance=ExtResource("8_arout")]
-position = Vector2(-424, -332)
-
 [node name="Player" parent="." instance=ExtResource("1_63u67")]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+visible = false
 remote_path = NodePath("../../Camera2D")
 
 [node name="MobPath" type="Path2D" parent="."]
+visible = false
 curve = SubResource("Curve2D_u2oqr")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+visible = false
 position = Vector2(-1160, -680)
 
 [node name="WaveController" parent="." node_paths=PackedStringArray("mob_spawn_location") instance=ExtResource("3_mnirc")]
@@ -167,5 +167,10 @@ mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_7j38u")]
 visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Statuses" parent="CanvasLayer" instance=ExtResource("8_arout")]
+position = Vector2(121, 33)
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
