@@ -11,6 +11,8 @@ const FRICTION := 40.0
 
 var facing := SOUTH
 var is_damaged = false
+var max_health: float
+var health:float
 
 @onready var health_label := $HealthLabel as Label
 @onready var hurtbox := $HurtboxArea as HurtboxArea
@@ -22,6 +24,8 @@ func _ready() -> void:
 	hurtbox.dead.connect(_on_dead)
 	hurtbox.health_changed.connect(_on_health_changed)
 	health_label.text = str(int(hurtbox.health))
+	max_health = 100.0
+	health = 100.0
 
 func _physics_process(_delta: float) -> void:
 	# Movement
@@ -60,3 +64,4 @@ func _on_health_changed(_old_health: float, new_health: float):
 	health_label.text = str(int(new_health))
 	await(get_tree().create_timer(0.15).timeout)
 	is_damaged = false
+	health = new_health

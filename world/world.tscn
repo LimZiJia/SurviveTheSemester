@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cts7dbpwweqgm"]
+[gd_scene load_steps=14 format=3 uid="uid://cbv56yigbaa4t"]
 
 [ext_resource type="PackedScene" uid="uid://chn5fa71gf33t" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://si4gd7mdq6xp" path="res://assets/floors.png" id="3_diow0"]
 [ext_resource type="PackedScene" uid="uid://bcwsdtfx72kd0" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
 [ext_resource type="PackedScene" uid="uid://dhp515vfrcvt6" path="res://gui/pause_menu.tscn" id="6_7j38u"]
+[ext_resource type="PackedScene" uid="uid://c0yiov5wr17i3" path="res://world/statuses.tscn" id="8_arout"]
 [ext_resource type="Texture2D" uid="uid://cnriifkwxrxma" path="res://assets/3d_walls.png" id="8_j0ykl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_3u73y"]
@@ -144,6 +145,9 @@ limit_top = -816
 limit_right = 1248
 limit_bottom = 733
 limit_smoothed = true
+
+[node name="Statuses" parent="Camera2D" instance=ExtResource("8_arout")]
+position = Vector2(-424, -332)
 
 [node name="Player" parent="." instance=ExtResource("1_63u67")]
 
