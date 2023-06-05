@@ -8,7 +8,7 @@ var grade_arr:Array = [
 	preload("res://assets/F.png")
 ]
 
-@onready var player := get_node("/root/PlayerScene")
+@onready var global := get_node("/root/Global")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,8 +17,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player != null:
-		var percent:int = int((player.health / player.max_health) * 100)
+	if global != null:
+		var percent:int = int((global.health / global.max_health) * 100)
 		if (percent >= 90):
 			texture = grade_arr[0]
 		elif (percent >= 80):

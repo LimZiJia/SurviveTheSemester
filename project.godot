@@ -20,7 +20,7 @@ config/icon="res://assets/icon.svg"
 Events="*res://common/events.gd"
 SceneChanger="*res://common/scene_changer.gd"
 GameManager="*res://common/game_manager.gd"
-PlayerScene="*res://characters/player/player.tscn"
+Global="*res://common/global.gd"
 
 [display]
 

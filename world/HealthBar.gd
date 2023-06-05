@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@onready var player := get_node("/root/PlayerScene")
+@onready var global := get_node("/root/Global")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,8 +10,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	player = get_node("/root/PlayerScene")
-	if player != null:
-		value = int((player.health / player.max_health) * 100)
+	if global != null:
+		value = int((global.health / global.max_health) * 100)
 	else:
 		value = 0
