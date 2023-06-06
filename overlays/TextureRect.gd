@@ -8,13 +8,9 @@ var grade_arr:Array = [
 	preload("res://assets/F.png")
 ]
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta: float) -> void:
 	var percent:int = int((Global.health / Global.max_health) * 100)
 	if (percent >= 90):
 		texture = grade_arr[0]
