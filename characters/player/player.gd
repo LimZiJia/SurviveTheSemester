@@ -7,8 +7,10 @@ enum { NORTH, EAST, SOUTH, WEST }
 const ACCELERATION := 20.0
 const FRICTION := 40.0
 
+@export var max_health := 100.0
 @export var max_speed := 400.0
 
+var health := 0.0
 var facing := SOUTH
 var is_damaged = false
 
@@ -19,8 +21,11 @@ var is_damaged = false
 @onready var animation_state = animation_tree.get("parameters/playback")
 
 func _ready() -> void:
-	hurtbox.dead.connect(_on_dead)
-	hurtbox.health_changed.connect(_on_health_changed)
+	health = max_health
+	
+	# hurtbox.dead.connect(_on_dead)
+	# hurtbox.health_changed.connect(_on_health_changed)
+	hurtbox.damaged.connect(_on_damaged)
 	health_label.text = str(int(hurtbox.health))
 	Global.health = 100.0
 	Global.max_health = 100.0
@@ -54,13 +59,17 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func _on_dead():
-	queue_free()
-	dead.emit()
+func _on_damaged(attack: Attack) -> void:
+	health -= attack.attack_damage
+	health = clampf(health, 0, max_health)
 	
-func _on_health_changed(_old_health: float, new_health: float):
-	is_damaged = true
-	health_label.text = str(int(new_health))
-	await(get_tree().create_timer(0.15).timeout)
-	is_damaged = false
-	Global.health = new_health
+	if health == 0:
+		queue_free()
+		dead.emit()
+	else:
+		is_damaged = true
+		health_label.text = str(int(health))
+		await(get_tree().create_timer(0.15).timeout)
+		is_damaged = false
+		health_label.text = str(int(health))
+
