@@ -17,14 +17,13 @@ var is_damaged = false
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var animation_tree = $AnimationTree as AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
-@onready var global = get_node("/root/Global")
 
 func _ready() -> void:
 	hurtbox.dead.connect(_on_dead)
 	hurtbox.health_changed.connect(_on_health_changed)
 	health_label.text = str(int(hurtbox.health))
-	global.health = 100.0
-	global.max_health = 100.0
+	Global.health = 100.0
+	Global.max_health = 100.0
 	
 	
 func _physics_process(_delta: float) -> void:
@@ -64,4 +63,4 @@ func _on_health_changed(_old_health: float, new_health: float):
 	health_label.text = str(int(new_health))
 	await(get_tree().create_timer(0.15).timeout)
 	is_damaged = false
-	global.health = new_health
+	Global.health = new_health

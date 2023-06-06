@@ -166,14 +166,14 @@ mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_7j38u")]
-visible = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Blood" parent="CanvasLayer" instance=ExtResource("9_gk74x")]
 
 [node name="Statuses" parent="CanvasLayer" instance=ExtResource("8_frw27")]
 position = Vector2(126, 34)
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_7j38u")]
+visible = false
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
