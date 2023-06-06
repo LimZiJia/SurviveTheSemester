@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://yyhamvwb2qrf"]
+[gd_scene load_steps=7 format=3 uid="uid://yyhamvwb2qrf"]
 
 [ext_resource type="Script" path="res://components/hitbox_area.gd" id="1_55uaf"]
 [ext_resource type="Script" path="res://weapons/word/word_projectile.gd" id="1_anhv8"]
 [ext_resource type="FontFile" uid="uid://nskudpk8rqcw" path="res://weapons/word/Mario-Kart-DS.ttf" id="2_o0h4m"]
+[ext_resource type="Script" path="res://components/attack.gd" id="3_588r8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p32fa"]
 size = Vector2(45, 12)
@@ -29,12 +30,19 @@ theme_override_fonts/font = ExtResource("2_o0h4m")
 theme_override_font_sizes/font_size = 18
 text = "aiken"
 
-[node name="HitboxArea" type="Area2D" parent="."]
+[node name="Attack" type="Node" parent="."]
+script = ExtResource("3_588r8")
+attack_damage = 20.0
+knockback_force = 20.0
+
+[node name="HitboxArea" type="Area2D" parent="." node_paths=PackedStringArray("attack")]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_55uaf")
+attack = NodePath("../Attack")
 damage = 20.0
+knockback_force = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 position = Vector2(22.5, -1)
