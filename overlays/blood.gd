@@ -33,6 +33,6 @@ func _process(delta):
 			tween2.tween_property(red, "modulate", \
 				Color8(255, 255, 255, int(cur_red_a)), 0.15)
 
-	prev_health = Global.health
+	prev_health = Global.health	
 	
 	
