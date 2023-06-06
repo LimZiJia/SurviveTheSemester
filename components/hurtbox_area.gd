@@ -2,7 +2,6 @@ class_name HurtboxArea
 extends Area2D
 
 signal dead
-signal health_changed(old_health: float, new_health: float)
 signal damaged(attack: Attack)
 
 @export var max_health: float

@@ -11,6 +11,7 @@ var is_playing := true
 
 func _ready() -> void:
 	player.dead.connect(_on_player_dead)
+	player.damaged.connect(hud.update_health)
 	hud.hide_buttons()
 	
 	hud.show_message_with_time("Get ready...", 1.0)

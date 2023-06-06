@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 signal dead
+signal damaged(frac_cur_health: float)
 
 enum { NORTH, EAST, SOUTH, WEST }
 const ACCELERATION := 20.0
@@ -22,14 +23,8 @@ var is_damaged = false
 
 func _ready() -> void:
 	health = max_health
-	
-	# hurtbox.dead.connect(_on_dead)
-	# hurtbox.health_changed.connect(_on_health_changed)
 	hurtbox.damaged.connect(_on_damaged)
 	health_label.text = str(int(hurtbox.health))
-	Global.health = 100.0
-	Global.max_health = 100.0
-	
 	
 func _physics_process(_delta: float) -> void:
 	# Movement
@@ -72,4 +67,5 @@ func _on_damaged(attack: Attack) -> void:
 		await(get_tree().create_timer(0.15).timeout)
 		is_damaged = false
 		health_label.text = str(int(health))
+		damaged.emit(health / max_health)
 
