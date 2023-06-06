@@ -1,68 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://djpk3tjp046d5"]
+[gd_scene load_steps=3 format=3 uid="uid://djpk3tjp046d5"]
 
 [ext_resource type="Script" path="res://overlays/blood.gd" id="1_75kfq"]
 [ext_resource type="Texture2D" uid="uid://c1m8pnubxwk2j" path="res://assets/bloody wall paper.png" id="2_0sxq6"]
-
-[sub_resource type="Animation" id="Animation_r3a2o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BloodOverlay:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RedRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wvibu"]
-resource_name = "flash"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BloodOverlay:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.266667), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RedRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.129412), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fikmn"]
-_data = {
-"RESET": SubResource("Animation_r3a2o"),
-"flash": SubResource("Animation_wvibu")
-}
 
 [node name="Blood" type="Node2D"]
 self_modulate = Color(1, 1, 1, 0)
@@ -79,8 +18,3 @@ modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_0sxq6")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fikmn")
-}

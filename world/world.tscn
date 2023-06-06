@@ -133,6 +133,13 @@ point_count = 5
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Blood" parent="CanvasLayer" instance=ExtResource("9_gk74x")]
+
+[node name="Statuses" parent="CanvasLayer" instance=ExtResource("8_frw27")]
+position = Vector2(126, 34)
+
 [node name="HUD" parent="." instance=ExtResource("3_cdudp")]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -165,13 +172,6 @@ position = Vector2(-1160, -680)
 mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
 
 [node name="ScoreTimer" type="Timer" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Blood" parent="CanvasLayer" instance=ExtResource("9_gk74x")]
-
-[node name="Statuses" parent="CanvasLayer" instance=ExtResource("8_frw27")]
-position = Vector2(126, 34)
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_7j38u")]
 visible = false
