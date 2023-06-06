@@ -2,7 +2,7 @@
 	"mob" : [
 		{
 			"_comment": "book",
-			"health": 50.0,
+			"health": 10.0,
 			"speed": 75.0,
 			"damage": 5.0,
 			"count": 3,
@@ -10,7 +10,7 @@
 		},
 		{
 			"_comment": "mob",
-			"health": 50.0,
+			"health": 10.0,
 			"speed": 75.0,
 			"damage": 5.0,
 			"count": 5,

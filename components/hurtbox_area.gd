@@ -3,7 +3,6 @@ extends Area2D
 
 signal dead
 signal health_changed(old_health: float, new_health: float)
-signal damaged(attack: Attack)
 
 @export var max_health: float
 var health: float
@@ -19,7 +18,14 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is HitboxArea:
-		var hitbox := area as HitboxArea
-		var attack := hitbox.attack
-		attack.attack_dir = (global_position - hitbox.global_position).normalized()
-		damaged.emit(attack)
+		handle_hurt(area.damage)
+
+
+func handle_hurt(damage: float) -> void:
+	health -= damage
+	health = clampf(health, 0, max_health)
+	
+	if health == 0:
+		dead.emit()
+	else:
+		health_changed.emit(health + damage, health)
