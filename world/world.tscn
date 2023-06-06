@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbv56yigbaa4t"]
+[gd_scene load_steps=13 format=3 uid="uid://cbv56yigbaa4t"]
 
 [ext_resource type="PackedScene" uid="uid://chn5fa71gf33t" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
@@ -6,9 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://si4gd7mdq6xp" path="res://assets/floors.png" id="3_diow0"]
 [ext_resource type="PackedScene" uid="uid://bcwsdtfx72kd0" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
 [ext_resource type="PackedScene" uid="uid://dhp515vfrcvt6" path="res://gui/pause_menu.tscn" id="6_7j38u"]
-[ext_resource type="PackedScene" uid="uid://01muqq0qxp8f" path="res://overlays/statuses.tscn" id="8_frw27"]
 [ext_resource type="Texture2D" uid="uid://cnriifkwxrxma" path="res://assets/3d_walls.png" id="8_j0ykl"]
-[ext_resource type="PackedScene" uid="uid://djpk3tjp046d5" path="res://overlays/blood.tscn" id="9_gk74x"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_3u73y"]
 tile_data = PackedInt32Array(0, 1245185, 16, 65536, 1245185, 17)
@@ -132,13 +130,6 @@ point_count = 5
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Blood" parent="CanvasLayer" instance=ExtResource("9_gk74x")]
-
-[node name="Statuses" parent="CanvasLayer" instance=ExtResource("8_frw27")]
-position = Vector2(126, 34)
 
 [node name="HUD" parent="." instance=ExtResource("3_cdudp")]
 
