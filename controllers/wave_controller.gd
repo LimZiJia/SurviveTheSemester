@@ -168,22 +168,26 @@ count:int, type:int, health:float, speed:float, damage:float, cooldown:float) ->
 			mob_spawn_location.progress_ratio = randf()
 			var mob = mob_scenes[type].instantiate()
 			mob.position = mob_spawn_location.position
-			mob.set_max_health(health)
+			mob.max_health = health
 			mob.speed = speed
-			mob.set_damage(damage)
+			var attack = Attack.new()
+			attack.attack_damage = damage
+			mob.set_attack(attack)
 			add_child(mob)
 	wave_timer.start(cooldown)
 
 # spawn_mob without the cooldown
-func spawn_mob1(\
+func spawn_mob1(
 count:int, type:int, health:float, speed:float, damage:float) -> void:
 	for i in range(count):
 			mob_spawn_location.progress_ratio = randf()
 			var mob = mob_scenes[type].instantiate()
 			mob.position = mob_spawn_location.position
-			mob.set_max_health(health)
+			mob.max_health = health
 			mob.speed = speed
-			mob.set_damage(damage)
+			var attack = Attack.new()
+			attack.attack_damage = damage
+			mob.set_attack(attack)
 			add_child(mob)
 
 
