@@ -77,7 +77,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5o50c"]
 resource_name = "hurt_back"
-length = 0.15
+length = 0.2
+step = 0.0667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,7 +86,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.0667, 0.1334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [1067, 1068, 1069]
@@ -93,7 +94,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_7aau7"]
 resource_name = "hurt_front"
-length = 0.15
+length = 0.2
+step = 0.0667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,7 +103,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.0667, 0.1334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [1073, 1074, 1075]
@@ -109,7 +111,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_gdrp2"]
 resource_name = "hurt_left"
-length = 0.15
+length = 0.2
+step = 0.0667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -117,7 +120,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.0667, 0.1334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [1070, 1071, 1072]
@@ -125,7 +128,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_butva"]
 resource_name = "hurt_right"
-length = 0.15
+length = 0.2
+step = 0.0667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -133,7 +137,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.0667, 0.1334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [1064, 1065, 1066]
@@ -552,7 +556,7 @@ script = ExtResource("1_7xkn6")
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 75
+frame = 77
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 33.5)
