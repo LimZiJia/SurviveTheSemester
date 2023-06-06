@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://01muqq0qxp8f"]
+[gd_scene load_steps=13 format=3 uid="uid://01muqq0qxp8f"]
 
 [ext_resource type="Texture2D" uid="uid://g01b6w7s1ung" path="res://assets/under.png" id="1_4nlhs"]
 [ext_resource type="Texture2D" uid="uid://cu06ybyfsu3ql" path="res://assets/outer.png" id="2_sh37l"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://becdwiiwk71yk" path="res://assets/money_tag.png" id="8_5sh6i"]
 [ext_resource type="Texture2D" uid="uid://dkvaadh70fthx" path="res://assets/0.png" id="9_1pgf4"]
 [ext_resource type="Texture2D" uid="uid://6yy2a46r4fi2" path="res://assets/Shop.png" id="10_m0yqm"]
+[ext_resource type="Texture2D" uid="uid://chnhv8pjvuunk" path="res://assets/Shop_hover.png" id="11_jy4f0"]
+[ext_resource type="Texture2D" uid="uid://u3buqrcmlll3" path="res://assets/Shop_pressed.png" id="11_towvd"]
 
 [node name="Statuses" type="Node2D"]
 
@@ -132,7 +134,7 @@ offset_top = 122.0
 offset_right = -72.0
 offset_bottom = 170.0
 texture_normal = ExtResource("10_m0yqm")
-texture_pressed = ExtResource("10_m0yqm")
-texture_hover = ExtResource("10_m0yqm")
+texture_pressed = ExtResource("11_towvd")
+texture_hover = ExtResource("11_jy4f0")
 texture_disabled = ExtResource("10_m0yqm")
 texture_focused = ExtResource("10_m0yqm")
