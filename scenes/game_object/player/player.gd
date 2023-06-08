@@ -5,14 +5,12 @@ signal dead
 signal damaged(frac_cur_health: float)
 
 enum { NORTH, EAST, SOUTH, WEST }
-const ACCELERATION := 20.0
-const FRICTION := 40.0
 
 @export var max_health := 100.0
-@export var max_speed := 400.0
 
 var is_damaged = false
 
+@onready var velocity_component = $VelocityComponent as VelocityComponent
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var health_label := $HealthLabel as Label
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
@@ -40,14 +38,13 @@ func _physics_process(_delta: float) -> void:
 		animation_tree.set("parameters/conditions/idle", false)
 		animation_tree.set("parameters/conditions/moving", true)
 		animation_state.travel("Move")
-		velocity = velocity.move_toward(dir * max_speed, ACCELERATION)
+		velocity_component.accelerate_in_direction(dir)
 	else:
 		animation_tree.set("parameters/conditions/idle", true)
 		animation_tree.set("parameters/conditions/moving", false)
 		animation_state.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
-	
-	move_and_slide()
+		velocity_component.decelerate()
+	velocity_component.move(self)
 
 
 func update_health_label() -> void:

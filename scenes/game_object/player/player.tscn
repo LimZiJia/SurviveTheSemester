@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://duuhgb0g62o2p"]
+[gd_scene load_steps=59 format=3 uid="uid://duuhgb0g62o2p"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
+[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_i4ae5"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
 [ext_resource type="PackedScene" uid="uid://cdrqtsb44hmfk" path="res://scenes/weapons/word/word.tscn" id="5_q2dig"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://scenes/game_object/player/player.png" id="8_voa7p"]
@@ -553,6 +554,10 @@ graph_offset = Vector2(0, 36.3047)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_7xkn6")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_i4ae5")]
+max_speed = 300.0
+acceleration = 30.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_4xk1m")]
 max_health = 100.0
