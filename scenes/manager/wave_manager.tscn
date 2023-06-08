@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://mmdip1bknuio"]
+
+[ext_resource type="Script" path="res://scenes/manager/wave_manager.gd" id="1_r34js"]
+
+[sub_resource type="Curve2D" id="Curve2D_t6yti"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1160, -680, 0, 0, 0, 0, 1160, -680, 0, 0, 0, 0, 1160, 680, 0, 0, 0, 0, -1160, 680, 0, 0, 0, 0, -1160, -680)
+}
+point_count = 5
+
+[node name="WaveManager" type="Node2D"]
+script = ExtResource("1_r34js")
+
+[node name="WaveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_t6yti")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+unique_name_in_owner = true
+position = Vector2(-1160, -680)
+
+[connection signal="timeout" from="WaveTimer" to="." method="start_wave"]

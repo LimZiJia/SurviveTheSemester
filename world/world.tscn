@@ -1,19 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbv56yigbaa4t"]
+[gd_scene load_steps=15 format=3 uid="uid://c61k34uev7v63"]
 
 [ext_resource type="PackedScene" uid="uid://chn5fa71gf33t" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
 [ext_resource type="PackedScene" uid="uid://dm1nq70ovhvxu" path="res://gui/hud.tscn" id="3_cdudp"]
 [ext_resource type="Texture2D" uid="uid://si4gd7mdq6xp" path="res://assets/floors.png" id="3_diow0"]
-[ext_resource type="PackedScene" uid="uid://bcwsdtfx72kd0" path="res://controllers/wave_controller.tscn" id="3_mnirc"]
+[ext_resource type="PackedScene" uid="uid://mmdip1bknuio" path="res://scenes/manager/wave_manager.tscn" id="3_mnirc"]
 [ext_resource type="PackedScene" uid="uid://dxwuibyvb8ge2" path="res://gui/end_screen.tscn" id="3_o411v"]
+[ext_resource type="PackedScene" uid="uid://be2bld7i1k33f" path="res://scenes/ui/time_ui.tscn" id="5_18yls"]
 [ext_resource type="PackedScene" uid="uid://dhp515vfrcvt6" path="res://gui/pause_menu.tscn" id="6_7j38u"]
+[ext_resource type="PackedScene" uid="uid://cy8v4dsyl3rsr" path="res://scenes/manager/time_manager.tscn" id="7_fb4dk"]
 [ext_resource type="Texture2D" uid="uid://cnriifkwxrxma" path="res://assets/3d_walls.png" id="8_j0ykl"]
-
-[sub_resource type="Curve2D" id="Curve2D_u2oqr"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1160, -680, 0, 0, 0, 0, 1160, -680, 0, 0, 0, 0, 1160, 680, 0, 0, 0, 0, -1160, 680, 0, 0, 0, 0, -1160, -680)
-}
-point_count = 5
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_3u73y"]
 tile_data = PackedInt32Array(0, 1245185, 16, 65536, 1245185, 17)
@@ -136,16 +132,13 @@ end_screen_scene = ExtResource("3_o411v")
 
 [node name="HUD" parent="." instance=ExtResource("3_cdudp")]
 
-[node name="WaveController" parent="." node_paths=PackedStringArray("mob_spawn_location") instance=ExtResource("3_mnirc")]
-mob_spawn_location = NodePath("../MobPath/MobSpawnLocation")
+[node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
+time_manager = NodePath("../TimeManager")
 
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_u2oqr")
+[node name="WaveManager" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("3_mnirc")]
+time_manager = NodePath("../TimeManager")
 
-[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(-1160, -680)
-
-[node name="ScoreTimer" type="Timer" parent="."]
+[node name="TimeManager" parent="." instance=ExtResource("7_fb4dk")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qe4pv")
@@ -167,5 +160,3 @@ unique_name_in_owner = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
-
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

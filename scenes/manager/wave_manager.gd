@@ -1,4 +1,3 @@
-class_name WaveController
 extends Node2D
 
 @export var mob_scenes: Array[PackedScene] = [
@@ -9,13 +8,12 @@ extends Node2D
 	preload("res://characters/enemies/book/book.tscn")
 ]
 
-@export var mob_spawn_location: PathFollow2D
+@export var time_manager: Node
 
 enum {BOOK, MOB, INTERMEDIATE_BOOK, INTERMEDIATE_MOB, BOSS_BOOK}
 
 var wave_mobs: Array
 var introduction_rounds: Dictionary
-var score:int = 0
 
 # Flags for if intermediate/boss mobs have been introduced
 var intermediate_wave:bool = false
@@ -30,6 +28,7 @@ var p_boss:float = 0.0
 var prev_increase:int = 0
 
 @onready var wave_timer := $WaveTimer as Timer
+@onready var mob_spawn_location := %MobSpawnLocation as PathFollow2D
 
 func _ready() -> void:
 	randomize()
@@ -38,19 +37,25 @@ func _ready() -> void:
 	var temp = JSON.parse_string(file.get_as_text())
 	wave_mobs = temp["mob"]
 	introduction_rounds = temp["introduction_rounds"]
+	
+	start_wave()
 
 
 func _process(_delta: float) -> void:
+	if time_manager == null:
+		return
+	var time = int(time_manager.get_time_elapsed())
+	
 	# Should not change the probabilities until the first intermediate wave/ boss wave
 	if (not intermediate_wave):
-		prev_increase = score
+		prev_increase = time
 	
 	# First catch is for if the boss wave has occured
-	if (boss_wave and score - prev_increase >= 20 and \
-			score >= introduction_rounds["boss"]["score"] + \
+	if (boss_wave and time - prev_increase >= 20 and \
+			time >= introduction_rounds["boss"]["score"] + \
 						introduction_rounds["boss"]["cooldown"]):
 		print("Boss chance increase")
-		prev_increase = score
+		prev_increase = time
 		if (p_easy == 0.0):
 			p_boss = clampf(p_boss + 0.05, 0.0, 1.0)
 			p_intermediate = clampf(p_intermediate - 0.05, 0.0, 1.0)
@@ -62,11 +67,11 @@ func _process(_delta: float) -> void:
 		print(p_boss)
 	
 	# Second catch is for if the intermediate wave has occurred, but not the boss wave
-	elif (intermediate_wave and score - prev_increase >= 20 and not boss_wave \
-			and score >= introduction_rounds["intermediate"]["score"] + \
+	elif (intermediate_wave and time - prev_increase >= 20 and not boss_wave \
+			and time >= introduction_rounds["intermediate"]["score"] + \
 							introduction_rounds["intermediate"]["cooldown"]):
 		print("Intermediate chance increase")
-		prev_increase = score
+		prev_increase = time
 		p_intermediate = clampf(p_intermediate + 0.05, 0.0, 1.0)
 		p_easy = clampf(p_easy - 0.05, 0.0, 1.0)
 		print(p_easy)
@@ -74,22 +79,18 @@ func _process(_delta: float) -> void:
 		print(p_boss)
 
 
-func start() -> void:
-	start_wave()
-
-
-func stop() -> void:
-	wave_timer.stop()
-
 func start_wave() -> void:
 	# Ensuring no errors
 	if not mob_spawn_location:
 		return
+	if time_manager == null:
+		return
+	var time = int(time_manager.get_time_elapsed())
 	
 	# Special waves (want to introduce intermediate/hard mobs at set score)
 	# Intermediate special wave
 	if (not intermediate_wave and \
-	score >= introduction_rounds["intermediate"]["score"]):
+	time >= introduction_rounds["intermediate"]["score"]):
 		print("Intermediate special wave")
 		intermediate_wave = true
 
@@ -106,7 +107,7 @@ func start_wave() -> void:
 		p_easy = 0.75
 	# Boss special wave
 	elif (not boss_wave and \
-	score >= introduction_rounds["boss"]["score"]):
+	time >= introduction_rounds["boss"]["score"]):
 		print("Boss special wave")
 		boss_wave = true
 		var count:int = wave_mobs[4]["count"]
