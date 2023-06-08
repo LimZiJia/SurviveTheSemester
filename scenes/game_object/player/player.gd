@@ -57,15 +57,14 @@ func _physics_process(_delta: float) -> void:
 func _on_damaged(attack: Attack) -> void:
 	health -= attack.attack_damage
 	health = clampf(health, 0, max_health)
+	health_label.text = str(int(health))
+	damaged.emit(health / max_health)
 	
 	if health == 0:
 		queue_free()
 		dead.emit()
 	else:
 		is_damaged = true
-		health_label.text = str(int(health))
 		await(get_tree().create_timer(0.15).timeout)
 		is_damaged = false
-		health_label.text = str(int(health))
-		damaged.emit(health / max_health)
 
