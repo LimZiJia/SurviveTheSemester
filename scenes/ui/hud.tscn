@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_wsv0d"]
+[ext_resource type="PackedScene" path="res://scenes/overlays/blood.tscn" id="2_1lq18"]
+[ext_resource type="PackedScene" path="res://scenes/overlays/statuses.tscn" id="3_4qhob"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_wsv0d")
+
+[node name="Blood" parent="." instance=ExtResource("2_1lq18")]
+
+[node name="Statuses" parent="." instance=ExtResource("3_4qhob")]
+position = Vector2(126, 34)

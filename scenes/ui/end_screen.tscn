@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_03yv1"]
+
+[node name="EndScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_03yv1")
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -120.0
+offset_right = 540.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="HSplitContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = 70.0
+offset_right = 328.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+metadata/_edit_group_ = true
+
+[node name="ReplayButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Play Again"
+
+[node name="MainMenuButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true

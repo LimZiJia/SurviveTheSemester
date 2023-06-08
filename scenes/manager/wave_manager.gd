@@ -1,12 +1,6 @@
 extends Node2D
 
-@export var mob_scenes: Array[PackedScene] = [
-	preload("res://characters/enemies/book/book.tscn"),
-	preload("res://characters/enemies/mob/mob.tscn"),
-	preload("res://characters/enemies/book/book.tscn"),
-	preload("res://characters/enemies/mob/mob.tscn"),
-	preload("res://characters/enemies/book/book.tscn")
-]
+@export var mob_scenes: Array[PackedScene] = []
 
 @export var time_manager: Node
 

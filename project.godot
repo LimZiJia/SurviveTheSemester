@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="Survive The Semester"
-run/main_scene="res://gui/start_screen.tscn"
+run/main_scene="res://scenes/ui/start_screen.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Events="*res://common/events.gd"
-SceneChanger="*res://common/scene_changer.gd"
-GameManager="*res://common/game_manager.gd"
+Events="*res://scenes/autoload/events.gd"
+SceneChanger="*res://scenes/autoload/scene_changer.gd"
+GameManager="*res://scenes/autoload/game_manager.gd"
 
 [display]
 
