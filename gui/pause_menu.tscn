@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://gui/pause_menu.gd" id="1_t2tc5"]
 
 [node name="PauseMenu" type="CanvasLayer"]
-process_mode = 2
+process_mode = 3
 script = ExtResource("1_t2tc5")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -44,16 +44,19 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
 [node name="RestartButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Restart"
 
 [node name="ReturnButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"

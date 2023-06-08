@@ -1,34 +1,29 @@
 extends CanvasLayer
 
-@onready var resume_button: Button = \
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton
-@onready var restart_button: Button = \
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton
-@onready var return_button: Button = \
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ReturnButton
+@onready var resume_button := %ResumeButton as Button
+@onready var restart_button := %RestartButton as Button
+@onready var return_button := %ReturnButton as Button
 
 func _ready() -> void:
-	resume_button.pressed.connect(resume)
-	restart_button.pressed.connect(restart)
-	return_button.pressed.connect(return_to_main)
-
-
-func pause() -> void:
-	self.visible = true
 	get_tree().paused = true
+	
+	resume_button.pressed.connect(on_resume_button_pressed)
+	restart_button.pressed.connect(on_restart_button_pressed)
+	return_button.pressed.connect(on_return_button_pressed)
 
 
-func resume() -> void:
-	self.visible = false
+func on_resume_button_pressed() -> void:
 	get_tree().paused = false
+	queue_free()
 
 
-func restart() -> void:
-	self.visible = false
+func on_restart_button_pressed() -> void:
+	get_tree().paused = false
 	Events.game_restarted.emit()
-	get_tree().paused = false
+	queue_free()
 
 
-func return_to_main() -> void:
+func on_return_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://gui/start_screen.tscn")
+	queue_free()

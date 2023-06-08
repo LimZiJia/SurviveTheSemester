@@ -10,28 +10,32 @@ var knockback := Vector2.ZERO
 @onready var health_label:= $HealthLabel
 @onready var hurtbox:= $HurtboxArea
 @onready var hitbox:= $HitboxArea
-var target: Player = null
 
 
 func _ready() -> void:
 	health = max_health
-	if get_tree().has_group("player"):
-		target = get_tree().get_first_node_in_group("player")
+	
 	hurtbox.damaged.connect(_on_damaged)
 	health_label.text = str(int(health))
 
 
 func _physics_process(delta: float) -> void:
-	var direction = Vector2.ZERO
+	var direction = get_direction_to_player()
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_factor * delta)
 	
-	if target:
-		direction = position.direction_to(target.position)
+	if direction.is_zero_approx():
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
 
 	position += direction * speed * delta + knockback
+
+
+func get_direction_to_player() -> Vector2:
+	var player = get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return Vector2.ZERO
+	return global_position.direction_to(player.global_position)
 
 
 func _on_damaged(attack: Attack) -> void:
@@ -44,10 +48,6 @@ func _on_damaged(attack: Attack) -> void:
 		health_label.text = str(int(health))
 	
 	knockback += attack.attack_dir * attack.knockback_force
-
-
-func stop() -> void:
-	target = null
 
 
 func set_attack(attack: Attack) -> void:
