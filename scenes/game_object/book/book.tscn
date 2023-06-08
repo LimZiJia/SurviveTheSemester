@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://olpy4h4v3w36"]
 
 [ext_resource type="Script" path="res://scenes/game_object/book/book.gd" id="1_bu757"]
 [ext_resource type="PackedScene" uid="uid://dsfstepo6lk7x" path="res://scenes/game_object/book/book_sprite.tscn" id="2_iyn5q"]

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://be2bld7i1k33f" path="res://scenes/ui/time_ui.tscn" id="5_18yls"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="6_7j38u"]
 [ext_resource type="PackedScene" uid="uid://cy8v4dsyl3rsr" path="res://scenes/manager/time_manager.tscn" id="7_fb4dk"]
-[ext_resource type="TileSet" uid="uid://cmwbklxavwnm5" path="res://resources/tileset.tres" id="8_4hahy"]
+[ext_resource type="TileSet" uid="uid://b5nsdotfcxbr5" path="res://resources/tileset.tres" id="8_4hahy"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")

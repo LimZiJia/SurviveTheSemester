@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://mmdip1bknuio"]
 
 [ext_resource type="Script" path="res://scenes/manager/wave_manager.gd" id="1_r34js"]
-[ext_resource type="PackedScene" uid="uid://eaibqry11ttq" path="res://scenes/game_object/book/book.tscn" id="2_paetk"]
+[ext_resource type="PackedScene" uid="uid://olpy4h4v3w36" path="res://scenes/game_object/book/book.tscn" id="2_paetk"]
 [ext_resource type="PackedScene" path="res://scenes/game_object/mob/mob.tscn" id="3_apm1j"]
 
 [sub_resource type="Curve2D" id="Curve2D_t6yti"]
