@@ -173,9 +173,7 @@ count:int, type:int, health:float, speed:float, damage:float) -> void:
 		var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
 		entities_layer.add_child(mob)
 		
-		var attack = Attack.new()
-		attack.attack_damage = damage
-		mob.set_stats(health, speed, attack)
+		mob.set_stats(health, speed, damage)
 
 
 

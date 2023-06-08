@@ -11,20 +11,18 @@ const FRICTION := 40.0
 @export var max_health := 100.0
 @export var max_speed := 400.0
 
-var health := 0.0
-var facing := SOUTH
 var is_damaged = false
 
+@onready var health_component := $HealthComponent as HealthComponent
 @onready var health_label := $HealthLabel as Label
-@onready var hurtbox := $HurtboxArea as HurtboxArea
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var animation_tree = $AnimationTree as AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 
 func _ready() -> void:
-	health = max_health
-	hurtbox.damaged.connect(_on_damaged)
-	health_label.text = str(int(hurtbox.health))
+	health_component.damaged.connect(on_health_component_damaged)
+	health_component.dead.connect(on_health_component_dead)
+	update_health_label()
 	
 func _physics_process(_delta: float) -> void:
 	# Movement
@@ -52,17 +50,17 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func _on_damaged(attack: Attack) -> void:
-	health -= attack.attack_damage
-	health = clampf(health, 0, max_health)
-	health_label.text = str(int(health))
-	damaged.emit(health / max_health)
-	
-	if health == 0:
-		queue_free()
-		dead.emit()
-	else:
-		is_damaged = true
-		await(get_tree().create_timer(0.15).timeout)
-		is_damaged = false
+func update_health_label() -> void:
+	health_label.text = str(int(health_component.current_health))
 
+
+func on_health_component_damaged() -> void:
+	update_health_label()
+	damaged.emit(health_component.current_health / health_component.max_health)
+	is_damaged = true
+	await get_tree().create_timer(0.15).timeout
+	is_damaged = false
+
+
+func on_health_component_dead() -> void:
+	dead.emit()

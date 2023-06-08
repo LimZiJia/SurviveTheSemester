@@ -1,19 +1,14 @@
 extends CharacterBody2D
 
-@export var max_health := 10.0
-
-var current_health: float
-
+@onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
+@onready var hitbox_component := $HitboxComponent as HitboxComponent
 @onready var health_label := $HealthLabel as Label
-@onready var hurtbox := $HurtboxArea as HurtboxArea
-@onready var hitbox := $HitboxArea as HitboxArea
 
 
 func _ready() -> void:
-	current_health = max_health
-	hurtbox.damaged.connect(_on_damaged)
-	health_label.text = str(int(current_health))
+	health_component.damaged.connect(on_health_component_damaged)
+	update_health_label()
 
 
 func _process(_delta: float) -> void:
@@ -21,19 +16,18 @@ func _process(_delta: float) -> void:
 	velocity_component.move(self)
 
 
-func _on_damaged(attack: Attack) -> void:
-	current_health -= attack.attack_damage
-	current_health = clampf(current_health, 0, max_health)
-	
-	if current_health == 0.0:
-		queue_free()
-	else:
-		health_label.text = str(int(current_health))
-	
-	velocity += attack.attack_dir * attack.knockback_force
+func on_health_component_damaged() -> void:
+	update_health_label()
 
-func set_stats(health: float, speed: float, attack: Attack) -> void:
-	max_health = health
-	current_health = health
+
+func update_health_label() -> void:
+	health_label.text = str(int(health_component.current_health))
+
+
+# Temporary function to set the stats of each enemy
+func set_stats(health: float, speed: float, damage: float) -> void:
+	$HealthComponent.max_health = health
+	$HealthComponent.current_health = health
 	$VelocityComponent.max_speed = speed
-	$HitboxArea.attack = attack
+	$HitboxComponent.damage = damage
+	$HealthLabel.text = str(int(health))

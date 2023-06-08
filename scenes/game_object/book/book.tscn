@@ -1,19 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://olpy4h4v3w36"]
+[gd_scene load_steps=10 format=3 uid="uid://olpy4h4v3w36"]
 
 [ext_resource type="Script" path="res://scenes/game_object/book/book.gd" id="1_bu757"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_41gv0"]
 [ext_resource type="PackedScene" uid="uid://dsfstepo6lk7x" path="res://scenes/game_object/book/book_sprite.tscn" id="2_iyn5q"]
-[ext_resource type="Script" path="res://scenes/component/hurtbox_area.gd" id="5_0k24j"]
-[ext_resource type="Script" path="res://scenes/component/hitbox_area.gd" id="6_gwrq3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh74k"]
-size = Vector2(26.163, 30.406)
+[ext_resource type="Script" path="res://scenes/component/health_component.gd" id="3_4cdrx"]
+[ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="4_8rqmr"]
+[ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="5_lsna1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rek7v"]
 size = Vector2(26.163, 30.4056)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iocx5"]
 size = Vector2(23.3345, 28.9914)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh74k"]
+size = Vector2(26.163, 30.406)
 
 [node name="Book" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 4
@@ -23,6 +24,28 @@ script = ExtResource("1_bu757")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_41gv0")]
 acceleration = 15.0
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_4cdrx")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_8rqmr")]
+collision_layer = 0
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(-1, 0.500001)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_rek7v")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("5_lsna1")]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-1, 0.5)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_iocx5")
 
 [node name="BookSprite" parent="." instance=ExtResource("2_iyn5q")]
 
@@ -38,27 +61,3 @@ offset_right = 20.0
 offset_bottom = -17.0
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HurtboxArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-script = ExtResource("5_0k24j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
-position = Vector2(-1, 0.500001)
-rotation = 0.785397
-shape = SubResource("RectangleShape2D_rek7v")
-
-[node name="HitboxArea" type="Area2D" parent="." node_paths=PackedStringArray("attack")]
-collision_layer = 2
-collision_mask = 0
-monitoring = false
-script = ExtResource("6_gwrq3")
-attack = NodePath("")
-damage = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
-position = Vector2(-1, 0.5)
-rotation = 0.785397
-shape = SubResource("RectangleShape2D_iocx5")

@@ -9,7 +9,7 @@ var velocity := Vector2.ZERO
 
 @onready var node = $Node2D
 @onready var label = $Node2D/Label
-@onready var hitbox = $HitboxArea
+@onready var hitbox = $HitboxComponent
 @onready var impact_detector = $ImpactDetector
 @onready var despawn_timer = $DespawnTimer
 
