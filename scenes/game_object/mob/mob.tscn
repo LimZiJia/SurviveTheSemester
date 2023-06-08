@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cejjrtuji45i4"]
+[gd_scene load_steps=13 format=3 uid="uid://cejjrtuji45i4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/mob/mob.gd" id="1_anuhh"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_8mro8"]
 [ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://scenes/game_object/mob/enemy-walking-1.png" id="2_n7vsd"]
+[ext_resource type="Script" path="res://scenes/component/experience_drop_component.gd" id="3_atexj"]
 [ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://scenes/game_object/mob/enemy-walking-2.png" id="3_kn75w"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="3_r44ho"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_tvcfr"]
@@ -41,7 +42,13 @@ motion_mode = 1
 script = ExtResource("1_anuhh")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_8mro8")]
+max_speed = 130.0
 acceleration = 25.0
+
+[node name="ExperienceDropComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_atexj")
+health_component = NodePath("../HealthComponent")
+experience = 1
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_r44ho")]
 

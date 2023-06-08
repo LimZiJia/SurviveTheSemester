@@ -35,5 +35,5 @@ func move(character_body: CharacterBody2D) -> void:
 	velocity = character_body.velocity
 
 
-func knockback(knockback: Vector2) -> void:
-	velocity += knockback
+func knockback(knockback_vector: Vector2) -> void:
+	velocity += knockback_vector
