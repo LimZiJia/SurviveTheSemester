@@ -6,6 +6,7 @@ extends Node
 
 var velocity := Vector2.ZERO
 
+
 func accelerate_to_player() -> void:
 	var owner_node2d = owner as Node2D
 	if owner_node2d == null:
@@ -32,3 +33,7 @@ func move(character_body: CharacterBody2D) -> void:
 	character_body.velocity = velocity
 	character_body.move_and_slide()
 	velocity = character_body.velocity
+
+
+func knockback(knockback: Vector2) -> void:
+	velocity += knockback

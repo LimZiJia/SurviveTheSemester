@@ -172,18 +172,8 @@ count:int, type:int, health:float, speed:float, damage:float) -> void:
 		
 		var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
 		entities_layer.add_child(mob)
-		set_mob_stats(mob, health, speed, damage)
-
-## HACK: Simple way of spawning the mob without set index issues
-## for now
-func set_mob_stats(mob, health: float, speed: float, damage: float) -> void:
-	await mob.ready
-	mob.health_component.max_health = health
-	mob.health_component.current_health = health
-	mob.velocity_component.max_speed = speed
-	mob.hitbox_component.damage = damage
-	mob.update_health_label()
-
+		
+		mob.set_stats(health, speed, damage)
 
 
 # SCORE MULTIPLIERS
