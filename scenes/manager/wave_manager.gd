@@ -164,7 +164,7 @@ count:int, type:int, health:float, speed:float, damage:float, cooldown:float) ->
 			var mob = mob_scenes[type].instantiate()
 			mob.position = mob_spawn_location.position
 			mob.max_health = health
-			mob.speed = speed
+			mob.max_speed = speed
 			var attack = Attack.new()
 			attack.attack_damage = damage
 			mob.set_attack(attack)
@@ -180,7 +180,7 @@ count:int, type:int, health:float, speed:float, damage:float) -> void:
 			var mob = mob_scenes[type].instantiate()
 			mob.position = mob_spawn_location.position
 			mob.max_health = health
-			mob.speed = speed
+			mob.max_speed = speed
 			var attack = Attack.new()
 			attack.attack_damage = damage
 			mob.set_attack(attack)

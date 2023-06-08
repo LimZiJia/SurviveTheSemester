@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://cdrqtsb44hmfk"]
 
 [ext_resource type="Script" path="res://scenes/weapons/word/word.gd" id="1_8lsmw"]
-[ext_resource type="PackedScene" path="res://scenes/weapons/word/word_projectile.tscn" id="2_kxu1b"]
+[ext_resource type="PackedScene" uid="uid://cs7lk1agjk8bm" path="res://scenes/weapons/word/word_projectile.tscn" id="2_kxu1b"]
 
 [node name="Word" type="Node2D"]
 script = ExtResource("1_8lsmw")

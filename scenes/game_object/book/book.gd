@@ -1,8 +1,8 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-@export var speed := 100.0
+@export var max_speed := 100.0
+@export var acceleration := 15.0
 @export var max_health := 10.0
-@export var knockback_factor: float
 
 var health: float
 var knockback := Vector2.ZERO
@@ -19,9 +19,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction = get_direction_to_player()
-	knockback = knockback.move_toward(Vector2.ZERO, knockback_factor * delta)
+	var target_velocity = direction * max_speed
 	
-	position += direction * speed * delta + knockback
+	
+	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * acceleration))
+	move_and_slide()
 
 
 func get_direction_to_player() -> Vector2:
@@ -44,8 +46,7 @@ func _on_damaged(attack: Attack) -> void:
 	else:
 		health_label.text = str(int(health))
 	
-	# TODO: Add knockback
-	knockback += attack.attack_dir * attack.knockback_force
+	velocity += attack.attack_dir * attack.knockback_force
 
 
 func set_attack(attack: Attack) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://cs7lk1agjk8bm"]
 
 [ext_resource type="Script" path="res://scenes/component/hitbox_area.gd" id="1_55uaf"]
 [ext_resource type="Script" path="res://scenes/weapons/word/word_projectile.gd" id="1_anhv8"]
@@ -33,7 +33,7 @@ text = "aiken"
 [node name="Attack" type="Node" parent="."]
 script = ExtResource("3_588r8")
 attack_damage = 20.0
-knockback_force = 20.0
+knockback_force = 1800.0
 
 [node name="HitboxArea" type="Area2D" parent="." node_paths=PackedStringArray("attack")]
 collision_layer = 4

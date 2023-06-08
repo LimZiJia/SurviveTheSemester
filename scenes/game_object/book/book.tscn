@@ -14,13 +14,11 @@ size = Vector2(26.163, 30.4056)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iocx5"]
 size = Vector2(23.3345, 28.9914)
 
-[node name="Book" type="RigidBody2D" groups=["mobs"]]
+[node name="Book" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 4
 collision_mask = 5
-gravity_scale = 0.0
-lock_rotation = true
+motion_mode = 1
 script = ExtResource("1_bu757")
-knockback_factor = 150.0
 
 [node name="BookSprite" parent="." instance=ExtResource("2_iyn5q")]
 
