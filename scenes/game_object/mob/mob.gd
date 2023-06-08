@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	var direction = get_direction_to_player()
 	var target_velocity = direction * max_speed
 	
-	if direction.is_zero_approx():
+	if not direction.is_zero_approx():
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()

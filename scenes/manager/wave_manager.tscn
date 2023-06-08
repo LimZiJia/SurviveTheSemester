@@ -10,7 +10,7 @@ _data = {
 }
 point_count = 5
 
-[node name="WaveManager" type="Node2D"]
+[node name="WaveManager" type="Node"]
 script = ExtResource("1_r34js")
 mob_scenes = Array[PackedScene]([ExtResource("2_paetk"), ExtResource("3_apm1j"), ExtResource("2_paetk"), ExtResource("3_apm1j"), ExtResource("2_paetk")])
 

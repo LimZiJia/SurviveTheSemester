@@ -29,10 +29,8 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	# Movement
 	var dir = Vector2.ZERO
-	dir.x = int(Input.is_action_pressed("move_right")) - \
-		int(Input.is_action_pressed("move_left"))
-	dir.y = int(Input.is_action_pressed("move_down")) - \
-		int(Input.is_action_pressed("move_up"))
+	dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	dir = dir.normalized()
 	
 	if is_damaged:
