@@ -40,7 +40,7 @@ func _ready() -> void:
 	introduction_rounds = temp["introduction_rounds"]
 
 
-func _process(delta) -> void:
+func _process(_delta: float) -> void:
 	# Should not change the probabilities until the first intermediate wave/ boss wave
 	if (not intermediate_wave):
 		prev_increase = score

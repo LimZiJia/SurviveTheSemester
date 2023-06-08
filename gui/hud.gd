@@ -5,6 +5,8 @@ signal start_game
 var score:int = 0:
 	set = set_score
 
+@onready var blood = $Blood
+@onready var statuses = $Statuses
 @onready var score_label = $ScoreLabel
 @onready var message_label = $MessageLabel
 @onready var buttons = $Buttons
@@ -19,6 +21,12 @@ func _ready() -> void:
 
 func _on_message_timer_timeout():
 	message_label.hide()
+
+
+func update_health(frac_cur_health: float) -> void:
+	blood.update_health(frac_cur_health)
+	statuses.update_health(frac_cur_health)
+	
 
 func set_score(value: int) -> void:
 	score_label.text = str(value)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cts7dbpwweqgm"]
+[gd_scene load_steps=13 format=3 uid="uid://cbv56yigbaa4t"]
 
 [ext_resource type="PackedScene" uid="uid://chn5fa71gf33t" path="res://characters/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_icddk"]
@@ -148,12 +148,15 @@ limit_smoothed = true
 [node name="Player" parent="." instance=ExtResource("1_63u67")]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+visible = false
 remote_path = NodePath("../../Camera2D")
 
 [node name="MobPath" type="Path2D" parent="."]
+visible = false
 curve = SubResource("Curve2D_u2oqr")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+visible = false
 position = Vector2(-1160, -680)
 
 [node name="WaveController" parent="." node_paths=PackedStringArray("mob_spawn_location") instance=ExtResource("3_mnirc")]
