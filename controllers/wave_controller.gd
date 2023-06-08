@@ -173,7 +173,8 @@ count:int, type:int, health:float, speed:float, damage:float, cooldown:float) ->
 			var attack = Attack.new()
 			attack.attack_damage = damage
 			mob.set_attack(attack)
-			add_child(mob)
+			var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
+			entities_layer.add_child(mob)
 	wave_timer.start(cooldown)
 
 # spawn_mob without the cooldown
@@ -188,7 +189,8 @@ count:int, type:int, health:float, speed:float, damage:float) -> void:
 			var attack = Attack.new()
 			attack.attack_damage = damage
 			mob.set_attack(attack)
-			add_child(mob)
+			var entities_layer = get_tree().get_first_node_in_group("entities_layer") as Node2D
+			entities_layer.add_child(mob)
 
 
 

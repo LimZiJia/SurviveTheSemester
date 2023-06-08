@@ -30,6 +30,7 @@ func get_direction_to_player() -> Vector2:
 		return Vector2.ZERO
 	return global_position.direction_to(player.global_position)
 
+
 func _on_health_changed(_old_health: float, new_health: float) -> void:
 	health_label.text = str(int(new_health))
 

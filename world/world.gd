@@ -5,7 +5,7 @@ extends Node
 
 var score := 0
 
-@onready var player := $Player as Player
+@onready var player := %Player as Player
 @onready var hud := $HUD as CanvasLayer
 @onready var wave_controller := $WaveController as Node2D
 @onready var score_timer := $ScoreTimer as Timer
