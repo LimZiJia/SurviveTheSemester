@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 
 signal dead
-signal damaged(frac_cur_health: float)
 
 enum { NORTH, EAST, SOUTH, WEST }
 
@@ -53,7 +52,7 @@ func update_health_label() -> void:
 
 func on_health_component_damaged() -> void:
 	update_health_label()
-	damaged.emit(health_component.current_health / health_component.max_health)
+	GameEvents.emit_health_updated(health_component.current_health, health_component.max_health)
 	is_damaged = true
 	await get_tree().create_timer(0.15).timeout
 	is_damaged = false
