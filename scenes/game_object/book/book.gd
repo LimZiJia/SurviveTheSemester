@@ -22,12 +22,3 @@ func on_health_component_damaged() -> void:
 
 func update_health_label() -> void:
 	health_label.text = str(int(health_component.current_health))
-
-
-# Temporary function to set the stats of each enemy
-func set_stats(health: float, speed: float, damage: float) -> void:
-	$HealthComponent.max_health = health
-	$HealthComponent.current_health = health
-	$VelocityComponent.max_speed = speed
-	$HitboxComponent.damage = damage
-	$HealthLabel.text = str(int(health))
