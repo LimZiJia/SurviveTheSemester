@@ -1,10 +1,10 @@
-[gd_scene load_steps=59 format=3 uid="uid://duuhgb0g62o2p"]
+[gd_scene load_steps=59 format=3 uid="uid://doivbebauk836"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_i4ae5"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
-[ext_resource type="PackedScene" uid="uid://cdrqtsb44hmfk" path="res://scenes/weapons/word/word.tscn" id="5_q2dig"]
+[ext_resource type="PackedScene" uid="uid://bgwhgewn87l0s" path="res://scenes/weapons/word/word_weapon_controller.tscn" id="5_q2dig"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://scenes/game_object/player/player.png" id="8_voa7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c14a4"]
@@ -571,11 +571,15 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_c14a4")
 
+[node name="WeaponManager" type="Node2D" parent="."]
+
+[node name="WordWeaponController" parent="WeaponManager" instance=ExtResource("5_q2dig")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 77
+frame = 75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 33.5)
@@ -588,9 +592,6 @@ offset_right = 20.0
 offset_bottom = -27.0
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Word" parent="." instance=ExtResource("5_q2dig")]
-cooldown = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

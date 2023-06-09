@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs7lk1agjk8bm"]
+[gd_scene load_steps=6 format=3 uid="uid://cufkg4a6l1oe8"]
 
-[ext_resource type="Script" path="res://scenes/weapons/word/word_projectile.gd" id="1_anhv8"]
+[ext_resource type="Script" path="res://scenes/weapons/word/word_weapon.gd" id="1_anhv8"]
 [ext_resource type="FontFile" uid="uid://nskudpk8rqcw" path="res://scenes/weapons/word/Mario-Kart-DS.ttf" id="2_o0h4m"]
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="3_gyusg"]
 
@@ -10,12 +10,12 @@ size = Vector2(45, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxk1k"]
 size = Vector2(45, 12)
 
-[node name="Words" type="Node2D"]
+[node name="WordWeapon" type="Node2D"]
 script = ExtResource("1_anhv8")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Visuals" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="Node2D"]
+[node name="Label" type="Label" parent="Visuals"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5

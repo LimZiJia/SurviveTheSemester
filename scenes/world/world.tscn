@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://xvdobfollhod"]
 
-[ext_resource type="PackedScene" uid="uid://duuhgb0g62o2p" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
+[ext_resource type="PackedScene" uid="uid://doivbebauk836" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
 [ext_resource type="PackedScene" uid="uid://by6qwbccemo4n" path="res://scenes/ui/hud.tscn" id="3_cdudp"]
 [ext_resource type="PackedScene" uid="uid://mmdip1bknuio" path="res://scenes/manager/wave_manager.tscn" id="3_mnirc"]
@@ -52,3 +52,5 @@ unique_name_in_owner = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var word_projectile_scene: PackedScene
+@export var word_weapon_scene: PackedScene
 @export_range(0.05, 10, 0.05) var cooldown := 0.05
 
 var can_attack := true
@@ -9,14 +9,14 @@ var can_attack := true
 
 
 func _ready():
-	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
+	cooldown_timer.timeout.connect(on_cooldown_timer_timeout)
 
 
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		attack()
-		
+
 
 # Given the player can attack and there are mobs surrounding the 
 # player, it initiates the cooldown, and adds the word projectile
@@ -32,19 +32,21 @@ func attack() -> void:
 	can_attack = false
 	cooldown_timer.start(cooldown)
 	
-	var word_projectile := word_projectile_scene.instantiate()
-	word_projectile.position = global_position
-	word_projectile.direction = global_position.direction_to(mob.global_position)
-	add_child(word_projectile)
+	var word_weapon_instance := word_weapon_scene.instantiate()
+	var spawn_direction = global_position.direction_to(mob.global_position)
+	
+	var foreground_layer := get_tree().get_first_node_in_group("foreground_layer") as Node2D
+	foreground_layer.add_child(word_weapon_instance)
+	
+	word_weapon_instance.global_position = global_position
+	word_weapon_instance.direction = spawn_direction
 
 
 
 # Sets the can_attack variable to true so that
 # the player can attack again
-func _on_cooldown_timer_timeout() -> void:
+func on_cooldown_timer_timeout() -> void:
 	can_attack = true
-
-# Despawns the word after some time
 
 
 # Returns the nearest mob in the SceneTree, or null if 

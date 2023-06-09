@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 signal dead
 
-enum { NORTH, EAST, SOUTH, WEST }
-
 @export var max_health := 100.0
 
 var is_damaged = false
