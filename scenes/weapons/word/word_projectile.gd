@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var max_speed := 600.0
+@export var knockback_factor := 1500.0
 
 const NAMES := [ "aiken", "dueet"]
 
@@ -9,7 +10,7 @@ var velocity := Vector2.ZERO
 
 @onready var node = $Node2D
 @onready var label = $Node2D/Label
-@onready var hitbox = $HitboxArea
+@onready var hitbox_component = $HitboxComponent
 @onready var impact_detector = $ImpactDetector
 @onready var despawn_timer = $DespawnTimer
 
@@ -17,6 +18,8 @@ func _ready() -> void:
 	choose_name()
 	set_as_top_level(true)
 	look_at(position + direction)
+	
+	hitbox_component.knockback = knockback_factor * Vector2.from_angle(global_rotation)
 	
 	var rot := fposmod(rotation_degrees, 360.0)
 	

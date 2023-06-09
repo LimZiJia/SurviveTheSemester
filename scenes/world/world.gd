@@ -9,7 +9,6 @@ extends Node
 
 func _ready() -> void:
 	player.dead.connect(on_player_dead)
-	player.damaged.connect(hud.update_health)
 
 
 func _input(event: InputEvent) -> void:

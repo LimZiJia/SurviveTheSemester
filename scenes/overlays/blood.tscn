@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://cu0h00ddhot0u"]
 
 [ext_resource type="Script" path="res://scenes/overlays/blood.gd" id="1_75kfq"]
 [ext_resource type="Texture2D" uid="uid://c1m8pnubxwk2j" path="res://assets/bloody wall paper.png" id="2_0sxq6"]

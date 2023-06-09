@@ -1,10 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://cejjrtuji45i4"]
+[gd_scene load_steps=13 format=3 uid="uid://cejjrtuji45i4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/mob/mob.gd" id="1_anuhh"]
+[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_8mro8"]
 [ext_resource type="Texture2D" uid="uid://dtgybaxplg2bj" path="res://scenes/game_object/mob/enemy-walking-1.png" id="2_n7vsd"]
+[ext_resource type="Script" path="res://scenes/component/experience_drop_component.gd" id="3_atexj"]
 [ext_resource type="Texture2D" uid="uid://skio4cfuys26" path="res://scenes/game_object/mob/enemy-walking-2.png" id="3_kn75w"]
-[ext_resource type="Script" path="res://scenes/component/hurtbox_area.gd" id="6_hxnuf"]
-[ext_resource type="Script" path="res://scenes/component/hitbox_area.gd" id="7_2vqkc"]
+[ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="3_r44ho"]
+[ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_tvcfr"]
+[ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="4_bddah"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jusqm"]
+radius = 12.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fxbd"]
+radius = 12.0
+height = 34.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8aoai"]
 animations = [{
@@ -24,27 +35,39 @@ animations = [{
 radius = 12.0
 height = 34.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jusqm"]
-radius = 12.0
-height = 34.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7fxbd"]
-radius = 12.0
-height = 34.0
-
 [node name="Mob" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 4
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_anuhh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = -1.5708
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_8aoai")
+[node name="VelocityComponent" parent="." instance=ExtResource("2_8mro8")]
+max_speed = 130.0
+acceleration = 25.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_trbdv")
+[node name="ExperienceDropComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_atexj")
+health_component = NodePath("../HealthComponent")
+experience = 1
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_r44ho")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("3_tvcfr")]
+collision_layer = 0
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CapsuleShape2D_jusqm")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("4_bddah")]
+collision_layer = 2
+collision_mask = 0
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_7fxbd")
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -20.0
@@ -54,22 +77,11 @@ offset_bottom = -20.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HurtboxArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-script = ExtResource("6_hxnuf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_8aoai")
+autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxArea"]
-shape = SubResource("CapsuleShape2D_jusqm")
-
-[node name="HitboxArea" type="Area2D" parent="." node_paths=PackedStringArray("attack")]
-collision_layer = 2
-collision_mask = 0
-monitoring = false
-script = ExtResource("7_2vqkc")
-attack = NodePath("")
-damage = 5.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
-shape = SubResource("CapsuleShape2D_7fxbd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_trbdv")

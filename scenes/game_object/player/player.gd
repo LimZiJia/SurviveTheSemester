@@ -2,29 +2,24 @@ class_name Player
 extends CharacterBody2D
 
 signal dead
-signal damaged(frac_cur_health: float)
 
 enum { NORTH, EAST, SOUTH, WEST }
-const ACCELERATION := 20.0
-const FRICTION := 40.0
 
 @export var max_health := 100.0
-@export var max_speed := 400.0
 
-var health := 0.0
-var facing := SOUTH
 var is_damaged = false
 
+@onready var velocity_component = $VelocityComponent as VelocityComponent
+@onready var health_component := $HealthComponent as HealthComponent
 @onready var health_label := $HealthLabel as Label
-@onready var hurtbox := $HurtboxArea as HurtboxArea
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var animation_tree = $AnimationTree as AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
 
 func _ready() -> void:
-	health = max_health
-	hurtbox.damaged.connect(_on_damaged)
-	health_label.text = str(int(hurtbox.health))
+	health_component.damaged.connect(on_health_component_damaged)
+	health_component.dead.connect(on_health_component_dead)
+	update_health_label()
 	
 func _physics_process(_delta: float) -> void:
 	# Movement
@@ -42,27 +37,26 @@ func _physics_process(_delta: float) -> void:
 		animation_tree.set("parameters/conditions/idle", false)
 		animation_tree.set("parameters/conditions/moving", true)
 		animation_state.travel("Move")
-		velocity = velocity.move_toward(dir * max_speed, ACCELERATION)
+		velocity_component.accelerate_in_direction(dir)
 	else:
 		animation_tree.set("parameters/conditions/idle", true)
 		animation_tree.set("parameters/conditions/moving", false)
 		animation_state.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION)
-	
-	move_and_slide()
+		velocity_component.decelerate()
+	velocity_component.move(self)
 
 
-func _on_damaged(attack: Attack) -> void:
-	health -= attack.attack_damage
-	health = clampf(health, 0, max_health)
-	health_label.text = str(int(health))
-	damaged.emit(health / max_health)
-	
-	if health == 0:
-		queue_free()
-		dead.emit()
-	else:
-		is_damaged = true
-		await(get_tree().create_timer(0.15).timeout)
-		is_damaged = false
+func update_health_label() -> void:
+	health_label.text = str(int(health_component.current_health))
 
+
+func on_health_component_damaged() -> void:
+	update_health_label()
+	GameEvents.emit_health_updated(health_component.current_health, health_component.max_health)
+	is_damaged = true
+	await get_tree().create_timer(0.15).timeout
+	is_damaged = false
+
+
+func on_health_component_dead() -> void:
+	dead.emit()

@@ -7,9 +7,18 @@ const GRADE_BOUNDARIES := [
 @onready var health_bar := $HealthBar as TextureProgressBar
 @onready var health_grade := $HealthBar/Grade as Sprite2D
 
-func update_health(frac_cur_health: float) -> void:
+
+func _ready() -> void:
+	GameEvents.health_updated.connect(on_health_updated)
+
+
+func on_health_updated(current_health: float, max_health: float) -> void:
+	update_health_bar(current_health / max_health)
+	update_grades(current_health / max_health * 100)
+
+
+func update_health_bar(frac_cur_health: float) -> void:
 	health_bar.value = int(frac_cur_health * 100)
-	update_grades(frac_cur_health * 100)
 
 
 func update_grades(percent: float) -> void:
