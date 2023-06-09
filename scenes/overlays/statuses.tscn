@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bgobh8ewxjx75"]
 
-[ext_resource type="Texture2D" uid="uid://g01b6w7s1ung" path="res://assets/under.png" id="1_4nlhs"]
 [ext_resource type="Script" path="res://scenes/overlays/statuses.gd" id="1_jm7ee"]
-[ext_resource type="Texture2D" uid="uid://cu06ybyfsu3ql" path="res://assets/outer.png" id="2_sh37l"]
+[ext_resource type="Texture2D" uid="uid://dilrro5b28tl1" path="res://assets/under1.png" id="2_ene3a"]
+[ext_resource type="Texture2D" uid="uid://d13tu5i8ueek7" path="res://assets/outer1.png" id="3_ecqi6"]
 [ext_resource type="Texture2D" uid="uid://yxoif5d48imt" path="res://assets/grades.png" id="4_2202u"]
+[ext_resource type="Texture2D" uid="uid://dolo83o1eucl2" path="res://assets/money_tag1.png" id="6_pdwjm"]
 [ext_resource type="Texture2D" uid="uid://pidxwfoxo3hu" path="res://assets/money.png" id="7_idb8y"]
-[ext_resource type="Texture2D" uid="uid://becdwiiwk71yk" path="res://assets/money_tag.png" id="8_5sh6i"]
 [ext_resource type="Texture2D" uid="uid://dkvaadh70fthx" path="res://assets/0.png" id="9_1pgf4"]
 [ext_resource type="Texture2D" uid="uid://6yy2a46r4fi2" path="res://assets/Shop.png" id="10_m0yqm"]
 [ext_resource type="Texture2D" uid="uid://chnhv8pjvuunk" path="res://assets/Shop_hover.png" id="11_jy4f0"]
@@ -25,9 +25,9 @@ stretch_margin_left = 15
 stretch_margin_top = 15
 stretch_margin_right = 15
 stretch_margin_bottom = 15
-texture_under = ExtResource("1_4nlhs")
-texture_over = ExtResource("2_sh37l")
-texture_progress = ExtResource("1_4nlhs")
+texture_under = ExtResource("2_ene3a")
+texture_over = ExtResource("3_ecqi6")
+texture_progress = ExtResource("2_ene3a")
 tint_under = Color(0.184314, 0.184314, 0.184314, 1)
 tint_progress = Color(0.65098, 0, 0, 1)
 
@@ -50,7 +50,7 @@ offset_left = 29.0
 offset_top = 10.0
 offset_right = 124.0
 offset_bottom = 45.0
-texture = ExtResource("8_5sh6i")
+texture = ExtResource("6_pdwjm")
 
 [node name="TextureRect" type="TextureRect" parent="Money/Background"]
 layout_mode = 0
