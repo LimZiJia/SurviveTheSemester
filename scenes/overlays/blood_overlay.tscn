@@ -10,10 +10,12 @@ script = ExtResource("1_75kfq")
 modulate = Color(1, 1, 1, 0)
 offset_right = 1080.0
 offset_bottom = 720.0
+mouse_filter = 2
 color = Color(1, 0.172549, 0.12549, 1)
 
 [node name="BloodTexture" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("2_0sxq6")
