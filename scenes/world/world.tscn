@@ -29,8 +29,10 @@ end_screen_scene = ExtResource("3_o411v")
 [node name="StatusBars" type="CanvasLayer" parent="."]
 
 [node name="HealthGradeBar" parent="StatusBars" instance=ExtResource("6_xc6ep")]
+position = Vector2(9, 9)
 
 [node name="ExperienceBar" parent="StatusBars" node_paths=PackedStringArray("experience_manager") instance=ExtResource("5_tersy")]
+position = Vector2(6, 57)
 script = ExtResource("11_0ou6k")
 experience_manager = NodePath("../../ExperienceManager")
 

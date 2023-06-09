@@ -6,14 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://yxoif5d48imt" path="res://assets/grades.png" id="4_xy1og"]
 
 [node name="HealthGradeBar" type="Node2D"]
-position = Vector2(126, 34)
 script = ExtResource("1_24dgm")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -91.0
-offset_top = -13.0
-offset_right = 109.0
-offset_bottom = 17.0
+offset_left = 26.0
+offset_top = 12.0
+offset_right = 226.0
+offset_bottom = 42.0
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 15
@@ -27,6 +26,6 @@ tint_under = Color(0.184314, 0.184314, 0.184314, 1)
 tint_progress = Color(0.65098, 0, 0, 1)
 
 [node name="GradeIcon" type="Sprite2D" parent="."]
-position = Vector2(-96, -2)
+position = Vector2(21, 23)
 texture = ExtResource("4_xy1og")
 hframes = 12

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxq00s4mkyx18"]
+[gd_scene load_steps=15 format=3 uid="uid://cxq00s4mkyx18"]
 
 [ext_resource type="Script" path="res://scenes/game_object/book/book.gd" id="1_bu757"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_41gv0"]
@@ -15,9 +15,6 @@ size = Vector2(26.163, 30.4056)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iocx5"]
 size = Vector2(23.3345, 28.9914)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh74k"]
-size = Vector2(26.163, 30.406)
 
 [sub_resource type="Animation" id="Animation_o5lmg"]
 length = 0.001
@@ -132,9 +129,9 @@ scale = Vector2(0.974129, 0.974129)
 texture = ExtResource("9_pbyfw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 1)
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_fh74k")
+position = Vector2(-1, 0.500001)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_rek7v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "flying"
