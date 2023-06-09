@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Buff" load_steps=2 format=3 uid="uid://dwdxstec43fkg"]
+
+[ext_resource type="Script" path="res://resources/buffs/buff.gd" id="1_wb4qm"]
+
+[resource]
+script = ExtResource("1_wb4qm")
+id = "speed"
+name = "Player Speed"
+description = "Increases player speed by 10%."

@@ -6,6 +6,7 @@ signal dead
 @export var max_health := 100.0
 
 var is_damaged = false
+var base_speed: float
 
 @onready var velocity_component = $VelocityComponent as VelocityComponent
 @onready var health_component := $HealthComponent as HealthComponent
@@ -18,6 +19,9 @@ func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
 	health_component.dead.connect(on_health_component_dead)
 	update_health_label()
+	
+	base_speed = velocity_component.max_speed
+	GameEvents.buff_added.connect(on_buff_added)
 	
 func _physics_process(_delta: float) -> void:
 	# Movement
@@ -58,3 +62,9 @@ func on_health_component_damaged() -> void:
 
 func on_health_component_dead() -> void:
 	dead.emit()
+
+
+func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
+	if buff.id == "speed":
+		var percent_increase = current_buffs["speed"]["quantity"] * 0.1
+		velocity_component.max_speed = base_speed * (1 + percent_increase)
