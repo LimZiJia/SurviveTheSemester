@@ -12,9 +12,8 @@ func _ready():
 	cooldown_timer.timeout.connect(on_cooldown_timer_timeout)
 
 
-
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
+func _process(_delta: float) -> void:
+	if can_attack:
 		attack()
 
 

@@ -5,6 +5,7 @@ signal dead
 
 @export var max_health := 100.0
 
+var facing := Vector2.DOWN
 var is_damaged = false
 
 @onready var velocity_component = $VelocityComponent as VelocityComponent
@@ -18,6 +19,7 @@ func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
 	health_component.dead.connect(on_health_component_dead)
 	update_health_label()
+	debug()
 	
 func _physics_process(_delta: float) -> void:
 	# Movement
@@ -29,6 +31,7 @@ func _physics_process(_delta: float) -> void:
 	if is_damaged:
 		animation_state.travel("Hurt")
 	elif dir != Vector2.ZERO:
+		facing = dir
 		animation_tree.set("parameters/Idle/blend_position", dir)
 		animation_tree.set("parameters/Move/blend_position", dir)
 		animation_tree.set("parameters/Hurt/blend_position", dir)
@@ -58,3 +61,29 @@ func on_health_component_damaged() -> void:
 
 func on_health_component_dead() -> void:
 	dead.emit()
+
+
+# For Debugging Purposes
+@onready var buttons = $Debug/MarginContainer/VBoxContainer
+@onready var weapons_manager = $WeaponManager
+func debug():
+	var weapons = [
+		"default_word_weapon",
+		"auto_word_weapon",
+		"auto_aim_nearest_word_weapon",
+		"auto_aim_direct_word_weapon",
+	] as Array[String]
+	for weapon in weapons:
+		var button_instance = Button.new()
+		button_instance.text = weapon.capitalize()
+		buttons.add_child(button_instance)
+		button_instance.pressed.connect(on_button_pressed.bind(weapon))
+
+
+func on_button_pressed(weapon: String):
+	for child in weapons_manager.get_children():
+		child.queue_free()
+	var weapon_scene = load("res://scenes/weapons/test/%s_controller.tscn" % weapon)
+	print(weapon_scene)
+	var weapon_instance = weapon_scene.instantiate()
+	weapons_manager.add_child(weapon_instance)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cniposhy853a4"]
+
+[ext_resource type="Script" path="res://scenes/weapons/test/auto_aim_direct_word_weapon_controller.gd" id="1_c4jah"]
+
+[node name="AutoAimDirectWordWeaponController" type="Node2D"]
+script = ExtResource("1_c4jah")
+
+[node name="CooldownTimer" type="Timer" parent="."]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://hnshsx8cvvs7"]
+
+[ext_resource type="Script" path="res://scenes/weapons/test/auto_aim_nearest_word_weapon_controller.gd" id="1_m8i1w"]
+[ext_resource type="PackedScene" uid="uid://cufkg4a6l1oe8" path="res://scenes/weapons/word/word_weapon.tscn" id="2_iqtd5"]
+
+[node name="AutoAimNearestWordWeaponController" type="Node2D"]
+script = ExtResource("1_m8i1w")
+word_weapon_scene = ExtResource("2_iqtd5")
+
+[node name="CooldownTimer" type="Timer" parent="."]

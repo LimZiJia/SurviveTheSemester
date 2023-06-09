@@ -12,9 +12,8 @@ func _ready():
 	cooldown_timer.timeout.connect(on_cooldown_timer_timeout)
 
 
-
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
+func _process(_delta: float) -> void:
+	if can_attack:
 		attack()
 
 
@@ -25,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 func attack() -> void:
 	if not can_attack:
 		return
-	var mob = find_nearest_mob()
+	var mob = find_mob()
 	if not mob:
 		return
 	
@@ -42,22 +41,34 @@ func attack() -> void:
 	word_weapon_instance.direction = spawn_direction
 
 
-
 # Sets the can_attack variable to true so that
 # the player can attack again
 func on_cooldown_timer_timeout() -> void:
 	can_attack = true
 
 
-# Returns the nearest mob in the SceneTree, or null if 
-# there are no mobs currently
-func find_nearest_mob():
-	var mobs = get_tree().get_nodes_in_group("mobs")
-	var nearest = null
-	var cur_dist = INF
-	for mob in mobs:
-		var dist = global_position.distance_to(mob.global_position)
-		if dist < cur_dist:
-			nearest = mob
-			cur_dist = dist
-	return nearest
+# Out of all the mobs within 384 pixels of the player, within
+# 60 degrees from the direction the player is facing, it returns
+# the nearest one.
+func find_mob() -> Node2D:
+	var player := get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return null
+	var facing := player.facing as Vector2
+	
+	var mobs = get_tree().get_nodes_in_group("mobs") as Array[Node2D]
+	mobs = mobs.filter(func(mob: Node2D) -> bool:
+		return player.global_position.distance_squared_to(mob.global_position) <= pow(384, 2)
+	)
+	mobs = mobs.filter(func(mob: Node2D) -> bool:
+		var direction = player.global_position.direction_to(mob.global_position)
+		return abs(facing.angle_to(direction)) < PI / 3
+	)
+	if mobs.size() == 0:
+		return null
+	mobs.sort_custom(func(a: Node2D, b: Node2D) -> bool:
+		var a_dist = player.global_position.distance_squared_to(a.global_position)
+		var b_dist = player.global_position.distance_squared_to(b.global_position)
+		return a_dist < b_dist
+	)
+	return mobs[0]

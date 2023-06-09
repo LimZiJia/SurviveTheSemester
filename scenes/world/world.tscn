@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://xvdobfollhod"]
 
-[ext_resource type="PackedScene" uid="uid://doivbebauk836" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
+[ext_resource type="PackedScene" uid="uid://dhmw0ujhdmr22" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
 [ext_resource type="PackedScene" uid="uid://by6qwbccemo4n" path="res://scenes/ui/hud.tscn" id="3_cdudp"]
 [ext_resource type="PackedScene" uid="uid://mmdip1bknuio" path="res://scenes/manager/wave_manager.tscn" id="3_mnirc"]
@@ -31,6 +31,17 @@ time_manager = NodePath("../TimeManager")
 time_manager = NodePath("../TimeManager")
 
 [node name="TimeManager" parent="." instance=ExtResource("7_fb4dk")]
+
+[node name="Debug" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Debug"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("8_4hahy")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf0idm7ee82sd"]
+
+[ext_resource type="Script" path="res://scenes/weapons/test/default_word_weapon_controller.gd" id="1_fgkog"]
+[ext_resource type="PackedScene" uid="uid://cufkg4a6l1oe8" path="res://scenes/weapons/word/word_weapon.tscn" id="2_hs2ml"]
+
+[node name="DefaultWordWeaponController" type="Node2D"]
+script = ExtResource("1_fgkog")
+word_weapon_scene = ExtResource("2_hs2ml")
+
+[node name="CooldownTimer" type="Timer" parent="."]
