@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1m8pnubxwk2j"
-path="res://.godot/imported/bloody wall paper.png-971c43c9d21579b2a78d93b51ba355a0.ctex"
+path="res://.godot/imported/blood_overlay.png-1bb6f02723761e3573a06c0e5ed382ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bloody wall paper.png"
-dest_files=["res://.godot/imported/bloody wall paper.png-971c43c9d21579b2a78d93b51ba355a0.ctex"]
+source_file="res://scenes/overlays/blood_overlay.png"
+dest_files=["res://.godot/imported/blood_overlay.png-1bb6f02723761e3573a06c0e5ed382ab.ctex"]
 
 [params]
 

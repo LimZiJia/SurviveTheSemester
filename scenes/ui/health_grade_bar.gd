@@ -4,8 +4,8 @@ const GRADE_BOUNDARIES := [
 	95, 90, 85, 50, 75, 60, 50, 40, 30, 20, 0
 ]
 
-@onready var health_bar := $HealthBar as TextureProgressBar
-@onready var health_grade := $HealthBar/Grade as Sprite2D
+@onready var health_bar := $TextureProgressBar as TextureProgressBar
+@onready var health_grade := $GradeIcon as Sprite2D
 
 
 func _ready() -> void:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c01utxx6mui17"]
+
+[ext_resource type="Script" path="res://scenes/overlays/blood_overlay.gd" id="1_75kfq"]
+[ext_resource type="Texture2D" uid="uid://c1m8pnubxwk2j" path="res://scenes/overlays/blood_overlay.png" id="2_0sxq6"]
+
+[node name="BloodOverlay" type="CanvasLayer"]
+script = ExtResource("1_75kfq")
+
+[node name="RedRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1080.0
+offset_bottom = 720.0
+color = Color(1, 0.172549, 0.12549, 1)
+
+[node name="BloodTexture" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_0sxq6")

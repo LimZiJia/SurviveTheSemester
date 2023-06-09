@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwdy8drw25be3"]
+
+[ext_resource type="Script" path="res://scenes/ui/health_grade_bar.gd" id="1_24dgm"]
+[ext_resource type="Texture2D" uid="uid://dilrro5b28tl1" path="res://assets/under1.png" id="2_pnn4f"]
+[ext_resource type="Texture2D" uid="uid://d13tu5i8ueek7" path="res://assets/outer1.png" id="3_l8rco"]
+[ext_resource type="Texture2D" uid="uid://yxoif5d48imt" path="res://assets/grades.png" id="4_xy1og"]
+
+[node name="HealthGradeBar" type="Node2D"]
+position = Vector2(126, 34)
+script = ExtResource("1_24dgm")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -91.0
+offset_top = -13.0
+offset_right = 109.0
+offset_bottom = 17.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 15
+stretch_margin_top = 15
+stretch_margin_right = 15
+stretch_margin_bottom = 15
+texture_under = ExtResource("2_pnn4f")
+texture_over = ExtResource("3_l8rco")
+texture_progress = ExtResource("2_pnn4f")
+tint_under = Color(0.184314, 0.184314, 0.184314, 1)
+tint_progress = Color(0.65098, 0, 0, 1)
+
+[node name="GradeIcon" type="Sprite2D" parent="."]
+position = Vector2(-96, -2)
+texture = ExtResource("4_xy1og")
+hframes = 12

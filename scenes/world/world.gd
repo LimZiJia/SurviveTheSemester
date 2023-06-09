@@ -3,12 +3,9 @@ extends Node
 @export var pause_menu_scene: PackedScene
 @export var end_screen_scene: PackedScene
 
-@onready var player := %Player as Player
-@onready var hud := $HUD as CanvasLayer
-@onready var wave_manager := $WaveManager as Node2D
 
 func _ready() -> void:
-	player.dead.connect(on_player_dead)
+	%Player.dead.connect(on_player_dead)
 
 
 func _input(event: InputEvent) -> void:

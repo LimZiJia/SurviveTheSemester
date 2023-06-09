@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node2D
 
 @export var experience_manager: Node
 
