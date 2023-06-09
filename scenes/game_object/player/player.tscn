@@ -1,10 +1,11 @@
-[gd_scene load_steps=59 format=3 uid="uid://doivbebauk836"]
+[gd_scene load_steps=60 format=3 uid="uid://bgkg45mchl7ul"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_i4ae5"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
 [ext_resource type="PackedScene" uid="uid://bgwhgewn87l0s" path="res://scenes/weapons/word/word_weapon_controller.tscn" id="5_q2dig"]
+[ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="6_7up1x"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://scenes/game_object/player/player.png" id="8_voa7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c14a4"]
@@ -575,11 +576,15 @@ shape = SubResource("RectangleShape2D_c14a4")
 
 [node name="WordWeaponController" parent="WeaponManager" instance=ExtResource("5_q2dig")]
 
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 43)
+texture = ExtResource("6_7up1x")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 75
+frame = 79
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 33.5)
