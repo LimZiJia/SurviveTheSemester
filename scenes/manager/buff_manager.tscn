@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bct2as4r1syli"]
+[gd_scene load_steps=6 format=3 uid="uid://b28hqyei7ujo2"]
 
 [ext_resource type="Script" path="res://scenes/manager/buff_manager.gd" id="1_v3mpu"]
+[ext_resource type="Resource" uid="uid://cs4ne5kqeocs" path="res://resources/buffs/max_health.tres" id="2_e73ts"]
 [ext_resource type="Resource" uid="uid://dwdxstec43fkg" path="res://resources/buffs/speed.tres" id="2_f3yro"]
+[ext_resource type="Resource" uid="uid://oghe6dswpihq" path="res://resources/buffs/heal.tres" id="3_ehsqu"]
 [ext_resource type="PackedScene" uid="uid://bf4610j1crfc" path="res://scenes/ui/buff_select_screen.tscn" id="3_lurb3"]
 
 [node name="BuffManager" type="Node"]
 script = ExtResource("1_v3mpu")
-buff_pool = Array[Resource("res://resources/buffs/buff.gd")]([ExtResource("2_f3yro")])
+buff_pool = Array[Resource("res://resources/buffs/buff.gd")]([ExtResource("3_ehsqu"), ExtResource("2_e73ts"), ExtResource("2_f3yro")])
 buff_select_screen_scene = ExtResource("3_lurb3")

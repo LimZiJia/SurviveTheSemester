@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Buff" load_steps=2 format=3 uid="uid://cs4ne5kqeocs"]
+
+[ext_resource type="Script" path="res://resources/buffs/buff.gd" id="1_huv8n"]
+
+[resource]
+script = ExtResource("1_huv8n")
+id = "max_health"
+name = "Increase Max Health"
+description = "Increases max health by 20%."

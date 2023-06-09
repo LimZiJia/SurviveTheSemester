@@ -3,8 +3,6 @@ extends CharacterBody2D
 
 signal dead
 
-@export var max_health := 100.0
-
 var is_damaged = false
 var base_speed: float
 
@@ -17,6 +15,7 @@ var base_speed: float
 
 func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
+	health_component.healed.connect(on_health_component_healed)
 	health_component.dead.connect(on_health_component_dead)
 	update_health_label()
 	
@@ -54,11 +53,15 @@ func update_health_label() -> void:
 
 func on_health_component_damaged() -> void:
 	update_health_label()
-	GameEvents.emit_health_updated(health_component.current_health, health_component.max_health)
+	GameEvents.emit_health_damaged(health_component.current_health, health_component.max_health)
 	is_damaged = true
 	await get_tree().create_timer(0.15).timeout
 	is_damaged = false
 
+
+func on_health_component_healed() -> void:
+	update_health_label()
+	GameEvents.emit_health_healed(health_component.current_health, health_component.max_health)
 
 func on_health_component_dead() -> void:
 	dead.emit()
@@ -68,3 +71,7 @@ func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
 	if buff.id == "speed":
 		var percent_increase = current_buffs["speed"]["quantity"] * 0.1
 		velocity_component.max_speed = base_speed * (1 + percent_increase)
+	elif buff.id == "heal":
+		health_component.heal_percent(0.2)
+	elif buff.id == "max_health":
+		health_component.increase_max_health_percent(0.2)

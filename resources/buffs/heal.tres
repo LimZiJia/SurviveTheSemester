@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Buff" load_steps=2 format=3 uid="uid://oghe6dswpihq"]
+
+[ext_resource type="Script" path="res://resources/buffs/buff.gd" id="1_d1s2q"]
+
+[resource]
+script = ExtResource("1_d1s2q")
+id = "heal"
+name = "Recover Health"
+description = "Instantly increases health by 20%."

@@ -12,13 +12,15 @@ func _ready() -> void:
 
 
 func on_level_up(_new_level: int) -> void:
-	var chosen_buff = buff_pool.pick_random() as Buff
-	if chosen_buff == null:
+	var chosen_buffs = buff_pool.duplicate() as Array[Buff]
+	chosen_buffs.shuffle()
+	chosen_buffs = chosen_buffs.slice(0, 3)
+	if chosen_buffs.size() == 0:
 		return
 	
 	var buff_select_screen_instance = buff_select_screen_scene.instantiate()
 	add_child(buff_select_screen_instance)
-	buff_select_screen_instance.set_buffs([chosen_buff] as Array[Buff])
+	buff_select_screen_instance.set_buffs(chosen_buffs)
 	buff_select_screen_instance.buff_selected.connect(on_buff_selected)
 
 

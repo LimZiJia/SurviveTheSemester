@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cy8v4dsyl3rsr" path="res://scenes/manager/time_manager.tscn" id="7_fb4dk"]
 [ext_resource type="TileSet" uid="uid://b5nsdotfcxbr5" path="res://resources/tileset.tres" id="8_4hahy"]
 [ext_resource type="PackedScene" uid="uid://cobmq8loeqhdn" path="res://scenes/manager/experience_manager.tscn" id="8_tmpyg"]
-[ext_resource type="PackedScene" uid="uid://bct2as4r1syli" path="res://scenes/manager/buff_manager.tscn" id="8_vp6pe"]
+[ext_resource type="PackedScene" uid="uid://b28hqyei7ujo2" path="res://scenes/manager/buff_manager.tscn" id="8_vp6pe"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
@@ -23,13 +23,13 @@ end_screen_scene = ExtResource("3_o411v")
 [node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("5_tersy")]
 experience_manager = NodePath("../ExperienceManager")
 
+[node name="BuffManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("8_vp6pe")]
+experience_manager = NodePath("../ExperienceManager")
+
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
 time_manager = NodePath("../TimeManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("8_tmpyg")]
-
-[node name="BuffManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("8_vp6pe")]
-experience_manager = NodePath("../ExperienceManager")
 
 [node name="WaveManager" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("3_mnirc")]
 time_manager = NodePath("../TimeManager")

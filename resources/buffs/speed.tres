@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_wb4qm")
 id = "speed"
-name = "Player Speed"
-description = "Increases player speed by 10%."
+name = "Increase Speed"
+description = "Increases movement speed by 10%."

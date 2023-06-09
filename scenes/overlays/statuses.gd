@@ -9,7 +9,8 @@ const GRADE_BOUNDARIES := [
 
 
 func _ready() -> void:
-	GameEvents.health_updated.connect(on_health_updated)
+	GameEvents.health_damaged.connect(on_health_updated)
+	GameEvents.health_healed.connect(on_health_updated)
 
 
 func on_health_updated(current_health: float, max_health: float) -> void:
