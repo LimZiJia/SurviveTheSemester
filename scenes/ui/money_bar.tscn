@@ -1,63 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn27qoucaiogs"]
+[gd_scene load_steps=4 format=3 uid="uid://c0jmj040f8aug"]
 
 [ext_resource type="Texture2D" uid="uid://pidxwfoxo3hu" path="res://assets/money.png" id="1_1ai0g"]
+[ext_resource type="FontFile" uid="uid://yb3a3qqlpyyw" path="res://fonts/money_font.ttf" id="1_sfptw"]
 [ext_resource type="Texture2D" uid="uid://dolo83o1eucl2" path="res://assets/money_tag1.png" id="2_pjp2j"]
-[ext_resource type="Texture2D" uid="uid://dkvaadh70fthx" path="res://assets/0.png" id="3_vnxeb"]
 
 [node name="MoneyBar" type="Node2D"]
-position = Vector2(126, 34)
+
+[node name="MoneyLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(65, 23)
+offset_left = 48.0
+offset_top = 18.0
+offset_right = 113.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_sfptw")
+theme_override_font_sizes/font_size = 8
+text = "00000"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MoneyLabel"]
+show_behind_parent = true
+custom_minimum_size = Vector2(95, 35)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -8.0
+offset_right = 11.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pjp2j")
+region_rect = Rect2(0, 0, 95, 30)
+patch_margin_left = 9
+patch_margin_right = 9
 
 [node name="MoneyIcon" type="TextureRect" parent="."]
-offset_left = -120.0
-offset_top = 72.0
-offset_right = -72.0
-offset_bottom = 120.0
+offset_right = 48.0
+offset_bottom = 48.0
 texture = ExtResource("1_1ai0g")
-
-[node name="Background" type="TextureRect" parent="."]
-show_behind_parent = true
-offset_left = -91.0
-offset_top = 82.0
-offset_right = 4.0
-offset_bottom = 117.0
-texture = ExtResource("2_pjp2j")
-
-[node name="Number" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 2.0
-offset_right = 31.0
-offset_bottom = 32.0
-texture = ExtResource("3_vnxeb")
-
-[node name="Number2" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 2.0
-offset_right = 44.0
-offset_bottom = 32.0
-texture = ExtResource("3_vnxeb")
-
-[node name="Number3" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 2.0
-offset_right = 57.0
-offset_bottom = 32.0
-texture = ExtResource("3_vnxeb")
-
-[node name="Number4" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = 58.0
-offset_top = 2.0
-offset_right = 70.0
-offset_bottom = 32.0
-texture = ExtResource("3_vnxeb")
-
-[node name="Number5" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 2.0
-offset_right = 83.0
-offset_bottom = 32.0
-texture = ExtResource("3_vnxeb")

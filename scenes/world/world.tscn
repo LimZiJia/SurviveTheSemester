@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://iily2o50n46p" path="res://scenes/ui/experience_bar.tscn" id="5_tersy"]
 [ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="6_7j38u"]
 [ext_resource type="PackedScene" uid="uid://bwdy8drw25be3" path="res://scenes/ui/health_grade_bar.tscn" id="6_xc6ep"]
-[ext_resource type="PackedScene" uid="uid://bn27qoucaiogs" path="res://scenes/ui/money_bar.tscn" id="7_b4don"]
+[ext_resource type="PackedScene" uid="uid://c0jmj040f8aug" path="res://scenes/ui/money_bar.tscn" id="7_b4don"]
 [ext_resource type="PackedScene" uid="uid://cy8v4dsyl3rsr" path="res://scenes/manager/time_manager.tscn" id="7_fb4dk"]
 [ext_resource type="TileSet" uid="uid://b5nsdotfcxbr5" path="res://resources/tileset.tres" id="8_4hahy"]
 [ext_resource type="Texture2D" uid="uid://6yy2a46r4fi2" path="res://assets/Shop.png" id="8_7gkdb"]
@@ -35,6 +35,7 @@ script = ExtResource("11_0ou6k")
 experience_manager = NodePath("../../ExperienceManager")
 
 [node name="MoneyBar" parent="StatusBars" instance=ExtResource("7_b4don")]
+position = Vector2(6, 106)
 
 [node name="ShopButton" type="TextureButton" parent="StatusBars"]
 offset_left = 6.0
