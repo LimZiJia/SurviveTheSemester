@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BuffObtain" load_steps=3 format=3 uid="uid://dkkgd66moe7r0"]
+
+[ext_resource type="PackedScene" uid="uid://c14fr8gl1ysdc" path="res://scenes/component/regeneration_component.tscn" id="1_piue5"]
+[ext_resource type="Script" path="res://resources/buffs/buff_obtain.gd" id="2_u1uic"]
+
+[resource]
+script = ExtResource("2_u1uic")
+buff_obtain_scene = ExtResource("1_piue5")
+id = "regeneration"
+name = "Regenerate Health"
+description = "Naturally regenerates health over time."
+max_quantity = 1
+unlock_pool = Array[Resource("res://resources/buffs/buff.gd")]([])

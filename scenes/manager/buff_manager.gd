@@ -38,4 +38,9 @@ func apply_buff(buff: Buff) -> void:
 	else:
 		current_buffs[buff.id]["quantity"] += 1
 	
+	if buff.max_quantity != 0 and buff.max_quantity == current_buffs[buff.id]["quantity"]:
+		buff_pool = buff_pool.filter(func(pool_buff: Buff) -> bool:
+			return pool_buff.id != buff.id
+		)
+	
 	GameEvents.emit_buff_added(buff, current_buffs)

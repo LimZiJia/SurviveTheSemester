@@ -68,6 +68,14 @@ func on_health_component_dead() -> void:
 
 
 func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
+	if buff is BuffObtain:
+		if buff.id == "regeneration":
+			var buff_obtain_instance = buff.buff_obtain_scene.instantiate() as Node
+			add_child(buff_obtain_instance)
+			buff_obtain_instance.health_component = health_component
+			
+		return
+	
 	if buff.id == "speed":
 		var percent_increase = current_buffs["speed"]["quantity"] * 0.1
 		velocity_component.max_speed = base_speed * (1 + percent_increase)
