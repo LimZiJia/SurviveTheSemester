@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://dfatgnwm5lr1y"]
+
+[ext_resource type="PackedScene" uid="uid://bgwhgewn87l0s" path="res://scenes/weapons/word/word_weapon_controller.tscn" id="1_h356s"]
+[ext_resource type="Script" path="res://resources/upgrades/upgrade.gd" id="2_beujf"]
+
+[resource]
+script = ExtResource("2_beujf")
+id = "word"
+name = "Word"
+cost = 1
+max_quantity = 10
+scene = ExtResource("1_h356s")

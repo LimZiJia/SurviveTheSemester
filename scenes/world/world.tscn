@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5pk62uuup4f7"]
+[gd_scene load_steps=21 format=3 uid="uid://c5pk62uuup4f7"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://u3buqrcmlll3" path="res://assets/Shop_pressed.png" id="9_k526x"]
 [ext_resource type="Texture2D" uid="uid://chnhv8pjvuunk" path="res://assets/Shop_hover.png" id="10_75hys"]
 [ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="11_0ou6k"]
+[ext_resource type="PackedScene" uid="uid://ccmxndwwxgfdl" path="res://scenes/manager/upgrade_manager.tscn" id="14_hyj30"]
+[ext_resource type="PackedScene" uid="uid://bd2vj5f88khly" path="res://scenes/manager/money_manager.tscn" id="16_efx0w"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
@@ -56,7 +58,13 @@ time_manager = NodePath("../TimeManager")
 [node name="BuffManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("8_vp6pe")]
 experience_manager = NodePath("../ExperienceManager")
 
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("money_manager", "shop_button") instance=ExtResource("14_hyj30")]
+money_manager = NodePath("../MoneyManager")
+shop_button = NodePath("../StatusBars/ShopButton")
+
 [node name="ExperienceManager" parent="." instance=ExtResource("8_tmpyg")]
+
+[node name="MoneyManager" parent="." instance=ExtResource("16_efx0w")]
 
 [node name="WaveManager" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("3_mnirc")]
 time_manager = NodePath("../TimeManager")

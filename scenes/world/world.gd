@@ -6,6 +6,7 @@ extends Node
 
 func _ready() -> void:
 	%Player.dead.connect(on_player_dead)
+	GameEvents.emit_money_collected(1000)
 
 
 func _input(event: InputEvent) -> void:
