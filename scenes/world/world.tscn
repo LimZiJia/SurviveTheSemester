@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5pk62uuup4f7"]
+[gd_scene load_steps=21 format=3 uid="uid://c5pk62uuup4f7"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -18,10 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://u3buqrcmlll3" path="res://assets/Shop_pressed.png" id="9_k526x"]
 [ext_resource type="Texture2D" uid="uid://chnhv8pjvuunk" path="res://assets/Shop_hover.png" id="10_75hys"]
 [ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="11_0ou6k"]
+[ext_resource type="Texture2D" uid="uid://b7iwanv7cy353" path="res://assets/pause_button.png" id="12_b3ls8"]
+[ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
-pause_menu_scene = ExtResource("6_7j38u")
 end_screen_scene = ExtResource("3_o411v")
 
 [node name="BloodOverlay" parent="." instance=ExtResource("4_q01fj")]
@@ -49,6 +50,19 @@ texture_pressed = ExtResource("9_k526x")
 texture_hover = ExtResource("10_75hys")
 texture_disabled = ExtResource("8_7gkdb")
 texture_focused = ExtResource("8_7gkdb")
+
+[node name="PauseButton" type="TextureButton" parent="StatusBars"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 0
+texture_normal = ExtResource("12_b3ls8")
+script = ExtResource("13_nehmb")
+pause_menu_scene = ExtResource("6_7j38u")
 
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
 time_manager = NodePath("../TimeManager")
