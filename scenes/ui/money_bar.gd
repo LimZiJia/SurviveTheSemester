@@ -13,6 +13,15 @@ var display_value: int = 0:
 @onready var money_label := $MoneyLabel as Label
 
 
+func _ready() -> void:
+	GameEvents.money_collected.connect(on_money_updated)
+	GameEvents.money_spent.connect(on_money_updated)
+
+
+func on_money_updated(amount: int) -> void:
+	update_value(MoneyManager.current_money)
+
+
 func update_value(new_value: int) -> void:
 	actual_value = new_value
 	

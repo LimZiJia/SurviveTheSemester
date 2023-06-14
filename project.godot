@@ -21,6 +21,7 @@ Events="*res://scenes/autoload/events.gd"
 SceneChanger="*res://scenes/autoload/scene_changer.gd"
 GameEvents="*res://scenes/autoload/game_events.tscn"
 GameManager="*res://scenes/autoload/game_manager.gd"
+MoneyManager="*res://scenes/manager/money_manager.tscn"
 
 [display]
 

@@ -24,6 +24,9 @@ func _ready() -> void:
 	despawn_timer.start(1.0)
 
 
+func set_damage(damage: float) -> void:
+	($HitboxComponent as HitboxComponent).damage = damage
+
 func set_direction(given_direction: Vector2) -> void:
 	direction = given_direction
 	look_at(position + direction)

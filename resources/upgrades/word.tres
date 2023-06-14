@@ -7,6 +7,7 @@
 script = ExtResource("2_beujf")
 id = "word"
 name = "Word"
+description = "This is a description."
 cost = 1
 max_quantity = 10
 scene = ExtResource("1_h356s")

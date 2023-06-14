@@ -6,9 +6,11 @@ func _ready() -> void:
 
 func _on_game_start() -> void:
 	SceneChanger.change_scene("res://scenes/world/world.tscn")
+	GameEvents.emit_money_collected(5)
 
 func _on_game_restart() -> void:
 	if get_tree().current_scene.name == "World":
 		SceneChanger.reload_scene()
 	else:
 		SceneChanger.change_scene("res://scenes/world/world.tscn")
+	MoneyManager.current_money = 0

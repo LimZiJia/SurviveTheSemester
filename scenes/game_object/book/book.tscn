@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bv7htbyt753dt" path="res://scenes/game_object/book/book_shadow.png" id="7_pf3kl"]
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://scenes/game_object/book/book_blue.png" id="9_pbyfw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqa10"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_402kc"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -91,6 +91,8 @@ motion_mode = 1
 script = ExtResource("1_bu757")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_41gv0")]
+max_speed = 180.0
+acceleration = 15.0
 
 [node name="ExperienceDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_unc7o")]
 health_component = NodePath("../HealthComponent")
@@ -102,7 +104,7 @@ script = ExtResource("3_4cdrx")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_hqa10")
+hit_flash_material = SubResource("ShaderMaterial_402kc")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("4_8rqmr")]
 collision_layer = 0

@@ -18,6 +18,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Name"
 
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Description"
+
 [node name="CostLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

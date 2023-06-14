@@ -4,13 +4,26 @@ extends Node2D
 @export_range(0.05, 10, 0.05) var cooldown := 0.05
 
 var can_attack := true
+var base_damage := 20.0
+var damage: float
 
 @onready var cooldown_timer = $CooldownTimer
 
 
 func _ready():
+	damage = base_damage
+	
 	cooldown_timer.timeout.connect(on_cooldown_timer_timeout)
+	GameEvents.upgrade_added.connect(on_upgrade_added)
 
+
+func on_upgrade_added(upgrade: Upgrade, current_upgrades: Dictionary) -> void:
+	if upgrade.id != "word":
+		return
+	if current_upgrades[upgrade.id]["quantity"] == 1:
+		return
+	damage = base_damage * (1 + 0.2 * current_upgrades[upgrade.id]["quantity"])
+	
 
 
 func _physics_process(_delta: float) -> void:
@@ -40,6 +53,7 @@ func attack() -> void:
 	
 	word_weapon_instance.global_position = global_position
 	word_weapon_instance.direction = spawn_direction
+	word_weapon_instance.set_damage(damage)
 
 
 

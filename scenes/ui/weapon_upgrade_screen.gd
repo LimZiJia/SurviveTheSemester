@@ -28,9 +28,9 @@ func on_upgrade_added(upgrade: Upgrade, current_upgrades: Dictionary) -> void:
 		pass
 
 
-func set_upgrades(upgrades: Array[Upgrade], money_manager: Node) -> void:
+func set_upgrades(upgrades: Array[Upgrade], current_upgrades: Dictionary) -> void:
 	for upgrade in upgrades:
 		var weapon_upgrade_card_instance = weapon_upgrade_card_scene.instantiate()
 		weapon_card_container.add_child(weapon_upgrade_card_instance)
-		weapon_upgrade_card_instance.set_upgrade(upgrade, money_manager)
+		weapon_upgrade_card_instance.set_upgrade(upgrade, current_upgrades)
 		weapon_upgrade_card_instance.selected.connect(on_upgrade_selected.bind(upgrade))
