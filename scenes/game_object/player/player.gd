@@ -8,7 +8,6 @@ var base_speed: float
 
 @onready var velocity_component = $VelocityComponent as VelocityComponent
 @onready var health_component := $HealthComponent as HealthComponent
-@onready var health_label := $HealthLabel as Label
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var animation_tree = $AnimationTree as AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
@@ -17,7 +16,6 @@ func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
 	health_component.healed.connect(on_health_component_healed)
 	health_component.dead.connect(on_health_component_dead)
-	update_health_label()
 	
 	base_speed = velocity_component.max_speed
 	GameEvents.buff_added.connect(on_buff_added)
@@ -47,12 +45,7 @@ func _physics_process(_delta: float) -> void:
 	velocity_component.move(self)
 
 
-func update_health_label() -> void:
-	health_label.text = str(int(health_component.current_health))
-
-
 func on_health_component_damaged() -> void:
-	update_health_label()
 	GameEvents.emit_health_damaged(health_component.current_health, health_component.max_health)
 	is_damaged = true
 	await get_tree().create_timer(0.15).timeout
@@ -60,7 +53,6 @@ func on_health_component_damaged() -> void:
 
 
 func on_health_component_healed() -> void:
-	update_health_label()
 	GameEvents.emit_health_healed(health_component.current_health, health_component.max_health)
 
 func on_health_component_dead() -> void:
