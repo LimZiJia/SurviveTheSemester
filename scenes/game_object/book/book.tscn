@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bv7htbyt753dt" path="res://scenes/game_object/book/book_shadow.png" id="7_pf3kl"]
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://scenes/game_object/book/book_blue.png" id="9_pbyfw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tv33v"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pks0j"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -117,7 +117,7 @@ script = ExtResource("3_4cdrx")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_tv33v")
+hit_flash_material = SubResource("ShaderMaterial_pks0j")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("4_8rqmr")]
 collision_layer = 0
