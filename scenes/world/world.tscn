@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5pk62uuup4f7"]
+[gd_scene load_steps=23 format=3 uid="uid://c5pk62uuup4f7"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -18,8 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://u3buqrcmlll3" path="res://assets/Shop_pressed.png" id="9_k526x"]
 [ext_resource type="Texture2D" uid="uid://chnhv8pjvuunk" path="res://assets/Shop_hover.png" id="10_75hys"]
 [ext_resource type="Script" path="res://scenes/ui/experience_bar.gd" id="11_0ou6k"]
-[ext_resource type="Texture2D" uid="uid://b7iwanv7cy353" path="res://assets/pause_button.png" id="12_b3ls8"]
+[ext_resource type="Texture2D" uid="uid://csfv5jy0nsdys" path="res://assets/pause_normal.png" id="11_oe55t"]
+[ext_resource type="Texture2D" uid="uid://dtefd4ycouse3" path="res://assets/pause_pressed.png" id="12_1oxyp"]
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
+[ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
@@ -60,7 +62,9 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 56.0
 grow_horizontal = 0
-texture_normal = ExtResource("12_b3ls8")
+texture_normal = ExtResource("11_oe55t")
+texture_pressed = ExtResource("12_1oxyp")
+texture_hover = ExtResource("13_rrmfn")
 script = ExtResource("13_nehmb")
 pause_menu_scene = ExtResource("6_7j38u")
 
