@@ -1,4 +1,4 @@
-extends PanelContainer
+extends MarginContainer
 
 signal selected
 

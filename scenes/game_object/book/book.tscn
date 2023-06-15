@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxq00s4mkyx18"]
+[gd_scene load_steps=20 format=3 uid="uid://cxq00s4mkyx18"]
 
 [ext_resource type="Script" path="res://scenes/game_object/book/book.gd" id="1_bu757"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_41gv0"]
@@ -6,15 +6,37 @@
 [ext_resource type="Script" path="res://scenes/component/health_component.gd" id="3_4cdrx"]
 [ext_resource type="PackedScene" uid="uid://dm3lrtqb30uf5" path="res://scenes/component/experience_drop_component.tscn" id="3_unc7o"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="4_8rqmr"]
+[ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_j28e0"]
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="5_lsna1"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_7kivl"]
 [ext_resource type="Texture2D" uid="uid://bv7htbyt753dt" path="res://scenes/game_object/book/book_shadow.png" id="7_pf3kl"]
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://scenes/game_object/book/book_blue.png" id="9_pbyfw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tv33v"]
+resource_local_to_scene = true
+shader = ExtResource("7_7kivl")
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rek7v"]
 size = Vector2(26.163, 30.4056)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iocx5"]
 size = Vector2(23.3345, 28.9914)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uvxv"]
+bg_color = Color(0.227451, 0.227451, 0.313726, 1)
+border_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuua3"]
+bg_color = Color(0.607843, 0.760784, 0.27451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
 
 [sub_resource type="Animation" id="Animation_o5lmg"]
 length = 0.001
@@ -78,8 +100,8 @@ _data = {
 }
 
 [node name="Book" type="CharacterBody2D" groups=["mobs"]]
-collision_layer = 4
-collision_mask = 5
+collision_layer = 8
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_bu757")
 
@@ -91,6 +113,11 @@ experience = 2
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_4cdrx")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../BookSprite")
+hit_flash_material = SubResource("ShaderMaterial_tv33v")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("4_8rqmr")]
 collision_layer = 0
@@ -112,13 +139,24 @@ position = Vector2(-1, 0.5)
 rotation = 0.785397
 shape = SubResource("RectangleShape2D_iocx5")
 
-[node name="HealthLabel" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -45.0
-offset_right = 20.0
-offset_bottom = -22.0
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(36, 8)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -33.0
+offset_right = 18.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_6uvxv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cuua3")
+max_value = 1.0
+value = 1.0
+show_percentage = false
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 30)
