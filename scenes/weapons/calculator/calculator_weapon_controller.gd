@@ -20,10 +20,10 @@ func _ready() -> void:
 
 
 func on_timer_timeout() -> void:
-	spawn_mobs(number)
+	spawn_weapon(number)
 
 
-func spawn_mobs(amount: int) -> void:
+func spawn_weapon(amount: int) -> void:
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
