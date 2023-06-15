@@ -1,13 +1,13 @@
 extends Node2D
 
 # The maximum distance between the calculator and the player
-const MAX_OUTER_RADIUS := 112.0
+const MAX_OUTER_RADIUS := 160.0
 
 # The rate at which the calculator sprite internally rotates per second
 const INTERNAL_ROTATION_RATE := 2.0
 
 # The rate at which the calculator rotates about the player per second
-const OUTER_ROTATION_RATE := 0.5
+const OUTER_ROTATION_RATE := 0.75
 const START_TIME := 0.5
 const END_TIME := 0.5
 

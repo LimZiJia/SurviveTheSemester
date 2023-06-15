@@ -143,8 +143,6 @@ libraries = {
 [node name="HitboxComponent" parent="." instance=ExtResource("1_lkopl")]
 collision_layer = 4
 collision_mask = 0
-damage = 5.0
-knockback_force = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -6)

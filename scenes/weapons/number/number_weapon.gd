@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var sprite_2d = $Visuals/Sprite2D
+@onready var hitbox_component := $HitboxComponent as HitboxComponent
+@onready var sprite_2d := $Visuals/Sprite2D as Sprite2D
 
 
 func _ready() -> void:

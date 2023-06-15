@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bgkg45mchl7ul"]
+[gd_scene load_steps=62 format=3 uid="uid://bgkg45mchl7ul"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bgwhgewn87l0s" path="res://scenes/weapons/word/word_weapon_controller.tscn" id="5_q2dig"]
 [ext_resource type="PackedScene" uid="uid://0iaeiosmxoh5" path="res://scenes/weapons/number/number_weapon_controller.tscn" id="6_4ty7v"]
 [ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="6_7up1x"]
+[ext_resource type="PackedScene" uid="uid://donr501vi4ljc" path="res://scenes/weapons/calculator/calculator_weapon_controller.tscn" id="7_qktkr"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://scenes/game_object/player/player.png" id="8_voa7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c14a4"]
@@ -578,6 +579,8 @@ shape = SubResource("RectangleShape2D_c14a4")
 [node name="WordWeaponController" parent="WeaponManager" instance=ExtResource("5_q2dig")]
 
 [node name="NumberWeaponController" parent="WeaponManager" instance=ExtResource("6_4ty7v")]
+
+[node name="CalculatorWeaponController" parent="WeaponManager" instance=ExtResource("7_qktkr")]
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 43)
