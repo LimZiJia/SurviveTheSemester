@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var max_speed := 600.0
-@export var knockback_factor := 1500.0
 
 const NAMES := [ "aiken", "dueet"]
 
@@ -27,7 +26,6 @@ func _ready() -> void:
 func set_direction(given_direction: Vector2) -> void:
 	direction = given_direction
 	look_at(position + direction)
-	hitbox_component.knockback = knockback_factor * Vector2.from_angle(global_rotation)
 	
 	var rot := fposmod(rotation_degrees, 360.0)
 	
