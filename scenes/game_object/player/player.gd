@@ -57,7 +57,7 @@ func on_health_component_healed() -> void:
 
 func on_health_component_dead() -> void:
 	dead.emit()
-
+	
 
 func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
 	if buff is BuffObtain:
