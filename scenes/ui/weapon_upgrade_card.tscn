@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bigl4dlwbmumy"]
+
+[ext_resource type="Script" path="res://scenes/ui/weapon_upgrade_card.gd" id="1_ug053"]
+
+[node name="WeaponUpgradeCard" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 150)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ug053")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name"
+
+[node name="CostLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Cost"
+
+[node name="QuantityLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quantity / Max Quantity"
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Description"
+autowrap_mode = 2
+
+[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Buy"

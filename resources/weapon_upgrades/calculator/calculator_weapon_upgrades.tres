@@ -9,5 +9,5 @@
 [resource]
 script = ExtResource("1_75vw5")
 weapon_name = "Calculator"
-weapon_upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_54o5r"), ExtResource("4_w0365"), ExtResource("5_bpmep")])
+upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_54o5r"), ExtResource("4_w0365"), ExtResource("5_bpmep")])
 weapon_scene = ExtResource("2_tr0mp")

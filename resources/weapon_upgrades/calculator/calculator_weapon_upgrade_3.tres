@@ -15,6 +15,7 @@ metadata = {
 
 [resource]
 script = ExtResource("1_blipl")
+weapon_name = &""
 description = "-0.5s cooldown
 +1 calculator"
 level = 3

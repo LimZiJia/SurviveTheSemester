@@ -13,6 +13,7 @@ metadata = {}
 
 [resource]
 script = ExtResource("1_5lgqr")
+weapon_name = &"Word"
 description = "Obtain the word weapon."
 level = 1
 cost = 0

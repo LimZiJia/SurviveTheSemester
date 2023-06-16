@@ -7,5 +7,5 @@
 [resource]
 script = ExtResource("1_aexae")
 weapon_name = &"Word"
-weapon_upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_rhvhm")])
+upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_rhvhm")])
 weapon_scene = ExtResource("2_5pldk")
