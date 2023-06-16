@@ -18,6 +18,8 @@ func _ready():
 
 
 func on_buy_button_pressed() -> void:
+	# Attempt to prevent button spamming issues
+	buy_button.disabled = true
 	var next_upgrade := weapon_upgrades.upgrades[cur_level] as WeaponUpgrade
 	cur_level += 1
 	selected.emit(next_upgrade)

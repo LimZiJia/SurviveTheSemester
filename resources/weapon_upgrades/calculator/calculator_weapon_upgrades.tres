@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="WeaponUpgrades" load_steps=6 format=3 uid="uid://b3rbq4drt5mct"]
+[gd_resource type="Resource" script_class="WeaponUpgrades" load_steps=8 format=3 uid="uid://b3rbq4drt5mct"]
 
 [ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrades.gd" id="1_75vw5"]
 [ext_resource type="PackedScene" uid="uid://donr501vi4ljc" path="res://scenes/weapons/calculator/calculator_weapon_controller.tscn" id="2_tr0mp"]
 [ext_resource type="Resource" uid="uid://gfr4no3ttc2j" path="res://resources/weapon_upgrades/calculator/calculator_weapon_upgrade_1.tres" id="3_54o5r"]
 [ext_resource type="Resource" uid="uid://dsdbk1631iaop" path="res://resources/weapon_upgrades/calculator/calculator_weapon_upgrade_2.tres" id="4_w0365"]
 [ext_resource type="Resource" uid="uid://djra7tknws8m" path="res://resources/weapon_upgrades/calculator/calculator_weapon_upgrade_3.tres" id="5_bpmep"]
+[ext_resource type="Resource" uid="uid://8a4k6fokwyrm" path="res://resources/weapon_upgrades/calculator/calculator_weapon_upgrade_4.tres" id="5_c81st"]
+[ext_resource type="Resource" uid="uid://dydn6u1ksrf3e" path="res://resources/weapon_upgrades/calculator/calculator_weapon_upgrade_5.tres" id="6_tkma7"]
 
 [resource]
 script = ExtResource("1_75vw5")
 weapon_name = "Calculator"
-upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_54o5r"), ExtResource("4_w0365"), ExtResource("5_bpmep")])
+upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_54o5r"), ExtResource("4_w0365"), ExtResource("5_bpmep"), ExtResource("5_c81st"), ExtResource("6_tkma7")])
 weapon_scene = ExtResource("2_tr0mp")

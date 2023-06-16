@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://cyuqca2i8xuom"]
+
+[ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrade.gd" id="1_5ardu"]
+[ext_resource type="Script" path="res://scenes/weapons/weapon_stats/weapon_stat.gd" id="2_7yvto"]
+
+[sub_resource type="Resource" id="Resource_m18qi"]
+script = ExtResource("2_7yvto")
+cooldown = 0.9
+count = 1
+damage = 25.0
+knockback = 1500.0
+metadata = {}
+
+[resource]
+script = ExtResource("1_5ardu")
+weapon_name = &"Word"
+description = "- 0.1s cooldown
++5 damage"
+level = 1
+cost = 10
+weapon_stat = SubResource("Resource_m18qi")
