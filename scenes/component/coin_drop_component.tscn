@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dip3jqu7xbldd"]
+
+[ext_resource type="Script" path="res://scenes/component/coin_drop_component.gd" id="1_ncesy"]
+[ext_resource type="PackedScene" uid="uid://83inik58ntuj" path="res://scenes/game_object/coin/coin.tscn" id="2_aa0tw"]
+
+[node name="CoinDropComponent" type="Node2D"]
+script = ExtResource("1_ncesy")
+coin_scene = ExtResource("2_aa0tw")

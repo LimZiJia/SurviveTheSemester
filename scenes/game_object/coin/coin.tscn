@@ -1,0 +1,149 @@
+[gd_scene load_steps=13 format=3 uid="uid://83inik58ntuj"]
+
+[ext_resource type="Texture2D" uid="uid://bmnnmfrqt1vem" path="res://scenes/game_object/coin/coin.png" id="1_hsadi"]
+[ext_resource type="Script" path="res://scenes/game_object/coin/coin.gd" id="1_ifsdu"]
+[ext_resource type="Script" path="res://scenes/component/velocity_component.gd" id="3_3qj1n"]
+
+[sub_resource type="Animation" id="Animation_2qije"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w1l7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upy65"]
+_data = {
+"RESET": SubResource("Animation_w1l7e"),
+"default": SubResource("Animation_2qije")
+}
+
+[sub_resource type="Animation" id="Animation_g5gvm"]
+resource_name = "despawn"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1, 1.2, 1.4, 1.9, 2.1, 2.3, 2.7, 2.9, 3.1, 3.4, 3.55, 3.7, 3.9, 4.05, 4.2, 4.3, 4.45, 4.6, 4.7, 4.8, 4.9, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4wv5v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iar16"]
+_data = {
+"RESET": SubResource("Animation_4wv5v"),
+"despawn": SubResource("Animation_g5gvm")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lk1of"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx2fd"]
+radius = 128.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wm140"]
+radius = 48.0
+
+[node name="Coin" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ifsdu")
+
+[node name="DefaultAnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_upy65")
+}
+
+[node name="DespawnAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iar16")
+}
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lk1of")
+
+[node name="PlayerDetectArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea2D"]
+shape = SubResource("CircleShape2D_wx2fd")
+
+[node name="PlayerCollectArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollectArea2D"]
+shape = SubResource("CircleShape2D_wm140")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_hsadi")
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("3_3qj1n")
+acceleration = 60.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cejjrtuji45i4"]
+[gd_scene load_steps=19 format=3 uid="uid://cejjrtuji45i4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/mob/mob.gd" id="1_anuhh"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_8mro8"]
@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="3_r44ho"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_tvcfr"]
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="4_bddah"]
+[ext_resource type="PackedScene" uid="uid://dip3jqu7xbldd" path="res://scenes/component/coin_drop_component.tscn" id="5_0u7g8"]
 [ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_xnrto"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_q21w0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xujdp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbrhx"]
 resource_local_to_scene = true
 shader = ExtResource("6_q21w0")
 shader_parameter/lerp_percent = 0.0
@@ -67,17 +68,21 @@ script = ExtResource("1_anuhh")
 max_speed = 130.0
 acceleration = 25.0
 
+[node name="HealthComponent" parent="." instance=ExtResource("3_r44ho")]
+
 [node name="ExperienceDropComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("3_atexj")
 health_component = NodePath("../HealthComponent")
 experience = 1
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_r44ho")]
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_0u7g8")]
+health_component = NodePath("../HealthComponent")
+money = 10
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_xnrto")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
-hit_flash_material = SubResource("ShaderMaterial_xujdp")
+hit_flash_material = SubResource("ShaderMaterial_mbrhx")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("3_tvcfr")]
 collision_layer = 0
