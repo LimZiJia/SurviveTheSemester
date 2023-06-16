@@ -40,10 +40,6 @@ func knockback(hitbox_position: Vector2, knockback_force: float) -> void:
 	if owner_node2d == null:
 		return
 	
-	print(hitbox_position)
-	print(owner.global_position)
+	var knockback_dir := hitbox_position.direction_to(owner.global_position)
 	
-	var knockback_dir := hitbox_position.direction_to(owner.global_position) * knockback_force
-	print(knockback_dir)
-	
-	velocity += hitbox_position.direction_to(owner.global_position) * knockback_force
+	velocity += knockback_dir * knockback_force

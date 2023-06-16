@@ -9,11 +9,11 @@ var can_attack := false
 
 
 func _ready():
-	if weapon_stat == null:
-		return
-	cooldown_timer.wait_time = weapon_stat.cooldown
 	cooldown_timer.timeout.connect(on_cooldown_timer_timeout)
-	cooldown_timer.start()
+	GameEvents.weapon_upgrade_added.connect(on_weapon_upgrade_added)
+	
+	if weapon_stat != null:
+		update_stats()
 
 
 func _physics_process(_delta: float) -> void:
@@ -25,6 +25,21 @@ func _physics_process(_delta: float) -> void:
 # the player can attack again
 func on_cooldown_timer_timeout() -> void:
 	can_attack = true
+
+
+func on_weapon_upgrade_added(weapon_upgrade: WeaponUpgrade) -> void:
+	if weapon_upgrade.weapon_name != "Word":
+		return
+	
+	weapon_stat = weapon_upgrade.weapon_stat
+	update_stats()
+
+
+func update_stats() -> void:
+	cooldown_timer.wait_time = weapon_stat.cooldown
+	if cooldown_timer.is_stopped():
+		cooldown_timer.start()
+
 
 # Given there are mobs surrounding the player, it initiates the cooldown, 
 # and adds the given number of weapons into the world scene and facing the

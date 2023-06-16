@@ -14,6 +14,7 @@ var cur_level: int = 0
 
 func _ready():
 	buy_button.pressed.connect(on_buy_button_pressed)
+	GameEvents.weapon_upgrade_added.connect(on_weapon_upgrade_added)
 
 
 func on_buy_button_pressed() -> void:
@@ -22,7 +23,7 @@ func on_buy_button_pressed() -> void:
 	selected.emit(next_upgrade)
 
 
-func on_upgrade_added() -> void:
+func on_weapon_upgrade_added(_weapon_upgrade: WeaponUpgrade) -> void:
 	update_card()
 
 
