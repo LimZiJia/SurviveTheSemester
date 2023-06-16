@@ -17,7 +17,6 @@ func _ready() -> void:
 
 
 func on_shop_button_pressed() -> void:
-	GameEvents.emit_money_collected(10000)
 	var shop_instance = shop_scene.instantiate()
 	get_parent().add_child(shop_instance)
 	shop_instance.set_upgrades(upgrade_pool, current_upgrades)
