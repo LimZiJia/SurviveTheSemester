@@ -16,6 +16,6 @@ script = ExtResource("1_5ardu")
 weapon_name = &"Word"
 description = "- 0.1s cooldown
 +5 damage"
-level = 1
+level = 2
 cost = 10
 weapon_stat = SubResource("Resource_m18qi")

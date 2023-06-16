@@ -24,8 +24,8 @@ func on_upgrade_selected(weapon_upgrade) -> void:
 
 
 func set_upgrades(upgrade_pool: Dictionary, current_upgrades: Dictionary) -> void:
-	for weapon_upgrades in upgrade_pool.values():
+	for weapon_upgrades_data in upgrade_pool.values():
 		var weapon_upgrade_card_instance = weapon_upgrade_card_scene.instantiate()
 		weapon_upgrade_container.add_child(weapon_upgrade_card_instance)
-		weapon_upgrade_card_instance.set_upgrade(weapon_upgrades, current_upgrades)
+		weapon_upgrade_card_instance.set_upgrade(weapon_upgrades_data, current_upgrades)
 		weapon_upgrade_card_instance.selected.connect(on_upgrade_selected)

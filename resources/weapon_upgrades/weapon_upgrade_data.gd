@@ -1,4 +1,4 @@
-class_name WeaponUpgrades
+class_name WeaponUpgradesData
 extends Resource
 
 # The name of the given weapon the upgrades are being defined for

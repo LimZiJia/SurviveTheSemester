@@ -2,7 +2,7 @@ extends PanelContainer
 
 signal selected(weapon_upgrade: WeaponUpgrade)
 
-var weapon_upgrades: WeaponUpgrades
+var weapon_upgrades_data: WeaponUpgradesData
 var cur_level: int = 0
 
 @onready var name_label := %NameLabel as Label
@@ -20,7 +20,7 @@ func _ready():
 func on_buy_button_pressed() -> void:
 	# Attempt to prevent button spamming issues
 	buy_button.disabled = true
-	var next_upgrade := weapon_upgrades.upgrades[cur_level] as WeaponUpgrade
+	var next_upgrade := weapon_upgrades_data.upgrades[cur_level] as WeaponUpgrade
 	cur_level += 1
 	selected.emit(next_upgrade)
 
@@ -29,20 +29,20 @@ func on_weapon_upgrade_added(_weapon_upgrade: WeaponUpgrade) -> void:
 	update_card()
 
 
-func set_upgrade(upgrades: WeaponUpgrades, current_upgrades: Dictionary) -> void:
-	weapon_upgrades = upgrades
-	var has_upgrade = current_upgrades.has(weapon_upgrades.weapon_name)
+func set_upgrade(upgrades: WeaponUpgradesData, current_upgrades: Dictionary) -> void:
+	weapon_upgrades_data = upgrades
+	var has_upgrade = current_upgrades.has(weapon_upgrades_data.weapon_name)
 	if has_upgrade:
-		cur_level = current_upgrades[weapon_upgrades.weapon_name]["level"]
+		cur_level = current_upgrades[weapon_upgrades_data.weapon_name]["level"]
 	
-	name_label.text = weapon_upgrades.weapon_name
+	name_label.text = weapon_upgrades_data.weapon_name
 	update_card()
 
 
 func update_card() -> void:
 	# If an upgrade exists
-	if cur_level < weapon_upgrades.upgrades.size():
-		var next_upgrade := weapon_upgrades.upgrades[cur_level] as WeaponUpgrade
+	if cur_level < weapon_upgrades_data.upgrades.size():
+		var next_upgrade := weapon_upgrades_data.upgrades[cur_level] as WeaponUpgrade
 		description_label.text = next_upgrade.description
 		cost_label.text = "Cost: $%d" % next_upgrade.cost
 		buy_button.disabled = not MoneyManager.has_money(next_upgrade.cost)
@@ -51,4 +51,4 @@ func update_card() -> void:
 		cost_label.text = "Cost: NIL"
 		buy_button.disabled = true
 	
-	quantity_label.text = "%d/%d" % [cur_level, weapon_upgrades.upgrades.size()]
+	quantity_label.text = "%d/%d" % [cur_level, weapon_upgrades_data.upgrades.size()]

@@ -1,7 +1,7 @@
 extends Node
 
 # Dictionary of keys type StringName representing the weapon name,
-# and values type WeaponUpgrades representing the weapon upgrades.
+# and values type WeaponUpgradesData representing the weapon upgrades.
 @export var upgrade_pool: Dictionary
 @export var shop_button: TextureButton
 @export var shop_scene: PackedScene
@@ -17,6 +17,7 @@ func _ready() -> void:
 
 
 func on_shop_button_pressed() -> void:
+	GameEvents.emit_money_collected(10000)
 	var shop_instance = shop_scene.instantiate()
 	get_parent().add_child(shop_instance)
 	shop_instance.set_upgrades(upgrade_pool, current_upgrades)
@@ -43,8 +44,8 @@ func apply_upgrade(weapon_upgrade: WeaponUpgrade) -> void:
 	GameEvents.emit_money_spent(weapon_upgrade.cost)
 	
 	if weapon_upgrade.level == 1:
-		var weapon_upgrades := upgrade_pool[weapon_upgrade.weapon_name] as WeaponUpgrades
-		GameEvents.emit_weapon_added(weapon_upgrades)
+		var weapon_upgrades_data := upgrade_pool[weapon_upgrade.weapon_name] as WeaponUpgradesData
+		GameEvents.emit_weapon_added(weapon_upgrades_data)
 	
 	GameEvents.emit_weapon_upgrade_added(weapon_upgrade)
 

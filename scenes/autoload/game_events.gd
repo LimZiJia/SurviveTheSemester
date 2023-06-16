@@ -6,7 +6,7 @@ signal money_spent(amount: int)
 signal health_damaged(current_health: float, max_health: float)
 signal health_healed(current_health: float, max_health: float)
 signal buff_added(buff: Buff, current_buffs: Dictionary)
-signal weapon_added(weapon: WeaponUpgrades)
+signal weapon_added(weapon: WeaponUpgradesData)
 signal weapon_upgrade_added(weapon_upgrade: WeaponUpgrade)
 
 func emit_experience_collected(amount: int) -> void:
@@ -33,7 +33,7 @@ func emit_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
 	buff_added.emit(buff, current_buffs)
 
 
-func emit_weapon_added(weapon: WeaponUpgrades) -> void:
+func emit_weapon_added(weapon: WeaponUpgradesData) -> void:
 	weapon_added.emit(weapon)
 
 
