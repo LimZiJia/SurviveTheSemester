@@ -43,26 +43,26 @@ experience_manager = NodePath("../../ExperienceManager")
 [node name="MoneyBar" parent="StatusBars" instance=ExtResource("7_b4don")]
 position = Vector2(6, 106)
 
-[node name="ShopButton" type="TextureButton" parent="StatusBars"]
-offset_left = 6.0
-offset_top = 156.0
-offset_right = 54.0
-offset_bottom = 204.0
+[node name="HBoxContainer" type="HBoxContainer" parent="StatusBars"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="ShopButton" type="TextureButton" parent="StatusBars/HBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("8_7gkdb")
 texture_pressed = ExtResource("9_k526x")
 texture_hover = ExtResource("10_75hys")
 texture_disabled = ExtResource("8_7gkdb")
 texture_focused = ExtResource("8_7gkdb")
 
-[node name="PauseButton" type="TextureButton" parent="StatusBars"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -56.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = 56.0
-grow_horizontal = 0
+[node name="PauseButton" type="TextureButton" parent="StatusBars/HBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("11_oe55t")
 texture_pressed = ExtResource("12_1oxyp")
 texture_hover = ExtResource("13_rrmfn")
@@ -76,7 +76,7 @@ time_manager = NodePath("../TimeManager")
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("shop_button") instance=ExtResource("23_8h5qs")]
-shop_button = NodePath("../StatusBars/ShopButton")
+shop_button = NodePath("../StatusBars/HBoxContainer/ShopButton")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("8_tmpyg")]
 
