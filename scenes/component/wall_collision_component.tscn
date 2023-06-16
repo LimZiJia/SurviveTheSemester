@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://uwlsi5qy47yr"]
-
-[ext_resource type="Script" path="res://scenes/component/wall_collision_component.gd" id="1_1xa6t"]
-
-[node name="WallCollisionComponent" type="Area2D"]
-collision_layer = 0
-script = ExtResource("1_1xa6t")
