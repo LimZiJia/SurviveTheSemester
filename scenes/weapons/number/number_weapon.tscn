@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp43te4obiahc"]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="1_lkopl"]
 [ext_resource type="Script" path="res://scenes/weapons/number/number_weapon.gd" id="1_y4665"]
-[ext_resource type="Texture2D" uid="uid://t13gkhbjgc4n" path="res://numbers.png" id="2_4ow6m"]
+[ext_resource type="Texture2D" uid="uid://t13gkhbjgc4n" path="res://scenes/weapons/number/numbers.png" id="2_4ow6m"]
 
 [sub_resource type="Animation" id="Animation_uemv0"]
 length = 0.001

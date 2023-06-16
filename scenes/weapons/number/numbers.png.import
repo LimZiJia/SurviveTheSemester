@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://t13gkhbjgc4n"
-path="res://.godot/imported/numbers.png-930210ef545a92feac671c5a98f71176.ctex"
+path="res://.godot/imported/numbers.png-23fbde398f434c0e230cb92a51eefc65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://numbers.png"
-dest_files=["res://.godot/imported/numbers.png-930210ef545a92feac671c5a98f71176.ctex"]
+source_file="res://scenes/weapons/number/numbers.png"
+dest_files=["res://.godot/imported/numbers.png-23fbde398f434c0e230cb92a51eefc65.ctex"]
 
 [params]
 
