@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwyma7mb01o0"]
+
+[ext_resource type="Script" path="res://scenes/manager/upgrade_manager.gd" id="1_ftk8e"]
+
+[node name="UpgradeManager" type="Node"]
+script = ExtResource("1_ftk8e")
+initial_upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([null])

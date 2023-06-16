@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponUpgrades" load_steps=4 format=3 uid="uid://bsfjjxi0jvwtj"]
+
+[ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrades.gd" id="1_aexae"]
+[ext_resource type="PackedScene" uid="uid://bgwhgewn87l0s" path="res://scenes/weapons/word/word_weapon_controller.tscn" id="2_5pldk"]
+[ext_resource type="Resource" uid="uid://b3cjttikobny" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_1.tres" id="3_rhvhm"]
+
+[resource]
+script = ExtResource("1_aexae")
+weapon_name = &"Word"
+weapon_upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_rhvhm")])
+weapon_scene = ExtResource("2_5pldk")

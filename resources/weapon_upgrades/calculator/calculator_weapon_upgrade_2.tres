@@ -15,9 +15,8 @@ metadata = {
 
 [resource]
 script = ExtResource("1_o6sxp")
-id = "calculator_weapon_1"
 description = "+5 damage
 +1 calculator"
-level = 1
-cost = 10
+level = 2
+cost = 20
 weapon_stat = SubResource("Resource_m2px5")

@@ -15,9 +15,8 @@ metadata = {
 
 [resource]
 script = ExtResource("1_blipl")
-id = "calculator_weapon_1"
 description = "-0.5s cooldown
 +1 calculator"
-level = 1
-cost = 10
+level = 3
+cost = 40
 weapon_stat = SubResource("Resource_m2px5")
