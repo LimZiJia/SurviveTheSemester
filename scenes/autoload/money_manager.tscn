@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://84qrbui6e3t3"]
+
+[ext_resource type="Script" path="res://scenes/autoload/money_manager.gd" id="1_wpbp7"]
+
+[node name="MoneyManager" type="Node"]
+script = ExtResource("1_wpbp7")

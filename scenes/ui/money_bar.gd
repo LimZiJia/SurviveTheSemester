@@ -13,8 +13,16 @@ var display_value: int = 0:
 @onready var money_label := $MoneyLabel as Label
 
 
-func update_value(new_value: int) -> void:
-	actual_value = new_value
+func _ready() -> void:
+	MoneyManager.money_updated.connect(on_money_updated)
+
+
+func on_money_updated(new_amount: int) -> void:
+	update_value(new_amount)
+
+
+func update_value(new_amount: int) -> void:
+	actual_value = new_amount
 	
 	if tween:
 		tween.kill()

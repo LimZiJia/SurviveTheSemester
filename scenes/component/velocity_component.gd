@@ -35,5 +35,11 @@ func move(character_body: CharacterBody2D) -> void:
 	velocity = character_body.velocity
 
 
-func knockback(knockback_vector: Vector2) -> void:
-	velocity += knockback_vector
+func knockback(hitbox_position: Vector2, knockback_force: float) -> void:
+	var owner_node2d = owner as Node2D
+	if owner_node2d == null:
+		return
+	
+	var knockback_dir := hitbox_position.direction_to(owner.global_position)
+	
+	velocity += knockback_dir * knockback_force

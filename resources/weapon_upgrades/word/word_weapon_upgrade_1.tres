@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://b3cjttikobny"]
+
+[ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrade.gd" id="1_5lgqr"]
+[ext_resource type="Script" path="res://scenes/weapons/weapon_stats/weapon_stat.gd" id="2_fdeib"]
+
+[sub_resource type="Resource" id="Resource_m18qi"]
+script = ExtResource("2_fdeib")
+cooldown = 1.0
+count = 1
+damage = 20.0
+knockback = 1500.0
+metadata = {}
+
+[resource]
+script = ExtResource("1_5lgqr")
+weapon_name = &"Word"
+description = "Obtain the word weapon."
+level = 1
+cost = 0
+weapon_stat = SubResource("Resource_m18qi")

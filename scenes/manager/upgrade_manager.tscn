@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://du2ktn8bc1io3"]
+
+[ext_resource type="Script" path="res://scenes/manager/upgrade_manager.gd" id="1_ftk8e"]
+[ext_resource type="Resource" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_data.tres" id="2_x06s2"]
+[ext_resource type="PackedScene" uid="uid://ocl5j5ch8y0d" path="res://scenes/ui/shop_screen.tscn" id="3_7u1xt"]
+[ext_resource type="Resource" uid="uid://dk8p5sdy7rf2l" path="res://resources/weapon_upgrades/calculator/calculator_weapon_upgrade_data.tres" id="3_wifbp"]
+[ext_resource type="Resource" uid="uid://bspuoy6v5dah4" path="res://resources/weapon_upgrades/number/number_weapon_upgrade_data.tres" id="4_6d5c5"]
+
+[node name="UpgradeManager" type="Node"]
+script = ExtResource("1_ftk8e")
+upgrade_pool = {
+"Calculator": ExtResource("3_wifbp"),
+"Number": ExtResource("4_6d5c5"),
+"Word": ExtResource("2_x06s2")
+}
+shop_scene = ExtResource("3_7u1xt")

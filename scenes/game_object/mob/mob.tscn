@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_xnrto"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_q21w0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mh1e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xujdp"]
 resource_local_to_scene = true
 shader = ExtResource("6_q21w0")
 shader_parameter/lerp_percent = 0.0
@@ -77,7 +77,7 @@ experience = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_xnrto")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
-hit_flash_material = SubResource("ShaderMaterial_0mh1e")
+hit_flash_material = SubResource("ShaderMaterial_xujdp")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("3_tvcfr")]
 collision_layer = 0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf4610j1crfc"]
 
 [ext_resource type="Script" path="res://scenes/ui/buff_select_screen.gd" id="1_44s3b"]
-[ext_resource type="PackedScene" uid="uid://xsg8umn05cqy" path="res://scenes/ui/buff_select_card.tscn" id="2_xia0x"]
+[ext_resource type="PackedScene" uid="uid://bd1t7jrm0kdn4" path="res://scenes/ui/buff_select_card.tscn" id="2_xia0x"]
 
 [node name="BuffSelectScreen" type="CanvasLayer"]
 process_mode = 3

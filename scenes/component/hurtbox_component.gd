@@ -18,4 +18,4 @@ func on_area_entered(area: Area2D) -> void:
 		health_component.damage(hitbox_component.damage)
 	
 	if velocity_component != null:
-		velocity_component.knockback(hitbox_component.knockback)
+		velocity_component.knockback(hitbox_component.global_position, hitbox_component.knockback_force)
