@@ -4,6 +4,21 @@
 [ext_resource type="Script" path="res://scenes/game_object/coin/coin.gd" id="1_ifsdu"]
 [ext_resource type="Script" path="res://scenes/component/velocity_component.gd" id="3_3qj1n"]
 
+[sub_resource type="Animation" id="Animation_w1l7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_2qije"]
 resource_name = "default"
 loop_mode = 1
@@ -20,25 +35,25 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_w1l7e"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upy65"]
+_data = {
+"RESET": SubResource("Animation_w1l7e"),
+"default": SubResource("Animation_2qije")
+}
+
+[sub_resource type="Animation" id="Animation_4wv5v"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_upy65"]
-_data = {
-"RESET": SubResource("Animation_w1l7e"),
-"default": SubResource("Animation_2qije")
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_g5gvm"]
@@ -69,21 +84,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"queue_free"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_4wv5v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iar16"]

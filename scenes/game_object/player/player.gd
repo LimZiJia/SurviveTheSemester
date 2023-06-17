@@ -45,14 +45,14 @@ func _physics_process(_delta: float) -> void:
 	velocity_component.move(self)
 
 
-func on_health_component_damaged() -> void:
+func on_health_component_damaged(_damage: float) -> void:
 	GameEvents.emit_health_damaged(health_component.current_health, health_component.max_health)
 	is_damaged = true
 	await get_tree().create_timer(0.15).timeout
 	is_damaged = false
 
 
-func on_health_component_healed() -> void:
+func on_health_component_healed(_health: float) -> void:
 	GameEvents.emit_health_healed(health_component.current_health, health_component.max_health)
 
 func on_health_component_dead() -> void:

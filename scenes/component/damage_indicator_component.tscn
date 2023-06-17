@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://diyl3hwyixy7d"]
+
+[ext_resource type="Script" path="res://scenes/component/damage_indicator_component.gd" id="1_f4fpr"]
+[ext_resource type="PackedScene" uid="uid://xemeps7wr4iq" path="res://scenes/game_object/damage_indicator/damage_indicator.tscn" id="2_alxse"]
+
+[node name="DamageIndicatorComponent" type="Node2D"]
+script = ExtResource("1_f4fpr")
+damage_indicator_scene = ExtResource("2_alxse")

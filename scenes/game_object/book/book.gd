@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 	velocity_component.move(self)
 
 
-func on_health_component_damaged() -> void:
+func on_health_component_damaged(_damage: float) -> void:
 	update_health_bar()
 
 

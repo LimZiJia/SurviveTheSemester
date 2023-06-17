@@ -2,8 +2,8 @@ class_name HealthComponent
 extends Node2D
 
 signal dead
-signal damaged
-signal healed
+signal damaged(damage: float)
+signal healed(health: float)
 
 @export var max_health := 10.0
 var current_health: float
@@ -15,13 +15,13 @@ func _ready() -> void:
 
 func damage(amount: float) -> void:
 	current_health = max(current_health - amount, 0.0)
-	damaged.emit()
+	damaged.emit(amount)
 	check_death.call_deferred()
 
 
 func heal(amount: float) -> void:
 	current_health = min(current_health + amount, max_health)
-	healed.emit()
+	healed.emit(amount)
 
 
 func heal_percent(percent: float) -> void:

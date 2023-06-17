@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cejjrtuji45i4"]
+[gd_scene load_steps=20 format=3 uid="uid://cejjrtuji45i4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/mob/mob.gd" id="1_anuhh"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_8mro8"]
@@ -11,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dip3jqu7xbldd" path="res://scenes/component/coin_drop_component.tscn" id="5_0u7g8"]
 [ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_xnrto"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_q21w0"]
+[ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_xnt0y"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbrhx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oos5n"]
 resource_local_to_scene = true
 shader = ExtResource("6_q21w0")
 shader_parameter/lerp_percent = 0.0
@@ -82,7 +83,10 @@ money = 10
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_xnrto")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
-hit_flash_material = SubResource("ShaderMaterial_mbrhx")
+hit_flash_material = SubResource("ShaderMaterial_oos5n")
+
+[node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_xnt0y")]
+health_component = NodePath("../HealthComponent")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("3_tvcfr")]
 collision_layer = 0
