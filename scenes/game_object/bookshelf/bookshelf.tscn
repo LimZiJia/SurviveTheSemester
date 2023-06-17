@@ -1,0 +1,167 @@
+[gd_scene load_steps=21 format=3 uid="uid://bujqaccjlfprl"]
+
+[ext_resource type="Script" path="res://scenes/game_object/bookshelf/bookshelf.gd" id="1_lbseb"]
+[ext_resource type="PackedScene" uid="uid://cxq00s4mkyx18" path="res://scenes/game_object/book/book.tscn" id="2_30e8n"]
+[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_lhapa"]
+[ext_resource type="Script" path="res://scenes/component/health_component.gd" id="3_f48w8"]
+[ext_resource type="PackedScene" uid="uid://dm3lrtqb30uf5" path="res://scenes/component/experience_drop_component.tscn" id="4_i353u"]
+[ext_resource type="PackedScene" uid="uid://dip3jqu7xbldd" path="res://scenes/component/coin_drop_component.tscn" id="5_4l7q6"]
+[ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="6_ti1ov"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_10tro"]
+[ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_sx4q7"]
+[ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="9_r24fn"]
+[ext_resource type="Texture2D" uid="uid://cvr1dsetmpa13" path="res://scenes/game_object/bookshelf/bookshelf.png" id="11_1fs44"]
+[ext_resource type="PackedScene" uid="uid://dsfstepo6lk7x" path="res://scenes/game_object/book/book_sprite.tscn" id="12_yerdr"]
+
+[sub_resource type="Animation" id="Animation_sn8f7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BookshelfSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mb0hy"]
+resource_name = "shake"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BookshelfSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, 0), Vector2(3, 0), Vector2(-3, 0), Vector2(3, 0), Vector2(-3, 0), Vector2(3, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_book"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f0bfr"]
+_data = {
+"RESET": SubResource("Animation_sn8f7"),
+"attack": SubResource("Animation_mb0hy")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uy1hl"]
+resource_local_to_scene = true
+shader = ExtResource("7_10tro")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3ug4"]
+size = Vector2(76, 90)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uvxv"]
+bg_color = Color(0.227451, 0.227451, 0.313726, 1)
+border_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuua3"]
+bg_color = Color(0.607843, 0.760784, 0.27451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywrok"]
+size = Vector2(76, 90)
+
+[node name="Bookshelf" type="CharacterBody2D" groups=["mobs"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_lbseb")
+book_scene = ExtResource("2_30e8n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f0bfr")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_lhapa")]
+max_speed = 40.0
+acceleration = 30.0
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_f48w8")
+max_health = 1000.0
+
+[node name="ExperienceDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_i353u")]
+health_component = NodePath("../HealthComponent")
+experience = 2
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_4l7q6")]
+health_component = NodePath("../HealthComponent")
+money = 5
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../BookshelfSprite")
+hit_flash_material = SubResource("ShaderMaterial_uy1hl")
+
+[node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_sx4q7")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_r24fn")]
+collision_layer = 0
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("RectangleShape2D_p3ug4")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(36, 8)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -57.0
+offset_right = 18.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_6uvxv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cuua3")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="BookshelfSprite" parent="." instance=ExtResource("12_yerdr")]
+texture = ExtResource("11_1fs44")
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ywrok")
