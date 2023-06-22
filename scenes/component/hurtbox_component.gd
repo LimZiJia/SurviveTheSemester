@@ -14,6 +14,8 @@ func on_area_entered(area: Area2D) -> void:
 	
 	var hitbox_component := area as HitboxComponent
 	
+	hitbox_component.hit.emit()
+	
 	if health_component != null:
 		health_component.damage(hitbox_component.damage)
 	

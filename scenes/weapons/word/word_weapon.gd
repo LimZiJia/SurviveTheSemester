@@ -18,9 +18,28 @@ func _ready() -> void:
 	choose_name()
 	set_as_top_level(true)
 	
+	hitbox_component.hit.connect(on_hitbox_hit)
+	
 	impact_detector.body_entered.connect(_on_impact)
 	despawn_timer.timeout.connect(_on_timeout)
 	despawn_timer.start(1.0)
+
+
+func _physics_process(delta: float) -> void:
+	position += velocity * delta
+
+
+# Removes the projectile when it collides with a mob
+func on_hitbox_hit() -> void:
+	queue_free()
+
+# Removes the projectile when it collides with a mob or the world
+func _on_impact(_body) -> void:
+	queue_free()
+
+
+func _on_timeout() -> void:
+	queue_free()
 
 
 func set_direction(given_direction: Vector2) -> void:
@@ -39,16 +58,3 @@ func set_direction(given_direction: Vector2) -> void:
 func choose_name() -> void:
 	var idx := randi_range(0, 1)
 	label.text = NAMES[idx]
-
-
-func _physics_process(delta: float) -> void:
-	position += velocity * delta
-
-
-# Removes the projectile when it collides with a mob or the world
-func _on_impact(_body) -> void:
-	queue_free()
-
-
-func _on_timeout() -> void:
-	queue_free()
