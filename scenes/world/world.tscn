@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5pk62uuup4f7"]
+[gd_scene load_steps=25 format=3 uid="uid://c5pk62uuup4f7"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
+[ext_resource type="PackedScene" uid="uid://bdqnmbafpcox" path="res://test/wave_manager.tscn" id="24_vav6n"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
@@ -86,6 +87,7 @@ shop_button = NodePath("../StatusBars/MarginContainer/HBoxContainer/ShopButton")
 [node name="ExperienceManager" parent="." instance=ExtResource("8_tmpyg")]
 
 [node name="WaveManager" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("3_mnirc")]
+process_mode = 4
 time_manager = NodePath("../TimeManager")
 
 [node name="TimeManager" parent="." instance=ExtResource("7_fb4dk")]
@@ -112,3 +114,5 @@ unique_name_in_owner = true
 remote_path = NodePath("../../../Camera2D")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
+
+[node name="WaveManager2" parent="." instance=ExtResource("24_vav6n")]
