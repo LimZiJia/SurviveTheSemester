@@ -33,6 +33,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Survive The Semester"
 
+[gui]
+
+theme/custom="res://resources/theme/theme.tres"
+
 [input]
 
 ui_accept={

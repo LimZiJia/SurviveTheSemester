@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c5pk62uuup4f7"]
+[gd_scene load_steps=24 format=3 uid="uid://c5pk62uuup4f7"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c01utxx6mui17" path="res://scenes/overlays/blood_overlay.tscn" id="4_q01fj"]
 [ext_resource type="PackedScene" uid="uid://be2bld7i1k33f" path="res://scenes/ui/time_ui.tscn" id="5_18yls"]
 [ext_resource type="PackedScene" uid="uid://iily2o50n46p" path="res://scenes/ui/experience_bar.tscn" id="5_tersy"]
-[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="6_7j38u"]
+[ext_resource type="PackedScene" uid="uid://caffdrsf578am" path="res://scenes/ui/pause_menu.tscn" id="6_7j38u"]
 [ext_resource type="PackedScene" uid="uid://bwdy8drw25be3" path="res://scenes/ui/health_grade_bar.tscn" id="6_xc6ep"]
 [ext_resource type="PackedScene" uid="uid://c0jmj040f8aug" path="res://scenes/ui/money_bar.tscn" id="7_b4don"]
 [ext_resource type="PackedScene" uid="uid://cy8v4dsyl3rsr" path="res://scenes/manager/time_manager.tscn" id="7_fb4dk"]
@@ -23,7 +23,6 @@
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
-[ext_resource type="PackedScene" uid="uid://bujqaccjlfprl" path="res://scenes/game_object/bookshelf/bookshelf.tscn" id="24_63qv5"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
@@ -111,11 +110,5 @@ unique_name_in_owner = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
-
-[node name="Bookshelf" parent="Entities" instance=ExtResource("24_63qv5")]
-position = Vector2(-443, -343)
-
-[node name="Bookshelf2" parent="Entities" instance=ExtResource("24_63qv5")]
-position = Vector2(608, -175)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

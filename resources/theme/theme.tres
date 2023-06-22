@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://di654ge5dmnc3"]
+
+[ext_resource type="Texture2D" uid="uid://bdxo10p7ivatu" path="res://resources/theme/panel_container2.png" id="1_1awgp"]
+[ext_resource type="Texture2D" uid="uid://bab5ob6aktl0e" path="res://resources/theme/panel_container.png" id="2_46k0f"]
+[ext_resource type="FontFile" uid="uid://bmq8iq3t44uym" path="res://resources/theme/PIXEARG_.TTF" id="3_7n7oo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fyqgc"]
+texture = ExtResource("1_1awgp")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hcvl5"]
+texture = ExtResource("2_46k0f")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 21.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(0, 0, 96, 93)
+
+[resource]
+default_font = ExtResource("3_7n7oo")
+AlternativePanelContainer/base_type = &"PanelContainer"
+AlternativePanelContainer/styles/panel = SubResource("StyleBoxTexture_fyqgc")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_hcvl5")

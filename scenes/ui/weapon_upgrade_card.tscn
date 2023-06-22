@@ -6,6 +6,7 @@
 custom_minimum_size = Vector2(200, 150)
 offset_right = 40.0
 offset_bottom = 40.0
+theme_type_variation = &"AlternativePanelContainer"
 script = ExtResource("1_ug053")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
