@@ -56,6 +56,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_button_pressed(button: Button) -> void:
+	if button_pressed != null:
+		var action = button_action_dict[button_pressed.to_string()]
+		button_pressed.text = get_key(action)
+	
 	button.text = "Press key ..."
 	button_pressed = button
 
