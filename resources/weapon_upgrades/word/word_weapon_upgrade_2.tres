@@ -5,17 +5,16 @@
 
 [sub_resource type="Resource" id="Resource_m18qi"]
 script = ExtResource("2_7yvto")
-cooldown = 0.9
+cooldown = 1.0
 count = 1
-damage = 25.0
+damage = 15.0
 knockback = 1500.0
 metadata = {}
 
 [resource]
 script = ExtResource("1_5ardu")
 weapon_name = &"Word"
-description = "- 0.1s cooldown
-+5 damage"
+description = "+5 damage"
 level = 2
-cost = 10
+cost = 100
 weapon_stat = SubResource("Resource_m18qi")

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_vqpbc"]
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://scenes/game_object/book/book_blue.png" id="9_pbyfw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkbr4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3r4p"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -108,9 +108,12 @@ motion_mode = 1
 script = ExtResource("1_bu757")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_41gv0")]
+max_speed = 150.0
+acceleration = 15.0
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_4cdrx")
+max_health = 18.0
 
 [node name="ExperienceDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_unc7o")]
 health_component = NodePath("../HealthComponent")
@@ -123,7 +126,7 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_nkbr4")
+hit_flash_material = SubResource("ShaderMaterial_p3r4p")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_vqpbc")]
 health_component = NodePath("../HealthComponent")

@@ -557,7 +557,7 @@ motion_mode = 1
 script = ExtResource("1_7xkn6")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_i4ae5")]
-max_speed = 300.0
+max_speed = 200.0
 acceleration = 30.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_4xk1m")]
@@ -583,7 +583,7 @@ texture = ExtResource("6_7up1x")
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 76
+frame = 77
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 33.5)

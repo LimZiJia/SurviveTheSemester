@@ -7,7 +7,7 @@
 script = ExtResource("2_fdeib")
 cooldown = 1.0
 count = 1
-damage = 20.0
+damage = 10.0
 knockback = 1500.0
 metadata = {}
 
