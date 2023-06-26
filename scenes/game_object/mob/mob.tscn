@@ -13,7 +13,7 @@
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_q21w0"]
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_xnt0y"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oos5n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0pmw"]
 resource_local_to_scene = true
 shader = ExtResource("6_q21w0")
 shader_parameter/lerp_percent = 0.0
@@ -70,6 +70,7 @@ max_speed = 130.0
 acceleration = 25.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_r44ho")]
+max_health = 15.0
 
 [node name="ExperienceDropComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("3_atexj")
@@ -83,7 +84,7 @@ money = 10
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_xnrto")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
-hit_flash_material = SubResource("ShaderMaterial_oos5n")
+hit_flash_material = SubResource("ShaderMaterial_s0pmw")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_xnt0y")]
 health_component = NodePath("../HealthComponent")

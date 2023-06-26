@@ -7,7 +7,7 @@
 script = ExtResource("2_1f8x8")
 cooldown = 7.0
 count = 1
-damage = 10.0
+damage = 5.0
 knockback = 400.0
 metadata = {
 "attack_time": 3.0
@@ -18,5 +18,5 @@ script = ExtResource("1_apy5b")
 weapon_name = &"Calculator"
 description = "Obtain the calculator weapon.	"
 level = 1
-cost = 10
+cost = 1000
 weapon_stat = SubResource("Resource_m2px5")
