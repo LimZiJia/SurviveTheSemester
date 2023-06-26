@@ -1,27 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://mmdip1bknuio"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scenes/manager/wave_manager.gd" id="1_r34js"]
-[ext_resource type="PackedScene" uid="uid://cxq00s4mkyx18" path="res://scenes/game_object/book/book.tscn" id="2_paetk"]
-[ext_resource type="PackedScene" uid="uid://cejjrtuji45i4" path="res://scenes/game_object/mob/mob.tscn" id="3_apm1j"]
+[ext_resource type="Script" path="res://scenes/manager/wave_manager.gd" id="1_mejhg"]
+[ext_resource type="PackedScene" uid="uid://cejjrtuji45i4" path="res://scenes/game_object/mob/mob.tscn" id="2_s2rxt"]
+[ext_resource type="PackedScene" uid="uid://cxq00s4mkyx18" path="res://scenes/game_object/book/book.tscn" id="3_k1px4"]
+[ext_resource type="PackedScene" uid="uid://bujqaccjlfprl" path="res://scenes/game_object/bookshelf/bookshelf.tscn" id="4_pfamu"]
 
-[sub_resource type="Curve2D" id="Curve2D_t6yti"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1160, -680, 0, 0, 0, 0, 1160, -680, 0, 0, 0, 0, 1160, 680, 0, 0, 0, 0, -1160, 680, 0, 0, 0, 0, -1160, -680)
-}
-point_count = 5
+[node name="WaveManager" type="Node2D"]
+script = ExtResource("1_mejhg")
+enemies = Array[Dictionary]([{
+"cost": 7,
+"scene": ExtResource("2_s2rxt"),
+"weight": 60
+}, {
+"cost": 8,
+"scene": ExtResource("3_k1px4"),
+"weight": 50
+}, {
+"cost": 120,
+"scene": ExtResource("4_pfamu"),
+"weight": 1
+}])
 
-[node name="WaveManager" type="Node"]
-script = ExtResource("1_r34js")
-mob_scenes = Array[PackedScene]([ExtResource("2_paetk"), ExtResource("3_apm1j"), ExtResource("2_paetk"), ExtResource("3_apm1j"), ExtResource("2_paetk")])
-
-[node name="WaveTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
+autostart = true
 
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_t6yti")
-
-[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-unique_name_in_owner = true
-position = Vector2(-1160, -680)
-
-[connection signal="timeout" from="WaveTimer" to="." method="start_wave"]
+[node name="Marker2D" type="Marker2D" parent="."]

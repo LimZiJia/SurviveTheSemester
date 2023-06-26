@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5pk62uuup4f7"]
+[gd_scene load_steps=24 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
-[ext_resource type="PackedScene" uid="uid://bdqnmbafpcox" path="res://test/wave_manager.tscn" id="24_vav6n"]
+[ext_resource type="PackedScene" path="res://scenes/manager/wave_manager.tscn" id="24_vav6n"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
