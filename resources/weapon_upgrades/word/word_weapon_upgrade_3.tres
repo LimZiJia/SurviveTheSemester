@@ -16,5 +16,5 @@ script = ExtResource("1_1naio")
 weapon_name = &"Word"
 description = "+5 damage"
 level = 2
-cost = 100
+cost = 500
 weapon_stat = SubResource("Resource_m18qi")
