@@ -1,7 +1,37 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://b5nsdotfcxbr5"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://b5nsdotfcxbr5"]
 
 [ext_resource type="Texture2D" uid="uid://si4gd7mdq6xp" path="res://assets/environment/floors_tileset.png" id="3_diow0"]
 [ext_resource type="Texture2D" uid="uid://cnriifkwxrxma" path="res://assets/environment/3d_walls_tileset.png" id="8_j0ykl"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_xf5yx"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_u4o05"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_x7f56"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_um7ik"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_swl61"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2wl6m"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyerk"]
 resource_name = "Floors"
@@ -10,21 +40,27 @@ texture_region_size = Vector2i(48, 48)
 0:20/0 = 0
 0:20/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:20/0/physics_layer_0/angular_velocity = 0.0
+0:20/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_xf5yx")
 0:21/0 = 0
 0:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:21/0/physics_layer_0/angular_velocity = 0.0
+0:21/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_u4o05")
 1:21/0 = 0
 1:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:21/0/physics_layer_0/angular_velocity = 0.0
+1:21/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_um7ik")
 2:21/0 = 0
 2:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:21/0/physics_layer_0/angular_velocity = 0.0
+2:21/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_2wl6m")
 2:20/0 = 0
 2:20/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:20/0/physics_layer_0/angular_velocity = 0.0
+2:20/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_swl61")
 1:20/0 = 0
 1:20/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:20/0/physics_layer_0/angular_velocity = 0.0
+1:20/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_x7f56")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0n3la"]
 resource_name = "Walls"
@@ -90,5 +126,6 @@ texture_region_size = Vector2i(48, 48)
 [resource]
 tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_nyerk")
 sources/1 = SubResource("TileSetAtlasSource_0n3la")

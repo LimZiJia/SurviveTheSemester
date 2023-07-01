@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cxq00s4mkyx18"]
+[gd_scene load_steps=23 format=3 uid="uid://cxq00s4mkyx18"]
 
 [ext_resource type="Script" path="res://scenes/game_object/book/book.gd" id="1_bu757"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_41gv0"]
@@ -13,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bv7htbyt753dt" path="res://scenes/game_object/book/book_shadow.png" id="7_pf3kl"]
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_vqpbc"]
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://scenes/game_object/book/book_blue.png" id="9_pbyfw"]
+[ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_shk7c"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3r4p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hnmv"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -126,10 +127,13 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_p3r4p")
+hit_flash_material = SubResource("ShaderMaterial_3hnmv")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_vqpbc")]
 health_component = NodePath("../HealthComponent")
+
+[node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("9_shk7c")]
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("4_8rqmr")]
 collision_layer = 0

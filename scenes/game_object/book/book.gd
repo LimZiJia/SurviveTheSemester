@@ -7,6 +7,7 @@ var base_damage: float
 
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
+@onready var pathfind_component := $PathfindComponent as PathfindComponent
 @onready var hitbox_component := $HitboxComponent as HitboxComponent
 @onready var health_bar := $HealthBar as ProgressBar
 
@@ -21,7 +22,15 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	velocity_component.accelerate_to_player()
+	var player = get_tree().get_first_node_in_group("player") as Node2D
+	var target: Vector2
+	if player == null:
+		target = global_position
+	else:
+		target = player.global_position
+	
+	pathfind_component.set_target_position(target)
+	pathfind_component.follow_path()
 	velocity_component.move(self)
 
 

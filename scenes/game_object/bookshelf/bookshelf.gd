@@ -11,6 +11,7 @@ var book_difficulty: int
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
+@onready var pathfind_component := $PathfindComponent as PathfindComponent
 @onready var health_bar := $HealthBar as ProgressBar
 
 
@@ -35,7 +36,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		var distance = player.global_position.distance_to(global_position)
 		if distance > CHASE_RADIUS:
-			velocity_component.accelerate_to_player()
+			pathfind_component.set_target_position(player.global_position)
+			pathfind_component.follow_path()
 		else:
 			velocity_component.decelerate()
 	

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0qwpry6qi150"]
+
+[ext_resource type="Script" path="res://scenes/component/pathfind_component.gd" id="1_0isa2"]
+
+[node name="PathfindComponent" type="Node2D"]
+script = ExtResource("1_0isa2")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 48.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)

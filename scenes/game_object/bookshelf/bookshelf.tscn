@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bujqaccjlfprl"]
+[gd_scene load_steps=22 format=3 uid="uid://bujqaccjlfprl"]
 
 [ext_resource type="Script" path="res://scenes/game_object/bookshelf/bookshelf.gd" id="1_lbseb"]
 [ext_resource type="PackedScene" uid="uid://cxq00s4mkyx18" path="res://scenes/game_object/book/book.tscn" id="2_30e8n"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_10tro"]
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_sx4q7"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="9_r24fn"]
+[ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="10_v1l04"]
 [ext_resource type="Texture2D" uid="uid://cvr1dsetmpa13" path="res://scenes/game_object/bookshelf/bookshelf.png" id="11_1fs44"]
 [ext_resource type="PackedScene" uid="uid://dsfstepo6lk7x" path="res://scenes/game_object/book/book_sprite.tscn" id="12_yerdr"]
 
@@ -65,7 +66,7 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynh4c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afmv6"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
 shader_parameter/lerp_percent = 0.0
@@ -126,10 +127,13 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../BookshelfSprite")
-hit_flash_material = SubResource("ShaderMaterial_ynh4c")
+hit_flash_material = SubResource("ShaderMaterial_afmv6")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_sx4q7")]
 health_component = NodePath("../HealthComponent")
+
+[node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("10_v1l04")]
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_r24fn")]
 collision_layer = 0
