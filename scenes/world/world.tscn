@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cenp6ssfdvm07"]
+[gd_scene load_steps=24 format=3 uid="uid://lqrjypqn5ckn"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
-[ext_resource type="PackedScene" uid="uid://cnbwngalyobfr" path="res://scenes/manager/wave_manager.tscn" id="24_vav6n"]
+[ext_resource type="PackedScene" uid="uid://3ph0bfha44dv" path="res://scenes/manager/wave_manager.tscn" id="24_vav6n"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
@@ -31,6 +31,7 @@ end_screen_scene = ExtResource("3_o411v")
 [node name="BloodOverlay" parent="." instance=ExtResource("4_q01fj")]
 
 [node name="StatusBars" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HealthGradeBar" parent="StatusBars" instance=ExtResource("6_xc6ep")]
 position = Vector2(9, 9)
@@ -75,6 +76,7 @@ script = ExtResource("13_nehmb")
 pause_menu_scene = ExtResource("6_7j38u")
 
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
+visible = false
 time_manager = NodePath("../TimeManager")
 
 [node name="BuffManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("8_vp6pe")]
@@ -90,6 +92,7 @@ shop_button = NodePath("../StatusBars/MarginContainer/HBoxContainer/ShopButton")
 [node name="TimeManager" parent="." instance=ExtResource("7_fb4dk")]
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 position = Vector2(-2, 86)
 tile_set = ExtResource("8_4hahy")
 format = 2
@@ -107,6 +110,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_63u67")]
 unique_name_in_owner = true
+visible = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
