@@ -9,4 +9,17 @@ func _ready() -> void:
 
 
 func pick_number() -> void:
-	sprite_2d.frame = randi_range(0, 9)
+	var n = randi_range(0, 9)
+	sprite_2d.frame = n
+	if n <= 5:
+		$AnimationPlayer.play("normal")
+	elif n <= 7:
+		$AnimationPlayer.play("freeze")
+	else:
+		$AnimationPlayer.play("burn")
+
+func freeze() -> void:
+	return
+
+func burn() -> void:
+	return
