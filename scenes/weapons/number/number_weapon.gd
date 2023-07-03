@@ -21,8 +21,3 @@ func pick_number() -> void:
 		$AnimationPlayer.play("burn")
 		$HitboxComponent.burn = true
 
-func freeze() -> void:
-	return
-
-func burn() -> void:
-	return

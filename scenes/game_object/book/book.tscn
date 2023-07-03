@@ -17,7 +17,7 @@
 [ext_resource type="Shader" path="res://scenes/game_object/book/neutral.gdshader" id="14_fs42y"]
 [ext_resource type="Shader" path="res://scenes/game_object/book/tint.gdshader" id="15_fvfud"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bytfy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80nji"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -43,8 +43,9 @@ border_color = Color(0, 0, 0, 0)
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlxl7"]
-shader = ExtResource("14_fs42y")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxtxg"]
+shader = ExtResource("15_fvfud")
+shader_parameter/tint = Vector3(0.6, 0, 0)
 
 [sub_resource type="Animation" id="Animation_o5lmg"]
 length = 0.001
@@ -85,9 +86,8 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxtxg"]
-shader = ExtResource("15_fvfud")
-shader_parameter/tint = Vector3(0.6, 0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlxl7"]
+shader = ExtResource("14_fs42y")
 
 [sub_resource type="Animation" id="Animation_2hegr"]
 resource_name = "burn"
@@ -261,7 +261,7 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_bytfy")
+hit_flash_material = SubResource("ShaderMaterial_80nji")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_vqpbc")]
 health_component = NodePath("../HealthComponent")
@@ -315,7 +315,7 @@ position = Vector2(0, 30)
 texture = ExtResource("7_pf3kl")
 
 [node name="BookSprite" parent="." instance=ExtResource("2_iyn5q")]
-material = SubResource("ShaderMaterial_wlxl7")
+material = SubResource("ShaderMaterial_kxtxg")
 scale = Vector2(0.974129, 0.974129)
 texture = ExtResource("9_pbyfw")
 

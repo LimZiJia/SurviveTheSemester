@@ -53,7 +53,7 @@ func spawn_weapon(number: int) -> void:
 	if mob == null:
 		return
 	
-	var spawn_position = mob.global_position
+	var spawn_position = mob.global_position + mob.velocity * 0.5
 	
 	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
 	if foreground == null:

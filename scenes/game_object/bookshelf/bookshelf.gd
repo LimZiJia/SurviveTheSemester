@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		var distance = player.global_position.distance_to(global_position)
 		if distance > CHASE_RADIUS:
-w			pathfind_component.set_target_position(player.global_position)
+			pathfind_component.set_target_position(player.global_position)
 			pathfind_component.follow_path()
 		else:
 			velocity_component.decelerate()
