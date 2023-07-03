@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
-[ext_resource type="PackedScene" path="res://scenes/ui/end_screen.tscn" id="3_o411v"]
+[ext_resource type="PackedScene" uid="uid://kdowavrbwm3o" path="res://scenes/ui/end_screen.tscn" id="3_o411v"]
 [ext_resource type="PackedScene" uid="uid://c01utxx6mui17" path="res://scenes/overlays/blood_overlay.tscn" id="4_q01fj"]
 [ext_resource type="PackedScene" uid="uid://be2bld7i1k33f" path="res://scenes/ui/time_ui.tscn" id="5_18yls"]
 [ext_resource type="PackedScene" uid="uid://iily2o50n46p" path="res://scenes/ui/experience_bar.tscn" id="5_tersy"]
@@ -31,7 +31,6 @@ end_screen_scene = ExtResource("3_o411v")
 [node name="BloodOverlay" parent="." instance=ExtResource("4_q01fj")]
 
 [node name="StatusBars" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HealthGradeBar" parent="StatusBars" instance=ExtResource("6_xc6ep")]
 position = Vector2(9, 9)
@@ -76,7 +75,6 @@ script = ExtResource("13_nehmb")
 pause_menu_scene = ExtResource("6_7j38u")
 
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
-visible = false
 time_manager = NodePath("../TimeManager")
 
 [node name="BuffManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("8_vp6pe")]
@@ -92,7 +90,6 @@ shop_button = NodePath("../StatusBars/MarginContainer/HBoxContainer/ShopButton")
 [node name="TimeManager" parent="." instance=ExtResource("7_fb4dk")]
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 position = Vector2(-2, 86)
 tile_set = ExtResource("8_4hahy")
 format = 2
@@ -110,7 +107,6 @@ y_sort_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_63u67")]
 unique_name_in_owner = true
-visible = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")

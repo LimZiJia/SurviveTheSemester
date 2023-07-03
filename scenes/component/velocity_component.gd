@@ -5,7 +5,7 @@ extends Node
 @export var acceleration := 20.0
 
 var velocity := Vector2.ZERO
-
+var is_frozen := false
 
 func accelerate_to_player() -> void:
 	var owner_node2d = owner as Node2D
@@ -30,6 +30,8 @@ func decelerate() -> void:
 
 
 func move(character_body: CharacterBody2D) -> void:
+	if is_frozen:
+		return
 	character_body.velocity = velocity
 	character_body.move_and_slide()
 	velocity = character_body.velocity
@@ -43,3 +45,8 @@ func knockback(hitbox_position: Vector2, knockback_force: float) -> void:
 	var knockback_dir := hitbox_position.direction_to(owner.global_position)
 	
 	velocity += knockback_dir * knockback_force
+
+func freeze() -> void:
+	is_frozen = true
+	await get_tree().create_timer(2.0).timeout
+	is_frozen = false

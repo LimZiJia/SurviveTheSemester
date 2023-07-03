@@ -18,6 +18,10 @@ func on_area_entered(area: Area2D) -> void:
 	
 	if health_component != null:
 		health_component.damage(hitbox_component.damage)
+		if hitbox_component.burn:
+			health_component.burn(max(hitbox_component.damage * 0.1, 1.0))
+		if hitbox_component.freeze:
+			health_component.freeze()
 	
 	if velocity_component != null:
 		velocity_component.knockback(hitbox_component.global_position, hitbox_component.knockback_force)
