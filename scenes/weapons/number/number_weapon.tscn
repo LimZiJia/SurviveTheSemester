@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://bkah40wbtr8je"]
 
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="1_lkopl"]
 [ext_resource type="Script" path="res://scenes/weapons/number/number_weapon.gd" id="1_y4665"]

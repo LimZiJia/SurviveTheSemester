@@ -1,0 +1,168 @@
+[gd_scene load_steps=20 format=3 uid="uid://b0afvdly85nru"]
+
+[ext_resource type="Texture2D" uid="uid://beb3a7tyhykf0" path="res://scenes/weapons/code/code_0.png" id="1_gc37j"]
+[ext_resource type="Script" path="res://scenes/component/hitbox_component.gd" id="2_yk3xh"]
+[ext_resource type="Texture2D" uid="uid://bcltacci57rcq" path="res://scenes/weapons/code/code_1.png" id="3_msgdt"]
+[ext_resource type="Texture2D" uid="uid://ba8a0s8lnkytc" path="res://scenes/weapons/code/code_2.png" id="4_ej326"]
+[ext_resource type="Texture2D" uid="uid://drn7rjfaadva1" path="res://scenes/weapons/code/code_3.png" id="5_uvhmb"]
+[ext_resource type="Texture2D" uid="uid://cuhp6flglik2w" path="res://scenes/weapons/code/code_4.png" id="6_cdkuc"]
+[ext_resource type="Texture2D" uid="uid://jperays80172" path="res://scenes/weapons/code/code_5.png" id="7_4qoex"]
+[ext_resource type="Texture2D" uid="uid://bln7hqykds2s3" path="res://scenes/weapons/code/code_6.png" id="8_jsi72"]
+[ext_resource type="Texture2D" uid="uid://vv0t2vo45wll" path="res://scenes/weapons/code/code_7.png" id="9_o5tmu"]
+[ext_resource type="Texture2D" uid="uid://cbd00xwyhtehb" path="res://scenes/weapons/code/code_8.png" id="10_qe8g8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6sud"]
+size = Vector2(598, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc1je"]
+size = Vector2(604, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3udcj"]
+size = Vector2(532, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r31o"]
+size = Vector2(282, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paq2c"]
+size = Vector2(412, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj5xb"]
+size = Vector2(458, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axano"]
+size = Vector2(583, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a32a5"]
+size = Vector2(822, 19.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8pic"]
+size = Vector2(445, 21)
+
+[node name="code_weapon" type="Node2D"]
+position = Vector2(2, 1)
+
+[node name="0" type="TextureRect" parent="."]
+offset_left = 80.0
+offset_right = 678.0
+offset_bottom = 19.0
+texture = ExtResource("1_gc37j")
+metadata/_edit_use_anchors_ = true
+
+[node name="HitboxComponent" type="Area2D" parent="0"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="0/HitboxComponent"]
+position = Vector2(299, 10)
+shape = SubResource("RectangleShape2D_t6sud")
+
+[node name="1" type="TextureRect" parent="."]
+offset_left = 688.0
+offset_right = 1292.0
+offset_bottom = 20.0
+texture = ExtResource("3_msgdt")
+metadata/_edit_use_anchors_ = true
+
+[node name="HitboxComponent" type="Area2D" parent="1"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1/HitboxComponent"]
+position = Vector2(302, 10)
+shape = SubResource("RectangleShape2D_pc1je")
+
+[node name="2" type="TextureRect" parent="."]
+offset_left = -44.0
+offset_top = 33.0
+offset_right = 488.0
+offset_bottom = 52.0
+texture = ExtResource("4_ej326")
+
+[node name="HitboxComponent" type="Area2D" parent="2"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2/HitboxComponent"]
+position = Vector2(266, 10)
+shape = SubResource("RectangleShape2D_3udcj")
+
+[node name="3" type="TextureRect" parent="."]
+offset_left = 504.0
+offset_top = 34.0
+offset_right = 785.0
+offset_bottom = 52.0
+texture = ExtResource("5_uvhmb")
+
+[node name="HitboxComponent" type="Area2D" parent="3"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="3/HitboxComponent"]
+position = Vector2(140, 9)
+shape = SubResource("RectangleShape2D_1r31o")
+
+[node name="4" type="TextureRect" parent="."]
+offset_left = 795.0
+offset_top = 34.0
+offset_right = 1207.0
+offset_bottom = 53.0
+texture = ExtResource("6_cdkuc")
+
+[node name="HitboxComponent" type="Area2D" parent="4"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="4/HitboxComponent"]
+position = Vector2(206, 9.5)
+shape = SubResource("RectangleShape2D_paq2c")
+
+[node name="5" type="TextureRect" parent="."]
+offset_left = 59.0
+offset_top = 77.0
+offset_right = 517.0
+offset_bottom = 96.0
+texture = ExtResource("7_4qoex")
+
+[node name="HitboxComponent" type="Area2D" parent="5"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="5/HitboxComponent"]
+position = Vector2(229, 9)
+shape = SubResource("RectangleShape2D_oj5xb")
+
+[node name="6" type="TextureRect" parent="."]
+offset_left = 538.0
+offset_top = 77.0
+offset_right = 1121.0
+offset_bottom = 96.0
+texture = ExtResource("8_jsi72")
+
+[node name="HitboxComponent" type="Area2D" parent="6"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="6/HitboxComponent"]
+position = Vector2(291.5, 9.5)
+shape = SubResource("RectangleShape2D_axano")
+
+[node name="7" type="TextureRect" parent="."]
+offset_left = -238.0
+offset_top = 114.0
+offset_right = 584.0
+offset_bottom = 133.0
+texture = ExtResource("9_o5tmu")
+
+[node name="HitboxComponent" type="Area2D" parent="7"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="7/HitboxComponent"]
+position = Vector2(411, 10.25)
+shape = SubResource("RectangleShape2D_a32a5")
+
+[node name="8" type="TextureRect" parent="."]
+offset_left = 601.0
+offset_top = 113.0
+offset_right = 1046.0
+offset_bottom = 134.0
+texture = ExtResource("10_qe8g8")
+
+[node name="HitboxComponent" type="Area2D" parent="8"]
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="8/HitboxComponent"]
+position = Vector2(222.5, 10.5)
+shape = SubResource("RectangleShape2D_c8pic")
