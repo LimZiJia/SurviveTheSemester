@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjuth2ctj1fj6"]
+[gd_scene load_steps=13 format=3 uid="uid://cjuth2ctj1fj6"]
 
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="1_lkopl"]
 [ext_resource type="Script" path="res://scenes/weapons/number/number_weapon.gd" id="1_y4665"]
 [ext_resource type="Texture2D" uid="uid://t13gkhbjgc4n" path="res://scenes/weapons/number/numbers.png" id="2_4ow6m"]
+[ext_resource type="Texture2D" uid="uid://cwna6wgkket7y" path="res://scenes/weapons/number/circle.png" id="3_ic561"]
 [ext_resource type="Texture2D" uid="uid://cucauy7vyh3hc" path="res://scenes/weapons/number/circle.png.png" id="3_o5lxg"]
 
 [sub_resource type="Animation" id="Animation_uemv0"]
@@ -194,6 +195,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(1, 2), Vector2(1, 1)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Visuals/AOE:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Visuals/AOE:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, -50), Vector2(-100, -100)]
+}
 
 [sub_resource type="Animation" id="Animation_ljuar"]
 resource_name = "freeze"
@@ -333,6 +358,30 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(1, 2), Vector2(1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Visuals/AOE:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Visuals/AOE:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, -50), Vector2(-100, -100)]
+}
 
 [sub_resource type="Animation" id="Animation_2oacv"]
 resource_name = "normal"
@@ -460,6 +509,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Visuals/AOE:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Visuals/AOE:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-50, -50), Vector2(-100, -100)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1cpen"]
 _data = {
@@ -513,15 +586,23 @@ skew = -0.872665
 [node name="AOE" type="TextureRect" parent="Visuals"]
 visible = false
 modulate = Color(1, 1, 1, 0)
-offset_left = -105.0
-offset_top = -102.0
-offset_right = 101.0
-offset_bottom = 117.0
-texture = ExtResource("3_o5lxg")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 106.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ic561")
 stretch_mode = 4
 
 [node name="shell" type="TextureRect" parent="Visuals"]
-modulate = Color(0, 0, 0.811765, 1)
 offset_left = -19.0
 offset_top = -18.0
 offset_right = 18.0
@@ -530,7 +611,6 @@ texture = ExtResource("3_o5lxg")
 stretch_mode = 4
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Visuals"]
-modulate = Color(0.482353, 0.8, 1, 1)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_aejn7")
 

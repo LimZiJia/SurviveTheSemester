@@ -17,7 +17,7 @@
 [ext_resource type="Shader" path="res://scenes/game_object/book/neutral.gdshader" id="14_fs42y"]
 [ext_resource type="Shader" path="res://scenes/game_object/book/tint.gdshader" id="15_fvfud"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_80nji"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_em8wh"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -261,7 +261,7 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_80nji")
+hit_flash_material = SubResource("ShaderMaterial_em8wh")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_vqpbc")]
 health_component = NodePath("../HealthComponent")
