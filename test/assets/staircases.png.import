@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g4jseefenxct"
-path="res://.godot/imported/walls.png-8785141c53a39b4bd954ac9288b1a06b.ctex"
+uid="uid://cy86q3q5xf5jc"
+path="res://.godot/imported/staircases.png-22710a138abcadb6864b1a5563afce7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://test/assets/walls.png"
-dest_files=["res://.godot/imported/walls.png-8785141c53a39b4bd954ac9288b1a06b.ctex"]
+source_file="res://test/assets/staircases.png"
+dest_files=["res://.godot/imported/staircases.png-22710a138abcadb6864b1a5563afce7a.ctex"]
 
 [params]
 
