@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://0iaeiosmxoh5"]
 
 [ext_resource type="Script" path="res://scenes/weapons/number/number_weapon_controller.gd" id="1_juhar"]
-[ext_resource type="PackedScene" path="res://scenes/weapons/number/number_weapon.tscn" id="2_25de7"]
+[ext_resource type="PackedScene" uid="uid://bkah40wbtr8je" path="res://scenes/weapons/number/number_weapon.tscn" id="2_25de7"]
 [ext_resource type="Script" path="res://scenes/weapons/weapon_stats/weapon_stat.gd" id="3_djgwo"]
 
 [sub_resource type="Resource" id="Resource_fntwk"]

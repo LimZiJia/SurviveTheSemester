@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
-[ext_resource type="PackedScene" path="res://scenes/ui/end_screen.tscn" id="3_o411v"]
+[ext_resource type="PackedScene" uid="uid://c8jmqu35jshxp" path="res://scenes/ui/end_screen.tscn" id="3_o411v"]
 [ext_resource type="PackedScene" uid="uid://c01utxx6mui17" path="res://scenes/overlays/blood_overlay.tscn" id="4_q01fj"]
 [ext_resource type="PackedScene" uid="uid://be2bld7i1k33f" path="res://scenes/ui/time_ui.tscn" id="5_18yls"]
 [ext_resource type="PackedScene" uid="uid://iily2o50n46p" path="res://scenes/ui/experience_bar.tscn" id="5_tersy"]
