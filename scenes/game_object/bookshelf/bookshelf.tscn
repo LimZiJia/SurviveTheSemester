@@ -89,13 +89,15 @@ border_color = Color(0, 0, 0, 0)
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywrok"]
-size = Vector2(76, 90)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcgrx"]
+radius = 16.0
+height = 76.0
 
 [node name="Bookshelf" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_lbseb")
 book_scene = ExtResource("2_30e8n")
 
@@ -145,7 +147,14 @@ velocity_component = NodePath("../VelocityComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("RectangleShape2D_p3ug4")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="BookshelfSprite" parent="Visuals" instance=ExtResource("12_yerdr")]
+position = Vector2(0, -45)
+texture = ExtResource("11_1fs44")
+script = null
+
+[node name="HealthBar" type="ProgressBar" parent="Visuals"]
 custom_minimum_size = Vector2(36, 8)
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,13 +173,7 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Visuals" type="Node2D" parent="."]
-
-[node name="BookshelfSprite" parent="Visuals" instance=ExtResource("12_yerdr")]
-position = Vector2(0, -45)
-texture = ExtResource("11_1fs44")
-script = null
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -45)
-shape = SubResource("RectangleShape2D_ywrok")
+position = Vector2(0, -13)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_kcgrx")
