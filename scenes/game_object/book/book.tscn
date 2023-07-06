@@ -168,6 +168,7 @@ position = Vector2(0, -30)
 texture = ExtResource("9_pbyfw")
 
 [node name="HealthBar" type="ProgressBar" parent="Visuals"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(36, 8)
 anchors_preset = 8
 anchor_left = 0.5
