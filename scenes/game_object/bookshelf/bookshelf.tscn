@@ -19,7 +19,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BookshelfSprite:position")
+tracks/0/path = NodePath("Visuals:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +36,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BookshelfSprite:position")
+tracks/0/path = NodePath("Visuals:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,7 +66,7 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_afmv6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_186ko"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
 shader_parameter/lerp_percent = 0.0
@@ -126,8 +126,8 @@ money = 5
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
-sprite = NodePath("../BookshelfSprite")
-hit_flash_material = SubResource("ShaderMaterial_afmv6")
+sprite = NodePath("../Visuals/BookshelfSprite")
+hit_flash_material = SubResource("ShaderMaterial_186ko")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_sx4q7")]
 health_component = NodePath("../HealthComponent")
@@ -136,6 +136,7 @@ health_component = NodePath("../HealthComponent")
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_r24fn")]
+position = Vector2(0, -45)
 collision_layer = 0
 collision_mask = 4
 health_component = NodePath("../HealthComponent")
@@ -152,9 +153,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -18.0
-offset_top = -57.0
+offset_top = -102.0
 offset_right = 18.0
-offset_bottom = -49.0
+offset_bottom = -94.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_6uvxv")
@@ -163,9 +164,13 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="BookshelfSprite" parent="." instance=ExtResource("12_yerdr")]
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="BookshelfSprite" parent="Visuals" instance=ExtResource("12_yerdr")]
+position = Vector2(-3, 0)
 texture = ExtResource("11_1fs44")
 script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -45)
 shape = SubResource("RectangleShape2D_ywrok")
