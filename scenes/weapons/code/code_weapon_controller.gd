@@ -50,7 +50,7 @@ func spawn_weapon(number: int) -> void:
 		return
 	
 	var spawn_position = player.global_position
-	
+
 	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
 	if foreground == null:
 		return
@@ -58,11 +58,11 @@ func spawn_weapon(number: int) -> void:
 	can_attack = false
 	cooldown_timer.start()
 	
-	print(number)
+	
 	for i in number:
 		var code_weapon_instance := code_weapon_scene.instantiate()
-		foreground.add_child(code_weapon_instance)
 		code_weapon_instance.global_position = spawn_position
 		code_weapon_instance.set_damage_knockback(weapon_stat.damage, weapon_stat.knockback)
+		foreground.add_child(code_weapon_instance)
 		
-		await get_tree().create_timer(.05, false).timeout
+		

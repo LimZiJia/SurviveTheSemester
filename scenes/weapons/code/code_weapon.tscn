@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0afvdly85nru"]
+[gd_scene load_steps=28 format=3 uid="uid://b0afvdly85nru"]
 
 [ext_resource type="Texture2D" uid="uid://beb3a7tyhykf0" path="res://scenes/weapons/code/code_0.png" id="1_gc37j"]
+[ext_resource type="Script" path="res://scenes/weapons/code/code_weapon.gd" id="1_xjos3"]
 [ext_resource type="Script" path="res://scenes/component/hitbox_component.gd" id="2_yk3xh"]
 [ext_resource type="Texture2D" uid="uid://bcltacci57rcq" path="res://scenes/weapons/code/code_1.png" id="3_msgdt"]
 [ext_resource type="Texture2D" uid="uid://ba8a0s8lnkytc" path="res://scenes/weapons/code/code_2.png" id="4_ej326"]
@@ -10,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bln7hqykds2s3" path="res://scenes/weapons/code/code_6.png" id="8_jsi72"]
 [ext_resource type="Texture2D" uid="uid://vv0t2vo45wll" path="res://scenes/weapons/code/code_7.png" id="9_o5tmu"]
 [ext_resource type="Texture2D" uid="uid://cbd00xwyhtehb" path="res://scenes/weapons/code/code_8.png" id="10_qe8g8"]
+[ext_resource type="Texture2D" uid="uid://dybyjfcbk0w2e" path="res://scenes/weapons/code/code_9.png" id="12_g8oaj"]
+[ext_resource type="Texture2D" uid="uid://clqtulj2ug4q2" path="res://scenes/weapons/code/code_11.png" id="13_mswtt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6sud"]
 size = Vector2(598, 20)
@@ -38,34 +41,43 @@ size = Vector2(822, 19.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8pic"]
 size = Vector2(445, 21)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0awn"]
+size = Vector2(618.718, 19.5153)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot6vm"]
+size = Vector2(445.106, 21.1832)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prurp"]
+size = Vector2(282.86, 20.8144)
+
 [sub_resource type="Animation" id="Animation_phcc4"]
 resource_name = "attack"
-length = 2.0
-tracks/0/type = "value"
+length = 4.0
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-1000, 1), Vector2(1000, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2000, -2300), Vector2(2000, 1700)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xpdtv"]
@@ -74,133 +86,218 @@ _data = {
 }
 
 [node name="code_weapon" type="Node2D"]
-position = Vector2(-1000, 1)
+position = Vector2(4, -2)
+script = ExtResource("1_xjos3")
 
-[node name="Sniplet_0" type="TextureRect" parent="."]
-offset_left = 80.0
-offset_right = 678.0
-offset_bottom = 19.0
+[node name="Visuals" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(-2000, -2200)
+rotation = 0.785398
+scale = Vector2(1.7, 1.7)
+
+[node name="Sniplet_0" type="TextureRect" parent="Visuals"]
+offset_left = 322.104
+offset_top = -26.8632
+offset_right = 920.104
+offset_bottom = -7.8632
 texture = ExtResource("1_gc37j")
-metadata/_edit_use_anchors_ = true
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_0"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_0"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_0/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_0/HitboxComponent"]
 position = Vector2(299, 10)
 shape = SubResource("RectangleShape2D_t6sud")
 
-[node name="Sniplet_1" type="TextureRect" parent="."]
-offset_left = 688.0
-offset_right = 1292.0
-offset_bottom = 20.0
+[node name="Sniplet_1" type="TextureRect" parent="Visuals"]
+offset_left = 952.441
+offset_top = -27.9301
+offset_right = 1556.44
+offset_bottom = -7.93005
 texture = ExtResource("3_msgdt")
-metadata/_edit_use_anchors_ = true
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_1"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_1"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_1/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_1/HitboxComponent"]
 position = Vector2(302, 10)
 shape = SubResource("RectangleShape2D_pc1je")
 
-[node name="Sniplet_2" type="TextureRect" parent="."]
+[node name="Sniplet_2" type="TextureRect" parent="Visuals"]
 offset_left = -44.0
 offset_top = 33.0
 offset_right = 488.0
 offset_bottom = 52.0
 texture = ExtResource("4_ej326")
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_2"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_2"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_2/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_2/HitboxComponent"]
 position = Vector2(266, 10)
 shape = SubResource("RectangleShape2D_3udcj")
 
-[node name="Sniplet_3" type="TextureRect" parent="."]
+[node name="Sniplet_3" type="TextureRect" parent="Visuals"]
 offset_left = 504.0
 offset_top = 34.0
 offset_right = 785.0
 offset_bottom = 52.0
 texture = ExtResource("5_uvhmb")
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_3"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_3"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_3/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_3/HitboxComponent"]
 position = Vector2(140, 9)
 shape = SubResource("RectangleShape2D_1r31o")
 
-[node name="Sniplet_4" type="TextureRect" parent="."]
+[node name="Sniplet_4" type="TextureRect" parent="Visuals"]
 offset_left = 795.0
 offset_top = 34.0
 offset_right = 1207.0
 offset_bottom = 53.0
 texture = ExtResource("6_cdkuc")
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_4"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_4"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_4/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_4/HitboxComponent"]
 position = Vector2(206, 9.5)
 shape = SubResource("RectangleShape2D_paq2c")
 
-[node name="Sniplet_5" type="TextureRect" parent="."]
-offset_left = 59.0
-offset_top = 77.0
-offset_right = 517.0
-offset_bottom = 96.0
+[node name="Sniplet_5" type="TextureRect" parent="Visuals"]
+offset_left = -264.398
+offset_top = 89.5824
+offset_right = 193.602
+offset_bottom = 108.582
 texture = ExtResource("7_4qoex")
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_5"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_5"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_5/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_5/HitboxComponent"]
 position = Vector2(229, 9)
 shape = SubResource("RectangleShape2D_oj5xb")
 
-[node name="Sniplet_6" type="TextureRect" parent="."]
-offset_left = 538.0
-offset_top = 77.0
-offset_right = 1121.0
-offset_bottom = 96.0
+[node name="Sniplet_6" type="TextureRect" parent="Visuals"]
+offset_left = 226.829
+offset_top = 90.6317
+offset_right = 809.829
+offset_bottom = 109.632
 texture = ExtResource("8_jsi72")
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_6"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_6"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_6/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_6/HitboxComponent"]
 position = Vector2(291.5, 9.5)
 shape = SubResource("RectangleShape2D_axano")
 
-[node name="Sniplet_7" type="TextureRect" parent="."]
-offset_left = -238.0
-offset_top = 114.0
-offset_right = 584.0
-offset_bottom = 133.0
+[node name="Sniplet_7" type="TextureRect" parent="Visuals"]
+offset_left = -659.127
+offset_top = 151.488
+offset_right = 162.873
+offset_bottom = 170.488
 texture = ExtResource("9_o5tmu")
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_7"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_7"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_7/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_7/HitboxComponent"]
 position = Vector2(411, 10.25)
 shape = SubResource("RectangleShape2D_a32a5")
 
-[node name="Sniplet_8" type="TextureRect" parent="."]
-offset_left = 601.0
-offset_top = 113.0
-offset_right = 1046.0
-offset_bottom = 134.0
+[node name="Sniplet_8" type="TextureRect" parent="Visuals"]
+offset_left = 199.681
+offset_top = 144.21
+offset_right = 644.681
+offset_bottom = 165.21
 texture = ExtResource("10_qe8g8")
 
-[node name="HitboxComponent" type="Area2D" parent="Sniplet_8"]
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_8"]
+visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_yk3xh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sniplet_8/HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_8/HitboxComponent"]
 position = Vector2(222.5, 10.5)
 shape = SubResource("RectangleShape2D_c8pic")
+
+[node name="Sniplet_9" type="TextureRect" parent="Visuals"]
+offset_left = -904.747
+offset_top = 228.421
+offset_right = -285.747
+offset_bottom = 247.421
+texture = ExtResource("12_g8oaj")
+
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_9"]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_9/HitboxComponent"]
+position = Vector2(309.177, 9.56952)
+shape = SubResource("RectangleShape2D_b0awn")
+
+[node name="Sniplet_10" type="TextureRect" parent="Visuals"]
+offset_left = -259.31
+offset_top = 229.226
+offset_right = 185.69
+offset_bottom = 250.226
+texture = ExtResource("10_qe8g8")
+
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_10"]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_10/HitboxComponent"]
+position = Vector2(222.042, 10.4036)
+shape = SubResource("RectangleShape2D_ot6vm")
+
+[node name="Sniplet_11" type="TextureRect" parent="Visuals"]
+offset_left = 215.699
+offset_top = 230.89
+offset_right = 498.699
+offset_bottom = 251.89
+texture = ExtResource("13_mswtt")
+
+[node name="HitboxComponent" type="Area2D" parent="Visuals/Sniplet_11"]
+visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_yk3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visuals/Sniplet_11/HitboxComponent"]
+position = Vector2(141.589, 10.3668)
+shape = SubResource("RectangleShape2D_prurp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "attack"
