@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnriifkwxrxma"
-path="res://.godot/imported/3d_walls_tileset.png-2be0f78ce4ac2c221373883d594e9805.ctex"
+uid="uid://c1tybyjrf4f4o"
+path="res://.godot/imported/staircases.png-3e02f52c584004c9285c8edbf7fb1e36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/3d_walls_tileset.png"
-dest_files=["res://.godot/imported/3d_walls_tileset.png-2be0f78ce4ac2c221373883d594e9805.ctex"]
+source_file="res://assets/environment/staircases.png"
+dest_files=["res://.godot/imported/staircases.png-3e02f52c584004c9285c8edbf7fb1e36.ctex"]
 
 [params]
 
