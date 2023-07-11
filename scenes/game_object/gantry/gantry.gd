@@ -8,11 +8,7 @@ func _ready() -> void:
 
 
 func on_body_entered(body: Node2D) -> void:
-	
-	print("HI")
-	
 	if not body is Player:
 		return
 	
 	animation_player.play("reject")
-
