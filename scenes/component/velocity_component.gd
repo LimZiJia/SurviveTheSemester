@@ -31,8 +31,10 @@ func decelerate() -> void:
 
 func move(character_body: CharacterBody2D) -> void:
 	if is_frozen:
-		return
-	character_body.velocity = velocity
+		character_body.velocity = Vector2.ZERO
+	else:
+		character_body.velocity = velocity
+	
 	character_body.move_and_slide()
 	velocity = character_body.velocity
 
@@ -46,7 +48,8 @@ func knockback(hitbox_position: Vector2, knockback_force: float) -> void:
 	
 	velocity += knockback_dir * knockback_force
 
-func freeze() -> void:
+
+func freeze(seconds: float) -> void:
 	is_frozen = true
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(seconds, false).timeout
 	is_frozen = false

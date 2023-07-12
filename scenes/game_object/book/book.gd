@@ -3,7 +3,6 @@ extends CharacterBody2D
 var base_health: float
 var base_speed: float
 var base_damage: float
-var burnt_damage: float
 
 
 @onready var health_component := $HealthComponent as HealthComponent
@@ -19,8 +18,6 @@ func _ready() -> void:
 	base_damage = hitbox_component.damage
 	
 	health_component.damaged.connect(on_health_component_damaged)
-	health_component.frozen.connect(on_frozen)
-	health_component.burnt.connect(on_burnt)
 	update_health_bar()
 
 
@@ -64,13 +61,3 @@ func set_stats(health: float, speed: float, damage: float) -> void:
 	$HealthComponent.current_health = health
 	$VelocityComponent.max_speed = speed
 	$HitboxComponent.damage = damage
-
-func on_frozen() -> void:
-	$AnimationPlayer.play("freeze")
-
-func on_burnt(tick_damage: float) -> void:
-	burnt_damage = tick_damage
-	$AnimationPlayer.play("burn")
-
-func burn_helper() -> void:
-	health_component.damage(burnt_damage)

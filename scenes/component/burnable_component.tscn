@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://fyp7350nfixy"]
+
+[ext_resource type="Script" path="res://scenes/component/burnable_component.gd" id="1_kxboq"]
+[ext_resource type="Shader" path="res://shaders/tint.gdshader" id="2_vgeep"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vshrk"]
+shader = ExtResource("2_vgeep")
+shader_parameter/tint = Vector3(0.6, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_it8g6"]
+emission_shape = 3
+emission_box_extents = Vector3(12, 12, 0)
+particle_flag_disable_z = true
+direction = Vector3(0, -20, 0)
+spread = 60.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
+
+[node name="BurnableComponent" type="Node2D"]
+script = ExtResource("1_kxboq")
+tint_material = SubResource("ShaderMaterial_vshrk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+self_modulate = Color(1, 0.552941, 0, 1)
+emitting = false
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_it8g6")

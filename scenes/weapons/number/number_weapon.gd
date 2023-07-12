@@ -17,8 +17,7 @@ func pick_number() -> void:
 		$AnimationPlayer.play("freeze")
 		$HitboxComponent.damage *= 0.5
 		$HitboxComponent.knockback_force = 0.0
-		$HitboxComponent.freeze = true
+		$HitboxComponent.freezing = true
 	else:
 		$AnimationPlayer.play("burn")
-		$HitboxComponent.burn = true
-
+		$HitboxComponent.burning = true
