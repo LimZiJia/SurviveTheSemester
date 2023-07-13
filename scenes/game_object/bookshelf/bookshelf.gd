@@ -12,7 +12,7 @@ var book_difficulty: int
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 @onready var pathfind_component := $PathfindComponent as PathfindComponent
-@onready var health_bar := $HealthBar as ProgressBar
+@onready var health_bar := %HealthBar as ProgressBar
 
 
 

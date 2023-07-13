@@ -56,19 +56,65 @@ func get_target_cost() -> float:
 	return 6 * log(cur_wave) + 10
 
 
+# Returns the area of a triangle given an array of the points of the triangle
+func triangle_area(points: PackedVector2Array) -> float:
+	assert(points.size() == 3)
+	
+	return 0.5 * (\
+		(points[1].x - points[0].x) * (points[2].y - points[0].y) - \
+		(points[2].x - points[0].x) * (points[1].y - points[0].y) \
+	)
+
+
+# Returns a random point in the triangle given an array of the points of the triangle
+# Based on https://www.cs.princeton.edu/~funk/tog02.pdf
+func random_triangle_point(points: PackedVector2Array) -> Vector2:
+	assert(points.size() == 3)
+	
+	var a := points[0]
+	var b := points[1]
+	var c := points[2]
+	
+	return a + sqrt(randf()) * (-a + b + randf() * (c - b))
+
+
 func get_spawn_position() -> Vector2:
-	# TODO: Create more extensive algorithm to determine mob spawn position
-	var player := get_tree().get_first_node_in_group("player") as Node2D
-	if player == null:
-		return Vector2.ZERO
 	
-	while true:
-		var spawn_radius := randf_range(MIN_SPAWN_RADIUS, MAX_SPAWN_RADIUS)
-		var spawn_position := player.global_position + Vector2.from_angle(randf_range(0, TAU)) * spawn_radius
-		if absf(spawn_position.x) < 1160.0 and absf(spawn_position.y) < 680.0:
-			return spawn_position
+	# An array of arrays containing three points each
+	var triangle_pool: Array[PackedVector2Array]
+	var triangle_weight_pool: Array[float]
+	var sum_area := 0.0
 	
-	return Vector2.ZERO
+	# Triangulate all polygons
+	var spawn_polygons = get_tree().get_nodes_in_group("spawn_polygon") as Array[Polygon2D]
+	for spawn_polygon in spawn_polygons:
+		var points = spawn_polygon.polygon
+		var triangulated_points := Geometry2D.triangulate_polygon(points)
+		
+		for index in len(triangulated_points) / 3:
+			var triangle: PackedVector2Array
+			
+			for n in range(3):
+				triangle.append(points[triangulated_points[(index * 3) + n]])
+			
+			var area := triangle_area(triangle)
+			
+			triangle_pool.append(triangle)
+			triangle_weight_pool.append(area)
+			sum_area += area
+	
+	# Choose a random triangle with chance proportional to area
+	var rnd_float = randf_range(0, sum_area)
+	var chosen_triangle: PackedVector2Array
+	for index in len(triangle_pool):
+		if rnd_float <= triangle_weight_pool[index]:
+			chosen_triangle = triangle_pool[index]
+			break
+		rnd_float -= triangle_weight_pool[index]
+	
+	
+	# Choose a random point in the triangle
+	return random_triangle_point(chosen_triangle)
 
 
 func start_wave() -> void:
