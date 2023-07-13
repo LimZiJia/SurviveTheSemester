@@ -554,6 +554,7 @@ graph_offset = Vector2(0, 36.3047)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
+collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_7xkn6")
 

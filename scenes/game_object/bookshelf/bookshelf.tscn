@@ -66,7 +66,7 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_186ko"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sd5s"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
 shader_parameter/lerp_percent = 0.0
@@ -95,7 +95,7 @@ height = 76.0
 
 [node name="Bookshelf" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 8
-collision_mask = 9
+collision_mask = 25
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_lbseb")
@@ -129,7 +129,7 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookshelfSprite")
-hit_flash_material = SubResource("ShaderMaterial_186ko")
+hit_flash_material = SubResource("ShaderMaterial_5sd5s")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_sx4q7")]
 health_component = NodePath("../HealthComponent")

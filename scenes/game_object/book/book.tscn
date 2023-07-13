@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://scenes/game_object/book/book_blue.png" id="9_pbyfw"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_shk7c"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fvw0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sv62v"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -108,7 +108,7 @@ _data = {
 [node name="Book" type="CharacterBody2D" groups=["mobs"]]
 y_sort_enabled = true
 collision_layer = 8
-collision_mask = 9
+collision_mask = 25
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_bu757")
@@ -132,7 +132,7 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_8fvw0")
+hit_flash_material = SubResource("ShaderMaterial_sv62v")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_vqpbc")]
 health_component = NodePath("../HealthComponent")

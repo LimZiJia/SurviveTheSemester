@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bwdy8drw25be3" path="res://scenes/ui/health_grade_bar.tscn" id="6_xc6ep"]
 [ext_resource type="PackedScene" uid="uid://c0jmj040f8aug" path="res://scenes/ui/money_bar.tscn" id="7_b4don"]
 [ext_resource type="PackedScene" uid="uid://cy8v4dsyl3rsr" path="res://scenes/manager/time_manager.tscn" id="7_fb4dk"]
-[ext_resource type="TileSet" uid="uid://d0d2uq471xpd2" path="res://resources/tileset.tres" id="8_4hahy"]
+[ext_resource type="TileSet" uid="uid://b85c4n5ffvmal" path="res://resources/tileset.tres" id="8_4hahy"]
 [ext_resource type="Texture2D" uid="uid://6yy2a46r4fi2" path="res://assets/Shop.png" id="8_7gkdb"]
 [ext_resource type="PackedScene" uid="uid://cobmq8loeqhdn" path="res://scenes/manager/experience_manager.tscn" id="8_tmpyg"]
 [ext_resource type="PackedScene" uid="uid://b28hqyei7ujo2" path="res://scenes/manager/buff_manager.tscn" id="8_vp6pe"]

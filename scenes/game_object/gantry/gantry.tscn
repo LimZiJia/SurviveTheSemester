@@ -48,6 +48,8 @@ size = Vector2(75, 93)
 size = Vector2(81, 93)
 
 [node name="Gantry" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_1nadu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

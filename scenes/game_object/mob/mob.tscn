@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_xnt0y"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_yxf3m"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aso4n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prigu"]
 resource_local_to_scene = true
 shader = ExtResource("6_q21w0")
 shader_parameter/lerp_percent = 0.0
@@ -63,7 +63,7 @@ height = 34.0
 [node name="Mob" type="CharacterBody2D" groups=["mobs"]]
 y_sort_enabled = true
 collision_layer = 8
-collision_mask = 9
+collision_mask = 25
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_anuhh")
@@ -87,7 +87,7 @@ money = 10
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_xnrto")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
-hit_flash_material = SubResource("ShaderMaterial_aso4n")
+hit_flash_material = SubResource("ShaderMaterial_prigu")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_xnt0y")]
 health_component = NodePath("../HealthComponent")
