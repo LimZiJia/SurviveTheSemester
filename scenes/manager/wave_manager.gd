@@ -14,8 +14,6 @@ const MAX_SPAWN_RADIUS := 1080.0
 var cur_wave: int = 1
 var enemy_table := WeightedTable.new()
 
-@onready var marker_2d := $Marker2D as Marker2D
-
 func _ready() -> void:
 	# TODO: Start with only certain enemies
 	enemy_table.add_item(
