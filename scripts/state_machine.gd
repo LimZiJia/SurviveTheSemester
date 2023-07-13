@@ -7,7 +7,10 @@ class_name StateMachine
 ## by functions. The state machine should be updated via the update() method in
 ## either the _process or _physics_process method.
 
-	
+## Emitted when the state is changed. This signal is emitted after the
+## leaving state invocation and before the entering state invocation.
+signal state_changed
+
 ## Represents all the states as a dictionary, where the state of type Callable are the keys
 ## and the state flows of type StateFlows are the values.
 var states := {} as Dictionary
@@ -40,7 +43,7 @@ func set_initial_state(initial_state: Callable) -> void:
 func update() -> void:
 	if states.has(current_state):
 		current_state.call()
-
+		
 
 ## This function serves as a private function and should not be called directly.
 func set_state(to_state_flow: StateFlows) -> void:
@@ -48,6 +51,8 @@ func set_state(to_state_flow: StateFlows) -> void:
 		var from_state_flows := states[current_state] as StateFlows
 		if not from_state_flows.leave_state.is_null():
 			from_state_flows.leave_state.call()
+	
+	state_changed.emit()
 	
 	current_state = to_state_flow.state
 	if not to_state_flow.enter_state.is_null():
