@@ -66,7 +66,7 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_of75f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3f8a"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
 shader_parameter/lerp_percent = 0.0
@@ -89,9 +89,8 @@ border_color = Color(0, 0, 0, 0)
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kcgrx"]
-radius = 16.0
-height = 76.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5qto"]
+radius = 36.0
 
 [node name="Bookshelf" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 8
@@ -128,13 +127,17 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookshelfSprite")
-hit_flash_material = SubResource("ShaderMaterial_of75f")
+hit_flash_material = SubResource("ShaderMaterial_x3f8a")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_sx4q7")]
 health_component = NodePath("../HealthComponent")
 
 [node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("10_v1l04")]
 velocity_component = NodePath("../VelocityComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
+path_desired_distance = 34.0
+target_desired_distance = 34.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_r24fn")]
 position = Vector2(0, -45)
@@ -176,4 +179,4 @@ show_percentage = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 rotation = -1.5708
-shape = SubResource("CapsuleShape2D_kcgrx")
+shape = SubResource("CircleShape2D_b5qto")
