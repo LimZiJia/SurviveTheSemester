@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 ## The radius within which the exam paper will start preparing its
 ## attack sequence.
-const ATTACK_RADIUS := 200.0
+const ATTACK_RADIUS := 240.0
 
 var base_health: float
 var base_speed: float
@@ -35,6 +35,7 @@ func _ready() -> void:
 	state_machine.add_states(state_locking, enter_state_locking, leave_state_locking)
 	state_machine.add_states(state_predashing, enter_state_predashing)
 	state_machine.add_states(state_dashing, enter_state_dashing, leave_state_dashing)
+	state_machine.add_states(state_postdashing, enter_state_postdashing)
 	state_machine.set_initial_state(state_chasing)
 	
 	health_component.damaged.connect(on_health_component_damaged)
@@ -50,6 +51,10 @@ func _draw() -> void:
 		draw_dashed_line(Vector2.ZERO, target_local_position, Color.RED, 2.0, 4.0)
 
 
+## This state is the initial state of the enemy. It occurs when the player is
+## either not close enough to be atacked or the enemy does not have direct line
+## of sight with the player. If the player is attackable, it changes to locking
+## state.
 func state_chasing() -> void:
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
@@ -58,13 +63,13 @@ func state_chasing() -> void:
 	var target_position = player.global_position
 	var target_distance = to_local(target_position).length()
 	
-	if target_distance <= ATTACK_RADIUS:
-		state_machine.change_state(state_locking)
-		return
-	
 	pathfind_component.set_target_position(target_position)
 	pathfind_component.follow_path()
 	velocity_component.move(self)
+	
+	if target_distance <= ATTACK_RADIUS and is_player_attackable():
+		state_machine.change_state(state_locking)
+
 
 ## This state occurs when the player is close enough and is in line of sight.
 ## During this state, the enemy locks in on the player's location. After this
@@ -80,18 +85,11 @@ func state_locking() -> void:
 	velocity_component.decelerate()
 	velocity_component.move(self)
 	
-	var space_state = get_world_2d().direct_space_state
-	# Ray only intersects with world or world objects
-	var query = PhysicsRayQueryParameters2D.create(global_position, target_position,
-	0b10001, [self])
-	var result = space_state.intersect_ray(query)
-	
-	if result:
-		state_machine.change_state(state_chasing)
-		return
-	
 	target_local_position = to_local(target_position)
 	queue_redraw()
+	
+	if is_player_attackable():
+		state_machine.change_state(state_chasing)
 
 
 func enter_state_locking() -> void:
@@ -138,7 +136,7 @@ func enter_state_dashing() -> void:
 	
 	var tween = create_tween()
 	tween.tween_interval(0.5)
-	tween.tween_callback(state_machine.change_state.bind(state_chasing))
+	tween.tween_callback(state_machine.change_state.bind(state_postdashing))
 	state_machine.state_changed.connect(tween.kill)
 
 
@@ -146,6 +144,21 @@ func leave_state_dashing() -> void:
 	collision_layer = 0b1000
 	collision_mask = 0b11001
 	wall_min_slide_angle = 0.0
+	
+	velocity_component.velocity = dash_velocity_component.velocity
+
+
+func state_postdashing() -> void:
+	velocity_component.decelerate()
+	velocity_component.move(self)
+
+
+func enter_state_postdashing() -> void:
+	var tween = create_tween()
+	tween.tween_interval(1.0)
+	tween.tween_callback(state_machine.change_state.bind(state_chasing))
+	state_machine.state_changed.connect(tween.kill)
+
 
 
 func on_health_component_damaged(_damage: float) -> void:
@@ -155,6 +168,20 @@ func on_health_component_damaged(_damage: float) -> void:
 func update_health_bar() -> void:
 	health_bar.value = health_component.current_health / health_component.max_health
 
+## Returns true if the player is attackable, i.e. there are no walls or world
+## objects between the player and the enemy, else returns false.
+func is_player_attackable() -> bool:
+	var player = get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return false
+	
+	var space_state = get_world_2d().direct_space_state
+	# Ray only intersects with world or world objects
+	var query = PhysicsRayQueryParameters2D.create(global_position, 
+	player.global_position, 0b10001, [self])
+	var result = space_state.intersect_ray(query)
+		
+	return result.is_empty()
 
 # Set enemy stats based on difficulty provided
 func set_difficulty(difficulty: int) -> void:
