@@ -8,6 +8,7 @@ signal health_healed(current_health: float, max_health: float)
 signal buff_added(buff: Buff, current_buffs: Dictionary)
 signal weapon_added(weapon: WeaponUpgradesData)
 signal weapon_upgrade_added(weapon_upgrade: WeaponUpgrade)
+signal sound_made(sound: String, volume_db: float, pitch_scale: float)
 
 func emit_experience_collected(amount: int) -> void:
 	experience_collected.emit(amount)
@@ -39,3 +40,6 @@ func emit_weapon_added(weapon: WeaponUpgradesData) -> void:
 
 func emit_weapon_upgrade_added(weapon_upgrade: WeaponUpgrade) -> void:
 	weapon_upgrade_added.emit(weapon_upgrade)
+
+func emit_sound_made(sound: String, volume_db: float, pitch_scale: float) -> void:
+	sound_made.emit(sound, volume_db, pitch_scale)
