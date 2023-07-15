@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal dead
 
 var is_damaged = false
+var is_moving = false
 var base_speed: float
 
 @onready var velocity_component = $VelocityComponent as VelocityComponent
@@ -37,16 +38,23 @@ func _physics_process(_delta: float) -> void:
 		animation_tree.set("parameters/conditions/moving", true)
 		animation_state.travel("Move")
 		velocity_component.accelerate_in_direction(dir)
+		if !is_moving:
+			GameEvents.emit_movement_changed(true)
+			is_moving = true
 	else:
 		animation_tree.set("parameters/conditions/idle", true)
 		animation_tree.set("parameters/conditions/moving", false)
 		animation_state.travel("Idle")
 		velocity_component.decelerate()
+		if is_moving:
+			GameEvents.emit_movement_changed(false)
+			is_moving = false
 	velocity_component.move(self)
 
 
 func on_health_component_damaged(_damage: float) -> void:
 	GameEvents.emit_health_damaged(health_component.current_health, health_component.max_health)
+	GameEvents.emit_sound_made("player_hurt", -12.0, 1.0)
 	is_damaged = true
 	await get_tree().create_timer(0.15).timeout
 	is_damaged = false

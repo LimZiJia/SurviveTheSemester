@@ -25,6 +25,7 @@ func increment_experience(amount: int) -> void:
 	current_experience = min(current_experience + amount, target_experience)
 	experience_updated.emit(current_experience, target_experience)
 	if current_experience == target_experience:
+		GameEvents.emit_sound_made("level_up", -15.0, 1.3)
 		current_level += 1
 		target_experience = get_target_experience(current_level + 1)
 		current_experience = 0

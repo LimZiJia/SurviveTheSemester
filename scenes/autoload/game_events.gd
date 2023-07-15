@@ -9,6 +9,8 @@ signal buff_added(buff: Buff, current_buffs: Dictionary)
 signal weapon_added(weapon: WeaponUpgradesData)
 signal weapon_upgrade_added(weapon_upgrade: WeaponUpgrade)
 signal sound_made(sound: String, volume_db: float, pitch_scale: float)
+signal sound_made_shop(sound: String, volume_db: float, pitch_scale: float)
+signal movement_changed(moving: bool)
 
 func emit_experience_collected(amount: int) -> void:
 	experience_collected.emit(amount)
@@ -43,3 +45,9 @@ func emit_weapon_upgrade_added(weapon_upgrade: WeaponUpgrade) -> void:
 
 func emit_sound_made(sound: String, volume_db: float, pitch_scale: float) -> void:
 	sound_made.emit(sound, volume_db, pitch_scale)
+
+func emit_sound_made_shop(sound: String, volume_db: float, pitch_scale: float) -> void:
+	sound_made_shop.emit(sound, volume_db, pitch_scale)
+
+func emit_movement_changed(moving: bool) -> void:
+	movement_changed.emit(moving)

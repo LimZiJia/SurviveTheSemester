@@ -43,4 +43,5 @@ func on_player_collect_area_body_entered(body: Node2D) -> void:
 
 func drop_money() -> void:
 	GameEvents.emit_money_collected(money)
+	GameEvents.emit_sound_made("pick_up_coin", -12.0, 1.0)
 	queue_free()

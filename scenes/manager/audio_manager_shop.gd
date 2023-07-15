@@ -1,11 +1,10 @@
 extends Node2D
 
 @onready var audio_dictionary: Dictionary
-@onready var heart_beat: AudioStreamPlayer2D = $heart_beat
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameEvents.sound_made.connect(play_audio)
+	GameEvents.sound_made_shop.connect(play_audio)
 	
 
 func _init():
@@ -41,9 +40,3 @@ func play_audio(audio: String, volume_db: float, pitch_scale: float) -> void:
 func remove_audio(child: AudioStreamPlayer2D) -> void:
 	remove_child(child)
 
-func change_background(audio: String, volume_db: float, pitch_scale: float) -> void:
-	var audio_stream_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-	var audio_stream: AudioStream = audio_dictionary[audio]
-	audio_stream_player.stream = audio_stream
-	audio_stream_player.volume_db = volume_db
-	audio_stream_player.pitch_scale = pitch_scale
