@@ -78,10 +78,6 @@ pause_menu_scene = ExtResource("6_7j38u")
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
 time_manager = NodePath("../TimeManager")
 
-[node name="Audio" type="CanvasLayer" parent="."]
-
-[node name="AudioManager" parent="Audio" instance=ExtResource("17_q6odx")]
-
 [node name="BuffManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("8_vp6pe")]
 experience_manager = NodePath("../ExperienceManager")
 
@@ -114,5 +110,7 @@ unique_name_in_owner = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Entities/Player"]
 remote_path = NodePath("../../../Camera2D")
+
+[node name="AudioManager" parent="Entities/Player" instance=ExtResource("17_q6odx")]
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

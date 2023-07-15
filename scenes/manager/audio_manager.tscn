@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://5rf467fq81se"]
+[gd_scene load_steps=4 format=3 uid="uid://5rf467fq81se"]
 
 [ext_resource type="Script" path="res://scenes/manager/audio_manager.gd" id="1_0fxr0"]
+[ext_resource type="AudioStream" uid="uid://cjakld5exn8wb" path="res://assets/audio/heart_beat.mp3" id="2_jn1f1"]
+[ext_resource type="Script" path="res://scenes/manager/heart_beat.gd" id="3_rhedu"]
 
 [node name="audio_manager" type="Node2D"]
 script = ExtResource("1_0fxr0")
+
+[node name="heart_beat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jn1f1")
+volume_db = -80.0
+autoplay = true
+script = ExtResource("3_rhedu")
