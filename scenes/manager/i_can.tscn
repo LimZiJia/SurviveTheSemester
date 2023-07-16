@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjqu1elk3p0de"]
-
-[ext_resource type="AudioStream" uid="uid://c4ba3yih1ag2t" path="res://assets/audio/i_can.mp3" id="1_sp03m"]
-
-[node name="i_can" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_sp03m")
-volume_db = -11.243
-pitch_scale = 1.3
