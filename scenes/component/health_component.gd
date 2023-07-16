@@ -4,6 +4,8 @@ extends Node2D
 signal dead
 signal damaged(damage: float)
 signal healed(health: float)
+signal frozen
+signal burnt(tick_damage: float)
 
 @export var max_health := 10.0
 var current_health: float
@@ -41,3 +43,9 @@ func check_death() -> void:
 	if current_health == 0.0:
 		dead.emit()
 		owner.queue_free()
+
+func freeze() -> void:
+	frozen.emit()
+	
+func burn(tick_damage: float) -> void:
+	burnt.emit(tick_damage)

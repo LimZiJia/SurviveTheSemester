@@ -9,4 +9,15 @@ func _ready() -> void:
 
 
 func pick_number() -> void:
-	sprite_2d.frame = randi_range(0, 9)
+	var n = randi_range(0, 9)
+	sprite_2d.frame = n
+	if n <= 5:
+		$AnimationPlayer.play("normal")
+	elif n <= 7:
+		$AnimationPlayer.play("freeze")
+		$HitboxComponent.damage *= 0.5
+		$HitboxComponent.knockback_force = 0.0
+		$HitboxComponent.freezing = true
+	else:
+		$AnimationPlayer.play("burn")
+		$HitboxComponent.burning = true

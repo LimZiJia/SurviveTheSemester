@@ -53,7 +53,7 @@ func spawn_weapon(number: int) -> void:
 	if mob == null:
 		return
 	
-	var spawn_position = mob.global_position
+	var spawn_position = mob.global_position - (mob.global_position - player.global_position) * 0.2
 	
 	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
 	if foreground == null:
@@ -63,6 +63,7 @@ func spawn_weapon(number: int) -> void:
 	cooldown_timer.start()
 	
 	for i in number:
+		print(i)
 		var number_weapon_instance := number_weapon_scene.instantiate()
 		foreground.add_child(number_weapon_instance)
 		number_weapon_instance.global_position = spawn_position

@@ -7,3 +7,5 @@ script = ExtResource("1_d1s2q")
 id = "heal"
 name = "Recover Health"
 description = "Instantly increases health by 20%."
+max_quantity = 0
+unlock_pool = Array[ExtResource("1_d1s2q")]([])
