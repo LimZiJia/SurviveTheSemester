@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxq00s4mkyx18"]
+[gd_scene load_steps=26 format=3 uid="uid://cxq00s4mkyx18"]
 
 [ext_resource type="Script" path="res://scenes/game_object/book/book.gd" id="1_bu757"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_41gv0"]
@@ -16,32 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="9_eh2bk"]
 [ext_resource type="Texture2D" uid="uid://b8sgkjgqy6xu" path="res://scenes/game_object/book/book_blue.png" id="9_pbyfw"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_shk7c"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpx1e"]
-resource_local_to_scene = true
-shader = ExtResource("7_7kivl")
-shader_parameter/lerp_percent = 0.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_63yxe"]
-radius = 16.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_45t8p"]
-radius = 19.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uvxv"]
-bg_color = Color(0.227451, 0.227451, 0.313726, 1)
-border_color = Color(0, 0, 0, 0)
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuua3"]
-bg_color = Color(0.607843, 0.760784, 0.27451, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 0)
-corner_detail = 1
-anti_aliasing = false
 
 [sub_resource type="Animation" id="Animation_o5lmg"]
 length = 0.001
@@ -104,6 +78,35 @@ _data = {
 "flying": SubResource("Animation_2nptm")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00vtf"]
+resource_local_to_scene = true
+shader = ExtResource("7_7kivl")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63yxe"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45t8p"]
+radius = 19.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uvxv"]
+bg_color = Color(0.227451, 0.227451, 0.313726, 1)
+border_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuua3"]
+bg_color = Color(0.607843, 0.760784, 0.27451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_448um"]
+radius = 17.0
+
 [node name="Book" type="CharacterBody2D" groups=["mobs"]]
 y_sort_enabled = true
 collision_layer = 8
@@ -111,6 +114,12 @@ collision_mask = 25
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_bu757")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "flying"
+libraries = {
+"": SubResource("AnimationLibrary_d6xgy")
+}
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_41gv0")]
 max_speed = 150.0
@@ -131,7 +140,7 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_cpx1e")
+hit_flash_material = SubResource("ShaderMaterial_00vtf")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_w4gbr")]
 hurtbox_component = NodePath("../HurtboxComponent")
@@ -200,8 +209,6 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "flying"
-libraries = {
-"": SubResource("AnimationLibrary_d6xgy")
-}
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_448um")
