@@ -8,19 +8,26 @@ var base_health: float
 var base_speed: float
 var book_difficulty: int
 
+var state_machine := StateMachine.new()
+
 @onready var animation_player := $AnimationPlayer as AnimationPlayer
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 @onready var pathfind_component := $PathfindComponent as PathfindComponent
-@onready var health_bar := $HealthBar as ProgressBar
+@onready var health_bar := %HealthBar as ProgressBar
+@onready var timer := $Timer as Timer
 
 
 
 func _ready() -> void:
 	base_health = health_component.max_health
 	base_speed = velocity_component.max_speed
+	
+	state_machine.add_states(state_chasing)
+	state_machine.add_states(state_attacking, enter_state_attacking, leave_state_attacking)
+	state_machine.set_initial_state(state_chasing)
 
-	$Timer.timeout.connect(on_timer_timeout)
+	timer.timeout.connect(on_timer_timeout)
 	health_component.damaged.connect(on_health_component_damaged)
 	update_health_bar()
 
@@ -30,18 +37,7 @@ func on_timer_timeout() -> void:
 	
 
 func _physics_process(_delta: float) -> void:
-	var player = get_tree().get_first_node_in_group("player") as Node2D
-	if player == null:
-		velocity_component.decelerate()
-	else:
-		var distance = player.global_position.distance_to(global_position)
-		if distance > CHASE_RADIUS:
-			pathfind_component.set_target_position(player.global_position)
-			pathfind_component.follow_path()
-		else:
-			velocity_component.decelerate()
-	
-	velocity_component.move(self)
+	state_machine.update()
 
 
 func on_health_component_damaged(_damage: float) -> void:
@@ -50,6 +46,45 @@ func on_health_component_damaged(_damage: float) -> void:
 
 func update_health_bar() -> void:
 	health_bar.value = health_component.current_health / health_component.max_health
+
+
+func state_chasing() -> void:
+	var player = get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return
+	
+	var target_position = player.global_position
+	var target_distance = target_position.distance_to(global_position)
+	if target_distance <= CHASE_RADIUS:
+		state_machine.change_state(state_attacking)
+		return
+	
+	pathfind_component.set_target_position(target_position)
+	pathfind_component.follow_path()
+	velocity_component.move(self)
+
+
+func state_attacking() -> void:
+	var player = get_tree().get_first_node_in_group("player") as Node2D
+	if player == null:
+		return
+	
+	var target_position = player.global_position
+	var target_distance = target_position.distance_to(global_position)
+	if target_distance > CHASE_RADIUS:
+		state_machine.change_state(state_chasing)
+		return
+	
+	velocity_component.decelerate()
+	velocity_component.move(self)
+
+
+func enter_state_attacking() -> void:
+	timer.start()
+
+
+func leave_state_attacking() -> void:
+	timer.stop()
 
 
 func spawn_book() -> void:
