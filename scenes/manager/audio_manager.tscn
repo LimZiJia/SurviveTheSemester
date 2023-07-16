@@ -17,5 +17,5 @@ script = ExtResource("3_rhedu")
 
 [node name="footstep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_sc3mc")
-volume_db = 5.0
+pitch_scale = 1.1
 script = ExtResource("4_2xrv5")

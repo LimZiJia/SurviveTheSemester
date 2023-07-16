@@ -58,7 +58,6 @@ func spawn_weapon(number: int) -> void:
 	can_attack = false
 	cooldown_timer.start()
 	
-	
 	for i in number:
 		var code_weapon_instance := code_weapon_scene.instantiate()
 		code_weapon_instance.global_position = spawn_position

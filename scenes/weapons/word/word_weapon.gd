@@ -61,6 +61,6 @@ func choose_name() -> void:
 	label.text = NAMES[idx]
 	
 	if idx == 0:
-		GameEvents.emit_sound_made("i_can", -12.0, 1.25)
+		GameEvents.emit_sound_made("i_can", -13.0, 1.25)
 	else:
-		GameEvents.emit_sound_made("do_it", -12.0, 1.25)
+		GameEvents.emit_sound_made("do_it", -13.0, 1.25)

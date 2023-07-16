@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cenp6ssfdvm07"]
+[gd_scene load_steps=27 format=3 uid="uid://cenp6ssfdvm07"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -163,10 +163,10 @@ y_sort_enabled = true
 unique_name_in_owner = true
 position = Vector2(421, 691)
 
+[node name="audio_manager" parent="TileMap/Entities/Player" instance=ExtResource("17_q6odx")]
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="TileMap/Entities/Player"]
 remote_path = NodePath("../../../../Camera2D")
-
-[node name="AudioManager" parent="Entities/Player" instance=ExtResource("17_q6odx")]
 
 [node name="Gantry" parent="TileMap/Entities" instance=ExtResource("24_fvgpo")]
 position = Vector2(336, 552)
@@ -175,3 +175,5 @@ position = Vector2(336, 552)
 position = Vector2(336, 648)
 
 [node name="Foreground" type="Node2D" parent="TileMap" groups=["foreground_layer"]]
+
+[node name="Entities@Player@AudioManager" parent="." instance=ExtResource("17_q6odx")]

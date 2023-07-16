@@ -23,7 +23,7 @@ func on_buy_button_pressed() -> void:
 	var next_upgrade := weapon_upgrades_data.upgrades[cur_level] as WeaponUpgrade
 	cur_level += 1
 	selected.emit(next_upgrade)
-	GameEvents.emit_sound_made_shop("purchase", 0.0, 1.0)
+	GameEvents.emit_sound_made_shop("purchase", 5.0, 1.0)
 
 
 func on_weapon_upgrade_added(_weapon_upgrade: WeaponUpgrade) -> void:
