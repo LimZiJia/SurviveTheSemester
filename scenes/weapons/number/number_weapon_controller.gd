@@ -63,6 +63,7 @@ func spawn_weapon(number: int) -> void:
 	cooldown_timer.start()
 	
 	for i in number:
+		print(i)
 		var number_weapon_instance := number_weapon_scene.instantiate()
 		foreground.add_child(number_weapon_instance)
 		number_weapon_instance.global_position = spawn_position
