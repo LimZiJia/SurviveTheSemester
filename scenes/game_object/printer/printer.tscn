@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://c0olfj5rryupw"]
+
+[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="1_4nqns"]
+[ext_resource type="Script" path="res://scenes/game_object/printer/printer.gd" id="1_vq46b"]
+[ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_r8x2j"]
+[ext_resource type="PackedScene" uid="uid://dm3lrtqb30uf5" path="res://scenes/component/experience_drop_component.tscn" id="3_mr4dc"]
+[ext_resource type="PackedScene" uid="uid://dip3jqu7xbldd" path="res://scenes/component/coin_drop_component.tscn" id="4_p16er"]
+[ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_fuyi4"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_2rn0e"]
+[ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="7_ey25n"]
+[ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="8_luose"]
+[ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="9_g7k4v"]
+[ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="10_no8xy"]
+[ext_resource type="Texture2D" uid="uid://w58bc77ikvt0" path="res://scenes/game_object/printer/printer_shadow.png" id="11_fenvj"]
+[ext_resource type="Texture2D" uid="uid://c4hxijrx1b3m5" path="res://scenes/game_object/printer/printer.png" id="12_reatr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vx2wm"]
+resource_local_to_scene = true
+shader = ExtResource("6_2rn0e")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kov2j"]
+radius = 30.0666
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ho1f2"]
+radius = 21.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aenty"]
+bg_color = Color(0.227451, 0.227451, 0.313726, 1)
+border_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0824"]
+bg_color = Color(0.607843, 0.760784, 0.27451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwebe"]
+radius = 18.2483
+
+[node name="Printer" type="CharacterBody2D" groups=["mobs"]]
+collision_layer = 8
+collision_mask = 25
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_vq46b")
+
+[node name="AttackFillTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="VelocityComponent" parent="." instance=ExtResource("1_4nqns")]
+max_speed = 180.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_r8x2j")]
+max_health = 1000.0
+
+[node name="ExperienceDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_mr4dc")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p16er")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_fuyi4")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
+hit_flash_material = SubResource("ShaderMaterial_vx2wm")
+
+[node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_ey25n")]
+health_component = NodePath("../HealthComponent")
+
+[node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("8_luose")]
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_g7k4v")]
+position = Vector2(0, -24)
+collision_layer = 0
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_kov2j")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("10_no8xy")]
+position = Vector2(0, -24)
+collision_layer = 2
+collision_mask = 0
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_ho1f2")
+
+[node name="JumpHitboxComponent" parent="." instance=ExtResource("10_no8xy")]
+position = Vector2(0, -24)
+collision_layer = 2
+collision_mask = 0
+damage = 20.0
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitboxComponent"]
+shape = SubResource("CircleShape2D_ho1f2")
+disabled = true
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowSprite" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("11_fenvj")
+
+[node name="JumpingVisuals" type="Node2D" parent="Visuals"]
+unique_name_in_owner = true
+
+[node name="PrinterSprite" type="Sprite2D" parent="Visuals/JumpingVisuals"]
+position = Vector2(0, -24)
+texture = ExtResource("12_reatr")
+
+[node name="HealthBar" type="ProgressBar" parent="Visuals/JumpingVisuals"]
+unique_name_in_owner = true
+z_index = 2
+custom_minimum_size = Vector2(36, 8)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -65.0
+offset_right = 18.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_aenty")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p0824")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hwebe")
