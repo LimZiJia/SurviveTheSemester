@@ -16,6 +16,9 @@ signal hit
 
 @export var disabled := false:
 	set(val):
+		disabled = val
 		for child in get_children():
-			if child is CollisionShape2D or CollisionPolygon2D:
+			if child is CollisionShape2D:
+				child.disabled = val
+			if child is CollisionPolygon2D:
 				child.disabled = val
