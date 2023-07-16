@@ -88,7 +88,7 @@ func state_locking() -> void:
 	target_local_position = to_local(target_position)
 	queue_redraw()
 	
-	if is_player_attackable():
+	if not is_player_attackable():
 		state_machine.change_state(state_chasing)
 
 
