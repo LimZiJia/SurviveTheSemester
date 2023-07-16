@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponUpgradesData" load_steps=5 format=3 uid="uid://bp2t4bulma1hw"]
+
+[ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrade_data.gd" id="1_ioy8r"]
+[ext_resource type="Resource" uid="uid://cxkic172bpyqm" path="res://resources/weapon_upgrades/code/code_weapon_upgrade_1.tres" id="2_3vvne"]
+[ext_resource type="Resource" uid="uid://cghu7anab4our" path="res://resources/weapon_upgrades/code/code_weapon_upgrade_2.tres" id="3_n4vxv"]
+[ext_resource type="PackedScene" uid="uid://cio1fnkfef3b5" path="res://scenes/weapons/code/code_weapon_controller.tscn" id="4_4ii8e"]
+
+[resource]
+script = ExtResource("1_ioy8r")
+weapon_name = &"Code"
+upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("2_3vvne"), ExtResource("3_n4vxv")])
+weapon_scene = ExtResource("4_4ii8e")
