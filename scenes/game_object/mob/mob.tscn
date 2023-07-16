@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="9_4icqh"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_yxf3m"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3k1d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ubxm"]
 resource_local_to_scene = true
 shader = ExtResource("6_q21w0")
 shader_parameter/lerp_percent = 0.0
@@ -63,9 +63,11 @@ radius = 12.0
 height = 34.0
 
 [node name="Mob" type="CharacterBody2D" groups=["mobs"]]
+y_sort_enabled = true
 collision_layer = 8
-collision_mask = 9
+collision_mask = 25
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_anuhh")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_8mro8")]
@@ -98,12 +100,16 @@ sprite = NodePath("../AnimatedSprite2D")
 health_component = NodePath("../HealthComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
 sprite = NodePath("../AnimatedSprite2D")
+hit_flash_material = SubResource("ShaderMaterial_3ubxm")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_xnt0y")]
 health_component = NodePath("../HealthComponent")
 
 [node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("9_yxf3m")]
 velocity_component = NodePath("../VelocityComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
+target_desired_distance = 20.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("3_tvcfr")]
 collision_layer = 0
@@ -123,6 +129,7 @@ damage = 5.0
 shape = SubResource("CapsuleShape2D_7fxbd")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 2
 custom_minimum_size = Vector2(36, 8)
 anchors_preset = 8
 anchor_left = 0.5

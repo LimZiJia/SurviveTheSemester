@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://si4gd7mdq6xp"
-path="res://.godot/imported/floors_tileset.png-5a83e89f9d1c502a764f05a9c0cc064e.ctex"
+uid="uid://cnb31qric8n42"
+path="res://.godot/imported/exam_paper.png-d1221d9075f5cbbb6bca3656e50297be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/floors_tileset.png"
-dest_files=["res://.godot/imported/floors_tileset.png-5a83e89f9d1c502a764f05a9c0cc064e.ctex"]
+source_file="res://scenes/game_object/exam_paper/exam_paper.png"
+dest_files=["res://.godot/imported/exam_paper.png-d1221d9075f5cbbb6bca3656e50297be.ctex"]
 
 [params]
 
