@@ -9,7 +9,7 @@ var base_damage: float
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 @onready var pathfind_component := $PathfindComponent as PathfindComponent
 @onready var hitbox_component := $HitboxComponent as HitboxComponent
-@onready var health_bar := %HealthBar as ProgressBar
+@onready var health_bar := $HealthBar as ProgressBar
 
 
 func _ready() -> void:

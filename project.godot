@@ -87,7 +87,6 @@ left_click={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Mobs"
 2d_physics/layer_4="MobCollision"
-2d_physics/layer_5="WorldObjects"
 
 [rendering]
 

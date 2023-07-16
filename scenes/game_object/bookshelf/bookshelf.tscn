@@ -21,7 +21,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:position")
+tracks/0/path = NodePath("BookshelfSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,18 +34,18 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_mb0hy"]
 resource_name = "shake"
 length = 0.3
-step = 0.025
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:position")
+tracks/0/path = NodePath("BookshelfSprite:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.075, 0.125, 0.175, 0.225, 0.275, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-3, 0), Vector2(3, 0), Vector2(-3, 0), Vector2(3, 0), Vector2(-3, 0), Vector2(3, 0), Vector2(0, 0)]
+"values": [Vector2(-3, 0), Vector2(3, 0), Vector2(-3, 0), Vector2(3, 0), Vector2(-3, 0), Vector2(3, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -68,7 +68,7 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3f8a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fbnqr"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
 shader_parameter/lerp_percent = 0.0
@@ -91,14 +91,13 @@ border_color = Color(0, 0, 0, 0)
 corner_detail = 1
 anti_aliasing = false
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b5qto"]
-radius = 36.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywrok"]
+size = Vector2(76, 90)
 
 [node name="Bookshelf" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 8
-collision_mask = 25
+collision_mask = 9
 motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_lbseb")
 book_scene = ExtResource("2_30e8n")
 
@@ -109,6 +108,7 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 7.0
+autostart = true
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_lhapa")]
 max_speed = 40.0
@@ -128,6 +128,8 @@ money = 5
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
+sprite = NodePath("../BookshelfSprite")
+hit_flash_material = SubResource("ShaderMaterial_fbnqr")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_sv366")]
 hurtbox_component = NodePath("../HurtboxComponent")
@@ -137,9 +139,7 @@ sprite = NodePath("../BookshelfSprite")
 [node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("10_spb8p")]
 health_component = NodePath("../HealthComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
-
-sprite = NodePath("../Visuals/BookshelfSprite")
-hit_flash_material = SubResource("ShaderMaterial_x3f8a")
+sprite = NodePath("../BookshelfSprite")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_sx4q7")]
 health_component = NodePath("../HealthComponent")
@@ -147,12 +147,7 @@ health_component = NodePath("../HealthComponent")
 [node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("10_gl4eq")]
 velocity_component = NodePath("../VelocityComponent")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
-path_desired_distance = 34.0
-target_desired_distance = 34.0
-
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_r24fn")]
-position = Vector2(0, -45)
 collision_layer = 0
 collision_mask = 4
 health_component = NodePath("../HealthComponent")
@@ -161,15 +156,7 @@ velocity_component = NodePath("../VelocityComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("RectangleShape2D_p3ug4")
 
-[node name="Visuals" type="Node2D" parent="."]
-
-[node name="BookshelfSprite" parent="Visuals" instance=ExtResource("12_yerdr")]
-position = Vector2(0, -45)
-texture = ExtResource("11_1fs44")
-script = null
-
-[node name="HealthBar" type="ProgressBar" parent="Visuals"]
-unique_name_in_owner = true
+[node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(36, 8)
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,9 +164,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -18.0
-offset_top = -102.0
+offset_top = -57.0
 offset_right = 18.0
-offset_bottom = -94.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_6uvxv")
@@ -188,7 +175,9 @@ max_value = 1.0
 value = 1.0
 show_percentage = false
 
+[node name="BookshelfSprite" parent="." instance=ExtResource("12_yerdr")]
+texture = ExtResource("11_1fs44")
+script = null
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13)
-rotation = -1.5708
-shape = SubResource("CircleShape2D_b5qto")
+shape = SubResource("RectangleShape2D_ywrok")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cxq00s4mkyx18"]
+[gd_scene load_steps=27 format=3 uid="uid://b8u2unvt8gxac"]
 
 [ext_resource type="Script" path="res://scenes/game_object/book/book.gd" id="1_bu757"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_41gv0"]
@@ -18,41 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_shk7c"]
 [ext_resource type="Shader" path="res://scenes/component/freezable_component_material.gdshader" id="15_8fui6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wfdi"]
-resource_local_to_scene = true
-shader = ExtResource("7_7kivl")
-shader_parameter/lerp_percent = 0.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_63yxe"]
-radius = 16.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_45t8p"]
-radius = 19.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uvxv"]
-bg_color = Color(0.227451, 0.227451, 0.313726, 1)
-border_color = Color(0, 0, 0, 0)
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cuua3"]
-bg_color = Color(0.607843, 0.760784, 0.27451, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 0)
-corner_detail = 1
-anti_aliasing = false
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mdvy7"]
-radius = 21.0
-
 [sub_resource type="Animation" id="Animation_o5lmg"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/BookSprite:offset")
+tracks/0/path = NodePath("BookSprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +35,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/ShadowSprite:scale")
+tracks/1/path = NodePath("ShadowSprite:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -80,7 +51,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/BookSprite:offset")
+tracks/0/path = NodePath("BookSprite:offset")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,7 +63,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/ShadowSprite:scale")
+tracks/1/path = NodePath("ShadowSprite:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,11 +109,9 @@ anti_aliasing = false
 shader = ExtResource("15_8fui6")
 
 [node name="Book" type="CharacterBody2D" groups=["mobs"]]
-y_sort_enabled = true
 collision_layer = 8
-collision_mask = 25
+collision_mask = 9
 motion_mode = 1
-wall_min_slide_angle = 0.0
 script = ExtResource("1_bu757")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -169,6 +138,9 @@ money = 5
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
+sprite = NodePath("../BookSprite")
+hit_flash_material = SubResource("ShaderMaterial_f3txa")
+
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_w4gbr")]
 hurtbox_component = NodePath("../HurtboxComponent")
 velocity_component = NodePath("../VelocityComponent")
@@ -177,9 +149,7 @@ sprite = NodePath("../BookSprite")
 [node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("9_eh2bk")]
 health_component = NodePath("../HealthComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
-
-sprite = NodePath("../Visuals/BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_4wfdi")
+sprite = NodePath("../BookSprite")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_vqpbc")]
 health_component = NodePath("../HealthComponent")
@@ -187,39 +157,27 @@ health_component = NodePath("../HealthComponent")
 [node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("9_shk7c")]
 velocity_component = NodePath("../VelocityComponent")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
-target_desired_distance = 19.0
-
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("4_8rqmr")]
-position = Vector2(0, -30)
 collision_layer = 0
 collision_mask = 4
 health_component = NodePath("../HealthComponent")
 velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-shape = SubResource("CircleShape2D_63yxe")
+position = Vector2(-1, 0.500001)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_rek7v")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("5_lsna1")]
-position = Vector2(0, -30)
 collision_layer = 2
 collision_mask = 0
-damage = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-shape = SubResource("CircleShape2D_45t8p")
+position = Vector2(-1, 0.5)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_iocx5")
 
-[node name="Visuals" type="Node2D" parent="."]
-
-[node name="ShadowSprite" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("7_pf3kl")
-
-[node name="BookSprite" parent="Visuals" instance=ExtResource("2_iyn5q")]
-position = Vector2(0, -30)
-texture = ExtResource("9_pbyfw")
-
-[node name="HealthBar" type="ProgressBar" parent="Visuals"]
-unique_name_in_owner = true
+[node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(36, 8)
 anchors_preset = 8
 anchor_left = 0.5
@@ -227,9 +185,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -18.0
-offset_top = -63.0
+offset_top = -33.0
 offset_right = 18.0
-offset_bottom = -55.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_6uvxv")
@@ -247,14 +205,7 @@ material = SubResource("ShaderMaterial_kxtxg")
 scale = Vector2(0.974129, 0.974129)
 texture = ExtResource("9_pbyfw")
 
-
-metadata/_edit_use_anchors_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mdvy7")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "flying"
-libraries = {
-"": SubResource("AnimationLibrary_d6xgy")
-}
+position = Vector2(-1, 0.500001)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_rek7v")

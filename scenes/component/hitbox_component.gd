@@ -13,9 +13,3 @@ signal hit
 # Determines if the hitbox can burn entities. For an entity to burn,
 # it must have the BurnableComponent.
 @export var burning := false
-
-@export var disabled := false:
-	set(val):
-		for child in get_children():
-			if child is CollisionShape2D or CollisionPolygon2D:
-				child.disabled = val

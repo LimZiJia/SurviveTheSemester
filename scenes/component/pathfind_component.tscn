@@ -4,3 +4,9 @@
 
 [node name="PathfindComponent" type="Node2D"]
 script = ExtResource("1_0isa2")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 48.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)

@@ -12,17 +12,12 @@ signal frozen
 @export var health_component: HealthComponent
 @export var velocity_component: VelocityComponent
 
-@export var disabled := false
-
 func _ready() -> void:
 	area_entered.connect(on_area_entered)
 
 
 func on_area_entered(area: Area2D) -> void:
 	if not area is HitboxComponent:
-		return
-	
-	if disabled:
 		return
 	
 	var hitbox_component := area as HitboxComponent
