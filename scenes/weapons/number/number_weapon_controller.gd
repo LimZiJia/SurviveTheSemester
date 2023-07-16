@@ -4,7 +4,6 @@ extends Node
 @export var weapon_stat: WeaponStat
 
 var can_attack := false
-var count = 0
 
 @onready var cooldown_timer := $CooldownTimer as Timer
 
@@ -19,8 +18,6 @@ func _ready():
 
 func _physics_process(_delta: float):
 	if can_attack:
-		count += 1
-		print(count)
 		spawn_weapon(weapon_stat.count)
 		can_attack = false
 		cooldown_timer.start()
@@ -60,7 +57,6 @@ func spawn_weapon(number: int) -> void:
 
 
 	for i in number:
-		print(i)
 		var mob = find_mob_by_position(i)
 		if mob == null:
 			return
