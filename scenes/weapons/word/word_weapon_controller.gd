@@ -49,11 +49,16 @@ func spawn_weapon(number: int) -> void:
 	if player == null:
 		return
 	
-	var mob = find_nearest_mob()
+	var mob = find_nearest_mob() as Node2D
 	if mob == null:
 		return
 	
-	var target_position = mob.global_position
+	var mob_hitbox = mob.get("hitbox_component") as HitboxComponent
+	var target_position: Vector2
+	if mob_hitbox == null:
+		target_position = mob.global_position
+	else:
+		target_position = mob_hitbox.global_position
 	
 	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
 	if foreground == null:
