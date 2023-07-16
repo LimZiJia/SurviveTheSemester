@@ -4,6 +4,7 @@ extends Node
 @export var weapon_stat: WeaponStat
 
 var can_attack := false
+var count = 0
 
 @onready var cooldown_timer := $CooldownTimer as Timer
 
@@ -18,7 +19,11 @@ func _ready():
 
 func _physics_process(_delta: float):
 	if can_attack:
+		count += 1
+		print(count)
 		spawn_weapon(weapon_stat.count)
+		can_attack = false
+		cooldown_timer.start()
 
 
 # Sets the can_attack variable to true so that
@@ -58,12 +63,9 @@ func spawn_weapon(number: int) -> void:
 	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
 	if foreground == null:
 		return
-	
-	can_attack = false
-	cooldown_timer.start()
-	
+
+
 	for i in number:
-		print(i)
 		var number_weapon_instance := number_weapon_scene.instantiate()
 		foreground.add_child(number_weapon_instance)
 		number_weapon_instance.global_position = spawn_position

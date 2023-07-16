@@ -34,7 +34,7 @@ func initialize() -> void:
 #	apply_upgrade(word_init_upgrade)
 	
 	# TODO: Remove
-	var number_init_upgrade = upgrade_pool["Number"].upgrades[0] as WeaponUpgrade
+	var number_init_upgrade = upgrade_pool["Word"].upgrades[0] as WeaponUpgrade
 	apply_upgrade(number_init_upgrade)
 
 

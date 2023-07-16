@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://dddb33g2lfsbe"]
 
 [ext_resource type="Script" path="res://scenes/weapons/melee/melee.gd" id="1_qj504"]
 [ext_resource type="Texture2D" uid="uid://cemfsi5xqh8jf" path="res://scenes/weapons/melee/melee.png" id="2_xy5nt"]
@@ -190,7 +190,6 @@ collision_layer = 4
 collision_mask = 0
 monitoring = false
 script = ExtResource("3_5t8ik")
-damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitboxArea"]
 position = Vector2(14.988, -352.273)
