@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cnb31qric8n42" path="res://scenes/game_object/exam_paper/exam_paper.png" id="12_tytxl"]
 [ext_resource type="Texture2D" uid="uid://o51sktulu13n" path="res://scenes/game_object/exam_paper/exam_paper_shadow.png" id="13_t1ov5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc84k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12aif"]
 resource_local_to_scene = true
 shader = ExtResource("7_7q1li")
 shader_parameter/lerp_percent = 0.0
@@ -70,7 +70,7 @@ money = 8
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ince0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/ExamPaperSprite")
-hit_flash_material = SubResource("ShaderMaterial_mc84k")
+hit_flash_material = SubResource("ShaderMaterial_12aif")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_6nmo3")]
 health_component = NodePath("../HealthComponent")
