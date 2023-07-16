@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://c61kowlx1fmam"]
+
+[ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrade.gd" id="1_smoe3"]
+[ext_resource type="Script" path="res://scenes/weapons/weapon_stats/weapon_stat.gd" id="2_t5ph6"]
+
+[sub_resource type="Resource" id="Resource_rfrqn"]
+script = ExtResource("2_t5ph6")
+cooldown = 40.0
+count = 1
+damage = 80.0
+knockback = 100.0
+metadata = {}
+
+[resource]
+script = ExtResource("1_smoe3")
+weapon_name = &"Code"
+description = "-10s cooldown."
+level = 2
+cost = 2000
+weapon_stat = SubResource("Resource_rfrqn")

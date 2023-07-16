@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://bi4qaqeec2gam"]
+
+[ext_resource type="Script" path="res://scenes/game_object/gantry/gantry.gd" id="1_1nadu"]
+[ext_resource type="Texture2D" uid="uid://bkv1hl0t45ewf" path="res://scenes/game_object/gantry/gantry.png" id="2_yfhlv"]
+
+[sub_resource type="Animation" id="Animation_pgjyo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6nghq"]
+resource_name = "reject"
+length = 1.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pcwrn"]
+_data = {
+"RESET": SubResource("Animation_pgjyo"),
+"reject": SubResource("Animation_6nghq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f71h4"]
+size = Vector2(75, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wueq"]
+size = Vector2(81, 93)
+
+[node name="Gantry" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_1nadu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pcwrn")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yfhlv")
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 22.5)
+shape = SubResource("RectangleShape2D_f71h4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 22.5)
+shape = SubResource("RectangleShape2D_7wueq")

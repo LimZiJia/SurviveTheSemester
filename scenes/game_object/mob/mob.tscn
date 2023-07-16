@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cejjrtuji45i4"]
+[gd_scene load_steps=23 format=3 uid="uid://cejjrtuji45i4"]
 
 [ext_resource type="Script" path="res://scenes/game_object/mob/mob.gd" id="1_anuhh"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_8mro8"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dip3jqu7xbldd" path="res://scenes/component/coin_drop_component.tscn" id="5_0u7g8"]
 [ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_xnrto"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_q21w0"]
+[ext_resource type="PackedScene" uid="uid://bvlx5ulv8siae" path="res://scenes/component/freezable_component.tscn" id="8_qiavs"]
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_xnt0y"]
+[ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="9_4icqh"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_yxf3m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1yvef"]
@@ -61,9 +63,11 @@ radius = 12.0
 height = 34.0
 
 [node name="Mob" type="CharacterBody2D" groups=["mobs"]]
+y_sort_enabled = true
 collision_layer = 8
-collision_mask = 9
+collision_mask = 25
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_anuhh")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_8mro8")]
@@ -87,11 +91,24 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
 hit_flash_material = SubResource("ShaderMaterial_1yvef")
 
+[node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_qiavs")]
+hurtbox_component = NodePath("../HurtboxComponent")
+velocity_component = NodePath("../VelocityComponent")
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("9_4icqh")]
+health_component = NodePath("../HealthComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+sprite = NodePath("../AnimatedSprite2D")
+
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_xnt0y")]
 health_component = NodePath("../HealthComponent")
 
 [node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("9_yxf3m")]
 velocity_component = NodePath("../VelocityComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
+target_desired_distance = 20.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("3_tvcfr")]
 collision_layer = 0
@@ -111,6 +128,7 @@ damage = 5.0
 shape = SubResource("CapsuleShape2D_7fxbd")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 2
 custom_minimum_size = Vector2(36, 8)
 anchors_preset = 8
 anchor_left = 0.5

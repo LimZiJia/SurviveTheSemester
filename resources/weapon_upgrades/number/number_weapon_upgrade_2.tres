@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://vxnh3jaybjlk"]
+
+[ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrade.gd" id="1_nxqjj"]
+[ext_resource type="Script" path="res://scenes/weapons/weapon_stats/weapon_stat.gd" id="2_gx3lg"]
+
+[sub_resource type="Resource" id="Resource_8pd45"]
+script = ExtResource("2_gx3lg")
+cooldown = 5.0
+count = 1
+damage = 10.0
+knockback = 200.0
+metadata = {}
+
+[resource]
+script = ExtResource("1_nxqjj")
+weapon_name = &"Number"
+description = "Increase damage by 5."
+level = 2
+cost = 10
+weapon_stat = SubResource("Resource_8pd45")
