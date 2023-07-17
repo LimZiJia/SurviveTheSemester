@@ -1,7 +1,9 @@
 extends Node2D
 
+const ATTENUATION: float = 5.0
+
 @onready var audio_dictionary: Dictionary
-	
+
 
 func _init():
 	# Accessing audio directory and making a dictionary
@@ -28,8 +30,20 @@ func play_audio(audio: String, volume_db: float, pitch_scale: float = 1.0) -> vo
 	add_child(audio_stream_player)
 	audio_stream_player.play()
 	
-	audio_stream_player.finished.connect(remove_audio.bind(audio_stream_player))
+	audio_stream_player.finished.connect(func():
+		remove_child(audio_stream_player))
 
 
-func remove_audio(child: AudioStreamPlayer) -> void:
-	remove_child(child)
+func play_2d_audio(audio: String, source: Node2D, volume_db: float, pitch_scale: float = 1.0) -> void:
+	var audio_stream_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+	var audio_stream: AudioStream = audio_dictionary[audio]
+	audio_stream_player.attenuation = ATTENUATION
+	audio_stream_player.global_position = source.global_position
+	audio_stream_player.stream = audio_stream
+	audio_stream_player.volume_db = volume_db
+	audio_stream_player.pitch_scale = pitch_scale
+	add_child(audio_stream_player)
+	audio_stream_player.play()
+	
+	audio_stream_player.finished.connect(func():
+		remove_child(audio_stream_player))

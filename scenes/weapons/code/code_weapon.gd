@@ -38,4 +38,4 @@ func set_damage_knockback(damage: float, knockback: float) -> void:
 	$Visuals/Sniplet_11/HitboxComponent.knockback_force = knockback
 
 func start_typing_sound() -> void:
-	GameEvents.emit_sound_made("typing", 7.0, 1.0)
+	AudioManager.play_audio("typing", 7.0)

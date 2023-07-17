@@ -36,7 +36,7 @@ func on_area_entered(area: Area2D) -> void:
 			burnt.emit(max(hitbox_component.damage * 0.2, 1.0))
 		if hitbox_component.freezing:
 			frozen.emit()
-		GameEvents.emit_sound_made("damaged", -11.0, 0.9)
+		AudioManager.play_2d_audio("damaged", self, -11.0, 0.9)
 	
 	if velocity_component != null:
 		velocity_component.knockback(hitbox_component.global_position, hitbox_component.knockback_force)
