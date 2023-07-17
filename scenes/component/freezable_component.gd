@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func on_frozen() -> void:
-	GameEvents.emit_sound_made("freeze", -8.0, 1.0)
+	GameEvents.emit_sound_made("freeze", -9.0, 1.5)
 	if velocity_component:
 		velocity_component.freeze(frozen_time)
 	

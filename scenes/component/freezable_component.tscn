@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvlx5ulv8siae"]
+[gd_scene load_steps=5 format=3 uid="uid://bvlx5ulv8siae"]
 
 [ext_resource type="Script" path="res://scenes/component/freezable_component.gd" id="1_wc2s6"]
 [ext_resource type="Shader" path="res://shaders/tint.gdshader" id="2_t8ufn"]
+[ext_resource type="AudioStream" uid="uid://bh07q3k4bw887" path="res://assets/audio/freeze.mp3" id="3_e8rb8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1565j"]
 shader = ExtResource("2_t8ufn")
@@ -10,3 +11,10 @@ shader_parameter/tint = Vector3(0, 0, 0.6)
 [node name="FreezableComponent" type="Node"]
 script = ExtResource("1_wc2s6")
 tint_material = SubResource("ShaderMaterial_1565j")
+
+[node name="freeze" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e8rb8")
+volume_db = 10.0
+pitch_scale = 1.5
+attenuation = 0.329876
+area_mask = 31

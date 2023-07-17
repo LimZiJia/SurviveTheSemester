@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func pick_number() -> void:
-	var n = 9#randi_range(0, 9)
+	var n = randi_range(0, 9)
 	sprite_2d.frame = n
 	if n <= 5:
 		$AnimationPlayer.play("normal")
@@ -21,3 +21,9 @@ func pick_number() -> void:
 	else:
 		$AnimationPlayer.play("burn")
 		$HitboxComponent.burning = true
+
+func meteor_falling_sound() -> void:
+	GameEvents.emit_sound_made("meteor_falling", -10.0, 1.5)
+
+func meteor_impact_sound() -> void:
+	GameEvents.emit_sound_made("meteor_impact", -17.0, 1.0)

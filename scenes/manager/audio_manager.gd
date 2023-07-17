@@ -33,8 +33,7 @@ func play_audio(audio: String, volume_db: float, pitch_scale: float) -> void:
 	add_child(audio_stream_player)
 	audio_stream_player.play()
 	
-	while(audio_stream_player.playing):
-		await get_tree().create_timer(audio_stream.get_length(), false).timeout
+	await audio_stream_player.finished
 	remove_audio(audio_stream_player)
 
 

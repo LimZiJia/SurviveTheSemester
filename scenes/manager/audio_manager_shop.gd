@@ -24,7 +24,7 @@ func _init():
 
 
 func play_audio(audio: String, volume_db: float, pitch_scale: float) -> void:
-	var audio_stream_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+	var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 	var audio_stream: AudioStream = audio_dictionary[audio]
 	audio_stream_player.stream = audio_stream
 	audio_stream_player.volume_db = volume_db
@@ -32,11 +32,10 @@ func play_audio(audio: String, volume_db: float, pitch_scale: float) -> void:
 	add_child(audio_stream_player)
 	audio_stream_player.play()
 	
-	while(audio_stream_player.playing):
-		await get_tree().create_timer(audio_stream.get_length(), false).timeout
+	await audio_stream_player.finished
 	remove_audio(audio_stream_player)
 
 
-func remove_audio(child: AudioStreamPlayer2D) -> void:
+func remove_audio(child: AudioStreamPlayer) -> void:
 	remove_child(child)
 
