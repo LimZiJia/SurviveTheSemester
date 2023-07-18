@@ -19,6 +19,8 @@ func _ready():
 func _physics_process(_delta: float):
 	if can_attack:
 		spawn_weapon(weapon_stat.count)
+		can_attack = false
+		cooldown_timer.start()
 
 
 # Sets the can_attack variable to true so that
@@ -49,33 +51,28 @@ func spawn_weapon(number: int) -> void:
 	if player == null:
 		return
 	
-	var mob = find_nearest_mob()
-	if mob == null:
-		return
-	
-	var spawn_position = mob.global_position - (mob.global_position - player.global_position) * 0.2
-	
 	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
 	if foreground == null:
 		return
-	
-	can_attack = false
-	cooldown_timer.start()
-	
+
+
 	for i in number:
-		print(i)
+		var mob = find_mob_by_position(i)
+		if mob == null:
+			return
+		var spawn_position = mob.global_position - (mob.global_position - player.global_position) * 0.2
 		var number_weapon_instance := number_weapon_scene.instantiate()
 		foreground.add_child(number_weapon_instance)
 		number_weapon_instance.global_position = spawn_position
 		number_weapon_instance.hitbox_component.damage = weapon_stat.damage
 		number_weapon_instance.hitbox_component.knockback_force = weapon_stat.knockback
 		
-		await get_tree().create_timer(.05, false).timeout
+		await get_tree().create_timer(1.0, false).timeout
 
 
 # Returns the nearest mob in the SceneTree, or null if 
 # there are no mobs currently
-func find_nearest_mob():
+func find_mob_by_position(position: int):
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return null
@@ -85,7 +82,7 @@ func find_nearest_mob():
 		return player.global_position.distance_squared_to(mob.global_position) <= pow(320, 2.0)
 	)
 	
-	if mobs.size() == 0:
+	if mobs.size() < position + 1:
 		return null
 	
 	mobs.sort_custom(func(a: Node2D, b: Node2D):
@@ -94,4 +91,4 @@ func find_nearest_mob():
 		return a_dist < b_dist
 	)
 	
-	return mobs[0]
+	return mobs[position]
