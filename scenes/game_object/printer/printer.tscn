@@ -1,0 +1,423 @@
+[gd_scene load_steps=27 format=3 uid="uid://c0olfj5rryupw"]
+
+[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="1_4nqns"]
+[ext_resource type="Script" path="res://scenes/game_object/printer/printer.gd" id="1_vq46b"]
+[ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_r8x2j"]
+[ext_resource type="PackedScene" uid="uid://dm3lrtqb30uf5" path="res://scenes/component/experience_drop_component.tscn" id="3_mr4dc"]
+[ext_resource type="PackedScene" uid="uid://dip3jqu7xbldd" path="res://scenes/component/coin_drop_component.tscn" id="4_p16er"]
+[ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_fuyi4"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_2rn0e"]
+[ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="7_ey25n"]
+[ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="8_8y2cl"]
+[ext_resource type="PackedScene" uid="uid://bvlx5ulv8siae" path="res://scenes/component/freezable_component.tscn" id="8_hl215"]
+[ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="8_luose"]
+[ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="9_g7k4v"]
+[ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="10_no8xy"]
+[ext_resource type="Texture2D" uid="uid://w58bc77ikvt0" path="res://scenes/game_object/printer/printer_shadow.png" id="11_fenvj"]
+[ext_resource type="Texture2D" uid="uid://c4hxijrx1b3m5" path="res://scenes/game_object/printer/printer.png" id="12_reatr"]
+[ext_resource type="Texture2D" uid="uid://fk5hioof8gfb" path="res://scenes/game_object/printer/jump_circle.png" id="13_2syuu"]
+
+[sub_resource type="Animation" id="Animation_clxlk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtboxComponent:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JumpHitboxComponent:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/JumpCircleSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/JumpCircleSprite:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Visuals/JumpingVisuals:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8pfhq"]
+resource_name = "jump"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtboxComponent:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxComponent:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JumpHitboxComponent:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/JumpCircleSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1, 1.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(2, 2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/JumpCircleSprite:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.05, 1.1, 1.6),
+"transitions": PackedFloat32Array(1e+06, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.27451), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackFillTimer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1],
+"method": &"start"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 8]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 25]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Visuals/JumpingVisuals:position:y")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1),
+"transitions": PackedFloat32Array(0.68302, 1.56917, 1),
+"update": 0,
+"values": [0.0, -240.0, 0.0]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"mobs"],
+"method": &"remove_from_group"
+}, {
+"args": [&"mobs", false],
+"method": &"add_to_group"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_45rp6"]
+_data = {
+"RESET": SubResource("Animation_clxlk"),
+"jump": SubResource("Animation_8pfhq")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuvs1"]
+resource_local_to_scene = true
+shader = ExtResource("6_2rn0e")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kov2j"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e6idb"]
+radius = 27.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ho1f2"]
+radius = 90.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aenty"]
+bg_color = Color(0.227451, 0.227451, 0.313726, 1)
+border_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0824"]
+bg_color = Color(0.607843, 0.760784, 0.27451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwebe"]
+radius = 18.0
+
+[node name="Printer" type="CharacterBody2D" groups=["mobs"]]
+collision_layer = 8
+collision_mask = 25
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_vq46b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_45rp6")
+}
+
+[node name="AttackFillTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="VelocityComponent" parent="." instance=ExtResource("1_4nqns")]
+max_speed = 180.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_r8x2j")]
+max_health = 20.0
+
+[node name="ExperienceDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_mr4dc")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p16er")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_fuyi4")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
+hit_flash_material = SubResource("ShaderMaterial_tuvs1")
+
+[node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_hl215")]
+hurtbox_component = NodePath("../HurtboxComponent")
+velocity_component = NodePath("../VelocityComponent")
+sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
+
+[node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("8_8y2cl")]
+health_component = NodePath("../HealthComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
+
+[node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_ey25n")]
+health_component = NodePath("../HealthComponent")
+
+[node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("8_luose")]
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_g7k4v")]
+position = Vector2(0, -24)
+collision_layer = 0
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_kov2j")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("10_no8xy")]
+position = Vector2(0, -24)
+collision_layer = 2
+collision_mask = 0
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_e6idb")
+
+[node name="JumpHitboxComponent" parent="." instance=ExtResource("10_no8xy")]
+position = Vector2(0, -24)
+collision_layer = 2
+collision_mask = 0
+damage = 20.0
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitboxComponent"]
+shape = SubResource("CircleShape2D_ho1f2")
+disabled = true
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="ShadowSprite" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("11_fenvj")
+
+[node name="JumpCircleSprite" type="Sprite2D" parent="Visuals"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -24)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("13_2syuu")
+
+[node name="JumpingVisuals" type="Node2D" parent="Visuals"]
+unique_name_in_owner = true
+
+[node name="PrinterSprite" type="Sprite2D" parent="Visuals/JumpingVisuals"]
+position = Vector2(0, -24)
+texture = ExtResource("12_reatr")
+
+[node name="HealthBar" type="ProgressBar" parent="Visuals/JumpingVisuals"]
+unique_name_in_owner = true
+z_index = 2
+custom_minimum_size = Vector2(36, 8)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -65.0
+offset_right = 18.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_aenty")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p0824")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hwebe")

@@ -20,10 +20,17 @@ func _ready() -> void:
 		{
 			"cost": 2.0,
 			"scene": preload("res://scenes/game_object/mob/mob.tscn"),
-			"weight": 60,
+			"weight": 100,
 		},
 		60
 	)
+	enemy_table.add_item(
+		{
+			"cost": 2.4,
+			"scene": preload("res://scenes/game_object/book/book.tscn"),
+			"weight": 80,
+		},
+		40)
 	
 	$Timer.timeout.connect(on_timer_timeout)
 	start_wave()
@@ -34,11 +41,18 @@ func on_timer_timeout() -> void:
 	match cur_wave:
 		5: enemy_table.add_item(
 			{
-				"cost": 2.4,
-				"scene": preload("res://scenes/game_object/book/book.tscn"),
-				"weight": 40,
+				"cost": 2.0,
+				"scene": preload("res://scenes/game_object/exam_paper/exam_paper.tscn"),
+				"weight": 20,
 			},
-			40)
+			20)
+		8: enemy_table.add_item(
+			{
+				"cost": 3.0,
+				"scene": preload("res://scenes/game_object/printer/printer.tscn"),
+				"weight": 10,
+			},
+			10)
 		10: enemy_table.add_item(
 			{
 				"cost": 30,

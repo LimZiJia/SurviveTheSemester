@@ -1,0 +1,99 @@
+<mxfile host="app.diagrams.net" modified="2023-07-18T09:04:48.096Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="1wqe-hMS5395XahYJl-M" version="21.6.2" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1588" dy="2121" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-0" target="hZUYsN8QHbk7oSlAwGKF-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-6" value="player within ATTACK_RADIUS and in sight" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="hZUYsN8QHbk7oSlAwGKF-2" vertex="1" connectable="0">
+          <mxGeometry x="-0.1271" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yGqye3l85P4Wk7JbNZLn-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-0" target="yGqye3l85P4Wk7JbNZLn-0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="971" y="310" />
+              <mxPoint x="605" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yGqye3l85P4Wk7JbNZLn-5" value="&lt;i&gt;frozen(time:float)&amp;nbsp;&lt;/i&gt;signal" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="yGqye3l85P4Wk7JbNZLn-3">
+          <mxGeometry x="-0.2342" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-0" value="&lt;b&gt;CHASING&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;Pathfinds towards player" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="906" y="160" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hZUYsN8QHbk7oSlAwGKF-0" target="thikcQ1s-oTCG_y3HWkw-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1535" y="220" />
+            </Array>
+            <mxPoint x="1535" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-0" value="JUMPING&lt;br&gt;&lt;i style=&quot;font-weight: normal;&quot;&gt;Enter: &lt;/i&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;Play position tween and animation that controls collisions, hitbox/hurtbox&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;fontStyle=1" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1470" y="120" width="130" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hZUYsN8QHbk7oSlAwGKF-1" target="hZUYsN8QHbk7oSlAwGKF-0" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-13" value="&lt;i&gt;attack_fill_timer.wait_time&lt;/i&gt;&amp;nbsp;== 0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="hZUYsN8QHbk7oSlAwGKF-9" vertex="1" connectable="0">
+          <mxGeometry x="-0.1764" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hZUYsN8QHbk7oSlAwGKF-1" target="thikcQ1s-oTCG_y3HWkw-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="-30" />
+              <mxPoint x="850" y="220" />
+            </Array>
+            <mxPoint x="890" y="-20" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-12" value="player above CHASING_RADIUS or out of sight" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="hZUYsN8QHbk7oSlAwGKF-11" vertex="1" connectable="0">
+          <mxGeometry x="-0.1408" y="5" relative="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yGqye3l85P4Wk7JbNZLn-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hZUYsN8QHbk7oSlAwGKF-1" target="yGqye3l85P4Wk7JbNZLn-0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="971" y="-140" />
+              <mxPoint x="605" y="-140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yGqye3l85P4Wk7JbNZLn-2" value="&lt;i style=&quot;border-color: var(--border-color);&quot;&gt;frozen(time:float)&amp;nbsp;&lt;/i&gt;signal" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="yGqye3l85P4Wk7JbNZLn-1">
+          <mxGeometry x="-0.0787" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hZUYsN8QHbk7oSlAwGKF-1" value="&lt;b&gt;JUMP CHARGING&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;i&gt;Enter:&lt;/i&gt;&amp;nbsp;resumes timer&lt;br&gt;&lt;i&gt;Exit&lt;/i&gt;: pauses timer&lt;br&gt;Doesn&#39;t move" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="906" y="-80" width="130" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="yGqye3l85P4Wk7JbNZLn-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="yGqye3l85P4Wk7JbNZLn-0" target="thikcQ1s-oTCG_y3HWkw-0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="570" y="350" />
+              <mxPoint x="1004" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yGqye3l85P4Wk7JbNZLn-7" value="after time specified in &lt;i&gt;frozen(time: float)&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="yGqye3l85P4Wk7JbNZLn-6">
+          <mxGeometry x="0.0938" y="-4" relative="1" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yGqye3l85P4Wk7JbNZLn-0" value="&lt;b&gt;FREEZING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Does not move" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="540" y="30" width="130" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
