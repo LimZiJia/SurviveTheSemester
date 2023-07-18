@@ -1,8 +1,9 @@
-[gd_scene load_steps=60 format=3 uid="uid://bgkg45mchl7ul"]
+[gd_scene load_steps=61 format=3 uid="uid://bgkg45mchl7ul"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_i4ae5"]
+[ext_resource type="PackedScene" uid="uid://sesle3moyoi6" path="res://scenes/component/dash_component.tscn" id="2_v8bdw"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
 [ext_resource type="Script" path="res://scenes/game_object/player/weapon_manager.gd" id="5_ffgjt"]
 [ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="6_7up1x"]
@@ -558,6 +559,8 @@ collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_7xkn6")
 
+[node name="DashComponent" parent="." instance=ExtResource("2_v8bdw")]
+
 [node name="VelocityComponent" parent="." instance=ExtResource("2_i4ae5")]
 max_speed = 200.0
 acceleration = 30.0
@@ -589,7 +592,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 79
+frame = 74
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

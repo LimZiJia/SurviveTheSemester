@@ -5,7 +5,10 @@ signal dead
 
 var is_damaged = false
 var base_speed: float
+var dash_speed: float
+var dash_duration: float
 
+@onready var dash_component = $DashComponent as DashComponent
 @onready var velocity_component = $VelocityComponent as VelocityComponent
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
@@ -16,7 +19,7 @@ func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
 	health_component.healed.connect(on_health_component_healed)
 	health_component.dead.connect(on_health_component_dead)
-	
+	dash_duration = dash_component.dash_duration
 	base_speed = velocity_component.max_speed
 	GameEvents.buff_added.connect(on_buff_added)
 	
@@ -29,6 +32,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if is_damaged:
 		animation_state.travel("Hurt")
+	elif velocity_component.is_dashing:
+		pass
 	elif dir != Vector2.ZERO:
 		animation_tree.set("parameters/Idle/blend_position", dir)
 		animation_tree.set("parameters/Move/blend_position", dir)
@@ -36,7 +41,10 @@ func _physics_process(_delta: float) -> void:
 		animation_tree.set("parameters/conditions/idle", false)
 		animation_tree.set("parameters/conditions/moving", true)
 		animation_state.travel("Move")
-		velocity_component.accelerate_in_direction(dir)
+		if Input.is_action_just_pressed("dash") and dash_component.can_dash:
+			velocity_component.dash(dir, dash_duration)
+		else:
+			velocity_component.accelerate_in_direction(dir)
 	else:
 		animation_tree.set("parameters/conditions/idle", true)
 		animation_tree.set("parameters/conditions/moving", false)
