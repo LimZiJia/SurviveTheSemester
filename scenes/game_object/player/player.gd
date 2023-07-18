@@ -13,6 +13,7 @@ var dash_duration: float
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var animation_tree = $AnimationTree as AnimationTree
+@onready var sprite = $Visuals/Sprite2D as Sprite2D
 @onready var animation_state = animation_tree.get("parameters/playback")
 
 func _ready() -> void:
@@ -43,6 +44,8 @@ func _physics_process(_delta: float) -> void:
 		animation_state.travel("Move")
 		if Input.is_action_just_pressed("dash") and dash_component.can_dash:
 			velocity_component.dash(dir, dash_duration)
+			dash_component.start_dash(sprite)
+			animation_player.play("dash_hurtbox")
 		else:
 			velocity_component.accelerate_in_direction(dir)
 	else:

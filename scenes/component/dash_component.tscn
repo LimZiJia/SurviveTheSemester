@@ -5,5 +5,12 @@
 [node name="dash_component" type="Node2D"]
 script = ExtResource("1_eeimo")
 
+[node name="Duration" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="Ghost" type="Timer" parent="."]
+wait_time = 0.03
