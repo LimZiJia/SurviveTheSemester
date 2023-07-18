@@ -25,8 +25,7 @@ func _ready() -> void:
 	
 	state_machine.add_states(state_chasing, enter_state_chasing)
 	state_machine.add_states(state_jump_charging, enter_state_jump_charging)
-	state_machine.add_states(state_jumping, enter_state_jumping, leave_state_jumping)
-	state_machine.add_states(state_damage_dealing, enter_state_damage_dealing, leave_state_damage_dealing)
+	state_machine.add_states(state_jumping, enter_state_jumping)
 	state_machine.set_initial_state(state_chasing)
 	
 	health_component.damaged.connect(on_health_component_damaged)
@@ -88,52 +87,13 @@ func enter_state_jumping() -> void:
 		return
 	var target_position = player.global_position
 	
-	# Stop collisions and damage dealing/taking
-	hitbox_component.disabled = true
-	hurtbox_component.disabled = true
-	collision_layer = 0b0
-	collision_mask = 0b1
-	remove_from_group("mobs")
-	
-	# Jumping Animation
-	var height_tween = create_tween()
 	var position_tween = create_tween()
-	
-	height_tween.tween_property(%JumpingVisuals, "position:y", -240.0, 0.6
-	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	height_tween.tween_property(%JumpingVisuals, "position:y", 0.0, 0.5
-	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-	
 	position_tween.tween_property(self, "position", target_position,
-	1.2).set_trans(Tween.TRANS_LINEAR)
-	position_tween.tween_callback(state_machine.change_state.bind(state_damage_dealing))
-
-
-func leave_state_jumping() -> void:
-	# Resume collisions
-	collision_layer = 0b1000
-	collision_mask = 0b11001
-	add_to_group("mobs")
-
-
-func state_damage_dealing() -> void:
-	velocity_component.decelerate()
-	velocity_component.move(self)
-
-
-func enter_state_damage_dealing() -> void:
-	hurtbox_component.disabled = false
-	jump_hitbox_component.disabled = false
+	1.1).set_trans(Tween.TRANS_LINEAR)
+	position_tween.tween_callback(state_machine.change_state.bind(state_chasing))
 	
-	var tween = create_tween()
-	tween.tween_interval(0.1)
-	tween.tween_callback(state_machine.change_state.bind(state_chasing))
-
-
-func leave_state_damage_dealing() -> void:
-	jump_hitbox_component.disabled = true
-	hitbox_component.disabled = false
-	attack_fill_timer.start()
+	# Handles everything other than global position
+	$AnimationPlayer.play("jump")
 
 
 func on_health_component_damaged(_damage: float) -> void:
