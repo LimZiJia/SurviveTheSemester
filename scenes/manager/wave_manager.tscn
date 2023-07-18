@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/manager/wave_manager.gd" id="1_mejhg"]
 [ext_resource type="PackedScene" uid="uid://cejjrtuji45i4" path="res://scenes/game_object/mob/mob.tscn" id="2_s2rxt"]
-[ext_resource type="PackedScene" uid="uid://bm4xeq1monrxv" path="res://scenes/game_object/book/book.tscn" id="3_k1px4"]
+[ext_resource type="PackedScene" uid="uid://cxq00s4mkyx18" path="res://scenes/game_object/book/book.tscn" id="3_k1px4"]
 [ext_resource type="PackedScene" uid="uid://bujqaccjlfprl" path="res://scenes/game_object/bookshelf/bookshelf.tscn" id="4_pfamu"]
 
 [node name="WaveManager" type="Node2D"]

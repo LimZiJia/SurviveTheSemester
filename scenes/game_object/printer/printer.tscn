@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c0olfj5rryupw"]
+[gd_scene load_steps=26 format=3 uid="uid://c0olfj5rryupw"]
 
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="1_4nqns"]
 [ext_resource type="Script" path="res://scenes/game_object/printer/printer.gd" id="1_vq46b"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="5_fuyi4"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_2rn0e"]
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="7_ey25n"]
+[ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="8_8y2cl"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="8_luose"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="9_g7k4v"]
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="10_no8xy"]
@@ -264,16 +265,16 @@ _data = {
 "jump": SubResource("Animation_8pfhq")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrftw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_biuxe"]
 resource_local_to_scene = true
 shader = ExtResource("6_2rn0e")
 shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kov2j"]
-radius = 30.0666
+radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6idb"]
-radius = 27.1662
+radius = 27.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ho1f2"]
 radius = 90.0
@@ -294,7 +295,7 @@ corner_detail = 1
 anti_aliasing = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hwebe"]
-radius = 18.2483
+radius = 18.0
 
 [node name="Printer" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 8
@@ -317,7 +318,7 @@ autostart = true
 max_speed = 180.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_r8x2j")]
-max_health = 1000.0
+max_health = 20.0
 
 [node name="ExperienceDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_mr4dc")]
 health_component = NodePath("../HealthComponent")
@@ -328,7 +329,12 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_fuyi4")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
-hit_flash_material = SubResource("ShaderMaterial_qrftw")
+hit_flash_material = SubResource("ShaderMaterial_biuxe")
+
+[node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("8_8y2cl")]
+health_component = NodePath("../HealthComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_ey25n")]
 health_component = NodePath("../HealthComponent")

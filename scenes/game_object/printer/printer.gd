@@ -5,6 +5,7 @@ const ATTACK_RADIUS := 392.0
 var base_health: float
 var base_speed: float
 var base_damage: float
+var base_jump_damage: float
 
 var state_machine := StateMachine.new()
 
@@ -22,6 +23,7 @@ func _ready() -> void:
 	base_health = health_component.max_health
 	base_speed = velocity_component.max_speed
 	base_damage = hitbox_component.damage
+	base_jump_damage = jump_hitbox_component.damage
 	
 	state_machine.add_states(state_chasing, enter_state_chasing)
 	state_machine.add_states(state_jump_charging, enter_state_jump_charging)
@@ -129,5 +131,6 @@ func set_difficulty(difficulty: int) -> void:
 	health_component.current_health = base_health * pow(difficulty, 0.1)
 	velocity_component.max_speed = base_speed * pow(difficulty, 0.07)
 	hitbox_component.damage = base_damage * pow(difficulty, 0.15)
+	jump_hitbox_component.damage = base_damage * pow(difficulty, 0.15)
 	
 	update_health_bar()
