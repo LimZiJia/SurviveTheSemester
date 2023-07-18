@@ -1,7 +1,5 @@
 extends Node2D
 
-signal spawned(position: Vector2)
-
 @export var water_cooler_scene: PackedScene
 @export var navigation_region: NavigationRegion2D
 
@@ -25,9 +23,6 @@ func spawn_water_cooler() -> void:
 	entities.add_child(water_cooler_instance)
 	water_cooler_instance.global_position = get_spawn_position()
 	water_cooler_instance.collected.connect(on_water_cooler_collected)
-	
-	spawned.emit(global_position)
-	print("spawned")
 
 
 func on_water_cooler_collected() -> void:
