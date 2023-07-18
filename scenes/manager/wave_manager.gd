@@ -68,65 +68,19 @@ func get_target_cost() -> float:
 	return 6 * log(cur_wave) + 10
 
 
-# Returns the area of a triangle given an array of the points of the triangle
-func triangle_area(points: PackedVector2Array) -> float:
-	assert(points.size() == 3)
-	
-	return 0.5 * (\
-		(points[1].x - points[0].x) * (points[2].y - points[0].y) - \
-		(points[2].x - points[0].x) * (points[1].y - points[0].y) \
-	)
-
-
-# Returns a random point in the triangle given an array of the points of the triangle
-# Based on https://www.cs.princeton.edu/~funk/tog02.pdf
-func random_triangle_point(points: PackedVector2Array) -> Vector2:
-	assert(points.size() == 3)
-	
-	var a := points[0]
-	var b := points[1]
-	var c := points[2]
-	
-	return a + sqrt(randf()) * (-a + b + randf() * (c - b))
-
-
 func get_spawn_position() -> Vector2:
-	
-	# An array of arrays containing three points each
-	var triangle_pool: Array[PackedVector2Array]
-	var triangle_weight_pool: Array[float]
-	var sum_area := 0.0
-	
-	# Triangulate all polygons
 	var spawn_polygons = get_tree().get_nodes_in_group("spawn_polygon") as Array[Polygon2D]
+	if spawn_polygons.size() == 0:
+		return Vector2.ZERO
+	
+	var polygon_table = WeightedTable.new()
 	for spawn_polygon in spawn_polygons:
 		var points = spawn_polygon.polygon
-		var triangulated_points := Geometry2D.triangulate_polygon(points)
-		
-		for index in len(triangulated_points) / 3:
-			var triangle: PackedVector2Array
-			
-			for n in range(3):
-				triangle.append(points[triangulated_points[(index * 3) + n]])
-			
-			var area := triangle_area(triangle)
-			
-			triangle_pool.append(triangle)
-			triangle_weight_pool.append(area)
-			sum_area += area
+		polygon_table.add_item(points, Geometry2DPlus.area(points))
 	
-	# Choose a random triangle with chance proportional to area
-	var rnd_float = randf_range(0, sum_area)
-	var chosen_triangle: PackedVector2Array
-	for index in len(triangle_pool):
-		if rnd_float <= triangle_weight_pool[index]:
-			chosen_triangle = triangle_pool[index]
-			break
-		rnd_float -= triangle_weight_pool[index]
+	var chosen_polygon = polygon_table.pick_item()
 	
-	
-	# Choose a random point in the triangle
-	return random_triangle_point(chosen_triangle)
+	return Geometry2DPlus.rand_point(chosen_polygon)
 
 
 func start_wave() -> void:
