@@ -39,6 +39,7 @@ func _ready() -> void:
 	state_machine.add_states(state_postdashing, enter_state_postdashing)
 	state_machine.add_states(state_freezing)
 	state_machine.set_initial_state(state_chasing)
+	state_machine.owner = self
 	
 	health_component.damaged.connect(on_health_component_damaged)
 	update_health_bar()
@@ -98,11 +99,7 @@ func state_locking() -> void:
 
 func enter_state_locking() -> void:
 	can_draw = true
-	
-	var tween = create_tween()
-	tween.tween_interval(1.5)
-	tween.tween_callback(state_machine.change_state.bind(state_predashing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_predashing, 1.5)
 
 
 func leave_state_locking() -> void:
@@ -117,10 +114,7 @@ func state_predashing() -> void:
 
 
 func enter_state_predashing() -> void:
-	var tween = create_tween()
-	tween.tween_interval(0.5)
-	tween.tween_callback(state_machine.change_state.bind(state_dashing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_dashing, 0.5)
 
 
 func state_dashing() -> void:
@@ -138,10 +132,7 @@ func enter_state_dashing() -> void:
 	collision_mask = 0b10001
 	wall_min_slide_angle = INF
 	
-	var tween = create_tween()
-	tween.tween_interval(0.5)
-	tween.tween_callback(state_machine.change_state.bind(state_postdashing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_postdashing, 0.5)
 
 
 func leave_state_dashing() -> void:
@@ -158,10 +149,7 @@ func state_postdashing() -> void:
 
 
 func enter_state_postdashing() -> void:
-	var tween = create_tween()
-	tween.tween_interval(1.0)
-	tween.tween_callback(state_machine.change_state.bind(state_chasing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_chasing, 1.0)
 
 
 func state_freezing() -> void:
@@ -178,10 +166,8 @@ func update_health_bar() -> void:
 
 
 func on_frozen(time: float) -> void:
-	var tween = create_tween()
-	tween.tween_callback(state_machine.change_state.bind(state_freezing))
-	tween.tween_interval(time)
-	tween.tween_callback(state_machine.change_state.bind(state_chasing))
+	state_machine.change_state(state_freezing)
+	state_machine.change_state_with_delay(state_chasing, time, false)
 
 
 ## Returns true if the player is attackable, i.e. there are no walls or world

@@ -18,6 +18,11 @@ var states := {} as Dictionary
 ## Represents the current state.
 var current_state: Callable
 
+## Represents the node that the state machine belongs to. This must be set to
+## use the change_state_with_delay method.
+var owner: Node
+
+
 ## Adds a particular state to the state machine, together with optional functions called when the state is
 ## entered or left.
 func add_states(state: Callable, enter_state: Callable = Callable(), leave_state: Callable = Callable()) -> void:
@@ -32,6 +37,21 @@ func change_state(state: Callable) -> void:
 	if states.has(state):
 		(func(): set_state(states[state])).call_deferred()
 
+
+## Updates the state machine to the defined state after the defined delay.
+## If strict is true, the state change will not occur if another state change
+## happens during the delay time. Note that the state_machine.owner must be 
+## set to use this method.
+func change_state_with_delay(state: Callable, delay: float, strict: bool = true) -> void:
+	if owner == null:
+		return
+	
+	var tween = owner.create_tween()
+	tween.tween_interval(delay)
+	tween.tween_callback(change_state.bind(state))
+	
+	if strict:
+		state_changed.connect(tween.kill)
 
 ## Updates the initial state of the state machine to the defined state.
 func set_initial_state(initial_state: Callable) -> void:

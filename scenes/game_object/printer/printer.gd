@@ -31,6 +31,7 @@ func _ready() -> void:
 	state_machine.add_states(state_jumping, enter_state_jumping)
 	state_machine.add_states(state_freezing)
 	state_machine.set_initial_state(state_chasing)
+	state_machine.owner = self
 	
 	health_component.damaged.connect(on_health_component_damaged)
 	update_health_bar()
@@ -117,10 +118,9 @@ func update_health_bar() -> void:
 
 func on_frozen(time: float) -> void:
 	if state_machine.current_state in [state_chasing, state_jump_charging]:
-		var tween = create_tween()
-		tween.tween_callback(state_machine.change_state.bind(state_freezing))
-		tween.tween_interval(time)
-		tween.tween_callback(state_machine.change_state.bind(state_chasing))
+		state_machine.change_state(state_freezing)
+		state_machine.change_state_with_delay(state_chasing, time, false)
+
 
 ## Returns true if there are walls between player and enemy,
 ## else returns false

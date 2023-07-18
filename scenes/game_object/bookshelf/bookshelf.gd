@@ -26,6 +26,7 @@ func _ready() -> void:
 	state_machine.add_states(state_chasing)
 	state_machine.add_states(state_attacking, enter_state_attacking, leave_state_attacking)
 	state_machine.set_initial_state(state_chasing)
+	state_machine.owner = self
 
 	timer.timeout.connect(on_timer_timeout)
 	health_component.damaged.connect(on_health_component_damaged)
