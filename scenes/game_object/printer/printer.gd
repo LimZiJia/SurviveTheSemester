@@ -16,6 +16,7 @@ var state_machine := StateMachine.new()
 @onready var hurtbox_component := $HurtboxComponent as HurtboxComponent
 @onready var hitbox_component := $HitboxComponent as HitboxComponent
 @onready var jump_hitbox_component := $JumpHitboxComponent as HitboxComponent
+@onready var freezable_component := $FreezableComponent as FreezableComponent
 @onready var health_bar := %HealthBar as ProgressBar
 
 
@@ -25,13 +26,16 @@ func _ready() -> void:
 	base_damage = hitbox_component.damage
 	base_jump_damage = jump_hitbox_component.damage
 	
-	state_machine.add_states(state_chasing, enter_state_chasing)
-	state_machine.add_states(state_jump_charging, enter_state_jump_charging)
+	state_machine.add_states(state_chasing)
+	state_machine.add_states(state_jump_charging, enter_state_jump_charging, leave_state_jump_charging)
 	state_machine.add_states(state_jumping, enter_state_jumping)
+	state_machine.add_states(state_freezing)
 	state_machine.set_initial_state(state_chasing)
 	
 	health_component.damaged.connect(on_health_component_damaged)
 	update_health_bar()
+	
+	freezable_component.frozen.connect(on_frozen)
 
 
 func _physics_process(_delta: float) -> void:
@@ -52,10 +56,6 @@ func state_chasing() -> void:
 	
 	if target_distance <= ATTACK_RADIUS and not is_player_obstructed():
 		state_machine.change_state(state_jump_charging)
-
-
-func enter_state_chasing() -> void:
-	attack_fill_timer.paused = true
 
 
 func state_jump_charging() -> void:
@@ -79,6 +79,10 @@ func enter_state_jump_charging() -> void:
 	attack_fill_timer.paused = false
 
 
+func leave_state_jump_charging() -> void:
+	attack_fill_timer.paused = true
+
+
 func state_jumping() -> void:
 	pass
 
@@ -98,6 +102,11 @@ func enter_state_jumping() -> void:
 	$AnimationPlayer.play("jump")
 
 
+func state_freezing() -> void:
+	velocity_component.decelerate()
+	velocity_component.move(self)
+	
+
 func on_health_component_damaged(_damage: float) -> void:
 	update_health_bar()
 
@@ -105,6 +114,13 @@ func on_health_component_damaged(_damage: float) -> void:
 func update_health_bar() -> void:
 	health_bar.value = health_component.current_health / health_component.max_health
 
+
+func on_frozen(time: float) -> void:
+	if state_machine.current_state in [state_chasing, state_jump_charging]:
+		var tween = create_tween()
+		tween.tween_callback(state_machine.change_state.bind(state_freezing))
+		tween.tween_interval(time)
+		tween.tween_callback(state_machine.change_state.bind(state_chasing))
 
 ## Returns true if there are walls between player and enemy,
 ## else returns false

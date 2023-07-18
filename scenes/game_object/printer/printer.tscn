@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c0olfj5rryupw"]
+[gd_scene load_steps=27 format=3 uid="uid://c0olfj5rryupw"]
 
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="1_4nqns"]
 [ext_resource type="Script" path="res://scenes/game_object/printer/printer.gd" id="1_vq46b"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_2rn0e"]
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="7_ey25n"]
 [ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="8_8y2cl"]
+[ext_resource type="PackedScene" uid="uid://bvlx5ulv8siae" path="res://scenes/component/freezable_component.tscn" id="8_hl215"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="8_luose"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="9_g7k4v"]
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="10_no8xy"]
@@ -265,7 +266,7 @@ _data = {
 "jump": SubResource("Animation_8pfhq")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_biuxe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tuvs1"]
 resource_local_to_scene = true
 shader = ExtResource("6_2rn0e")
 shader_parameter/lerp_percent = 0.0
@@ -329,7 +330,12 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_fuyi4")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
-hit_flash_material = SubResource("ShaderMaterial_biuxe")
+hit_flash_material = SubResource("ShaderMaterial_tuvs1")
+
+[node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_hl215")]
+hurtbox_component = NodePath("../HurtboxComponent")
+velocity_component = NodePath("../VelocityComponent")
+sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
 
 [node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("8_8y2cl")]
 health_component = NodePath("../HealthComponent")

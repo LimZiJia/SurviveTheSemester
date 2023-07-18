@@ -1,6 +1,8 @@
 class_name FreezableComponent
 extends Node
 
+signal frozen(time: float)
+
 @export var hurtbox_component: HurtboxComponent
 @export var velocity_component: VelocityComponent
 
@@ -18,6 +20,8 @@ func _ready() -> void:
 func on_frozen() -> void:
 	if velocity_component:
 		velocity_component.freeze(frozen_time)
+	
+	frozen.emit(frozen_time)
 	
 	if freezable_tween != null and freezable_tween.is_valid():
 		freezable_tween.kill()
