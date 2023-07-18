@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dtefd4ycouse3" path="res://assets/pause_pressed.png" id="12_1oxyp"]
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
-[ext_resource type="PackedScene" uid="uid://5rf467fq81se" path="res://scenes/manager/audio_manager.tscn" id="17_q6odx"]
+[ext_resource type="PackedScene" uid="uid://b6iree1qsvf2l" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
 [ext_resource type="PackedScene" uid="uid://bi4qaqeec2gam" path="res://scenes/game_object/gantry/gantry.tscn" id="24_fvgpo"]
 [ext_resource type="PackedScene" uid="uid://3ph0bfha44dv" path="res://scenes/manager/wave_manager.tscn" id="24_vav6n"]
@@ -80,6 +80,8 @@ texture_pressed = ExtResource("12_1oxyp")
 texture_hover = ExtResource("13_rrmfn")
 script = ExtResource("13_nehmb")
 pause_menu_scene = ExtResource("6_7j38u")
+
+[node name="HeartbeatStreamManager" parent="." instance=ExtResource("16_q26ge")]
 
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
 time_manager = NodePath("../TimeManager")
@@ -163,8 +165,6 @@ y_sort_enabled = true
 unique_name_in_owner = true
 position = Vector2(421, 691)
 
-[node name="audio_manager" parent="TileMap/Entities/Player" instance=ExtResource("17_q6odx")]
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="TileMap/Entities/Player"]
 remote_path = NodePath("../../../../Camera2D")
 
@@ -175,5 +175,3 @@ position = Vector2(336, 552)
 position = Vector2(336, 648)
 
 [node name="Foreground" type="Node2D" parent="TileMap" groups=["foreground_layer"]]
-
-[node name="Entities@Player@AudioManager" parent="." instance=ExtResource("17_q6odx")]

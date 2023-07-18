@@ -21,7 +21,7 @@ func on_shop_button_pressed() -> void:
 	get_parent().add_child(shop_instance)
 	shop_instance.set_upgrades(upgrade_pool, current_upgrades)
 	shop_instance.upgrade_selected.connect(on_upgrade_selected)
-	GameEvents.emit_sound_made_shop("button_click", -5.0, 1.0)
+	AudioManager.play_audio("button_click", -5.0)
 
 
 func on_upgrade_selected(weapon_upgrade: WeaponUpgrade) -> void:

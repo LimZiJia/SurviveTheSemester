@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		animation_state.travel("Move")
 		velocity_component.accelerate_in_direction(dir)
 		if !is_moving:
-			GameEvents.emit_movement_changed(true)
+			$FootstepsPlayer.play()
 			is_moving = true
 	else:
 		animation_tree.set("parameters/conditions/idle", true)
@@ -47,14 +47,14 @@ func _physics_process(_delta: float) -> void:
 		animation_state.travel("Idle")
 		velocity_component.decelerate()
 		if is_moving:
-			GameEvents.emit_movement_changed(false)
+			$FootstepsPlayer.stop()
 			is_moving = false
 	velocity_component.move(self)
 
 
 func on_health_component_damaged(_damage: float) -> void:
 	GameEvents.emit_health_damaged(health_component.current_health, health_component.max_health)
-	GameEvents.emit_sound_made("player_hurt", -12.0, 1.0)
+	AudioManager.play_audio("player_hurt", -12.0)
 	is_damaged = true
 	await get_tree().create_timer(0.15).timeout
 	is_damaged = false

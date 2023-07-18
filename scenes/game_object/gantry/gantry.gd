@@ -12,4 +12,4 @@ func on_body_entered(body: Node2D) -> void:
 		return
 	
 	animation_player.play("reject")
-	GameEvents.emit_sound_made("gantry", -20.0, 1.5)
+	AudioManager.play_2d_audio("gantry", self, -20.0, 1.5)

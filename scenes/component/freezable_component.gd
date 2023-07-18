@@ -1,5 +1,5 @@
 class_name FreezableComponent
-extends Node
+extends Node2D
 
 @export var hurtbox_component: HurtboxComponent
 @export var velocity_component: VelocityComponent
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func on_frozen() -> void:
-	GameEvents.emit_sound_made("freeze", -9.0, 1.5)
+	AudioManager.play_2d_audio("freeze", self, -9.0, 1.5)
 	if velocity_component:
 		velocity_component.freeze(frozen_time)
 	

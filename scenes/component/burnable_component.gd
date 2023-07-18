@@ -34,7 +34,7 @@ func on_burnt(dmg_per_tick: float) -> void:
 	burnable_damage_tween.set_loops(3)
 	burnable_damage_tween.tween_interval(1.0)
 	burnable_damage_tween.tween_callback(func(): 
-		GameEvents.emit_sound_made("burn", -10.0, 10.0)
+		AudioManager.play_2d_audio("burn", self, -10.0, 10.0)
 		health_component.damage(dmg_per_tick)
 		# Since the material will reset from each damage causing hitflash
 		sprite.material = tint_material)

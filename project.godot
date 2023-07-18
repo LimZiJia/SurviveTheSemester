@@ -22,6 +22,7 @@ SceneChanger="*res://scenes/autoload/scene_changer.gd"
 GameEvents="*res://scenes/autoload/game_events.tscn"
 GameManager="*res://scenes/autoload/game_manager.gd"
 MoneyManager="*res://scenes/autoload/money_manager.tscn"
+AudioManager="*res://scenes/autoload/audio_manager.tscn"
 
 [display]
 

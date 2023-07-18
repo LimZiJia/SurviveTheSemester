@@ -23,7 +23,7 @@ func pick_number() -> void:
 		$HitboxComponent.burning = true
 
 func meteor_falling_sound() -> void:
-	GameEvents.emit_sound_made("meteor_falling", -10.0, 1.5)
+	AudioManager.play_audio("meteor_falling", -10.0, 1.5)
 
 func meteor_impact_sound() -> void:
-	GameEvents.emit_sound_made("meteor_impact", -17.0, 1.0)
+	AudioManager.play_audio("meteor_impact", -17.0)
