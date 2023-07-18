@@ -1,81 +1,143 @@
-<mxfile host="app.diagrams.net" modified="2023-07-14T16:22:27.518Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="N5ueUsYffr3z8yDMVn5d" version="21.6.2" type="device">
+<mxfile host="app.diagrams.net" modified="2023-07-18T15:56:50.050Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="6Zv4gq0DTduiUkFrXtC2" version="21.6.2" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="860" dy="889" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="617" dy="865" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-0" target="thikcQ1s-oTCG_y3HWkw-1">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-0" target="thikcQ1s-oTCG_y3HWkw-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-3" value="player within ATTACK_RADIUS distance and within line of sight" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="thikcQ1s-oTCG_y3HWkw-2">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-3" value="player within ATTACK_RADIUS distance and within line of sight" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="thikcQ1s-oTCG_y3HWkw-2" vertex="1" connectable="0">
           <mxGeometry x="-0.152" y="4" relative="1" as="geometry">
             <mxPoint x="37" y="24" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-0" value="&lt;b&gt;CHASING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pathfinds towards player" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="906" y="190" width="130" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-1">
+        <mxCell id="hKkev5r5thlMw7S79PLE-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-0" target="hKkev5r5thlMw7S79PLE-0">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="971" y="190" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="1516" y="90" />
-              <mxPoint x="971" y="90" />
+              <mxPoint x="973" y="410" />
+              <mxPoint x="973" y="410" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-5" value="player out of sight" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="thikcQ1s-oTCG_y3HWkw-4">
+        <mxCell id="hKkev5r5thlMw7S79PLE-6" value="frozen(&lt;i&gt;time)&lt;/i&gt;&amp;nbsp;signal" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="hKkev5r5thlMw7S79PLE-3">
+          <mxGeometry x="0.7948" y="-3" relative="1" as="geometry">
+            <mxPoint x="60" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-0" value="&lt;b&gt;CHASING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pathfinds towards player" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="944" y="190" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1009" y="190" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1554" y="90" />
+              <mxPoint x="1009" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-5" value="player out of sight" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="thikcQ1s-oTCG_y3HWkw-4" vertex="1" connectable="0">
           <mxGeometry x="-0.0335" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-1" target="thikcQ1s-oTCG_y3HWkw-7">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-1" target="thikcQ1s-oTCG_y3HWkw-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-13" value="after &lt;i&gt;1.5s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="thikcQ1s-oTCG_y3HWkw-8">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-13" value="after &lt;i&gt;1.5s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="thikcQ1s-oTCG_y3HWkw-8" vertex="1" connectable="0">
           <mxGeometry x="-0.1638" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-1" value="&lt;b&gt;LOCKING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Remains stationary and updates target position based on player position&lt;br&gt;&lt;br&gt;&lt;i&gt;1.5s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1446" y="160" width="130" height="120" as="geometry" />
+        <mxCell id="hKkev5r5thlMw7S79PLE-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-1" target="hKkev5r5thlMw7S79PLE-0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1640" y="220" />
+              <mxPoint x="1640" y="520" />
+              <mxPoint x="973" y="520" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-7" target="thikcQ1s-oTCG_y3HWkw-9">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-1" value="&lt;b&gt;LOCKING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Remains stationary and updates target position based on player position&lt;br&gt;&lt;br&gt;&lt;i&gt;1.5s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1484" y="160" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-7" target="thikcQ1s-oTCG_y3HWkw-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-14" value="after &lt;i&gt;0.5s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="thikcQ1s-oTCG_y3HWkw-10">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-14" value="after &lt;i&gt;0.5s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="thikcQ1s-oTCG_y3HWkw-10" vertex="1" connectable="0">
           <mxGeometry x="-0.2578" relative="1" as="geometry">
             <mxPoint x="-7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-7" value="&lt;b&gt;PREDASHING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Remains stationary and updates target position based on player position&lt;br&gt;&lt;br&gt;&lt;i&gt;0.5s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1446" y="360" width="130" height="120" as="geometry" />
+        <mxCell id="hKkev5r5thlMw7S79PLE-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-7" target="hKkev5r5thlMw7S79PLE-0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1549" y="520" />
+              <mxPoint x="973" y="520" />
+            </Array>
+          </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-9" target="thikcQ1s-oTCG_y3HWkw-11">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-7" value="&lt;b&gt;PREDASHING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Remains stationary and updates target position based on player position&lt;br&gt;&lt;br&gt;&lt;i&gt;0.5s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1484" y="360" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-9" target="thikcQ1s-oTCG_y3HWkw-11" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-17" value="after &lt;i&gt;0.5s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="thikcQ1s-oTCG_y3HWkw-12">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-17" value="after &lt;i&gt;0.5s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="thikcQ1s-oTCG_y3HWkw-12" vertex="1" connectable="0">
           <mxGeometry x="-0.1629" y="1" relative="1" as="geometry">
             <mxPoint x="-6" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-9" value="&lt;b&gt;DASHING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dashes towards target direction. Does not collide with other mobs or take knockback.&lt;br&gt;&lt;br&gt;&lt;i&gt;0.5s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1226" y="360" width="130" height="120" as="geometry" />
-        </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-11" target="thikcQ1s-oTCG_y3HWkw-0">
+        <mxCell id="hKkev5r5thlMw7S79PLE-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-9" target="hKkev5r5thlMw7S79PLE-0">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="971" y="420" />
+              <mxPoint x="1329" y="520" />
+              <mxPoint x="973" y="520" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-19" value="after &lt;i&gt;1.0s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="thikcQ1s-oTCG_y3HWkw-18">
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-9" value="&lt;b&gt;DASHING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dashes towards target direction. Does not collide with other mobs or take knockback.&lt;br&gt;&lt;br&gt;&lt;i&gt;0.5s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1264" y="360" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-11" target="thikcQ1s-oTCG_y3HWkw-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1009" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-19" value="after &lt;i&gt;1.0s&lt;/i&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="thikcQ1s-oTCG_y3HWkw-18" vertex="1" connectable="0">
           <mxGeometry x="0.3011" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="thikcQ1s-oTCG_y3HWkw-11" value="&lt;b&gt;POSTDASHING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Remains stationary&lt;br&gt;&lt;br&gt;&lt;i&gt;0.5s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1016" y="360" width="130" height="120" as="geometry" />
+        <mxCell id="hKkev5r5thlMw7S79PLE-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="thikcQ1s-oTCG_y3HWkw-11" target="hKkev5r5thlMw7S79PLE-0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1119" y="520" />
+              <mxPoint x="973" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="thikcQ1s-oTCG_y3HWkw-11" value="&lt;b&gt;POSTDASHING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Remains stationary&lt;br&gt;&lt;br&gt;&lt;i&gt;1.0s&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="1054" y="360" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="hKkev5r5thlMw7S79PLE-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="hKkev5r5thlMw7S79PLE-0" target="thikcQ1s-oTCG_y3HWkw-0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="880" y="680" />
+              <mxPoint x="880" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hKkev5r5thlMw7S79PLE-2" value="after &lt;i&gt;time&lt;/i&gt;&amp;nbsp;seconds" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="hKkev5r5thlMw7S79PLE-1">
+          <mxGeometry x="0.4811" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hKkev5r5thlMw7S79PLE-0" value="&lt;b&gt;FREEZING&lt;/b&gt;&lt;br&gt;&lt;br&gt;Remains stationary for &lt;i&gt;time&lt;/i&gt;&amp;nbsp;seconds" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="908" y="620" width="130" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

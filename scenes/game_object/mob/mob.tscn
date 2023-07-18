@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="9_4icqh"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_yxf3m"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ecfc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e6lae"]
 resource_local_to_scene = true
 shader = ExtResource("6_q21w0")
 shader_parameter/lerp_percent = 0.0
@@ -89,7 +89,7 @@ money = 10
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_xnrto")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../AnimatedSprite2D")
-hit_flash_material = SubResource("ShaderMaterial_0ecfc")
+hit_flash_material = SubResource("ShaderMaterial_e6lae")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_qiavs")]
 hurtbox_component = NodePath("../HurtboxComponent")

@@ -21,6 +21,7 @@ var can_draw := false
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 @onready var dash_velocity_component := $DashVelocityComponent as VelocityComponent
+@onready var freezable_component := $FreezableComponent as FreezableComponent
 @onready var pathfind_component := $PathfindComponent as PathfindComponent
 @onready var hitbox_component := $HitboxComponent as HitboxComponent
 @onready var health_bar := %HealthBar as ProgressBar
@@ -36,10 +37,13 @@ func _ready() -> void:
 	state_machine.add_states(state_predashing, enter_state_predashing)
 	state_machine.add_states(state_dashing, enter_state_dashing, leave_state_dashing)
 	state_machine.add_states(state_postdashing, enter_state_postdashing)
+	state_machine.add_states(state_freezing)
 	state_machine.set_initial_state(state_chasing)
 	
 	health_component.damaged.connect(on_health_component_damaged)
 	update_health_bar()
+	
+	freezable_component.frozen.connect(on_frozen)
 
 
 func _physics_process(_delta: float) -> void:
@@ -160,6 +164,10 @@ func enter_state_postdashing() -> void:
 	state_machine.state_changed.connect(tween.kill)
 
 
+func state_freezing() -> void:
+	velocity_component.decelerate()
+	velocity_component.move(self)
+
 
 func on_health_component_damaged(_damage: float) -> void:
 	update_health_bar()
@@ -167,6 +175,14 @@ func on_health_component_damaged(_damage: float) -> void:
 
 func update_health_bar() -> void:
 	health_bar.value = health_component.current_health / health_component.max_health
+
+
+func on_frozen(time: float) -> void:
+	var tween = create_tween()
+	tween.tween_callback(state_machine.change_state.bind(state_freezing))
+	tween.tween_interval(time)
+	tween.tween_callback(state_machine.change_state.bind(state_chasing))
+
 
 ## Returns true if the player is attackable, i.e. there are no walls or world
 ## objects between the player and the enemy, else returns false.
