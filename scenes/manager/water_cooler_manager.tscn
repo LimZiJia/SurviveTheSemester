@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnfs8ow72uvtq"]
 
 [ext_resource type="Script" path="res://scenes/manager/water_cooler_manager.gd" id="1_a82ur"]
-[ext_resource type="PackedScene" uid="uid://dkr1h4veevuo4" path="res://scenes/game_object/water_cooler/water_cooler.tscn" id="2_rgpgd"]
+[ext_resource type="PackedScene" uid="uid://dpywog3wk65he" path="res://scenes/game_object/water_cooler/water_cooler.tscn" id="2_rgpgd"]
 
 [node name="WaterCoolerManager" type="Node2D"]
 script = ExtResource("1_a82ur")

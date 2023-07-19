@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkr1h4veevuo4"]
+[gd_scene load_steps=5 format=3 uid="uid://dpywog3wk65he"]
 
 [ext_resource type="Texture2D" uid="uid://dcv7lqrkdoarq" path="res://scenes/game_object/water_cooler/water_cooler.png" id="1_in7ve"]
 [ext_resource type="Script" path="res://scenes/game_object/water_cooler/water_cooler.gd" id="1_vabw8"]
-[ext_resource type="PackedScene" uid="uid://cok5eykupl6te" path="res://scenes/ui/pointer.tscn" id="3_cfim1"]
+[ext_resource type="PackedScene" uid="uid://c5at20loqg86b" path="res://scenes/game_object/water_cooler/water_cooler_pointer.tscn" id="3_7jysf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrwb7"]
 radius = 24.0
@@ -20,5 +20,5 @@ shape = SubResource("CircleShape2D_wrwb7")
 position = Vector2(0, -45)
 texture = ExtResource("1_in7ve")
 
-[node name="Pointer" parent="." instance=ExtResource("3_cfim1")]
+[node name="WaterCoolerPointer" parent="." instance=ExtResource("3_7jysf")]
 visible = false
