@@ -21,7 +21,7 @@ func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
 	health_component.healed.connect(on_health_component_healed)
 	health_component.dead.connect(on_health_component_dead)
-	stuck_area.area_entered.connect(unstuck)
+	stuck_area.move_to.connect(unstuck)
 	dash_duration = dash_component.dash_duration
 	base_speed = velocity_component.max_speed
 	GameEvents.buff_added.connect(on_buff_added)
@@ -89,35 +89,14 @@ func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
 	elif buff.id == "max_health":
 		health_component.increase_max_health_percent(0.2)
 
-func unstuck(area: Area2D) -> void:
-	print("stuck")
-	if not area is WorldObject:
-		return
-	call_deferred("helper")
-	var area_shape: RectangleShape2D = area.get_child(0).shape
-	var x_to_param = area_shape.size.x / 2
-	var y_to_param = area_shape.size.y / 2
-	var delta_x = area.position.x - stuck_area.position.x
-	var delta_y = area.position.y - stuck_area.position.y
-	if delta_x < 0:
-		delta_x = - (delta_x + x_to_param) - 19.0
-	else:
-		delta_x = x_to_param - delta_x + 19.0
-	if delta_y < 0:
-		delta_y = - (delta_y + y_to_param) - 19.0
-	else:
-		delta_y = y_to_param - delta_y + 19.0
+func enable_stuck_area() -> void:
+	stuck_area.disabled = false
+
+func disable_stuck_area() -> void:
+	stuck_area.disabled = true
+
+func unstuck(pos: Vector2) -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", pos, 0.1)
+	enable_stuck_area()
 	
-	var dir: Vector2 = Vector2(delta_x, 0) if abs(delta_x) < abs(delta_y) else Vector2(0, delta_y)
-	var duration: float = 0.1
-	dir = dir.normalized()
-	print(Vector2(-1, 0).normalized())
-	print(dir)
-	print(duration)
-	self.set_collision_mask_value(16, false)
-	velocity_component.dash(dir, duration)
-	await get_tree().create_timer(duration, false).timeout
-	self.set_collision_mask_value(16, true)
-	
-func helper() -> void:
-	stuck_area.get_child(0).disabled = true

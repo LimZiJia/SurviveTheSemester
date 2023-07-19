@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cenp6ssfdvm07"]
+[gd_scene load_steps=29 format=3 uid="uid://cenp6ssfdvm07"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -32,7 +32,10 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-239, -1153, 34.5356, -1152.87, 1824, -1152, 1824, -192, 1919, -194, 1920, 144, 1824, 144, 1824, 384, 3888, 384, 3888, 48, 4224, 48, 4224, -192, 4368, -192, 4368, 384, 4896, 384, 4896, 2106, 3984, 2106, 3984, 1680, 3891, 1680, 3888, 1536, 3889, 1344, 3984, 1344, 3984, 1152, 3504, 1152, 3504, 1056, 3360, 1056, 3359.98, 1152, 3216, 1152, 3216, 1056, 3072, 1056, 3072.26, 1152, 2880, 1152, 2880, 1056, 2736, 1056, 2736, 1152, 2592, 1152, 2592, 1056, 2448, 1056, 2448, 1152, 2256, 1152, 2256, 1056, 2112, 1056, 2112.14, 1152, 1968, 1152, 1968, 1056, 1824, 1056, 1823.97, 1152, 1632, 1152, 1632, 1056, 1488, 1056, 1488.09, 1152, 1344, 1152, 1344, 1056, 1200, 1056, 1200, 1152, 864.11, 1152, 903, 1140, 876, 1101, 882, 1044, 888, 852, 903, 813, 882, 756, 894, 717, 903, 660, 876, 621, 876, 578, 816, 579, 816, 1152, 384, 1152, 384, 522, -240, 522), PackedVector2Array(34, -1152, 34, -1152, 36, -1052, 210, -1052, 210, -1152), PackedVector2Array(378, -1056, 375, -1080, 375, -1152, 534, -1152, 534, -1080, 531, -1056), PackedVector2Array(714, -1056, 711, -1080, 711, -1152, 870, -1152, 870, -1080, 867, -1056), PackedVector2Array(1050, -1056, 1047, -1080, 1047, -1152, 1206, -1152, 1206, -1080, 1203, -1056), PackedVector2Array(1386, -1056, 1383, -1080, 1383, -1152, 1542, -1152, 1542, -1080, 1539, -1056), PackedVector2Array(135, -816, 126, -840, 129, -903, 129, -921, 255, -921, 255, -903, 258, -840, 249, -816), PackedVector2Array(711, -816, 702, -840, 705, -903, 705, -921, 831, -921, 831, -903, 834, -840, 825, -816), PackedVector2Array(1239, -816, 1230, -840, 1233, -903, 1233, -921, 1359, -921, 1359, -903, 1362, -841, 1353, -816), PackedVector2Array(42, -528, 39, -552, 39, -624, 198, -624, 198, -552, 195, -528), PackedVector2Array(378, -528, 375, -552, 375, -624, 534, -624, 534, -552, 531, -528), PackedVector2Array(714, -528, 711, -552, 711, -624, 870, -624, 870, -552, 867, -528), PackedVector2Array(1047, -552, 1047, -624, 1206, -624, 1206, -552, 1203, -528, 1050, -528), PackedVector2Array(1386, -528, 1383, -552, 1383, -624, 1542, -624, 1542, -552, 1539, -528), PackedVector2Array(288, -243, 240, -291, 240, -336, 288, -357, 336, -357, 387, -336, 387, -291, 336, -243), PackedVector2Array(1056, -339, 1008, -387, 1008, -432, 1056, -453, 1104, -453, 1155, -432, 1155, -387, 1104, -339), PackedVector2Array(576, -3, 528, -48, 528, -96, 576, -117, 624, -117, 675, -96, 675, -51, 624, -3), PackedVector2Array(1248, -3, 1200, -48, 1200, -96, 1248, -117, 1296, -117, 1347, -96, 1347, -48, 1296, -3), PackedVector2Array(48, 192, 48, 96, 192, 96, 192, 192), PackedVector2Array(480, 192, 480, 96, 624, 96, 624, 192), PackedVector2Array(1008, 192, 1008, 96, 1152, 96, 1152, 192), PackedVector2Array(1392, 192, 1392, 96, 1536, 96, 1536, 192), PackedVector2Array(1200, 864, 1200, 768, 1344, 768, 1344, 864), PackedVector2Array(1200, 720, 1200, 624, 1344, 624, 1344, 720), PackedVector2Array(1488, 720, 1488, 624, 1632, 624, 1632, 720), PackedVector2Array(1488, 864, 1488, 768, 1632, 768, 1632, 864), PackedVector2Array(1824, 720, 1824, 624, 1968, 624, 1968, 720), PackedVector2Array(1824, 864, 1824, 768, 1968, 768, 1968, 864), PackedVector2Array(2112, 720, 2112, 624, 2256, 624, 2256, 720), PackedVector2Array(2112, 864, 2112, 768, 2256, 768, 2256, 864), PackedVector2Array(2448, 720, 2448, 624, 2592, 624, 2592, 720), PackedVector2Array(2448, 864, 2448, 768, 2592, 768, 2592, 864), PackedVector2Array(2736, 720, 2736, 624, 2880, 624, 2880, 720), PackedVector2Array(2736, 864, 2736, 768, 2880, 768, 2880, 864), PackedVector2Array(3072, 720, 3072, 624, 3216, 624, 3216, 720), PackedVector2Array(3072, 864, 3072, 768, 3216, 768, 3216, 864), PackedVector2Array(3360, 720, 3360, 624, 3504, 624, 3504, 720), PackedVector2Array(3359, 863, 3359, 768, 3503, 768, 3504, 864), PackedVector2Array(4320, 861, 4272, 816, 4272, 768, 4320, 747, 4368, 747, 4419, 768, 4419, 816, 4368, 861), PackedVector2Array(4512, 765, 4464, 720, 4464, 672, 4512, 651, 4560, 651, 4611, 672, 4611, 720, 4560, 765), PackedVector2Array(4512, 1005, 4464, 960, 4464, 912, 4512, 891, 4560, 891, 4611, 912, 4611, 960, 4560, 1005), PackedVector2Array(4512, 1293, 4464, 1248, 4464, 1200, 4512, 1179, 4560, 1179, 4611, 1200, 4611, 1248, 4560, 1293), PackedVector2Array(4320, 1389, 4272, 1344, 4272, 1296, 4320, 1275, 4368, 1275, 4419, 1296, 4419, 1345, 4368, 1389), PackedVector2Array(4512, 1533, 4464, 1488, 4464, 1440, 4512, 1419, 4560, 1419, 4611, 1440, 4611, 1488, 4560, 1533), PackedVector2Array(4359, 1824, 4353, 1809, 4353, 1728, 4368, 1716, 4464, 1716, 4479, 1728, 4479, 1809, 4473, 1824), PackedVector2Array(4599, 1824, 4593, 1809, 4593, 1728, 4608, 1716, 4704, 1716, 4719, 1728, 4719, 1809, 4713, 1824)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e02wr"]
-size = Vector2(72.5, 592.75)
+size = Vector2(70.875, 585)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nal4u"]
+size = Vector2(150, 103)
 
 [node name="World" type="Node"]
 script = ExtResource("1_icddk")
@@ -180,12 +183,485 @@ position = Vector2(336, 648)
 
 [node name="WorldObjects" type="Node2D" parent="TileMap"]
 
-[node name="WorldObject" type="Area2D" parent="TileMap/WorldObjects"]
+[node name="WorldObject1" type="Area2D" parent="TileMap/WorldObjects"]
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject"]
-position = Vector2(853.75, 856.625)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject1"]
+position = Vector2(856.563, 861)
 shape = SubResource("RectangleShape2D_e02wr")
+
+[node name="WorldObject2" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(324, -190)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject2"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject32" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(-828, -711)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject32"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject36" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(-632, -1160)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject36"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject37" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(-345, -918)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject37"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject38" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(327, -918)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject38"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject39" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(134, -1258)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject39"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject40" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(-829, -1439)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject40"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject41" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(-493, -1443)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject41"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject42" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(-157, -1443)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject42"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject43" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(179, -1443)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject43"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject44" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(519, -1439)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject44"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject33" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(-398, -711)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject33"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject34" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(138, -715)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject34"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject35" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(512, -715)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject35"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject3" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(611, -189)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject3"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject4" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(948, -188)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject4"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject5" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1237, -188)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject5"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject6" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1571, -189)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject6"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject7" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1861, -189)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject7"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject8" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(2195, -190)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject8"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject9" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(2194, -43)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject9"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject10" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1858, -47)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject10"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject11" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1571, -44)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject11"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject12" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1236, -45)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject12"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject13" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(946, -46)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject13"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject14" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(613, -43)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject14"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject15" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(326, -44)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject15"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject16" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(2191, 247)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject16"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject17" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1855, 243)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject17"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject18" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1568, 246)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject18"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject19" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1233, 245)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject19"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject20" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(943, 244)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject20"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject21" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(610, 247)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject21"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject22" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(323, 246)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject22"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject23" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(2485, 244)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject23"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject24" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(2480, -48)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject24"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject25" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(2485, -184)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject25"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject26" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(3591, -146)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject26"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject27" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(3398, -63)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject27"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject28" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(3587, 84)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject28"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject29" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(3591, 386)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject29"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject30" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(3398, 469)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject30"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject31" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(3587, 616)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject31"]
+position = Vector2(947, 854.5)
+shape = SubResource("RectangleShape2D_nal4u")
