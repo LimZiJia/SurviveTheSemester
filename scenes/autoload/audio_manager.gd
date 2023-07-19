@@ -19,11 +19,12 @@ func _init():
 	audio_directory.list_dir_end()
 
 func _ready():
-	audio_dictionary = resource.dictionary
+	# Use this line for exporting game (can remove _init() also that is
+	# useless when exporting.
+	#audio_dictionary = resource.dictionary
 	# Run the following lines everytime there is an update to audio
-	#await get_tree().create_timer(2.0).timeout
-	#resource.dictionary = audio_dictionary
-	#ResourceSaver.save(resource, "res://resources/audio/audio.tres")
+	resource.dictionary = audio_dictionary
+	ResourceSaver.save(resource, "res://resources/audio/audio.tres")
 
 
 
