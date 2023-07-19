@@ -19,5 +19,5 @@ weapon_name = &"Calculator"
 description = "-0.5s cooldown
 +10 damage"
 level = 4
-cost = 0
+cost = 1000
 weapon_stat = SubResource("Resource_m2px5")

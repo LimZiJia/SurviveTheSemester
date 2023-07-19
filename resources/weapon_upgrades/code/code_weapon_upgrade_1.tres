@@ -16,5 +16,5 @@ script = ExtResource("1_yd2af")
 weapon_name = &"Code"
 description = "Obtain the code weapon."
 level = 1
-cost = 10
+cost = 1000
 weapon_stat = SubResource("Resource_rfrqn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cenp6ssfdvm07"]
+[gd_scene load_steps=28 format=3 uid="uid://cenp6ssfdvm07"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
 [ext_resource type="PackedScene" uid="uid://b6iree1qsvf2l" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
-[ext_resource type="PackedScene" uid="uid://cnfs8ow72uvtq" path="res://scenes/manager/water_cooler_manager.tscn" id="22_0a34s"]
+[ext_resource type="PackedScene" path="res://scenes/manager/water_cooler_manager.tscn" id="22_0a34s"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
 [ext_resource type="PackedScene" uid="uid://bi4qaqeec2gam" path="res://scenes/game_object/gantry/gantry.tscn" id="24_fvgpo"]
 [ext_resource type="PackedScene" uid="uid://3ph0bfha44dv" path="res://scenes/manager/wave_manager.tscn" id="24_vav6n"]
