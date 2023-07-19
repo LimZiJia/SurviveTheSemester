@@ -21,6 +21,7 @@ var can_draw := false
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 @onready var dash_velocity_component := $DashVelocityComponent as VelocityComponent
+@onready var freezable_component := $FreezableComponent as FreezableComponent
 @onready var pathfind_component := $PathfindComponent as PathfindComponent
 @onready var hitbox_component := $HitboxComponent as HitboxComponent
 @onready var health_bar := %HealthBar as ProgressBar
@@ -36,10 +37,14 @@ func _ready() -> void:
 	state_machine.add_states(state_predashing, enter_state_predashing)
 	state_machine.add_states(state_dashing, enter_state_dashing, leave_state_dashing)
 	state_machine.add_states(state_postdashing, enter_state_postdashing)
+	state_machine.add_states(state_freezing)
 	state_machine.set_initial_state(state_chasing)
+	state_machine.owner = self
 	
 	health_component.damaged.connect(on_health_component_damaged)
 	update_health_bar()
+	
+	freezable_component.frozen.connect(on_frozen)
 
 
 func _physics_process(_delta: float) -> void:
@@ -94,11 +99,7 @@ func state_locking() -> void:
 
 func enter_state_locking() -> void:
 	can_draw = true
-	
-	var tween = create_tween()
-	tween.tween_interval(1.5)
-	tween.tween_callback(state_machine.change_state.bind(state_predashing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_predashing, 1.5)
 
 
 func leave_state_locking() -> void:
@@ -113,10 +114,7 @@ func state_predashing() -> void:
 
 
 func enter_state_predashing() -> void:
-	var tween = create_tween()
-	tween.tween_interval(0.5)
-	tween.tween_callback(state_machine.change_state.bind(state_dashing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_dashing, 0.5)
 
 
 func state_dashing() -> void:
@@ -134,10 +132,7 @@ func enter_state_dashing() -> void:
 	collision_mask = 0b10001
 	wall_min_slide_angle = INF
 	
-	var tween = create_tween()
-	tween.tween_interval(0.5)
-	tween.tween_callback(state_machine.change_state.bind(state_postdashing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_postdashing, 0.5)
 
 
 func leave_state_dashing() -> void:
@@ -154,11 +149,12 @@ func state_postdashing() -> void:
 
 
 func enter_state_postdashing() -> void:
-	var tween = create_tween()
-	tween.tween_interval(1.0)
-	tween.tween_callback(state_machine.change_state.bind(state_chasing))
-	state_machine.state_changed.connect(tween.kill)
+	state_machine.change_state_with_delay(state_chasing, 1.0)
 
+
+func state_freezing() -> void:
+	velocity_component.decelerate()
+	velocity_component.move(self)
 
 
 func on_health_component_damaged(_damage: float) -> void:
@@ -167,6 +163,12 @@ func on_health_component_damaged(_damage: float) -> void:
 
 func update_health_bar() -> void:
 	health_bar.value = health_component.current_health / health_component.max_health
+
+
+func on_frozen(time: float) -> void:
+	state_machine.change_state(state_freezing)
+	state_machine.change_state_with_delay(state_chasing, time, false)
+
 
 ## Returns true if the player is attackable, i.e. there are no walls or world
 ## objects between the player and the enemy, else returns false.

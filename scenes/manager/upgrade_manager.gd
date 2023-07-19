@@ -31,12 +31,8 @@ func on_upgrade_selected(weapon_upgrade: WeaponUpgrade) -> void:
 # Adds the initial word weapon
 func initialize() -> void:
 	await get_parent().ready
-#	var word_init_upgrade = upgrade_pool["Word"].upgrades[0] as WeaponUpgrade
-#	apply_upgrade(word_init_upgrade)
-	
-	# TODO: Remove
-	var number_init_upgrade = upgrade_pool["Word"].upgrades[0] as WeaponUpgrade
-	apply_upgrade(number_init_upgrade)
+	var word_init_upgrade = upgrade_pool["Word"].upgrades[0] as WeaponUpgrade
+	apply_upgrade(word_init_upgrade)
 
 
 func apply_upgrade(weapon_upgrade: WeaponUpgrade) -> void:

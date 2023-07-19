@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1y4do1lw4pau"]
+[gd_scene load_steps=22 format=3 uid="uid://1y4do1lw4pau"]
 
 [ext_resource type="Script" path="res://scenes/game_object/exam_paper/exam_paper.gd" id="1_7e4h8"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_atvnr"]
@@ -8,13 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="6_ince0"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_7q1li"]
 [ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="8_6nmo3"]
+[ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="8_k6kxx"]
+[ext_resource type="PackedScene" uid="uid://bvlx5ulv8siae" path="res://scenes/component/freezable_component.tscn" id="8_s70vl"]
 [ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="9_crriu"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="10_7drak"]
 [ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="11_apspb"]
 [ext_resource type="Texture2D" uid="uid://cnb31qric8n42" path="res://scenes/game_object/exam_paper/exam_paper.png" id="12_tytxl"]
 [ext_resource type="Texture2D" uid="uid://o51sktulu13n" path="res://scenes/game_object/exam_paper/exam_paper_shadow.png" id="13_t1ov5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5kyd3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iiqtr"]
 resource_local_to_scene = true
 shader = ExtResource("7_7q1li")
 shader_parameter/lerp_percent = 0.0
@@ -70,7 +73,17 @@ money = 8
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ince0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/ExamPaperSprite")
-hit_flash_material = SubResource("ShaderMaterial_5kyd3")
+hit_flash_material = SubResource("ShaderMaterial_iiqtr")
+
+[node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_s70vl")]
+hurtbox_component = NodePath("../HurtboxComponent")
+velocity_component = NodePath("../VelocityComponent")
+sprite = NodePath("../Visuals/ExamPaperSprite")
+
+[node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("8_k6kxx")]
+health_component = NodePath("../HealthComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+sprite = NodePath("../Visuals/ExamPaperSprite")
 
 [node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_6nmo3")]
 health_component = NodePath("../HealthComponent")

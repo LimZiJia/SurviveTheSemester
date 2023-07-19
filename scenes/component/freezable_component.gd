@@ -1,6 +1,8 @@
 class_name FreezableComponent
 extends Node2D
 
+signal frozen(time: float)
+
 @export var hurtbox_component: HurtboxComponent
 @export var velocity_component: VelocityComponent
 
@@ -19,6 +21,8 @@ func on_frozen() -> void:
 	AudioManager.play_2d_audio("freeze", self, -9.0, 1.5)
 	if velocity_component:
 		velocity_component.freeze(frozen_time)
+	
+	frozen.emit(frozen_time)
 	
 	if freezable_tween != null and freezable_tween.is_valid():
 		freezable_tween.kill()
