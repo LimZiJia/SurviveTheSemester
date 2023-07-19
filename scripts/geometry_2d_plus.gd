@@ -59,3 +59,12 @@ func array_triangles(polygon: PackedVector2Array) -> Array[PackedVector2Array]:
 		res.append(triangle)
 	
 	return res
+
+
+## Returns a polygon based on the given indices and vertices
+func make_polygon(indices: PackedInt32Array, vertices: PackedVector2Array) -> PackedVector2Array:
+	var res := [] as PackedVector2Array
+	for idx in indices:
+		res.append(vertices[idx])
+	
+	return res
