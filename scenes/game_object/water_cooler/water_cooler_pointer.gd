@@ -2,6 +2,11 @@ extends Node2D
 
 @onready var sprite_2d := $Sprite2D as Sprite2D
 
+
+func _ready() -> void:
+	play_entry_scaling()
+
+
 func _process(_delta: float) -> void:
 	var canvas = get_canvas_transform()
 	var top_left = -canvas.origin / canvas.get_scale()
@@ -9,6 +14,13 @@ func _process(_delta: float) -> void:
 	
 	set_pointer_position(Rect2(top_left, size))
 	set_pointer_rotation()
+
+
+func play_entry_scaling() -> void:
+	var tween = create_tween()
+	sprite_2d.scale = 6.0 * Vector2.ONE
+	tween.tween_property(sprite_2d, "scale", Vector2.ONE, 2)\
+	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 
 
 func set_pointer_position(bounds: Rect2) -> void:
