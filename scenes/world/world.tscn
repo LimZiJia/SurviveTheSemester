@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dtefd4ycouse3" path="res://assets/pause_pressed.png" id="12_1oxyp"]
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
+[ext_resource type="PackedScene" uid="uid://b6iree1qsvf2l" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
 [ext_resource type="PackedScene" uid="uid://cnfs8ow72uvtq" path="res://scenes/manager/water_cooler_manager.tscn" id="22_0a34s"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
 [ext_resource type="PackedScene" uid="uid://bi4qaqeec2gam" path="res://scenes/game_object/gantry/gantry.tscn" id="24_fvgpo"]
@@ -84,6 +85,8 @@ texture_hover = ExtResource("13_rrmfn")
 stretch_mode = 0
 script = ExtResource("13_nehmb")
 pause_menu_scene = ExtResource("6_7j38u")
+
+[node name="HeartbeatStreamManager" parent="." instance=ExtResource("16_q26ge")]
 
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
 time_manager = NodePath("../TimeManager")

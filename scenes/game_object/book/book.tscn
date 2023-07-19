@@ -78,6 +78,7 @@ _data = {
 "flying": SubResource("Animation_2nptm")
 }
 
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jd7vx"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
@@ -140,6 +141,7 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookSprite")
+
 hit_flash_material = SubResource("ShaderMaterial_jd7vx")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_w4gbr")]
