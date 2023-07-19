@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bgkg45mchl7ul"]
+[gd_scene load_steps=64 format=3 uid="uid://bgkg45mchl7ul"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
@@ -12,8 +12,52 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5s0x"]
 radius = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0sky"]
+radius = 6.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0uwpv"]
 radius = 19.0
+
+[sub_resource type="Animation" id="Animation_t8nwg"]
+resource_name = "dash_hurtbox"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtboxComponent/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collision_mask")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 17, 17]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StuckArea/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_33xpb"]
 resource_name = "hit_back"
@@ -411,24 +455,24 @@ tracks/0/keys = {
 "values": [672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685]
 }
 
-[sub_resource type="Animation" id="Animation_t8nwg"]
-resource_name = "dash_hurtbox"
-length = 0.2
+[sub_resource type="Animation" id="Animation_1guc0"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HurtboxComponent/CollisionShape2D:disabled")
+tracks/0/path = NodePath(".:collision_mask")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [17]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83j7a"]
 _data = {
+"RESET": SubResource("Animation_1guc0"),
 "dash_hurtbox": SubResource("Animation_t8nwg"),
 "hit_back": SubResource("Animation_33xpb"),
 "hit_front": SubResource("Animation_0jei0"),
@@ -593,6 +637,7 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CircleShape2D_d5s0x")
+disabled = true
 
 [node name="WeaponManager" type="Node2D" parent="."]
 position = Vector2(0, -43)
@@ -609,7 +654,17 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 78
+frame = 79
+
+[node name="StuckArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StuckArea"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_l0sky")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

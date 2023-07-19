@@ -62,5 +62,5 @@ func dash(direction: Vector2, duration: float) -> void:
 	var desired_velocity = direction * dash_speed
 	velocity = desired_velocity
 	await get_tree().create_timer(duration, false).timeout
-	velocity = Vector2.ZERO
+	velocity = direction * max_speed
 	is_dashing = false
