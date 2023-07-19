@@ -2,8 +2,8 @@ extends Node2D
 
 const ATTENUATION: float = 5.0
 
-@onready var audio_dictionary: Dictionary
-
+var audio_dictionary: Dictionary
+@onready var resource: AudioDict = preload("res://resources/audio/audio.tres")
 
 func _init():
 	# Accessing audio directory and making a dictionary
@@ -16,8 +16,14 @@ func _init():
 			var audio_stream: AudioStream = load(path_name)
 			audio_dictionary[file_name.get_slice(".", 0)] = audio_stream
 		file_name = audio_directory.get_next()
-	
 	audio_directory.list_dir_end()
+
+func _ready():
+	audio_dictionary = resource.dictionary
+	# Run the following lines everytime there is an update to audio
+	#await get_tree().create_timer(2.0).timeout
+	#resource.dictionary = audio_dictionary
+	#ResourceSaver.save(resource, "res://resources/audio/audio.tres")
 
 
 
