@@ -27,3 +27,10 @@ func meteor_falling_sound() -> void:
 
 func meteor_impact_sound() -> void:
 	AudioManager.play_audio("meteor_impact", -17.0)
+
+
+func set_stats(damage: float, knockback: float, crit_multiplier: float, crit_chance: float) -> void:
+	hitbox_component.damage = damage
+	hitbox_component.knockback_force = knockback
+	hitbox_component.crit_multiplier = crit_multiplier
+	hitbox_component.crit_chance = crit_chance

@@ -64,8 +64,13 @@ func spawn_weapon(number: int) -> void:
 		var number_weapon_instance := number_weapon_scene.instantiate()
 		foreground.add_child(number_weapon_instance)
 		number_weapon_instance.global_position = spawn_position
-		number_weapon_instance.hitbox_component.damage = weapon_stat.damage
-		number_weapon_instance.hitbox_component.knockback_force = weapon_stat.knockback
+		
+		number_weapon_instance.set_stats(
+			weapon_stat.damage * PlayerStats.damage_multiplier,
+			weapon_stat.knockback,
+			PlayerStats.crit_multiplier,
+			PlayerStats.crit_chance
+		)
 		
 		await get_tree().create_timer(1.0, false).timeout
 

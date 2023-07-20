@@ -5,6 +5,7 @@ extends Node
 
 func _ready() -> void:
 	%Player.dead.connect(on_player_dead)
+	PlayerStats.init_stats()
 
 
 func on_player_dead() -> void:

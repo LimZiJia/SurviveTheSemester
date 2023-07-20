@@ -21,6 +21,7 @@ signal frozen
 			if child is CollisionPolygon2D:
 				child.disabled = val
 
+
 func _ready() -> void:
 	area_entered.connect(on_area_entered)
 
@@ -34,7 +35,10 @@ func on_area_entered(area: Area2D) -> void:
 	hitbox_component.hit.emit()
 	
 	if health_component != null:
-		health_component.damage(hitbox_component.damage)
+		if hitbox_component.is_crit():
+			health_component.damage(hitbox_component.critical_damage)
+		else:
+			health_component.damage(hitbox_component.damage)
 		
 		if hitbox_component.burning:
 			burnt.emit(max(hitbox_component.damage * 0.2, 1.0))

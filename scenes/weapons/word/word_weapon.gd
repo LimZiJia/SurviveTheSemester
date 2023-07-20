@@ -11,7 +11,7 @@ var velocity := Vector2.ZERO
 
 @onready var visuals = $Visuals
 @onready var label = $Visuals/Label
-@onready var hitbox_component = $HitboxComponent
+@onready var hitbox_component := $HitboxComponent as HitboxComponent
 @onready var impact_detector = $ImpactDetector
 @onready var despawn_timer = $DespawnTimer
 
@@ -64,3 +64,10 @@ func choose_name() -> void:
 		AudioManager.play_audio("i_can", -13.0, 1.25)
 	else:
 		AudioManager.play_audio("do_it", -13.0, 1.25)
+
+
+func set_stats(damage: float, knockback: float, crit_multiplier: float, crit_chance: float) -> void:
+	hitbox_component.damage = damage
+	hitbox_component.knockback_force = knockback
+	hitbox_component.crit_multiplier = crit_multiplier
+	hitbox_component.crit_chance = crit_chance

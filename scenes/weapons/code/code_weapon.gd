@@ -10,32 +10,16 @@ func _ready():
 func _process(delta):
 	pass
 
-func set_damage_knockback(damage: float, knockback: float) -> void:
-	$Visuals/Sniplet_0/HitboxComponent.damage = damage
-	$Visuals/Sniplet_1/HitboxComponent.damage = damage
-	$Visuals/Sniplet_2/HitboxComponent.damage = damage
-	$Visuals/Sniplet_3/HitboxComponent.damage = damage
-	$Visuals/Sniplet_4/HitboxComponent.damage = damage
-	$Visuals/Sniplet_5/HitboxComponent.damage = damage
-	$Visuals/Sniplet_6/HitboxComponent.damage = damage
-	$Visuals/Sniplet_7/HitboxComponent.damage = damage
-	$Visuals/Sniplet_8/HitboxComponent.damage = damage
-	$Visuals/Sniplet_9/HitboxComponent.damage = damage
-	$Visuals/Sniplet_10/HitboxComponent.damage = damage
-	$Visuals/Sniplet_11/HitboxComponent.damage = damage
-	
-	$Visuals/Sniplet_0/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_1/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_2/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_3/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_4/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_5/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_6/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_7/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_8/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_9/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_10/HitboxComponent.knockback_force = knockback
-	$Visuals/Sniplet_11/HitboxComponent.knockback_force = knockback
+func set_stats(damage: float, knockback: float, crit_multiplier: float, crit_chance: float) -> void:
+	for sniplet in $Visuals.get_children():
+		var hitbox_component = sniplet.get_children()[0] as HitboxComponent
+		if hitbox_component == null:
+			continue
+		
+		hitbox_component.damage = damage
+		hitbox_component.knockback_force = knockback
+		hitbox_component.crit_multiplier = crit_multiplier
+		hitbox_component.crit_chance = crit_chance
 
 func start_typing_sound() -> void:
 	AudioManager.play_audio("typing", 7.0)

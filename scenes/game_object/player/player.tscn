@@ -656,7 +656,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 79
+frame = 77
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0

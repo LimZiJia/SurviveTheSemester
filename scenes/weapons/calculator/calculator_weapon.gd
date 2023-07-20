@@ -67,3 +67,10 @@ func start_radius_tween(radius: float, seconds: float) -> void:
 func update_position() -> void:
 	var root_position := player.global_position
 	global_position = root_position + Vector2.from_angle(outer_rotation) * outer_radius
+
+
+func set_stats(damage: float, knockback: float, crit_multiplier: float, crit_chance: float) -> void:
+	hitbox_component.damage = damage
+	hitbox_component.knockback_force = knockback
+	hitbox_component.crit_multiplier = crit_multiplier
+	hitbox_component.crit_chance = crit_chance
