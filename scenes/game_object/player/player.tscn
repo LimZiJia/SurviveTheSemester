@@ -643,7 +643,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 77
+frame = 79
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -654,6 +654,9 @@ script = ExtResource("9_7wbod")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StuckArea"]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_l0sky")
+
+[node name="CheckingInterval" type="Timer" parent="StuckArea"]
+wait_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

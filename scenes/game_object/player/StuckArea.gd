@@ -2,18 +2,20 @@ extends Area2D
 
 signal move_to(pos: Vector2)
 
-var disabled = false
+var area: Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	area_entered.connect(start_time)
+	$CheckingInterval.timeout.connect(check_stuck)
+	$CheckingInterval.start()
 
-func start_time(area: Area2D) -> void:
-	if disabled:
-		return
-	disabled = true
-	await get_tree().create_timer(0.15).timeout
-	if area in self.get_overlapping_areas():
+func check_stuck() -> void:
+	var new_area = get_overlapping_areas()
+	if new_area.is_empty():
+		area = null
+	elif area == null or area != new_area[0]:
+		area = new_area[0]
+	else:
 		calc_safe_pos(area)
 
 func calc_safe_pos(area: Area2D) -> void:
@@ -36,4 +38,3 @@ func calc_safe_pos(area: Area2D) -> void:
 		var y = obj_y - half_height - 30.0 if delta_y > 0 else obj_y + half_height + 30.0
 		pos = Vector2(global_position.x, y)
 	move_to.emit(pos)
-	disabled = false

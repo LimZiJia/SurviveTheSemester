@@ -89,14 +89,7 @@ func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
 	elif buff.id == "max_health":
 		health_component.increase_max_health_percent(0.2)
 
-func enable_stuck_area() -> void:
-	stuck_area.disabled = false
-
-func disable_stuck_area() -> void:
-	stuck_area.disabled = true
-
 func unstuck(pos: Vector2) -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", pos, 0.1)
-	enable_stuck_area()
 	
