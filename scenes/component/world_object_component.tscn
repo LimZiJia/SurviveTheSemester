@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blotsao7u54qy"]
+
+[ext_resource type="Script" path="res://scenes/component/world_object_component.gd" id="1_cpdgg"]
+
+[node name="world_object_component" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_cpdgg")

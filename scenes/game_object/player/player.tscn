@@ -1,19 +1,68 @@
-[gd_scene load_steps=61 format=3 uid="uid://bgkg45mchl7ul"]
+[gd_scene load_steps=66 format=3 uid="uid://bav12iv7a4tk5"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_i4ae5"]
+[ext_resource type="PackedScene" uid="uid://sesle3moyoi6" path="res://scenes/component/dash_component.tscn" id="2_v8bdw"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
 [ext_resource type="Script" path="res://scenes/game_object/player/weapon_manager.gd" id="5_ffgjt"]
 [ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="6_7up1x"]
 [ext_resource type="AudioStream" uid="uid://cgriv0qsuqgeu" path="res://assets/audio/footsteps.mp3" id="8_ibq8y"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://scenes/game_object/player/player.png" id="8_voa7p"]
+[ext_resource type="Script" path="res://scenes/game_object/player/stuck_area.gd" id="9_7wbod"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5s0x"]
 radius = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0sky"]
+radius = 6.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0uwpv"]
 radius = 19.0
+
+[sub_resource type="Animation" id="Animation_1guc0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:collision_mask")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_t8nwg"]
+resource_name = "dash_hurtbox"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtboxComponent/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:collision_mask")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 17, 17]
+}
 
 [sub_resource type="Animation" id="Animation_33xpb"]
 resource_name = "hit_back"
@@ -413,6 +462,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83j7a"]
 _data = {
+"RESET": SubResource("Animation_1guc0"),
+"dash_hurtbox": SubResource("Animation_t8nwg"),
 "hit_back": SubResource("Animation_33xpb"),
 "hit_front": SubResource("Animation_0jei0"),
 "hit_left": SubResource("Animation_8ghht"),
@@ -559,6 +610,9 @@ collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_7xkn6")
 
+[node name="DashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_v8bdw")]
+sprite = NodePath("../Visuals/Sprite2D")
+
 [node name="VelocityComponent" parent="." instance=ExtResource("2_i4ae5")]
 max_speed = 200.0
 acceleration = 30.0
@@ -574,6 +628,7 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CircleShape2D_d5s0x")
+disabled = true
 
 [node name="WeaponManager" type="Node2D" parent="."]
 position = Vector2(0, -43)
@@ -590,7 +645,20 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 76
+frame = 79
+
+[node name="StuckArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("9_7wbod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StuckArea"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_l0sky")
+
+[node name="CheckingInterval" type="Timer" parent="StuckArea"]
+wait_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

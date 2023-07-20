@@ -2,7 +2,7 @@ extends Control
 
 var button_pressed: Button = null
 var actions := [
-	"move_up", "move_left", "move_down", "move_right"
+	"move_up", "move_left", "move_down", "move_right", "dash"
 ]
 var button_action_dict: Dictionary
 
