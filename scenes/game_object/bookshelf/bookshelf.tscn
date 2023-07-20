@@ -68,6 +68,7 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pkula"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
@@ -129,12 +130,13 @@ money = 5
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookshelfSprite")
+
 hit_flash_material = SubResource("ShaderMaterial_pkula")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_sv366")]
 hurtbox_component = NodePath("../HurtboxComponent")
 velocity_component = NodePath("../VelocityComponent")
-sprite = NodePath("../BookshelfSprite")
+sprite = NodePath("../Visuals/BookshelfSprite")
 
 [node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("10_spb8p")]
 health_component = NodePath("../HealthComponent")

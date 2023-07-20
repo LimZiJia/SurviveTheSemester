@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bgkg45mchl7ul"]
+[gd_scene load_steps=61 format=3 uid="uid://bgkg45mchl7ul"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
 [ext_resource type="Script" path="res://scenes/game_object/player/weapon_manager.gd" id="5_ffgjt"]
 [ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="6_7up1x"]
+[ext_resource type="AudioStream" uid="uid://cgriv0qsuqgeu" path="res://assets/audio/footsteps.mp3" id="8_ibq8y"]
 [ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://scenes/game_object/player/player.png" id="8_voa7p"]
 [ext_resource type="Script" path="res://scenes/game_object/player/StuckArea.gd" id="9_7wbod"]
 
@@ -643,7 +644,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 79
+frame = 76
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -677,3 +678,10 @@ parameters/conditions/moving = false
 parameters/Hurt/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Move/blend_position = Vector2(0, 1)
+
+[node name="FootstepsPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ibq8y")
+pitch_scale = 1.1
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

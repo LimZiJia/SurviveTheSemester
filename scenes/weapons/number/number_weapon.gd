@@ -21,3 +21,9 @@ func pick_number() -> void:
 	else:
 		$AnimationPlayer.play("burn")
 		$HitboxComponent.burning = true
+
+func meteor_falling_sound() -> void:
+	AudioManager.play_audio("meteor_falling", -10.0, 1.5)
+
+func meteor_impact_sound() -> void:
+	AudioManager.play_audio("meteor_impact", -17.0)

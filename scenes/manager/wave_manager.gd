@@ -93,6 +93,8 @@ func start_wave() -> void:
 	if entities == null:
 		return
 	
+	var spawn_tween = create_tween()
+	
 	while target_cost > 0:
 		var enemy = enemy_table.pick_item()
 		var enemy_instance = enemy.scene.instantiate() as Node2D
@@ -101,8 +103,8 @@ func start_wave() -> void:
 		# TODO: Add mechanism for each mob to set stats based on difficulty
 		enemy_instance.set_difficulty(cur_wave)
 		
-		entities.add_child(enemy_instance)
-		
+		spawn_tween.tween_callback(entities.add_child.bind(enemy_instance))
+		spawn_tween.tween_interval(enemy.cost)
 		
 		target_cost -= enemy.cost
 		actual_cost += enemy.cost

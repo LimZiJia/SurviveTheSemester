@@ -20,6 +20,7 @@ func _ready():
 
 func on_close_button_pressed() -> void:
 	get_tree().paused = false
+	AudioManager.play_audio("button_click", -5.0)
 	queue_free()
 
 

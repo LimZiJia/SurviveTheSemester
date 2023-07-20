@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cenp6ssfdvm07"]
+[gd_scene load_steps=28 format=3 uid="uid://cenp6ssfdvm07"]
 
 [ext_resource type="PackedScene" uid="uid://bgkg45mchl7ul" path="res://scenes/game_object/player/player.tscn" id="1_63u67"]
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_icddk"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://dtefd4ycouse3" path="res://assets/pause_pressed.png" id="12_1oxyp"]
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
+[ext_resource type="PackedScene" uid="uid://b6iree1qsvf2l" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
+[ext_resource type="PackedScene" uid="uid://cnfs8ow72uvtq" path="res://scenes/manager/water_cooler_manager.tscn" id="22_0a34s"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
 [ext_resource type="PackedScene" uid="uid://bi4qaqeec2gam" path="res://scenes/game_object/gantry/gantry.tscn" id="24_fvgpo"]
 [ext_resource type="PackedScene" uid="uid://3ph0bfha44dv" path="res://scenes/manager/wave_manager.tscn" id="24_vav6n"]
@@ -49,15 +51,15 @@ end_screen_scene = ExtResource("3_o411v")
 [node name="StatusBars" type="CanvasLayer" parent="."]
 
 [node name="HealthGradeBar" parent="StatusBars" instance=ExtResource("6_xc6ep")]
-position = Vector2(9, 9)
+position = Vector2(21, 21)
 
 [node name="ExperienceBar" parent="StatusBars" node_paths=PackedStringArray("experience_manager") instance=ExtResource("5_tersy")]
-position = Vector2(6, 57)
+position = Vector2(18, 69)
 script = ExtResource("11_0ou6k")
 experience_manager = NodePath("../../ExperienceManager")
 
 [node name="MoneyBar" parent="StatusBars" instance=ExtResource("7_b4don")]
-position = Vector2(6, 106)
+position = Vector2(18, 118)
 
 [node name="MarginContainer" type="MarginContainer" parent="StatusBars"]
 anchors_preset = 1
@@ -66,7 +68,7 @@ anchor_right = 1.0
 offset_left = -128.0
 offset_bottom = 64.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 16
+theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="StatusBars/MarginContainer"]
@@ -75,20 +77,26 @@ theme_override_constants/separation = 16
 alignment = 2
 
 [node name="ShopButton" type="TextureButton" parent="StatusBars/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("8_7gkdb")
 texture_pressed = ExtResource("9_k526x")
 texture_hover = ExtResource("10_75hys")
 texture_disabled = ExtResource("8_7gkdb")
 texture_focused = ExtResource("8_7gkdb")
+stretch_mode = 0
 
 [node name="PauseButton" type="TextureButton" parent="StatusBars/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 texture_normal = ExtResource("11_oe55t")
 texture_pressed = ExtResource("12_1oxyp")
 texture_hover = ExtResource("13_rrmfn")
+stretch_mode = 0
 script = ExtResource("13_nehmb")
 pause_menu_scene = ExtResource("6_7j38u")
+
+[node name="HeartbeatStreamManager" parent="." instance=ExtResource("16_q26ge")]
 
 [node name="TimeUI" parent="." node_paths=PackedStringArray("time_manager") instance=ExtResource("5_18yls")]
 time_manager = NodePath("../TimeManager")
@@ -104,6 +112,9 @@ shop_button = NodePath("../StatusBars/MarginContainer/HBoxContainer/ShopButton")
 [node name="WaveManager" parent="." instance=ExtResource("24_vav6n")]
 
 [node name="TimeManager" parent="." instance=ExtResource("7_fb4dk")]
+
+[node name="WaterCoolerManager" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("22_0a34s")]
+navigation_region = NodePath("../NavigationRegion2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(421, 691)

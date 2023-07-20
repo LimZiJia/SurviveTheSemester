@@ -2,6 +2,7 @@ extends Node2D
 
 @export var max_speed := 600.0
 
+
 const NAMES := [ "aiken", "dueet"]
 
 var direction := Vector2.ZERO:
@@ -58,3 +59,8 @@ func set_direction(given_direction: Vector2) -> void:
 func choose_name() -> void:
 	var idx := randi_range(0, 1)
 	label.text = NAMES[idx]
+	
+	if idx == 0:
+		AudioManager.play_audio("i_can", -13.0, 1.25)
+	else:
+		AudioManager.play_audio("do_it", -13.0, 1.25)
