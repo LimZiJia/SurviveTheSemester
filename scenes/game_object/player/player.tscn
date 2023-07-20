@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bgkg45mchl7ul"]
+[gd_scene load_steps=66 format=3 uid="uid://bgkg45mchl7ul"]
 
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
@@ -610,7 +610,8 @@ collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_7xkn6")
 
-[node name="DashComponent" parent="." instance=ExtResource("2_v8bdw")]
+[node name="DashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_v8bdw")]
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_i4ae5")]
 max_speed = 200.0
@@ -644,7 +645,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 76
+frame = 79
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0

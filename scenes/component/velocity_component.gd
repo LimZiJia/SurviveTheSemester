@@ -57,6 +57,7 @@ func freeze(seconds: float) -> void:
 	await get_tree().create_timer(seconds, false).timeout
 	is_frozen = false
 
+
 func dash(direction: Vector2, duration: float) -> void:
 	is_dashing = true
 	var desired_velocity = direction * dash_speed

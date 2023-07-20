@@ -16,7 +16,7 @@ var dash_duration: float
 @onready var animation_tree = $AnimationTree as AnimationTree
 @onready var sprite = $Visuals/Sprite2D as Sprite2D
 @onready var animation_state = animation_tree.get("parameters/playback")
-@onready var stuck_area = $StuckArea as Area2D
+@onready var stuck_area := $StuckArea as Area2D
 
 func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
@@ -48,13 +48,13 @@ func _physics_process(_delta: float) -> void:
 
 		if Input.is_action_just_pressed("dash") and dash_component.can_dash:
 			velocity_component.dash(dir, dash_duration)
-			dash_component.start_dash(sprite)
+			dash_component.dash()
 			animation_player.play("dash_hurtbox")
 		else:
-      velocity_component.accelerate_in_direction(dir)
-      if !is_moving:
-        $FootstepsPlayer.play()
-        is_moving = true
+			velocity_component.accelerate_in_direction(dir)
+			if !is_moving:
+				$FootstepsPlayer.play()
+				is_moving = true
 
 	else:
 		animation_tree.set("parameters/conditions/idle", true)
