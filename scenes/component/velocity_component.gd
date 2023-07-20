@@ -2,10 +2,13 @@ class_name VelocityComponent
 extends Node
 
 @export var max_speed := 100.0
+@export var dash_speed = 1500.0
 @export var acceleration := 20.0
+
 
 var velocity := Vector2.ZERO
 var is_frozen := false
+var is_dashing := false
 
 func accelerate_to_player() -> void:
 	var owner_node2d = owner as Node2D
@@ -53,3 +56,12 @@ func freeze(seconds: float) -> void:
 	is_frozen = true
 	await get_tree().create_timer(seconds, false).timeout
 	is_frozen = false
+
+
+func dash(direction: Vector2, duration: float) -> void:
+	is_dashing = true
+	var desired_velocity = direction * dash_speed
+	velocity = desired_velocity
+	await get_tree().create_timer(duration, false).timeout
+	velocity = direction * max_speed
+	is_dashing = false
