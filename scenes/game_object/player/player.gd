@@ -22,11 +22,12 @@ func _ready() -> void:
 	health_component.damaged.connect(on_health_component_damaged)
 	health_component.healed.connect(on_health_component_healed)
 	health_component.dead.connect(on_health_component_dead)
-	stuck_area.move_to.connect(unstuck)
+	stuck_area.stuck.connect(on_stuck)
 	dash_duration = dash_component.dash_duration
 	base_speed = velocity_component.max_speed
 	GameEvents.buff_added.connect(on_buff_added)
-	
+
+
 func _physics_process(_delta: float) -> void:
 	# Movement
 	var dir = Vector2.ZERO
@@ -78,6 +79,7 @@ func on_health_component_damaged(_damage: float) -> void:
 func on_health_component_healed(_health: float) -> void:
 	GameEvents.emit_health_healed(health_component.current_health, health_component.max_health)
 
+
 func on_health_component_dead() -> void:
 	dead.emit()
 	
@@ -99,7 +101,12 @@ func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
 	elif buff.id == "max_health":
 		health_component.increase_max_health_percent(0.2)
 
-func unstuck(pos: Vector2) -> void:
+
+func on_stuck(safe_position: Vector2) -> void:
+	unstuck(safe_position)
+
+
+func unstuck(safe_position: Vector2) -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", pos, 0.1)
+	tween.tween_property(self, "global_position", safe_position, 0.1)
 	
