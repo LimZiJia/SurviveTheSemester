@@ -1,18 +1,18 @@
-[gd_scene load_steps=66 format=3 uid="uid://bav12iv7a4tk5"]
+[gd_scene load_steps=66 format=3 uid="uid://dymwb5dqv2x5n"]
 
-[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
-[ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
-[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_i4ae5"]
-[ext_resource type="PackedScene" uid="uid://sesle3moyoi6" path="res://scenes/component/dash_component.tscn" id="2_v8bdw"]
-[ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
-[ext_resource type="Script" path="res://scenes/game_object/player/weapon_manager.gd" id="5_ffgjt"]
-[ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="6_7up1x"]
-[ext_resource type="AudioStream" uid="uid://cgriv0qsuqgeu" path="res://assets/audio/footsteps.mp3" id="8_ibq8y"]
-[ext_resource type="Texture2D" uid="uid://542gp1vs0t0" path="res://scenes/game_object/player/player.png" id="8_voa7p"]
-[ext_resource type="Script" path="res://scenes/game_object/player/stuck_area.gd" id="9_7wbod"]
+[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_oifdy"]
+[ext_resource type="PackedScene" uid="uid://sesle3moyoi6" path="res://scenes/component/dash_component.tscn" id="2_6f0m7"]
+[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="3_8qhh1"]
+[ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="4_2tooj"]
+[ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="5_xam7s"]
+[ext_resource type="Script" path="res://scenes/game_object/player/weapon_manager.gd" id="6_265m7"]
+[ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="7_m2ykh"]
+[ext_resource type="Texture2D" uid="uid://bqe2ar8h3q2cp" path="res://scenes/game_object/professor/professor.png" id="8_bgw20"]
+[ext_resource type="Script" path="res://scenes/game_object/player/stuck_area.gd" id="9_2dnn4"]
+[ext_resource type="AudioStream" uid="uid://cgriv0qsuqgeu" path="res://assets/audio/footsteps.mp3" id="10_1hk47"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d5s0x"]
-radius = 18.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_hd2rv"]
+radius = 22.8035
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l0sky"]
 radius = 6.0
@@ -595,7 +595,7 @@ advance_condition = &"moving"
 states/Hurt/node = SubResource("AnimationNodeBlendSpace2D_ve5tn")
 states/Hurt/position = Vector2(587, 229)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_ud5hw")
-states/Idle/position = Vector2(492, 115)
+states/Idle/position = Vector2(493, 115)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_fvvn0")
 states/Move/position = Vector2(678, 115)
 transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_8csbc"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_8ix5o"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1crnj"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_4fb7d"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_5up1q"), "Move", "Hurt", SubResource("AnimationNodeStateMachineTransition_2ga8v"), "Hurt", "Move", SubResource("AnimationNodeStateMachineTransition_cucbs")]
@@ -603,54 +603,55 @@ graph_offset = Vector2(0, 36.3047)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1bvhy"]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Professor" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 17
 motion_mode = 1
-script = ExtResource("1_7xkn6")
+script = ExtResource("1_oifdy")
 
-[node name="DashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_v8bdw")]
+[node name="DashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_6f0m7")]
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="VelocityComponent" parent="." instance=ExtResource("2_i4ae5")]
+[node name="VelocityComponent" parent="." instance=ExtResource("3_8qhh1")]
 max_speed = 200.0
 acceleration = 30.0
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_4xk1m")]
+[node name="HealthComponent" parent="." instance=ExtResource("4_2tooj")]
 max_health = 100.0
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_4agu3")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_xam7s")]
 position = Vector2(0, -18)
 collision_layer = 0
 collision_mask = 2
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-shape = SubResource("CircleShape2D_d5s0x")
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_hd2rv")
 
 [node name="WeaponManager" type="Node2D" parent="."]
 position = Vector2(0, -43)
-script = ExtResource("5_ffgjt")
+script = ExtResource("6_265m7")
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="ShadowSprite" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -4)
-texture = ExtResource("6_7up1x")
+texture = ExtResource("7_m2ykh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 position = Vector2(0, -48)
-texture = ExtResource("8_voa7p")
+texture = ExtResource("8_bgw20")
 hframes = 56
 vframes = 20
-frame = 77
+frame = 685
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
 monitorable = false
-script = ExtResource("9_7wbod")
+script = ExtResource("9_2dnn4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StuckArea"]
 position = Vector2(0, -3)
@@ -680,8 +681,5 @@ parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Move/blend_position = Vector2(0, 1)
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_ibq8y")
+stream = ExtResource("10_1hk47")
 pitch_scale = 1.1
-
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
-current = true

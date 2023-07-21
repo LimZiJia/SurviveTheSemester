@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0kmo2gwteooi"]
+
+[ext_resource type="Texture2D" uid="uid://cvsidcfqavv7t" path="res://scenes/game_object/professor/pencil.png" id="1_poe7l"]
+[ext_resource type="Script" path="res://scenes/component/hitbox_component.gd" id="2_ldkud"]
+
+[node name="Pencil" type="Node2D"]
+rotation = 0.781578
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_poe7l")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("2_ldkud")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent"]
+position = Vector2(79, -156)
+polygon = PackedVector2Array(-200, 201, -229, 310, -120, 281, 85, 76, 6, -3)
