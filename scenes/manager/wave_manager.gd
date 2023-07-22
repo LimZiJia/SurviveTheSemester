@@ -31,7 +31,13 @@ func _ready() -> void:
 			"weight": 80,
 		},
 		40)
-	
+	enemy_table.add_item(
+		{
+			"cost": 1.0,
+			"scene": preload("res://scenes/game_object/professor/professor.tscn"),
+			"weight": 20,
+		},
+		20)
 	$Timer.timeout.connect(on_timer_timeout)
 	start_wave()
 

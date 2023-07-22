@@ -1,24 +1,25 @@
-[gd_scene load_steps=66 format=3 uid="uid://dymwb5dqv2x5n"]
+[gd_scene load_steps=70 format=3 uid="uid://dymwb5dqv2x5n"]
 
-[ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_oifdy"]
+[ext_resource type="Script" path="res://scenes/game_object/professor/professor.gd" id="1_42r8x"]
 [ext_resource type="PackedScene" uid="uid://sesle3moyoi6" path="res://scenes/component/dash_component.tscn" id="2_6f0m7"]
+[ext_resource type="PackedScene" uid="uid://d0kmo2gwteooi" path="res://scenes/game_object/professor/pencil.tscn" id="2_vie8j"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="3_8qhh1"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="4_2tooj"]
+[ext_resource type="PackedScene" uid="uid://dm3lrtqb30uf5" path="res://scenes/component/experience_drop_component.tscn" id="5_3fr31"]
+[ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="5_u3uae"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="5_xam7s"]
-[ext_resource type="Script" path="res://scenes/game_object/player/weapon_manager.gd" id="6_265m7"]
+[ext_resource type="PackedScene" uid="uid://dip3jqu7xbldd" path="res://scenes/component/coin_drop_component.tscn" id="6_p7bki"]
 [ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="7_m2ykh"]
+[ext_resource type="PackedScene" uid="uid://bxl8idph5rpd7" path="res://scenes/component/hit_flash_component.tscn" id="7_qdyqf"]
 [ext_resource type="Texture2D" uid="uid://bqe2ar8h3q2cp" path="res://scenes/game_object/professor/professor.png" id="8_bgw20"]
-[ext_resource type="Script" path="res://scenes/game_object/player/stuck_area.gd" id="9_2dnn4"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="8_fk8gm"]
+[ext_resource type="PackedScene" uid="uid://bvlx5ulv8siae" path="res://scenes/component/freezable_component.tscn" id="9_a8ss6"]
 [ext_resource type="AudioStream" uid="uid://cgriv0qsuqgeu" path="res://assets/audio/footsteps.mp3" id="10_1hk47"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hd2rv"]
-radius = 22.8035
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l0sky"]
-radius = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0uwpv"]
-radius = 19.0
+[ext_resource type="PackedScene" uid="uid://d0qwpry6qi150" path="res://scenes/component/pathfind_component.tscn" id="10_7vcug"]
+[ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="10_aqo0p"]
+[ext_resource type="PackedScene" uid="uid://diyl3hwyixy7d" path="res://scenes/component/damage_indicator_component.tscn" id="11_fejlm"]
+[ext_resource type="Texture2D" uid="uid://djf5e4t0yamsj" path="res://scenes/game_object/professor/angry.png" id="17_a2ygi"]
+[ext_resource type="Script" path="res://scenes/game_object/professor/TextureRect.gd" id="18_bfuqa"]
 
 [sub_resource type="Animation" id="Animation_1guc0"]
 length = 0.001
@@ -490,30 +491,34 @@ _data = {
 "throw_right": SubResource("Animation_8o1kb")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pwgxj"]
-animation = &"hurt_front"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iepdr"]
+resource_local_to_scene = true
+shader = ExtResource("8_fk8gm")
+shader_parameter/lerp_percent = 0.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dmicy"]
-animation = &"hurt_left"
+[sub_resource type="CircleShape2D" id="CircleShape2D_iv474"]
+radius = 27.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_inaj0"]
-animation = &"hurt_right"
+[sub_resource type="CircleShape2D" id="CircleShape2D_hd2rv"]
+radius = 22.8035
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lxufh"]
-animation = &"hurt_back"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n2nn"]
+bg_color = Color(0.227451, 0.227451, 0.313726, 1)
+border_color = Color(0, 0, 0, 0)
+anti_aliasing = false
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ve5tn"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_pwgxj")
-blend_point_0/pos = Vector2(0, 1.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_dmicy")
-blend_point_1/pos = Vector2(-1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_inaj0")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_lxufh")
-blend_point_3/pos = Vector2(0, -1.1)
-min_space = Vector2(-1, -1.1)
-max_space = Vector2(1, 1.1)
-blend_mode = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hofpf"]
+bg_color = Color(0.607843, 0.760784, 0.27451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0uwpv"]
+radius = 19.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ymvwc"]
 animation = &"idle_left"
@@ -577,62 +582,82 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1crnj"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4fb7d"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5up1q"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ga8v"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cucbs"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"moving"
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kn8d2"]
-states/Hurt/node = SubResource("AnimationNodeBlendSpace2D_ve5tn")
-states/Hurt/position = Vector2(587, 229)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_ud5hw")
 states/Idle/position = Vector2(493, 115)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_fvvn0")
 states/Move/position = Vector2(678, 115)
-transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_8csbc"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_8ix5o"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1crnj"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_4fb7d"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_5up1q"), "Move", "Hurt", SubResource("AnimationNodeStateMachineTransition_2ga8v"), "Hurt", "Move", SubResource("AnimationNodeStateMachineTransition_cucbs")]
+transitions = ["Idle", "Move", SubResource("AnimationNodeStateMachineTransition_8csbc"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_8ix5o"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1crnj")]
 graph_offset = Vector2(0, 36.3047)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1bvhy"]
 
-[node name="Professor" type="CharacterBody2D" groups=["player"]]
+[node name="Professor" type="CharacterBody2D" groups=["mobs"]]
 y_sort_enabled = true
-collision_layer = 2
+collision_layer = 8
 collision_mask = 17
 motion_mode = 1
-script = ExtResource("1_oifdy")
+script = ExtResource("1_42r8x")
+pencil_scene = ExtResource("2_vie8j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_83j7a")
+}
 
 [node name="DashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_6f0m7")]
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_8qhh1")]
-max_speed = 200.0
+max_speed = 130.0
 acceleration = 30.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_2tooj")]
 max_health = 100.0
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_xam7s")]
+[node name="ExperienceDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_3fr31")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CoinDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_p7bki")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_qdyqf")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_iepdr")
+
+[node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_a8ss6")]
+hurtbox_component = NodePath("../HurtboxComponent")
+velocity_component = NodePath("../VelocityComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="BurnableComponent" parent="." node_paths=PackedStringArray("health_component", "hurtbox_component", "sprite") instance=ExtResource("10_aqo0p")]
+health_component = NodePath("../HealthComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="DamageIndicatorComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("11_fejlm")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("5_u3uae")]
+position = Vector2(0, -24)
+collision_layer = 2
+collision_mask = 0
+damage = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_iv474")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("5_xam7s")]
 position = Vector2(0, -18)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
 health_component = NodePath("../HealthComponent")
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_hd2rv")
-
-[node name="WeaponManager" type="Node2D" parent="."]
-position = Vector2(0, -43)
-script = ExtResource("6_265m7")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -645,41 +670,60 @@ position = Vector2(0, -48)
 texture = ExtResource("8_bgw20")
 hframes = 56
 vframes = 20
-frame = 685
+frame = 63
 
-[node name="StuckArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
-monitorable = false
-script = ExtResource("9_2dnn4")
+[node name="HealthBar" type="ProgressBar" parent="Visuals"]
+unique_name_in_owner = true
+z_index = 2
+custom_minimum_size = Vector2(36, 8)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -85.0
+offset_right = 39.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_7n2nn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hofpf")
+max_value = 1.0
+value = 1.0
+show_percentage = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StuckArea"]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_l0sky")
+[node name="TextureRect" type="TextureRect" parent="Visuals"]
+visible = false
+offset_left = 6.0
+offset_top = -64.0
+offset_right = 156.0
+offset_bottom = 86.0
+rotation = 0.747561
+scale = Vector2(0.113536, 0.123019)
+texture = ExtResource("17_a2ygi")
+script = ExtResource("18_bfuqa")
 
-[node name="CheckingInterval" type="Timer" parent="StuckArea"]
-wait_time = 0.2
+[node name="PathfindComponent" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("10_7vcug")]
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_0uwpv")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_83j7a")
-}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_kn8d2")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1bvhy")
-parameters/conditions/idle = true
-parameters/conditions/moving = false
-parameters/Hurt/blend_position = Vector2(0, 1)
 parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Move/blend_position = Vector2(0, 1)
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_1hk47")
 pitch_scale = 1.1
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true

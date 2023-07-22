@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const ATTACK_RADIUS := 392.0
+const ATTACK_RADIUS := 400.0
 
 var base_health: float
 var base_speed: float

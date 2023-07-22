@@ -16,5 +16,5 @@ script = ExtResource("1_nxqjj")
 weapon_name = &"Number"
 description = "Increase damage by 5."
 level = 2
-cost = 600
+cost = 0
 weapon_stat = SubResource("Resource_8pd45")
