@@ -613,7 +613,7 @@ script = ExtResource("1_7xkn6")
 [node name="DashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_v8bdw")]
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="VelocityComponent" parent="." groups=["player"] instance=ExtResource("2_i4ae5")]
+[node name="VelocityComponent" parent="." instance=ExtResource("2_i4ae5")]
 max_speed = 200.0
 acceleration = 30.0
 
@@ -644,7 +644,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 79
+frame = 76
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0

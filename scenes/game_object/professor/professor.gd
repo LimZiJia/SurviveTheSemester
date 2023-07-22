@@ -36,8 +36,8 @@ func _ready() -> void:
 	state_machine.add_states(state_chasing)
 	state_machine.add_states(state_transitioning, enter_state_transitioning, exit_state_transitioning)
 	state_machine.add_states(state_choosing_attack)
-	state_machine.add_states(state_throwing_pencil, enter_state_attacking, exit_state_attacking)
-	state_machine.add_states(state_shooting_paper, enter_state_attacking, exit_state_attacking)
+	state_machine.add_states(state_throwing_pencil, enter_state_throwing_pencil, exit_state_attacking)
+	state_machine.add_states(state_shooting_paper, enter_state_throwing_pencil, exit_state_attacking)
 	state_machine.add_states(state_freezing)
 	state_machine.set_initial_state(state_chasing)
 	state_machine.owner = self
@@ -110,21 +110,27 @@ func state_choosing_attack():
 		state_machine.change_state_with_delay(state_shooting_paper, 0.5, true)
 
 func state_throwing_pencil():
-	var pencil = pencil_scene.instantiate()
-	pencil.global_position = self.global_position + Vector2(0, -10)
-	await get_tree().create_timer(1.0).timeout
-	pencil.throw()
-	state_machine.change_state_with_delay(state_chasing, 2, true)
+	pass
+
+func enter_state_throwing_pencil():
+	var number = 2 if is_angry else 1
+	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
+	for i in number:
+		animation_state.travel("Throw")
+		
+		can_attack = false
+		var pencil = pencil_scene.instantiate()
+		foreground.add_child(pencil)
+		pencil.global_position = global_position
+		pencil.global_position.y -= 100
+		
+		await get_tree().create_timer(1.0, false).timeout
+		pencil.throw()
+	
+	state_machine.change_state_with_delay(state_chasing, 1.0, true)
 
 func state_shooting_paper():
-	var pencil = pencil_scene.instantiate()
-	pencil.global_position = self.global_position + Vector2(0, -10)
-	await get_tree().create_timer(1.0).timeout
-	pencil.throw()
-	state_machine.change_state_with_delay(state_chasing, 2, true)
-
-func enter_state_attacking():
-	can_attack = false
+	pass
 
 func exit_state_attacking():
 	cooldown_timer.wait_time = 5.0 if is_angry else 10.0
