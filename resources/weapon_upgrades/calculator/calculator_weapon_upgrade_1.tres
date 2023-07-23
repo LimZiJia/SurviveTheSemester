@@ -16,7 +16,7 @@ metadata = {
 [resource]
 script = ExtResource("1_apy5b")
 weapon_name = &"Calculator"
-description = "Obtain the calculator weapon.	"
+description = "Obtain the calculator weapon.	 Spins calculators around the charater periodically."
 level = 1
 cost = 1000
 weapon_stat = SubResource("Resource_m2px5")

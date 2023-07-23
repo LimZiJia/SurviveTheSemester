@@ -9,7 +9,6 @@ const MAX_SPAWN_RADIUS := 1080.0
 #   "weight": int,
 #   "cost": int
 # }
-@export var enemies: Array[Dictionary] = []
 
 var cur_wave: int = 1
 var enemy_table := WeightedTable.new()
@@ -19,25 +18,10 @@ func _ready() -> void:
 	enemy_table.add_item(
 		{
 			"cost": 2.0,
-			"scene": preload("res://scenes/game_object/mob/mob.tscn"),
-			"weight": 100,
-		},
-		60
-	)
-	enemy_table.add_item(
-		{
-			"cost": 2.4,
 			"scene": preload("res://scenes/game_object/book/book.tscn"),
-			"weight": 80,
+			"weight": 60,
 		},
-		40)
-	enemy_table.add_item(
-		{
-			"cost": 1.0,
-			"scene": preload("res://scenes/game_object/professor/professor.tscn"),
-			"weight": 20,
-		},
-		20)
+		60)
 	$Timer.timeout.connect(on_timer_timeout)
 	start_wave()
 
@@ -61,11 +45,18 @@ func on_timer_timeout() -> void:
 			10)
 		10: enemy_table.add_item(
 			{
-				"cost": 30,
+				"cost": 20,
 				"scene": preload("res://scenes/game_object/bookshelf/bookshelf.tscn"),
-				"weight": 2,
+				"weight": 5,
 			},
-			2)
+			5)
+		25: enemy_table.add_item(
+		{
+			"cost": 40,
+			"scene": preload("res://scenes/game_object/professor/professor.tscn"),
+			"weight": 2,
+		},
+		2)
 	start_wave()
 
 

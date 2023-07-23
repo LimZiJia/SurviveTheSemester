@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func pick_number() -> void:
-	var n = 9#randi_range(0, 9)
+	var n = randi_range(0, 9)
 	sprite_2d.frame = n
 	if n <= 5:
 		$AnimationPlayer.play("normal")
