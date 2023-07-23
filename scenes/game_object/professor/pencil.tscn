@@ -9,6 +9,8 @@ rotation = -6.53004
 script = ExtResource("1_eo5s8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-125.578, -29.5824)
+rotation = -2.10765
 scale = Vector2(0.600095, 0.600095)
 texture = ExtResource("1_poe7l")
 
@@ -20,9 +22,10 @@ script = ExtResource("2_ldkud")
 damage = 40.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent"]
-position = Vector2(79, -156)
+position = Vector2(-289.532, -54.6111)
+rotation = -2.09451
 scale = Vector2(0.83866, 0.825204)
-polygon = PackedVector2Array(-181.16, 220.411, -202.544, 301.733, -123.206, 279.762, 24.9061, 130.381, -35.5805, 71.8773)
+polygon = PackedVector2Array(-205.704, 194.115, -229.04, 270.738, -154.372, 244.76, -13.179, 96.9455, -64.5118, 46.3002)
 
 [node name="Despawn" type="Timer" parent="."]
 wait_time = 5.0
