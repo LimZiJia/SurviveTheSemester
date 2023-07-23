@@ -4,7 +4,6 @@ var base_health: float
 var base_speed: float
 var base_damage: float
 
-
 @onready var health_component := $HealthComponent as HealthComponent
 @onready var velocity_component := $VelocityComponent as VelocityComponent
 @onready var pathfind_component := $PathfindComponent as PathfindComponent
@@ -23,13 +22,11 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var player = get_tree().get_first_node_in_group("player") as Node2D
-	var target: Vector2
 	if player == null:
-		target = global_position
-	else:
-		target = player.global_position
+		return
+	var target_position = player.global_position
 	
-	pathfind_component.set_target_position(target)
+	pathfind_component.set_target_position(target_position)
 	pathfind_component.follow_path()
 	velocity_component.move(self)
 
@@ -54,10 +51,9 @@ func set_difficulty(difficulty: int) -> void:
 	
 	update_health_bar()
 
-
-# Temporary function to set the stats of each enemy
-func set_stats(health: float, speed: float, damage: float) -> void:
-	$HealthComponent.max_health = health
-	$HealthComponent.current_health = health
-	$VelocityComponent.max_speed = speed
-	$HitboxComponent.damage = damage
+## This is used exclusively by the bookshelf mob. It plays an animation
+## of throwing the book in a random direction and with some upward y velocity
+## of the book sprite.
+func play_spawn() -> void:
+	$AnimationPlayer.play("spawn")
+	$AnimationPlayer.queue("flying")
