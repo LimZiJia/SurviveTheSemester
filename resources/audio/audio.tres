@@ -1,24 +1,25 @@
-[gd_resource type="Resource" script_class="AudioDict" load_steps=20 format=3]
+[gd_resource type="Resource" script_class="AudioDict" load_steps=21 format=3 uid="uid://3kn0l36asvmy"]
 
-[ext_resource type="AudioStream" path="res://assets/audio/angry.mp3" id="1_npsh5"]
-[ext_resource type="AudioStream" path="res://assets/audio/burn.mp3" id="2_3eakj"]
-[ext_resource type="AudioStream" path="res://assets/audio/button_click.mp3" id="3_vb4mk"]
-[ext_resource type="AudioStream" path="res://assets/audio/damaged.wav" id="4_wxmq8"]
-[ext_resource type="AudioStream" path="res://assets/audio/dash.wav" id="5_yw1wk"]
-[ext_resource type="AudioStream" path="res://assets/audio/do_it.mp3" id="6_jqaoi"]
-[ext_resource type="AudioStream" path="res://assets/audio/footsteps.mp3" id="7_u04oj"]
-[ext_resource type="AudioStream" path="res://assets/audio/freeze.mp3" id="8_klehn"]
-[ext_resource type="AudioStream" path="res://assets/audio/gantry.mp3" id="9_fcwt2"]
-[ext_resource type="AudioStream" path="res://assets/audio/heart_beat.mp3" id="10_t7vkx"]
-[ext_resource type="AudioStream" path="res://assets/audio/i_can.mp3" id="11_d38bj"]
-[ext_resource type="AudioStream" path="res://assets/audio/level_up.mp3" id="12_g34eu"]
-[ext_resource type="AudioStream" path="res://assets/audio/meteor_falling.mp3" id="13_8cxk2"]
-[ext_resource type="AudioStream" path="res://assets/audio/meteor_impact.mp3" id="14_a2yai"]
-[ext_resource type="AudioStream" path="res://assets/audio/pick_up_coin.mp3" id="15_fykft"]
-[ext_resource type="AudioStream" path="res://assets/audio/player_hurt.mp3" id="16_u58gy"]
-[ext_resource type="AudioStream" path="res://assets/audio/purchase.wav" id="17_d3mjd"]
+[ext_resource type="AudioStream" uid="uid://bsty7gprmiik4" path="res://assets/audio/angry.mp3" id="1_npsh5"]
+[ext_resource type="AudioStream" uid="uid://egwt551tkvhs" path="res://assets/audio/burn.mp3" id="2_3eakj"]
+[ext_resource type="AudioStream" uid="uid://dpfhjwsew6gg8" path="res://assets/audio/button_click.mp3" id="3_vb4mk"]
+[ext_resource type="AudioStream" uid="uid://4et8e588ou4s" path="res://assets/audio/damaged.wav" id="4_wxmq8"]
+[ext_resource type="AudioStream" uid="uid://ci0oxu11ypjg7" path="res://assets/audio/dash.wav" id="5_yw1wk"]
+[ext_resource type="AudioStream" uid="uid://cjfjht8ngcr5o" path="res://assets/audio/do_it.mp3" id="6_jqaoi"]
+[ext_resource type="AudioStream" uid="uid://sehno8byufor" path="res://assets/audio/drink.mp3" id="7_td6wv"]
+[ext_resource type="AudioStream" uid="uid://cgriv0qsuqgeu" path="res://assets/audio/footsteps.mp3" id="7_u04oj"]
+[ext_resource type="AudioStream" uid="uid://bh07q3k4bw887" path="res://assets/audio/freeze.mp3" id="8_klehn"]
+[ext_resource type="AudioStream" uid="uid://bf2khapxrs141" path="res://assets/audio/gantry.mp3" id="9_fcwt2"]
+[ext_resource type="AudioStream" uid="uid://cjakld5exn8wb" path="res://assets/audio/heart_beat.mp3" id="10_t7vkx"]
+[ext_resource type="AudioStream" uid="uid://c4ba3yih1ag2t" path="res://assets/audio/i_can.mp3" id="11_d38bj"]
+[ext_resource type="AudioStream" uid="uid://dmkirmlhqmgan" path="res://assets/audio/level_up.mp3" id="12_g34eu"]
+[ext_resource type="AudioStream" uid="uid://ctym4bvpwn0j5" path="res://assets/audio/meteor_falling.mp3" id="13_8cxk2"]
+[ext_resource type="AudioStream" uid="uid://igg8gokibe5k" path="res://assets/audio/meteor_impact.mp3" id="14_a2yai"]
+[ext_resource type="AudioStream" uid="uid://bm1prqbam7fvn" path="res://assets/audio/pick_up_coin.mp3" id="15_fykft"]
+[ext_resource type="AudioStream" uid="uid://c5iooa8ya7g8b" path="res://assets/audio/player_hurt.mp3" id="16_u58gy"]
+[ext_resource type="AudioStream" uid="uid://dk875dcg6aqv4" path="res://assets/audio/purchase.wav" id="17_d3mjd"]
 [ext_resource type="Script" path="res://resources/audio/audio.gd" id="18"]
-[ext_resource type="AudioStream" path="res://assets/audio/typing.mp3" id="18_fsuyn"]
+[ext_resource type="AudioStream" uid="uid://4rr165v7uca7" path="res://assets/audio/typing.mp3" id="18_fsuyn"]
 
 [resource]
 script = ExtResource("18")
@@ -29,6 +30,7 @@ dictionary = {
 "damaged": ExtResource("4_wxmq8"),
 "dash": ExtResource("5_yw1wk"),
 "do_it": ExtResource("6_jqaoi"),
+"drink": ExtResource("7_td6wv"),
 "footsteps": ExtResource("7_u04oj"),
 "freeze": ExtResource("8_klehn"),
 "gantry": ExtResource("9_fcwt2"),
