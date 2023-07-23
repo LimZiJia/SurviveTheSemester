@@ -130,6 +130,9 @@ func enter_state_throwing_pencil():
 	
 	var number = 2 if is_angry else 1
 	var foreground = get_tree().get_first_node_in_group("foreground_layer") as Node2D
+	if foreground == null:
+		return
+	
 	for i in number:
 		animation_state.travel("Throw")
 		
@@ -155,6 +158,8 @@ func enter_state_throwing_paper() -> void:
 	var entities = get_tree().get_first_node_in_group("entities_layer") as Node2D
 	if entities == null:
 		return
+	
+	animation_state.travel("Throw")
 	
 	for i in number:
 		var exam_paper_spawner_instance := exam_paper_spawner_scene.instantiate() as Node2D

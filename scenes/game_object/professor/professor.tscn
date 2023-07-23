@@ -1,7 +1,7 @@
 [gd_scene load_steps=87 format=3 uid="uid://dymwb5dqv2x5n"]
 
 [ext_resource type="Script" path="res://scenes/game_object/professor/professor.gd" id="1_42r8x"]
-[ext_resource type="PackedScene" uid="uid://d0kmo2gwteooi" path="res://scenes/game_object/professor/pencil.tscn" id="2_vie8j"]
+[ext_resource type="PackedScene" uid="uid://bjwrjq7c3xqhv" path="res://scenes/game_object/professor/pencil.tscn" id="2_vie8j"]
 [ext_resource type="PackedScene" uid="uid://dwihsglgpxbvm" path="res://scenes/game_object/professor/exam_paper_spawner.tscn" id="3_5jugb"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="3_8qhh1"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="4_2tooj"]
@@ -641,7 +641,7 @@ graph_offset = Vector2(0, -38.6383)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1bvhy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvrbw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3isp"]
 resource_local_to_scene = true
 shader = ExtResource("8_fk8gm")
 shader_parameter/lerp_percent = 0.0
@@ -716,7 +716,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_qdyqf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_qvrbw")
+hit_flash_material = SubResource("ShaderMaterial_q3isp")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_a8ss6")]
 hurtbox_component = NodePath("../HurtboxComponent")
@@ -762,7 +762,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_bgw20")
 hframes = 56
 vframes = 20
-frame = 79
+frame = 78
 
 [node name="HealthBar" type="ProgressBar" parent="Visuals"]
 unique_name_in_owner = true
