@@ -14,8 +14,7 @@ metadata = {}
 [resource]
 script = ExtResource("1_dlx7s")
 weapon_name = &"Number"
-description = "Obtain the number weapon.
-Number weapon picks a random number between 0 and 9. If the number is 6/7 it will freeze enemies on impact and if it is 8/9 it will burn."
+description = "Obtain the number weapon. Numbers rain from the sky, some having special effects."
 level = 1
 cost = 500
 weapon_stat = SubResource("Resource_8pd45")

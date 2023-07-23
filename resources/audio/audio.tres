@@ -22,6 +22,7 @@
 [resource]
 script = ExtResource("18")
 dictionary = {
+"angry": ExtResource("1_436ko"),
 "burn": ExtResource("1"),
 "button_click": ExtResource("2"),
 "damaged": ExtResource("3"),

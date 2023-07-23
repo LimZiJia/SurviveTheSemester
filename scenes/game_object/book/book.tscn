@@ -239,6 +239,7 @@ _data = {
 "spawn": SubResource("Animation_0o65e")
 }
 
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4tg3p"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")

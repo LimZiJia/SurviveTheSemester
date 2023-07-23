@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://dwihsglgpxbvm"]
+
+[ext_resource type="Script" path="res://scenes/game_object/professor/exam_paper_spawner.gd" id="1_dynxp"]
+[ext_resource type="Texture2D" uid="uid://o51sktulu13n" path="res://scenes/game_object/exam_paper/exam_paper_shadow.png" id="2_68kuf"]
+[ext_resource type="PackedScene" uid="uid://1y4do1lw4pau" path="res://scenes/game_object/exam_paper/exam_paper.tscn" id="2_qpw53"]
+[ext_resource type="Texture2D" uid="uid://cnb31qric8n42" path="res://scenes/game_object/exam_paper/exam_paper.png" id="3_4f6tl"]
+[ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="4_i6ab7"]
+
+[sub_resource type="Animation" id="Animation_gb8ui"]
+resource_name = "enter"
+length = 0.8
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_physics_process"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExamPaperSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(0.812252, 1.18921, 1),
+"update": 0,
+"values": [Vector2(0, -23), Vector2(0, -167), Vector2(0, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_x4h2s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExamPaperSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -23)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyfn4"]
+_data = {
+"RESET": SubResource("Animation_x4h2s"),
+"enter": SubResource("Animation_gb8ui")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xn2tr"]
+radius = 18.0
+
+[node name="ExamPaperSpawner" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 17
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_dynxp")
+exam_paper_scene = ExtResource("2_qpw53")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jyfn4")
+}
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_68kuf")
+
+[node name="ExamPaperSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
+texture = ExtResource("3_4f6tl")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_i6ab7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xn2tr")
