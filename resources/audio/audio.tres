@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioDict" load_steps=19 format=3 uid="uid://orjx2a8slukg"]
+[gd_resource type="Resource" script_class="AudioDict" load_steps=19 format=3 uid="uid://bkhby81f5851q"]
 
 [ext_resource type="AudioStream" uid="uid://egwt551tkvhs" path="res://assets/audio/burn.mp3" id="1"]
 [ext_resource type="AudioStream" uid="uid://dpfhjwsew6gg8" path="res://assets/audio/button_click.mp3" id="2"]
