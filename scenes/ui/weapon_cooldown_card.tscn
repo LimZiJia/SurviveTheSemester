@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5n2g650hi7jm"]
+
+[ext_resource type="Script" path="res://scenes/ui/weapon_cooldown_card.gd" id="1_31x61"]
+[ext_resource type="Shader" path="res://clock.gdshader" id="1_n70k3"]
+[ext_resource type="Texture2D" uid="uid://dnlabyse8wt13" path="res://assets/icon.svg" id="2_djefe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_im02b"]
+shader = ExtResource("1_n70k3")
+shader_parameter/lerp_percent = 1.0
+
+[node name="WeaponCooldownCard" type="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+offset_left = 163.0
+offset_top = 94.0
+offset_right = 363.0
+offset_bottom = 294.0
+script = ExtResource("1_31x61")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_im02b")
+texture = ExtResource("2_djefe")
