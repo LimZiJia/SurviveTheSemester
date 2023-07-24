@@ -35,6 +35,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Survive The Semester"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [gui]
 
 theme/custom="res://resources/theme/theme.tres"
