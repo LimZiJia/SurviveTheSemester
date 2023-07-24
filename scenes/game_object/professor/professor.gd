@@ -68,6 +68,8 @@ func state_chasing() -> void:
 	
 	var target_position = player.global_position
 	var target_distance = to_local(target_position).length()
+	pathfind_component.set_target_position(target_position)
+	pathfind_component.follow_path()
 	
 	var dir = velocity_component.velocity.normalized()
 	if dir != Vector2.ZERO:
@@ -75,8 +77,7 @@ func state_chasing() -> void:
 		animation_tree.set("parameters/Move/blend_position", dir)
 		anim_is_moving = true
 		animation_state.travel("Move")
-		pathfind_component.set_target_position(target_position)
-		pathfind_component.follow_path()
+		
 	else:
 		anim_is_moving = false
 		animation_state.travel("Idle")
