@@ -140,9 +140,11 @@ func enter_state_throwing_pencil():
 		foreground.add_child(pencil)
 		pencil.global_position = global_position
 		pencil.global_position.y -= 100
+		var wr = weakref(pencil)
 		
 		await get_tree().create_timer(1.0, false).timeout
-		pencil.throw()
+		if wr.get_ref():
+			pencil.throw()
 	
 	state_machine.change_state_with_delay(state_chasing, 1.0, true)
 
