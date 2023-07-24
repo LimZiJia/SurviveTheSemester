@@ -641,7 +641,7 @@ graph_offset = Vector2(0, -38.6383)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1bvhy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3isp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43koq"]
 resource_local_to_scene = true
 shader = ExtResource("8_fk8gm")
 shader_parameter/lerp_percent = 0.0
@@ -716,7 +716,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_qdyqf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_q3isp")
+hit_flash_material = SubResource("ShaderMaterial_43koq")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_a8ss6")]
 hurtbox_component = NodePath("../HurtboxComponent")
@@ -762,7 +762,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_bgw20")
 hframes = 56
 vframes = 20
-frame = 78
+frame = 77
 
 [node name="HealthBar" type="ProgressBar" parent="Visuals"]
 unique_name_in_owner = true

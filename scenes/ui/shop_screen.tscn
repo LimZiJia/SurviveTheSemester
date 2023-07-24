@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ocl5j5ch8y0d"]
+[gd_scene load_steps=3 format=3 uid="uid://ocl5j5ch8y0d"]
 
 [ext_resource type="Script" path="res://scenes/ui/shop_screen.gd" id="1_8ra1r"]
 [ext_resource type="PackedScene" uid="uid://bigl4dlwbmumy" path="res://scenes/ui/weapon_upgrade_card.tscn" id="2_py14p"]
@@ -7,7 +7,6 @@
 process_mode = 3
 script = ExtResource("1_8ra1r")
 weapon_upgrade_card_scene = ExtResource("2_py14p")
-
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(800, 600)

@@ -7,7 +7,7 @@
 script = ExtResource("2_dweau")
 cooldown = 0.9
 count = 2
-damage = 25.0
+damage = 30.0
 knockback = 1500.0
 metadata = {}
 
