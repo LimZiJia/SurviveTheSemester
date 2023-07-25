@@ -33,6 +33,7 @@ func on_dash_cooldown_timeout() -> void:
 func dash() -> void:
 	can_dash = false
 	
+	AudioManager.play_audio("dash", 0.0, 1.2)
 	var loops = int(dash_duration / ghost_instance_interval)
 	var tween = create_tween().set_loops(loops)
 	tween.tween_callback(instance_ghost)
