@@ -37,7 +37,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-239, -1153, 34.5356, -
 size = Vector2(70.875, 585)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nal4u"]
-size = Vector2(150, 103)
+size = Vector2(150, 102.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3n1w"]
 size = Vector2(119, 113)
@@ -433,6 +433,7 @@ monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject24"]
+position = Vector2(0, 3.25)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject25" type="Area2D" parent="TileMap/WorldObjects"]
@@ -693,6 +694,7 @@ monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject50"]
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_w3n1w")
 
 [node name="WorldObject51" type="Area2D" parent="TileMap/WorldObjects"]
@@ -703,6 +705,7 @@ monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject51"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_w3n1w")
 
 [node name="WorldObject52" type="Area2D" parent="TileMap/WorldObjects"]

@@ -2,6 +2,7 @@ extends Node2D
 
 const MIN_SPAWN_RADIUS := 720.0
 const MAX_SPAWN_RADIUS := 1080.0
+const MIN_WAVE_TIME := 10.0
 
 # Each dictionary has the following structure:
 # {
@@ -31,28 +32,28 @@ func on_timer_timeout() -> void:
 	match cur_wave:
 		5: enemy_table.add_item(
 			{
-				"cost": 2.0,
+				"cost": 3.0,
 				"scene": preload("res://scenes/game_object/exam_paper/exam_paper.tscn"),
 				"weight": 20,
 			},
 			20)
 		8: enemy_table.add_item(
 			{
-				"cost": 3.0,
+				"cost": 4.0,
 				"scene": preload("res://scenes/game_object/printer/printer.tscn"),
 				"weight": 20,
 			},
 			20)
-		10: enemy_table.add_item(
+		15: enemy_table.add_item(
 			{
-				"cost": 20,
+				"cost": 10,
 				"scene": preload("res://scenes/game_object/bookshelf/bookshelf.tscn"),
 				"weight": 15,
 			},
 			15)
-		20: enemy_table.add_item(
+		30: enemy_table.add_item(
 		{
-			"cost": 40,
+			"cost": 25,
 			"scene": preload("res://scenes/game_object/professor/professor.tscn"),
 			"weight": 8,
 		},
@@ -62,7 +63,7 @@ func on_timer_timeout() -> void:
 
 func get_target_cost() -> float:
 	# TODO: Create mathematical formula for cost
-	return 6 * log(cur_wave) + 10
+	return 0.1 * cur_wave + 10#6 * log(cur_wave) + 10
 
 
 func get_spawn_position() -> Vector2:
@@ -106,5 +107,5 @@ func start_wave() -> void:
 		target_cost -= enemy.cost
 		actual_cost += enemy.cost
 	
-	$Timer.wait_time = actual_cost + randf_range(-2.0, 3.0)
+	$Timer.wait_time = MIN_WAVE_TIME + actual_cost/5 + randf_range(-3.0, 3.0)
 	$Timer.start()

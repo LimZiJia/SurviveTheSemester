@@ -69,7 +69,7 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lipm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tin87"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
 shader_parameter/lerp_percent = 0.0
@@ -133,7 +133,7 @@ money = 20
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookshelfSprite")
-hit_flash_material = SubResource("ShaderMaterial_0lipm")
+hit_flash_material = SubResource("ShaderMaterial_tin87")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_sv366")]
 hurtbox_component = NodePath("../HurtboxComponent")
@@ -156,7 +156,7 @@ path_desired_distance = 34.0
 target_desired_distance = 34.0
 
 [node name="HitboxComponent" parent="." instance=ExtResource("13_uyge8")]
-collision_layer = 4
+collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

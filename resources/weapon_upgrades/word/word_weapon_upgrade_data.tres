@@ -1,15 +1,16 @@
-[gd_resource type="Resource" script_class="WeaponUpgradesData" load_steps=8 format=3 uid="uid://ckabhhn8i42ps"]
+[gd_resource type="Resource" script_class="WeaponUpgradesData" load_steps=9 format=3 uid="uid://b7gub5sgdpo3"]
 
 [ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrade_data.gd" id="1_aexae"]
 [ext_resource type="PackedScene" uid="uid://bgwhgewn87l0s" path="res://scenes/weapons/word/word_weapon_controller.tscn" id="2_5pldk"]
 [ext_resource type="Resource" uid="uid://b3cjttikobny" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_1.tres" id="3_rhvhm"]
 [ext_resource type="Resource" uid="uid://cyuqca2i8xuom" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_2.tres" id="3_sylwv"]
-[ext_resource type="Resource" uid="uid://c0lpsglxa7gk" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_3.tres" id="4_7ksjm"]
-[ext_resource type="Resource" uid="uid://b6qcrd7qlli61" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_4.tres" id="5_ey7c2"]
-[ext_resource type="Resource" uid="uid://c3j7xqh1qh1lx" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_5.tres" id="6_2fh0f"]
+[ext_resource type="Resource" uid="uid://bwlwurb337od7" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_3.tres" id="4_7ksjm"]
+[ext_resource type="Resource" uid="uid://c0lpsglxa7gk" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_4.tres" id="5_ey7c2"]
+[ext_resource type="Resource" uid="uid://b6qcrd7qlli61" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_5.tres" id="6_2fh0f"]
+[ext_resource type="Resource" uid="uid://c3j7xqh1qh1lx" path="res://resources/weapon_upgrades/word/word_weapon_upgrade_6.tres" id="7_wce5y"]
 
 [resource]
 script = ExtResource("1_aexae")
 weapon_name = &"Word"
-upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_rhvhm"), ExtResource("3_sylwv"), ExtResource("4_7ksjm"), ExtResource("5_ey7c2"), ExtResource("6_2fh0f")])
+upgrades = Array[Resource("res://resources/weapon_upgrades/weapon_upgrade.gd")]([ExtResource("3_rhvhm"), ExtResource("3_sylwv"), ExtResource("4_7ksjm"), ExtResource("5_ey7c2"), ExtResource("6_2fh0f"), ExtResource("7_wce5y")])
 weapon_scene = ExtResource("2_5pldk")

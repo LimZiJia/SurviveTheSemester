@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://c0lpsglxa7gk"]
+[gd_resource type="Resource" script_class="WeaponUpgrade" load_steps=4 format=3 uid="uid://bwlwurb337od7"]
 
 [ext_resource type="Script" path="res://resources/weapon_upgrades/weapon_upgrade.gd" id="1_1naio"]
 [ext_resource type="Script" path="res://scenes/weapons/weapon_stats/weapon_stat.gd" id="2_1xt2t"]
@@ -7,14 +7,14 @@
 script = ExtResource("2_1xt2t")
 cooldown = 1.0
 count = 1
-damage = 20.0
+damage = 15.0
 knockback = 1500.0
 metadata = {}
 
 [resource]
 script = ExtResource("1_1naio")
 weapon_name = &"Word"
-description = "+5 damage"
+description = "+3 damage"
 level = 3
-cost = 500
+cost = 150
 weapon_stat = SubResource("Resource_m18qi")
