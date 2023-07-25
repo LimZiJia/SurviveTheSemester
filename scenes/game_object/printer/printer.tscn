@@ -266,7 +266,7 @@ _data = {
 "jump": SubResource("Animation_8pfhq")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_depct"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8g7dl"]
 resource_local_to_scene = true
 shader = ExtResource("6_2rn0e")
 shader_parameter/lerp_percent = 0.0
@@ -326,11 +326,12 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CoinDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_p16er")]
 health_component = NodePath("../HealthComponent")
+money = 15
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_fuyi4")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/JumpingVisuals/PrinterSprite")
-hit_flash_material = SubResource("ShaderMaterial_depct")
+hit_flash_material = SubResource("ShaderMaterial_8g7dl")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_hl215")]
 hurtbox_component = NodePath("../HurtboxComponent")

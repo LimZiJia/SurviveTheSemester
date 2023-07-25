@@ -6,6 +6,6 @@
 script = ExtResource("1_g3r1o")
 id = "damage"
 name = "Increase Damage"
-description = "Increases damage by 3%."
+description = "Increases damage by 10%."
 max_quantity = 0
 unlock_pool = Array[ExtResource("1_g3r1o")]([])

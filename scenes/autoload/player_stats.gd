@@ -20,7 +20,7 @@ func on_buff_added(buff: Buff, current_buffs: Dictionary) -> void:
 		return
 	
 	if buff.id == "damage":
-		damage_multiplier += 0.03
+		damage_multiplier += 0.1
 	elif buff.id == "crit_chance":
 		crit_chance += 0.01
 	elif buff.id == "crit_damage":

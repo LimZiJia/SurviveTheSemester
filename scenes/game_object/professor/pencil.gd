@@ -33,5 +33,5 @@ func on_impact_detector_body_entered(_body: Node2D) -> void:
 func throw() -> void:
 	is_thrown = true
 	var target_position = player.global_position
-	velocity = global_position.direction_to(target_position).normalized() * 500
+	velocity = global_position.direction_to(target_position).normalized() * 1000
 	$Despawn.start()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bujqaccjlfprl"]
+[gd_scene load_steps=26 format=3 uid="uid://bujqaccjlfprl"]
 
 [ext_resource type="Script" path="res://scenes/game_object/bookshelf/bookshelf.gd" id="1_lbseb"]
 [ext_resource type="PackedScene" uid="uid://cxq00s4mkyx18" path="res://scenes/game_object/book/book.tscn" id="2_30e8n"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://fyp7350nfixy" path="res://scenes/component/burnable_component.tscn" id="10_spb8p"]
 [ext_resource type="Texture2D" uid="uid://cvr1dsetmpa13" path="res://scenes/game_object/bookshelf/bookshelf.png" id="11_1fs44"]
 [ext_resource type="PackedScene" uid="uid://dsfstepo6lk7x" path="res://scenes/game_object/book/book_sprite.tscn" id="12_yerdr"]
+[ext_resource type="PackedScene" uid="uid://bh7uyqbqidiur" path="res://scenes/component/hitbox_component.tscn" id="13_uyge8"]
 
 [sub_resource type="Animation" id="Animation_sn8f7"]
 length = 0.001
@@ -68,10 +69,13 @@ _data = {
 "attack": SubResource("Animation_mb0hy")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv711"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lipm"]
 resource_local_to_scene = true
 shader = ExtResource("7_10tro")
 shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr37l"]
+size = Vector2(73, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3ug4"]
 size = Vector2(76, 90)
@@ -124,12 +128,12 @@ experience = 2
 
 [node name="CoinDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_4l7q6")]
 health_component = NodePath("../HealthComponent")
-money = 5
+money = 20
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ti1ov")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookshelfSprite")
-hit_flash_material = SubResource("ShaderMaterial_bv711")
+hit_flash_material = SubResource("ShaderMaterial_0lipm")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_sv366")]
 hurtbox_component = NodePath("../HurtboxComponent")
@@ -150,6 +154,14 @@ velocity_component = NodePath("../VelocityComponent")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="PathfindComponent"]
 path_desired_distance = 34.0
 target_desired_distance = 34.0
+
+[node name="HitboxComponent" parent="." instance=ExtResource("13_uyge8")]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-0.5, -18.5)
+shape = SubResource("RectangleShape2D_xr37l")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "velocity_component") instance=ExtResource("9_r24fn")]
 position = Vector2(0, -45)

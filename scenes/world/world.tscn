@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dtefd4ycouse3" path="res://assets/pause_pressed.png" id="12_1oxyp"]
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
-[ext_resource type="PackedScene" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
+[ext_resource type="PackedScene" uid="uid://b6iree1qsvf2l" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
 [ext_resource type="PackedScene" uid="uid://cnfs8ow72uvtq" path="res://scenes/manager/water_cooler_manager.tscn" id="22_0a34s"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
 [ext_resource type="PackedScene" uid="uid://bi4qaqeec2gam" path="res://scenes/game_object/gantry/gantry.tscn" id="24_fvgpo"]
@@ -192,8 +192,6 @@ position = Vector2(336, 552)
 
 [node name="Gantry2" parent="TileMap/Entities" instance=ExtResource("24_fvgpo")]
 position = Vector2(336, 648)
-
-[node name="Foreground" type="Node2D" parent="TileMap" groups=["foreground_layer"]]
 
 [node name="WorldObjects" type="Node2D" parent="TileMap"]
 
@@ -736,3 +734,5 @@ script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject54"]
 shape = SubResource("RectangleShape2D_w3n1w")
+
+[node name="Foreground" type="Node2D" parent="TileMap" groups=["foreground_layer"]]

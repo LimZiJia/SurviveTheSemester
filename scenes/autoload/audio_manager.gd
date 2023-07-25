@@ -21,10 +21,10 @@ func _init():
 func _ready():
 	# Use this line for exporting game (can remove _init() also that is
 	# useless when exporting.
-	#audio_dictionary = resource.dictionary
+	audio_dictionary = resource.dictionary
 	# Run the following lines everytime there is an update to audio
-	resource.dictionary = audio_dictionary
-	ResourceSaver.save(resource, "res://resources/audio/audio.tres")
+	#resource.dictionary = audio_dictionary
+	#ResourceSaver.save(resource, "res://resources/audio/audio.tres")
 
 
 

@@ -1,7 +1,7 @@
 extends Node
 
 @export var health_component: HealthComponent
-@export var health_per_second := 1.0
+@export var health_per_second := 0.5
 
 var cooldown := 5.0
 

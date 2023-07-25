@@ -19,9 +19,9 @@ func _ready() -> void:
 		{
 			"cost": 2.0,
 			"scene": preload("res://scenes/game_object/book/book.tscn"),
-			"weight": 60,
+			"weight": 50,
 		},
-		60)
+		50)
 	$Timer.timeout.connect(on_timer_timeout)
 	start_wave()
 
@@ -40,23 +40,23 @@ func on_timer_timeout() -> void:
 			{
 				"cost": 3.0,
 				"scene": preload("res://scenes/game_object/printer/printer.tscn"),
-				"weight": 10,
+				"weight": 20,
 			},
-			10)
+			20)
 		10: enemy_table.add_item(
 			{
 				"cost": 20,
 				"scene": preload("res://scenes/game_object/bookshelf/bookshelf.tscn"),
-				"weight": 5,
+				"weight": 15,
 			},
-			5)
-		25: enemy_table.add_item(
+			15)
+		20: enemy_table.add_item(
 		{
 			"cost": 40,
 			"scene": preload("res://scenes/game_object/professor/professor.tscn"),
-			"weight": 2,
+			"weight": 8,
 		},
-		2)
+		8)
 	start_wave()
 
 

@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://cjakld5exn8wb" path="res://assets/audio/heart_beat.mp3" id="1_ajgf0"]
 [ext_resource type="Script" path="res://scenes/manager/heartbeat_stream_manager.gd" id="2_x6fav"]
 
-[node name="HeartbeatStreamManager" type="AudioStreamPlayer2D"]
+[node name="HeartbeatStreamManager" type="AudioStreamPlayer"]
 stream = ExtResource("1_ajgf0")
 volume_db = -80.0
 autoplay = true
