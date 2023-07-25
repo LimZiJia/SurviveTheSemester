@@ -61,7 +61,12 @@ func spawn_weapon(number: int) -> void:
 	for i in number:
 		var code_weapon_instance := code_weapon_scene.instantiate()
 		code_weapon_instance.global_position = spawn_position
-		code_weapon_instance.set_damage_knockback(weapon_stat.damage, weapon_stat.knockback)
+		code_weapon_instance.set_stats(
+			weapon_stat.damage * PlayerStats.damage_multiplier,
+			weapon_stat.knockback,
+			PlayerStats.crit_multiplier,
+			PlayerStats.crit_chance
+		)
 		foreground.add_child(code_weapon_instance)
 		
 		

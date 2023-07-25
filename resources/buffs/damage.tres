@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Buff" load_steps=2 format=3 uid="uid://rx6k8r1v1trt"]
+
+[ext_resource type="Script" path="res://resources/buffs/buff.gd" id="1_g3r1o"]
+
+[resource]
+script = ExtResource("1_g3r1o")
+id = "damage"
+name = "Increase Damage"
+description = "Increases damage by 3%."
+max_quantity = 0
+unlock_pool = Array[ExtResource("1_g3r1o")]([])

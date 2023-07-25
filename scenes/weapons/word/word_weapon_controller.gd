@@ -74,8 +74,13 @@ func spawn_weapon(number: int) -> void:
 		
 		word_weapon_instance.global_position = global_position
 		word_weapon_instance.direction = spawn_direction
-		word_weapon_instance.hitbox_component.damage = weapon_stat.damage
-		word_weapon_instance.hitbox_component.knockback_force = weapon_stat.knockback
+		word_weapon_instance.set_stats(
+			weapon_stat.damage * PlayerStats.damage_multiplier,
+			weapon_stat.knockback,
+			PlayerStats.crit_multiplier,
+			PlayerStats.crit_chance
+		)
+		
 		await get_tree().create_timer(0.1, false).timeout
 
 

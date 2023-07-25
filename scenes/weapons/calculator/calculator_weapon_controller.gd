@@ -49,5 +49,9 @@ func spawn_weapon(number: int) -> void:
 		calculator_instance.attack_time = weapon_stat.metadata["attack_time"]
 		calculator_instance.outer_rotation = base_rotation + i * angle_between
 		foreground.add_child(calculator_instance)
-		calculator_instance.hitbox_component.damage = weapon_stat.damage
-		calculator_instance.hitbox_component.knockback_force = weapon_stat.knockback
+		calculator_instance.set_stats(
+			weapon_stat.damage * PlayerStats.damage_multiplier,
+			weapon_stat.knockback,
+			PlayerStats.crit_multiplier,
+			PlayerStats.crit_chance
+		)
