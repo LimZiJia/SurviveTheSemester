@@ -13,6 +13,7 @@ config_version=5
 config/name="Survive The Semester"
 run/main_scene="res://scenes/ui/start_screen.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
+run/max_fps=60
 config/icon="res://assets/icon.svg"
 
 [autoload]
@@ -26,6 +27,7 @@ AudioManager="*res://scenes/autoload/audio_manager.tscn"
 Geometry2DPlus="*res://scripts/geometry_2d_plus.gd"
 PlayerStats="*res://scenes/autoload/player_stats.tscn"
 
+
 [display]
 
 window/size/viewport_width=1080
@@ -35,6 +37,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Survive The Semester"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [gui]
 

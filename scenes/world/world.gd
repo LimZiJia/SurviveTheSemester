@@ -11,3 +11,4 @@ func _ready() -> void:
 func on_player_dead() -> void:
 	var end_screen_instance = end_screen_scene.instantiate()
 	add_child(end_screen_instance)
+	end_screen_instance.score = $TimeManager.get_time_elapsed()

@@ -6,7 +6,7 @@ const CHASE_RADIUS: float = 512.0
 
 var base_health: float
 var base_speed: float
-var book_difficulty: int
+var book_difficulty: int = 1
 
 var state_machine := StateMachine.new()
 
@@ -93,12 +93,12 @@ func spawn_book() -> void:
 	if entities == null:
 		return
 	
-	var spawn_position = global_position + Vector2.from_angle(randf_range(0, TAU)) * 128.0
-	
 	var book_instance := book_scene.instantiate() as Node2D
 	book_instance.set_difficulty(book_difficulty)
 	entities.add_child(book_instance)
-	book_instance.global_position = spawn_position
+	# Slight offset to place the book behind the bookshelf
+	book_instance.global_position = global_position + Vector2(0, -13)
+	book_instance.play_spawn()
 
 
 # Set enemy stats based on difficulty provided
@@ -109,6 +109,6 @@ func set_difficulty(difficulty: int) -> void:
 	health_component.max_health = base_health * pow(difficulty, 0.1)
 	health_component.current_health = base_health * pow(difficulty, 0.1)
 	velocity_component.max_speed = base_speed * pow(difficulty, 0.07)
-	book_difficulty = difficulty / 2
+	book_difficulty = int(clampf(difficulty / 2.0, 1.0, INF))
 	
 	update_health_bar()

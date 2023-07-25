@@ -16,7 +16,7 @@ metadata = {
 [resource]
 script = ExtResource("1_kacxb")
 weapon_name = &"Calculator"
-description = "+0.5 attack time
+description = "+ 5 damage
 +1 calculator"
 level = 5
 cost = 1500

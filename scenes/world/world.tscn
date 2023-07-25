@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dtefd4ycouse3" path="res://assets/pause_pressed.png" id="12_1oxyp"]
 [ext_resource type="Script" path="res://scenes/ui/pause_button.gd" id="13_nehmb"]
 [ext_resource type="Texture2D" uid="uid://pasvpdslkax1" path="res://assets/pause_hover.png" id="13_rrmfn"]
-[ext_resource type="PackedScene" uid="uid://b6iree1qsvf2l" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
+[ext_resource type="PackedScene" path="res://scenes/manager/heartbeat_stream_manager.tscn" id="16_q26ge"]
 [ext_resource type="PackedScene" uid="uid://cnfs8ow72uvtq" path="res://scenes/manager/water_cooler_manager.tscn" id="22_0a34s"]
 [ext_resource type="PackedScene" uid="uid://du2ktn8bc1io3" path="res://scenes/manager/upgrade_manager.tscn" id="23_8h5qs"]
 [ext_resource type="PackedScene" uid="uid://bi4qaqeec2gam" path="res://scenes/game_object/gantry/gantry.tscn" id="24_fvgpo"]
@@ -198,572 +198,541 @@ position = Vector2(336, 648)
 [node name="WorldObjects" type="Node2D" parent="TileMap"]
 
 [node name="WorldObject1" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(856, 861)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject1"]
-position = Vector2(856.563, 861)
 shape = SubResource("RectangleShape2D_e02wr")
 
 [node name="WorldObject2" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(324, -190)
+position = Vector2(1271, 664.5)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject2"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject32" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-828, -711)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject32"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject36" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-632, -1160)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject36"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject37" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-345, -918)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject37"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject38" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(327, -918)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject38"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject39" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(134, -1258)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject39"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject40" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-829, -1439)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject40"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject41" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-493, -1443)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject41"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject42" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-157, -1443)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject42"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject43" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(179, -1443)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject43"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject44" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(519, -1439)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject44"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject45" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-832, -1960)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject45"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject50" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-757, -1732)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject50"]
-position = Vector2(948, 858.5)
-shape = SubResource("RectangleShape2D_w3n1w")
-
-[node name="WorldObject51" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-180, -1734)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject51"]
-position = Vector2(948, 858.5)
-shape = SubResource("RectangleShape2D_w3n1w")
-
-[node name="WorldObject52" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(348, -1731)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject52"]
-position = Vector2(948, 858.5)
-shape = SubResource("RectangleShape2D_w3n1w")
-
-[node name="WorldObject46" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-496, -1964)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject46"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject47" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-160, -1964)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject47"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject48" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(176, -1964)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject48"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject49" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(516, -1960)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject49"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject33" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(-398, -711)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject33"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject34" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(138, -715)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject34"]
-position = Vector2(947, 854.5)
-shape = SubResource("RectangleShape2D_nal4u")
-
-[node name="WorldObject35" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(512, -715)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("25_b3vhs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject35"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject3" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(611, -189)
+position = Vector2(1558, 665)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject3"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject4" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(948, -188)
+position = Vector2(1895, 666)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject4"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject5" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1237, -188)
+position = Vector2(2184, 666)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject5"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject6" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1571, -189)
+position = Vector2(2518, 665)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject6"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject7" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1861, -189)
+position = Vector2(2808, 665)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject7"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject8" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(2195, -190)
+position = Vector2(3142, 664)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject8"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject9" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(2194, -43)
+position = Vector2(3141, 811)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject9"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject10" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1858, -47)
+position = Vector2(2805, 807)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject10"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject11" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1571, -44)
+position = Vector2(2518, 810)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject11"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject12" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1236, -45)
+position = Vector2(2183, 809)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject12"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject13" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(946, -46)
+position = Vector2(1893, 808)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject13"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject14" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(613, -43)
+position = Vector2(1560, 811)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject14"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject15" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(326, -44)
+position = Vector2(1273, 810)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject15"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject16" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(2191, 247)
+position = Vector2(3138, 1101)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject16"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject17" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1855, 243)
+position = Vector2(2802, 1097)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject17"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject18" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1568, 246)
+position = Vector2(2515, 1100)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject18"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject19" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(1233, 245)
+position = Vector2(2180, 1099)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject19"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject20" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(943, 244)
+position = Vector2(1890, 1098)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject20"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject21" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(610, 247)
+position = Vector2(1557, 1101)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject21"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject22" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(323, 246)
+position = Vector2(1270, 1100)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject22"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject23" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(2485, 244)
+position = Vector2(3432, 1098)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject23"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject24" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(2480, -48)
+position = Vector2(3427, 806)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject24"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject25" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(2485, -184)
+position = Vector2(3432, 670)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject25"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject26" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(3591, -146)
+position = Vector2(4538, 708)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject26"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject27" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(3398, -63)
+position = Vector2(4345, 791)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject27"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject28" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(3587, 84)
+position = Vector2(4534, 938)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject28"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject29" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(3591, 386)
+position = Vector2(4538, 1240)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject29"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject30" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(3398, 469)
+position = Vector2(4345, 1323)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject30"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
 
 [node name="WorldObject31" type="Area2D" parent="TileMap/WorldObjects"]
-position = Vector2(3587, 616)
+position = Vector2(4534, 1470)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
 script = ExtResource("25_b3vhs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject31"]
-position = Vector2(947, 854.5)
 shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject32" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(119, 143.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject32"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject33" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(549, 143)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject33"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject34" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1085, 139)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject34"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject35" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1459, 139)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject35"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject36" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(315, -305.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject36"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject37" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(602, -63.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject37"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject38" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1274, -63.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject38"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject39" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1081, -403.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject39"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject40" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(118, -584.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject40"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject41" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(454, -588.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject41"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject42" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(790, -588.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject42"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject43" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1126, -588.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject43"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject44" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1466, -585)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject44"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject45" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(115, -1106)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject45"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject46" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(451, -1110)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject46"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject47" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(787, -1110)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject47"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject48" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1123, -1110)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject48"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject49" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1463, -1106)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject49"]
+shape = SubResource("RectangleShape2D_nal4u")
+
+[node name="WorldObject50" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(190, -878)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject50"]
+shape = SubResource("RectangleShape2D_w3n1w")
+
+[node name="WorldObject51" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(767, -880)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject51"]
+shape = SubResource("RectangleShape2D_w3n1w")
+
+[node name="WorldObject52" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(1295, -877)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject52"]
+shape = SubResource("RectangleShape2D_w3n1w")
+
+[node name="WorldObject53" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(4416, 1764)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject53"]
+shape = SubResource("RectangleShape2D_w3n1w")
+
+[node name="WorldObject54" type="Area2D" parent="TileMap/WorldObjects"]
+position = Vector2(4656, 1761)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("25_b3vhs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/WorldObjects/WorldObject54"]
+shape = SubResource("RectangleShape2D_w3n1w")

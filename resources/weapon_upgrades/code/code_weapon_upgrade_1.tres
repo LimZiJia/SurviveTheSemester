@@ -14,7 +14,7 @@ metadata = {}
 [resource]
 script = ExtResource("1_yd2af")
 weapon_name = &"Code"
-description = "Obtain the code weapon."
+description = "Obtain the code weapon. Deals massive damage to the whole screen every 60s."
 level = 1
 cost = 1000
 weapon_stat = SubResource("Resource_rfrqn")

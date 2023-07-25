@@ -26,6 +26,8 @@ func _ready() -> void:
 	dash_duration = dash_component.dash_duration
 	base_speed = velocity_component.max_speed
 	GameEvents.buff_added.connect(on_buff_added)
+	
+	add_to_group("player")
 
 
 func _physics_process(_delta: float) -> void:

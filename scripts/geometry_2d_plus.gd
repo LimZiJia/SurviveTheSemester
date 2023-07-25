@@ -1,7 +1,7 @@
-extends Node
+class_name Geometry2DPlus
 
 ## Returns a random point in the given polygon.
-func rand_point(polygon: PackedVector2Array) -> Vector2:
+static func rand_point(polygon: PackedVector2Array) -> Vector2:
 	var triangles = array_triangles(polygon)
 	var triangle_table := WeightedTable.new()
 	
@@ -13,7 +13,7 @@ func rand_point(polygon: PackedVector2Array) -> Vector2:
 
 
 ## Returns the area of the given polygon.
-func area(polygon: PackedVector2Array) -> float:
+static func area(polygon: PackedVector2Array) -> float:
 	var res: float = 0.0
 	var triangles = array_triangles(polygon)
 	
@@ -25,7 +25,7 @@ func area(polygon: PackedVector2Array) -> float:
 
 ## Returns a random point in the triangle given an array of the points of the triangle
 ## Based on https://www.cs.princeton.edu/~funk/tog02.pdf
-func rand_triangle_point(points: PackedVector2Array) -> Vector2:
+static func rand_triangle_point(points: PackedVector2Array) -> Vector2:
 	assert(points.size() == 3)
 	
 	var a := points[0]
@@ -35,7 +35,7 @@ func rand_triangle_point(points: PackedVector2Array) -> Vector2:
 	return a + sqrt(randf()) * (-a + b + randf() * (c - b))
 
 # Returns the area of a triangle given an array of the points of the triangle
-func triangle_area(points: PackedVector2Array) -> float:
+static func triangle_area(points: PackedVector2Array) -> float:
 	assert(points.size() == 3)
 	
 	return 0.5 * (\
@@ -46,7 +46,7 @@ func triangle_area(points: PackedVector2Array) -> float:
 
 ## Returns an array of polygons where each polygon is a triangle, based on
 ## triangulating the given polygon.
-func array_triangles(polygon: PackedVector2Array) -> Array[PackedVector2Array]:
+static func array_triangles(polygon: PackedVector2Array) -> Array[PackedVector2Array]:
 	var res := [] as Array[PackedVector2Array]
 	var triangulated_points := Geometry2D.triangulate_polygon(polygon)
 	
@@ -62,7 +62,7 @@ func array_triangles(polygon: PackedVector2Array) -> Array[PackedVector2Array]:
 
 
 ## Returns a polygon based on the given indices and vertices
-func make_polygon(indices: PackedInt32Array, vertices: PackedVector2Array) -> PackedVector2Array:
+static func make_polygon(indices: PackedInt32Array, vertices: PackedVector2Array) -> PackedVector2Array:
 	var res := [] as PackedVector2Array
 	for idx in indices:
 		res.append(vertices[idx])

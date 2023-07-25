@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_7xkn6"]
 [ext_resource type="PackedScene" uid="uid://cibu2hpxo40hy" path="res://scenes/component/health_component.tscn" id="2_4xk1m"]
 [ext_resource type="PackedScene" uid="uid://bwqpi8jmxkdbd" path="res://scenes/component/velocity_component.tscn" id="2_i4ae5"]
-[ext_resource type="PackedScene" uid="uid://sesle3moyoi6" path="res://scenes/component/dash_component.tscn" id="2_v8bdw"]
+[ext_resource type="PackedScene" path="res://scenes/component/dash_component.tscn" id="2_v8bdw"]
 [ext_resource type="PackedScene" uid="uid://cs7ivlr47hqgi" path="res://scenes/component/hurtbox_component.tscn" id="3_4agu3"]
 [ext_resource type="Script" path="res://scenes/game_object/player/weapon_manager.gd" id="5_ffgjt"]
 [ext_resource type="Texture2D" uid="uid://bvbtt3nr6i0qn" path="res://scenes/game_object/player/player_shadow.png" id="6_7up1x"]
@@ -656,7 +656,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 77
+frame = 76
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -687,9 +687,9 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_1bvhy")
 parameters/conditions/idle = true
 parameters/conditions/moving = false
-parameters/Hurt/blend_position = Vector2(0, 1)
+parameters/Hurt/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 1)
-parameters/Move/blend_position = Vector2(0, 1)
+parameters/Move/blend_position = Vector2(1.07484, 0.946288)
 
 [node name="FootstepsPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ibq8y")

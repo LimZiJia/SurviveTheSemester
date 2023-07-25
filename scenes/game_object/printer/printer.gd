@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const ATTACK_RADIUS := 392.0
+const ATTACK_RADIUS := 400.0
 
 var base_health: float
 var base_speed: float
@@ -130,7 +130,7 @@ func is_player_obstructed() -> bool:
 		return true
 	
 	var space_state = get_world_2d().direct_space_state
-	# Ray only intersects with world or world objects
+	# Ray only intersects with walls
 	var query = PhysicsRayQueryParameters2D.create(global_position, 
 	player.global_position, 0b1, [self])
 	var result = space_state.intersect_ray(query)
