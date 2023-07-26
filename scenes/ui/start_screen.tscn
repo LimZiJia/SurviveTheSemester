@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://6pbudmum5dat"]
+[gd_scene load_steps=4 format=3 uid="uid://6pbudmum5dat"]
 
 [ext_resource type="Script" path="res://scenes/ui/start_screen.gd" id="1_icddk"]
 [ext_resource type="Script" path="res://scenes/ui/hoverable_button.gd" id="1_ml0j7"]
+[ext_resource type="PackedScene" uid="uid://dxnsbnm55ur2p" path="res://scenes/ui/volume_menu.tscn" id="2_ggp0y"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -13,6 +14,7 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_icddk")
+volume_menu_scene = ExtResource("2_ggp0y")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -48,18 +50,28 @@ text = "Survive The Semester"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Start"
 script = ExtResource("1_ml0j7")
 
 [node name="OptionsButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Options"
 script = ExtResource("1_ml0j7")
 
+[node name="VolumeButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Volume"
+script = ExtResource("1_ml0j7")
+
 [node name="QuitButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit"

@@ -24,6 +24,7 @@ GameEvents="*res://scenes/autoload/game_events.tscn"
 GameManager="*res://scenes/autoload/game_manager.gd"
 MoneyManager="*res://scenes/autoload/money_manager.tscn"
 AudioManager="*res://scenes/autoload/audio_manager.tscn"
+VolumeManager="*res://scenes/autoload/volume_manager.tscn"
 PlayerStats="*res://scenes/autoload/player_stats.tscn"
 
 [display]

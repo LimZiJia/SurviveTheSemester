@@ -6,12 +6,9 @@ var actions := [
 ]
 var button_action_dict: Dictionary
 
-@onready var grid: GridContainer = \
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer
-@onready var reset_button: Button = \
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/ResetButton
-@onready var back_button: Button = \
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/BackButton
+@onready var grid := %GridContainer as GridContainer
+@onready var reset_button := %ResetButton as Button
+@onready var back_button := %BackButton as Button
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
