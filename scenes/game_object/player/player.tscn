@@ -656,7 +656,7 @@ position = Vector2(0, -48)
 texture = ExtResource("8_voa7p")
 hframes = 56
 vframes = 20
-frame = 79
+frame = 74
 
 [node name="StuckArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -694,6 +694,7 @@ parameters/Move/blend_position = Vector2(1.07484, 0.946288)
 [node name="FootstepsPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ibq8y")
 pitch_scale = 1.1
+bus = &"SFX"
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true

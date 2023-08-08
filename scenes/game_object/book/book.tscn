@@ -239,7 +239,7 @@ _data = {
 "spawn": SubResource("Animation_0o65e")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_os8mg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oabtr"]
 resource_local_to_scene = true
 shader = ExtResource("7_7kivl")
 shader_parameter/lerp_percent = 0.0
@@ -301,7 +301,7 @@ money = 8
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_j28e0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/BookSprite")
-hit_flash_material = SubResource("ShaderMaterial_os8mg")
+hit_flash_material = SubResource("ShaderMaterial_oabtr")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("8_w4gbr")]
 hurtbox_component = NodePath("../HurtboxComponent")

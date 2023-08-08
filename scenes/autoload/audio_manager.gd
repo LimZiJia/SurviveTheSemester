@@ -34,6 +34,7 @@ func play_audio(audio: String, volume_db: float, pitch_scale: float = 1.0) -> vo
 	audio_stream_player.stream = audio_stream
 	audio_stream_player.volume_db = volume_db
 	audio_stream_player.pitch_scale = pitch_scale
+	audio_stream_player.set_bus("SFX")
 	add_child(audio_stream_player)
 	audio_stream_player.play()
 	
@@ -49,6 +50,7 @@ func play_2d_audio(audio: String, source: Node2D, volume_db: float, pitch_scale:
 	audio_stream_player.stream = audio_stream
 	audio_stream_player.volume_db = volume_db
 	audio_stream_player.pitch_scale = pitch_scale
+	audio_stream_player.set_bus("SFX")
 	add_child(audio_stream_player)
 	audio_stream_player.play()
 	

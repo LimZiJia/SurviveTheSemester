@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://6pbudmum5dat"]
+[gd_scene load_steps=5 format=3 uid="uid://6pbudmum5dat"]
 
 [ext_resource type="Script" path="res://scenes/ui/start_screen.gd" id="1_icddk"]
 [ext_resource type="Script" path="res://scenes/ui/hoverable_button.gd" id="1_ml0j7"]
 [ext_resource type="PackedScene" uid="uid://dxnsbnm55ur2p" path="res://scenes/ui/volume_menu.tscn" id="2_ggp0y"]
+[ext_resource type="AudioStream" uid="uid://bkiin45pvewk1" path="res://assets/Music/28 Rare Blocks.wav" id="4_q6kqt"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -76,3 +77,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 script = ExtResource("1_ml0j7")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q6kqt")
+volume_db = -13.173
+autoplay = true
+bus = &"Music"

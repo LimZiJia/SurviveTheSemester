@@ -641,7 +641,7 @@ graph_offset = Vector2(0, -38.6383)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_1bvhy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5vt3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lf13j"]
 resource_local_to_scene = true
 shader = ExtResource("8_fk8gm")
 shader_parameter/lerp_percent = 0.0
@@ -717,7 +717,7 @@ money = 30
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_qdyqf")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_c5vt3")
+hit_flash_material = SubResource("ShaderMaterial_lf13j")
 
 [node name="FreezableComponent" parent="." node_paths=PackedStringArray("hurtbox_component", "velocity_component", "sprite") instance=ExtResource("9_a8ss6")]
 hurtbox_component = NodePath("../HurtboxComponent")
