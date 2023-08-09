@@ -1,4 +1,6 @@
-extends Control
+extends CanvasLayer
+
+signal closed
 
 var button_pressed: Button = null
 var actions := [
@@ -11,25 +13,11 @@ var button_action_dict: Dictionary
 @onready var back_button := %BackButton as Button
 
 func _ready() -> void:
-	back_button.pressed.connect(_on_back_button_pressed)
-	reset_button.pressed.connect(_on_reset_button_pressed)
+	back_button.pressed.connect(on_back_button_pressed)
+	reset_button.pressed.connect(on_reset_button_pressed)
+	closed.connect(on_closed)
 	
-	# Add all actions into the scene grid
-	for action in actions: 
-		var label = Label.new()
-		label.add_theme_font_size_override("font_size", 32)
-		label.set("size_flags_horizontal", 3)
-		label.text = " ".join(action.split("_")).capitalize()
-		grid.add_child(label)
-		
-		var button = Button.new()
-		button.add_theme_font_size_override("font_size", 32)
-		button.set("custom_minimum_size", Vector2(210.0, 0.0))
-		button.text = get_key(action)
-		grid.add_child(button)
-		
-		button.pressed.connect(_on_button_pressed.bind(button))
-		button_action_dict[button.to_string()] = action
+	initialise_actions()
 
 
 # Remaps the input key of an action if an action is selected. If the
@@ -52,7 +40,7 @@ func _input(event: InputEvent) -> void:
 	button_pressed = null
 
 
-func _on_button_pressed(button: Button) -> void:
+func on_button_pressed(button: Button) -> void:
 	if button_pressed != null:
 		var action = button_action_dict[button_pressed.to_string()]
 		button_pressed.text = get_key(action)
@@ -61,14 +49,19 @@ func _on_button_pressed(button: Button) -> void:
 	button_pressed = button
 
 
-func _on_back_button_pressed() -> void:
-	SceneChanger.change_scene("res://scenes/ui/start_screen.tscn")
+func on_back_button_pressed() -> void:
+	$AnimationPlayer.play("exit")
 
 
-# Resets all actions to their original input keys
-func _on_reset_button_pressed() -> void:
+func on_closed() -> void:
+	queue_free()
+
+
+## Resets all actions to their original input keys and
+## displays original input keys
+func on_reset_button_pressed() -> void:
 	InputMap.load_from_project_settings()
-	SceneChanger.reload_scene()
+	reset_actions()
 
 
 # Returns true if the current InputEventKey is already assigned to another action
@@ -84,3 +77,29 @@ func key_is_active(event: InputEventKey) -> bool:
 func get_key(action: StringName) -> StringName:
 	var event: InputEventKey = InputMap.action_get_events(action)[0]
 	return OS.get_keycode_string(event.physical_keycode)
+
+
+## Add all actions into the scene grid
+func initialise_actions() -> void:
+	for action in actions: 
+		var label = Label.new()
+		label.add_theme_font_size_override("font_size", 32)
+		label.set("size_flags_horizontal", 3)
+		label.text = " ".join(action.split("_")).capitalize()
+		grid.add_child(label)
+		
+		var button = Button.new()
+		button.add_theme_font_size_override("font_size", 32)
+		button.set("custom_minimum_size", Vector2(210.0, 0.0))
+		button.text = get_key(action)
+		grid.add_child(button)
+		
+		button.pressed.connect(on_button_pressed.bind(button))
+		button_action_dict[button.to_string()] = action
+
+
+func reset_actions() -> void:
+	for child in grid.get_children():
+		child.queue_free()
+	
+	initialise_actions()

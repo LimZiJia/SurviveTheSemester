@@ -28,6 +28,7 @@ func on_music_volume_slider_value_changed(value: float) -> void:
 func on_sfx_volume_slider_value_changed(value: float) -> void:
 	VolumeManager.set_sfx_volume(value)
 
+
 func on_back_button_pressed() -> void:
 	$AnimationPlayer.play("exit")
 
