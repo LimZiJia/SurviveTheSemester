@@ -37,8 +37,8 @@ Press the WASD buttons to move around, shift to dash, and click the shop button 
 16. **Typing**: [Pixabay](https://pixabay.com/sound-effects/typing-on-computer-keyboard-58445/). Done by [Pixabay](https://pixabay.com/users/pixabay-1/)
 
 ## Background Music
-1. *Normal Game Music*: [Ludum Dare 30 - Track 4](https://tallbeard.itch.io/music-loop-bundle). Done by [Tallbeard Studios](https://tallbeard.itch.io/)
-2. *Main Menu Music*: [Streambeats - Rare Blocks](https://www.senpai.tv/streambeats/). Done by [Senpai Music Group](https://www.senpai.tv)
+1. **Normal Game Music**: [Ludum Dare 30 - Track 4](https://tallbeard.itch.io/music-loop-bundle). Done by [Tallbeard Studios](https://tallbeard.itch.io/)
+2. **Main Menu Music**: [Streambeats - Rare Blocks](https://www.senpai.tv/streambeats/). Done by [Senpai Music Group](https://www.senpai.tv)
 
 ## Fonts
 1. **Mario Kart DS**: [Mario Kart DS font](https://www.dafont.com/mario-kart-ds.font). Done by [David](https://www.dafont.com/david-fens.d5063)
