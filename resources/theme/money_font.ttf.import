@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://yb3a3qqlpyyw"
-path="res://.godot/imported/money_font.ttf-13b713116786b9f06a5046f1d1dc42e7.fontdata"
+path="res://.godot/imported/money_font.ttf-58786fdd95f2ae71f7690d17533067a9.fontdata"
 
 [deps]
 
-source_file="res://fonts/money_font.ttf"
-dest_files=["res://.godot/imported/money_font.ttf-13b713116786b9f06a5046f1d1dc42e7.fontdata"]
+source_file="res://resources/theme/money_font.ttf"
+dest_files=["res://.godot/imported/money_font.ttf-58786fdd95f2ae71f7690d17533067a9.fontdata"]
 
 [params]
 

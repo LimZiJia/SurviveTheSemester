@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://iily2o50n46p" path="res://scenes/ui/experience_bar.tscn" id="5_tersy"]
 [ext_resource type="PackedScene" uid="uid://caffdrsf578am" path="res://scenes/ui/pause_menu.tscn" id="6_7j38u"]
 [ext_resource type="PackedScene" uid="uid://bwdy8drw25be3" path="res://scenes/ui/health_grade_bar.tscn" id="6_xc6ep"]
-[ext_resource type="PackedScene" uid="uid://c0jmj040f8aug" path="res://scenes/ui/money_bar.tscn" id="7_b4don"]
+[ext_resource type="PackedScene" path="res://scenes/ui/money_bar.tscn" id="7_b4don"]
 [ext_resource type="PackedScene" uid="uid://cy8v4dsyl3rsr" path="res://scenes/manager/time_manager.tscn" id="7_fb4dk"]
 [ext_resource type="TileSet" uid="uid://b85c4n5ffvmal" path="res://resources/tileset.tres" id="8_4hahy"]
 [ext_resource type="Texture2D" uid="uid://6yy2a46r4fi2" path="res://assets/Shop.png" id="8_7gkdb"]
