@@ -1,5 +1,8 @@
 # About
-Survive The Semester is a single-player 2D wave survival game made with Godot 4.
+Survive The Semester is a single-player 2D wave survival game made with Godot 4 under [NUS CP2106](https://nusskylab-dev.comp.nus.edu.sg/).
+
+# How to Download
+Download and run the latest version of Survive The Semester from the [release page](https://github.com/LimZiJia/SurviveTheSemester/releases). Note that you might see a warning from your security software indiciating that the application is unrecognized. This warning is due to the application not being signed with a digital certificate from a recognized publisher. This is common for applications that are new or not distributed. If you have downloaded it from the official release page, you may proceed to run it.
 
 # How to Play
 Press the WASD buttons to move around, shift to dash, and click the shop button at the top right to purchase new weapons and upgrades.
